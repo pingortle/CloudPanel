@@ -38,7 +38,16 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -87,6 +96,7 @@
     <Content Include="css\style.inverse.css" />
     <Content Include="css\toggles.css" />
     <Content Include="css\wysiwyg-color.css" />
+    <Content Include="Dashboard.aspx" />
     <Content Include="fonts\fontawesome-webfont.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\lato\Lato-Bla-webfont.svg" />
@@ -564,10 +574,147 @@
     <Content Include="js\retina.min.js" />
     <Content Include="js\toggles.min.js" />
     <Content Include="js\wysihtml5-0.3.0.min.js" />
+    <Content Include="login.aspx" />
+    <Content Include="resellers.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Dashboard.aspx.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Dashboard.aspx.designer.cs">
+      <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="database\ApiAccess.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\Audit.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\AuditLogin.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\CloudPanelDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CloudPanelDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\CloudPanelDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\CloudPanelDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CloudPanelDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="database\Company.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\CompanyStat.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\Contact.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\DistributionGroup.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\Domain.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\LogTable.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\Plans_Citrix.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\Plans_ExchangeActiveSync.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\Plans_ExchangeMailbox.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\Plans_Organization.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\Plans_TerminalServices.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\Price.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\PriceOverride.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\ResourceMailbox.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\Setting.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\Stats_CitrixCount.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\Stats_ExchCount.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\Stats_UserCount.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\SvcMailboxDatabaseSize.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\SvcMailboxSize.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\SvcQueue.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\SvcTask.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\User.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\UserPermission.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\UserPlan.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="database\UserPlansCitrix.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\LocalizedText.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LocalizedText.resx</DependentUpon>
+    </Compile>
+    <Compile Include="login.aspx.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="login.aspx.designer.cs">
+      <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="CloudPanel.Master.cs">
+      <DependentUpon>CloudPanel.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="CloudPanel.Master.designer.cs">
+      <DependentUpon>CloudPanel.Master</DependentUpon>
+    </Compile>
+    <Compile Include="resellers.aspx.cs">
+      <DependentUpon>resellers.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="resellers.aspx.designer.cs">
+      <DependentUpon>resellers.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\.DS_Store" />
@@ -670,12 +817,43 @@
     <Content Include="js\ckeditor\samples\sample_posteddata.php" />
     <Content Include="js\ckeditor\skins\moono\readme.md" />
     <Content Include="js\ckeditor\skins\themepixels\readme.md" />
+    <Content Include="packages.config" />
+    <Content Include="CloudPanel.Master" />
+    <EntityDeploy Include="database\CloudPanelDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CloudPanelDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="database\CloudPanelDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CloudPanelDB.edmx</DependentUpon>
+      <LastGenOutput>CloudPanelDB.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="database\CloudPanelDB.edmx.diagram">
+      <DependentUpon>CloudPanelDB.edmx</DependentUpon>
+    </Content>
+    <Content Include="database\CloudPanelDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CloudPanelDB.edmx</DependentUpon>
+      <LastGenOutput>CloudPanelDB.cs</LastGenOutput>
+    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
     <None Include="Web.Release.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="plans\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="App_GlobalResources\LocalizedText.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>LocalizedText.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

@@ -71,38 +71,6 @@ jQuery(document).ready(function() {
    
    jQuery('.toggle-chat1').toggles({on: false});
    
-   // Sparkline
-   jQuery('#sidebar-chart').sparkline([4,3,3,1,4,3,2,2,3,10,9,6], {
-	  type: 'bar', 
-	  height:'30px',
-      barColor: '#428BCA'
-   });
-   
-   jQuery('#sidebar-chart2').sparkline([1,3,4,5,4,10,8,5,7,6,9,3], {
-	  type: 'bar', 
-	  height:'30px',
-      barColor: '#D9534F'
-   });
-   
-   jQuery('#sidebar-chart3').sparkline([5,9,3,8,4,10,8,5,7,6,9,3], {
-	  type: 'bar', 
-	  height:'30px',
-      barColor: '#1CAF9A'
-   });
-   
-   jQuery('#sidebar-chart4').sparkline([4,3,3,1,4,3,2,2,3,10,9,6], {
-	  type: 'bar', 
-	  height:'30px',
-      barColor: '#428BCA'
-   });
-   
-   jQuery('#sidebar-chart5').sparkline([1,3,4,5,4,10,8,5,7,6,9,3], {
-	  type: 'bar', 
-	  height:'30px',
-      barColor: '#F0AD4E'
-   });
-   
-   
    // Minimize Button in Panels
    jQuery('.minimize').click(function(){
       var t = jQuery(this);
@@ -160,45 +128,7 @@ jQuery(document).ready(function() {
       }
 
    });
-   
-   // Chat View
-   jQuery('#chatview').click(function(){
-      
-      var body = jQuery('body');
-      var bodypos = body.css('position');
-      
-      if(bodypos != 'relative') {
-         
-         if(!body.hasClass('chat-view')) {
-            body.addClass('leftpanel-collapsed chat-view');
-            jQuery('.nav-bracket ul').attr('style','');
-            
-         } else {
-            
-            body.removeClass('chat-view');
-            
-            if(!jQuery('.menutoggle').hasClass('menu-collapsed')) {
-               jQuery('body').removeClass('leftpanel-collapsed');
-               jQuery('.nav-bracket li.active ul').css({display: 'block'});
-            } else {
-               
-            }
-         }
-         
-      } else {
-         
-         if(!body.hasClass('chat-relative-view')) {
-            
-            body.addClass('chat-relative-view');
-            body.css({left: ''});
-         
-         } else {
-            body.removeClass('chat-relative-view');   
-         }
-      }
-      
-   });
-   
+
    reposition_searchform();
    
    jQuery(window).resize(function(){
