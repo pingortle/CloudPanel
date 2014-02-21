@@ -3,6 +3,8 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2012
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudPanel", "CloudPanel\CloudPanel.csproj", "{321880A5-348D-4360-A3DD-5329B3A49087}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Website", "Website", "{BCFD92C8-30DB-445E-AE2B-7BDA8E0E791F}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -16,5 +18,8 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{321880A5-348D-4360-A3DD-5329B3A49087} = {BCFD92C8-30DB-445E-AE2B-7BDA8E0E791F}
 	EndGlobalSection
 EndGlobal
