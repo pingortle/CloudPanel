@@ -1,83 +1,67 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/CloudPanel.Master" AutoEventWireup="true" CodeBehind="resellers.aspx.cs" Inherits="CloudPanel.resellers" %>
+<%@ Register Src="~/cpcontrols/alertmessage.ascx" TagPrefix="uc1" TagName="alertmessage" %>
+
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMainPanel" runat="server">
-        <div class="pageheader">
-        <h2><i class="fa fa-user"></i>Resellers</h2>
+    <div class="pageheader">
+        <h2><i class="fa fa-user"></i><%= Resources.LocalizedText.Resellers_Resellers %></h2>
     </div>
 
     <div class="contentpanel">
 
-        <div style="float: right; margin: 10px">
-                <asp:Button ID="btnAddReseller" runat="server" Text="Add New Reseller" CssClass="btn btn-success" />
-        </div>
-        
+        <uc1:alertmessage runat="server" ID="alertmessage" />
+
         <asp:Panel ID="panelResellerList" runat="server" CssClass="row">
+
+            <div style="float: right; margin: 10px">
+                <asp:Button ID="btnAddReseller" runat="server" Text="<%$ Resources:LocalizedText, Resellers_AddNewReseller %>" CssClass="btn btn-success" OnClick="btnAddReseller_Click" />
+            </div>
+
             <div class="col-md-12">
                 <div class="table-responsive">
                     <table class="table table-striped mb30">
                         <thead>
                             <tr>
-                                <th>Reseller Name</th>
-                                <th>Address</th>
-                                <th>Created</th>
-                                <th>Total Companies</th>
+                                <th><%= Resources.LocalizedText.Resellers_Name %></th>
+                                <th><%= Resources.LocalizedText.Resellers_Address %></th>
+                                <th><%= Resources.LocalizedText.Resellers_Created %></th>
+                                <th><%= Resources.LocalizedText.Resellers_TotalCompanies %></th>
                                 <th style="width: 10%"></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>Compsys</td>
-                                <td>6929 JFK Blvd<br />
-                                    North Little Rock, AR 72116
-                                </td>
-                                <td>5/2/2013 11:55:52 AM</td>
-                                <td>73</td>
-                                <td>
-                                    <div class="btn-group">
-                                        <span class="btn btn-xs btn-primary">Modify</span>
-                                        <button type="button" class="btn btn-xs btn-primary dropdown-toggle" data-toggle="dropdown">
-                                            <span class="caret"></span>
-                                            <span class="sr-only">Toggle Dropdown</span>
-                                        </button>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li>
-                                                <asp:LinkButton ID="LinkButton3" runat="server">Edit</asp:LinkButton></li>
-                                            <li class="divider"></li>
-                                            <li>
-                                                <asp:LinkButton ID="LinkButton4" runat="server">Delete</asp:LinkButton></li>
-                                        </ul>
-                                    </div>
-                                    <!-- btn-group -->
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>XioCommunications</td>
-                                <td>7610 Counts Massie Road<br />
-                                    North Little Rock, AR    72113
-                                </td>
-                                <td>2/4/2013 12:00:00 AM</td>
-                                <td>3</td>
-                                <td>
-                                    <div class="btn-group">
-                                        <span class="btn btn-xs btn-primary">Modify</span>
-                                        <button type="button" class="btn btn-xs btn-primary dropdown-toggle" data-toggle="dropdown">
-                                            <span class="caret"></span>
-                                            <span class="sr-only">Toggle Dropdown</span>
-                                        </button>
-                                        <ul class="dropdown-menu" role="menu">
-                                            <li>
-                                                <asp:LinkButton ID="LinkButton5" runat="server">Edit</asp:LinkButton></li>
-                                            <li class="divider"></li>
-                                            <li>
-                                                <asp:LinkButton ID="LinkButton6" runat="server">Delete</asp:LinkButton></li>
-                                        </ul>
-                                    </div>
-                                    <!-- btn-group -->
-                                </td>
-                            </tr>
+                            <asp:Repeater ID="resellersRepeater" runat="server" OnItemCommand="resellersRepeater_ItemCommand">
+                                <ItemTemplate>
+                                    <tr>
+                                        <td><%# Eval("CompanyName") %></td>
+                                        <td><%# Eval("FullAddressFormatted") %></td>
+                                        <td><%# Eval("Created") %></td>
+                                        <td><%# CloudPanel.Modules.Database.Companies.Resellers.GetResellersCompanyCount(Eval("CompanyCode").ToString()) %></td>
+                                        <td>
+                                            <div class="btn-group">
+                                                <span class="btn btn-xs btn-primary"><%= Resources.LocalizedText.Resellers_Modify %></span>
+                                                <button type="button" class="btn btn-xs btn-primary dropdown-toggle" data-toggle="dropdown">
+                                                    <span class="caret"></span>
+                                                    <span class="sr-only">Toggle Dropdown</span>
+                                                </button>
+                                                <ul class="dropdown-menu" role="menu">
+                                                    <li>
+                                                        <asp:LinkButton ID="lnkEdit" runat="server" CommandName="Edit" CommandArgument='<%# Eval("CompanyCode") %>'><%= Resources.LocalizedText.Resellers_Edit %></asp:LinkButton>
+                                                    </li>
+                                                    <li class="divider"></li>
+                                                    <li>
+                                                        <asp:LinkButton ID="lnkDelete" runat="server" CommandName="Delete" CommandArgument='<%# Eval("CompanyCode") %>'><%= Resources.LocalizedText.Resellers_Delete %></asp:LinkButton>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <!-- btn-group -->
+                                        </td>
+                                    </tr>
+                                </ItemTemplate>
+                            </asp:Repeater>
                         </tbody>
                     </table>
                 </div>
@@ -86,65 +70,73 @@
             <!-- col-md-6 -->
         </asp:Panel>
 
-        <asp:Panel ID="panelEditCreateReseller" runat="server" CssClass="row">
+        <asp:Panel ID="panelEditCreateReseller" runat="server" CssClass="row" Visible="false">
             <div class="form-horizontal">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4 class="panel-title">Add/Edit Reseller</h4>
+                        <h4 class="panel-title"><%= Resources.LocalizedText.Resellers_EditTitle %></h4>
                     </div>
 
                     <div class="panel-body">
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Company Name:</label>
+                            <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Resellers_CompanyName %> <span class="asterisk">*</span></label>
                             <div class="col-sm-4">
                                 <asp:TextBox ID="txtName" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:HiddenField ID="hfResellerCode" runat="server" />
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Contacts Name:</label>
+                            <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Resellers_ContactName %></label>
                             <div class="col-sm-4">
                                 <asp:TextBox ID="txtContactsName" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">E-mail:</label>
+                            <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Resellers_Email %></label>
                             <div class="col-sm-4">
                                 <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Telephone:</label>
+                            <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Resellers_Telephone %></label>
                             <div class="col-sm-4">
                                 <asp:TextBox ID="txtTelephone" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Street Address:</label>
+                            <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Resellers_StreetAddress %></label>
                             <div class="col-sm-4">
                                 <asp:TextBox ID="txtStreetAddress" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">City:</label>
+                            <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Resellers_City %></label>
                             <div class="col-sm-4">
                                 <asp:TextBox ID="txtCity" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">State:</label>
+                            <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Resellers_State %></label>
                             <div class="col-sm-4">
                                 <asp:TextBox ID="txtState" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label">Chosen Select</label>
+                            <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Resellers_ZipCode %></label>
+                            <div class="col-sm-4">
+                                <asp:TextBox ID="txtZipCode" runat="server" CssClass="form-control"></asp:TextBox>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Resellers_Country %></label>
                             <div class="col-sm-4">
                                 <asp:DropDownList ID="ddlCountry" runat="server" CssClass="form-control chosen-select">
                                     <asp:ListItem Value=""></asp:ListItem>
@@ -405,9 +397,9 @@
                     </div>
                     <!-- panel-body -->
 
-                    <div class="panel-footer">
-                        <button class="btn btn-primary">Submit</button>
-                        <button type="reset" class="btn btn-default">Reset</button>
+                    <div class="panel-footer" style="text-align: right">
+                        <asp:Button ID="btnCancel" runat="server" Text="<%$ Resources:LocalizedText, Resellers_Cancel %>" CssClass="btn btn-default" OnClick="btnCancel_Click" />
+                        <asp:Button ID="btnSubmit" runat="server" Text="<%$ Resources:LocalizedText, Resellers_Submit %>" CssClass="btn btn-primary" OnClick="btnSubmit_Click" />
                     </div>
                     <!-- panel-footer -->
 

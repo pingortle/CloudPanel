@@ -7,47 +7,53 @@ namespace CloudPanel.Modules.Common.Settings
 {
     public class StaticSettings
     {
+        public static string HostingOU { get; set; }
 
-        #region Database Settings
+        public static string PrimaryDC { get; set; }
 
+        public static string Username { get; set; }
 
-        #endregion
+        public static string Password { get; set; }
 
-        #region Active Directory
+        public static string SuperAdmins { get; set; }
 
-        /// <summary>
-        /// The base organizational unit for hosting resellers & companies
-        /// </summary>
-        public string HostingOU { get; set; }
+        public static string BillingAdmins { get; set; }
 
-        /// <summary>
-        /// The primary domain controller to communicate with
-        /// </summary>
-        public string PrimaryDC { get; set; }
+        public static string ExchangeServer { get; set; }
 
-        #endregion
+        public static string ExchangePublicFolderServer { get; set; }
 
-        #region Authentication
+        public static string ExchangeConnectionType { get; set; }
 
-        /// <summary>
-        /// DOMAIN\Username to use when running remote commands
-        /// </summary>
-        public string Username { get; set; }
+        public static string HostersName { get; set; }
 
-        /// <summary>
-        /// The password for the username
-        /// </summary>
-        public string Password { get; set; }
+        public static string UsersOU { get; set; }
 
-        #endregion
+        public static string LoginLogo { get; set; }
 
-        #region Exchange
+        public static string CornerLogo { get; set; }
 
-        /// <summary>
-        /// The Exchange server for powershell commands
-        /// </summary>
-        public string ExchangeFqdn { get; set; }
+        public static bool ExchangeSSLEnabled { get; set; }
 
-        #endregion
+        public static bool CitrixEnabled { get; set; }
+
+        public static bool PublicFoldersEnabled { get; set; }
+
+        public static bool LyncEnabled { get; set; }
+
+        public static bool ResellersEnabled { get; set; }
+
+        public static bool AllowCustomNameAttribute { get; set; }
+
+        public static bool IPBlockingEnabled { get; set; }
+
+        public static bool LockdownEnabled { get; set; }
+
+        public static int IPBlockingFailedCount { get; set; }
+
+        public static int IPBlockingLockedInMinutes { get; set; }
+
+        public static int ExchangeVersion { get; set; }
+
     }
 }

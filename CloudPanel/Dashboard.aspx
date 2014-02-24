@@ -26,33 +26,48 @@
                                 <h5 class="subtitle mb5">Environment Overview</h5>
                                 <p class="mb15">Overview of your entire environment</p>
 
-                                <span class="sublabel">Resellers</span>
+                                <div class="tinystat mr20">
+                                    <div class="datainfo">
+                                        <span class="text-muted">Total Users</span>
+                                        <h4><asp:Label ID="lbTotalUsers" runat="server" Text="0"></asp:Label></h4>
+                                    </div>
+                                </div>
+                                <!-- tinystat -->
+
+                                <div class="tinystat mr20">
+                                    <div class="datainfo">
+                                        <span class="text-muted">Resellers</span>
+                                        <h4><asp:Label ID="lbTotalResellers" runat="server" Text="0"></asp:Label></h4>
+                                    </div>
+                                </div>
+                                <!-- tinystat -->
+
+                                <div class="tinystat mr20">
+                                    <div class="datainfo">
+                                        <span class="text-muted">Companies</span>
+                                        <h4><asp:Label ID="lbTotalCompanies" runat="server" Text="0"></asp:Label></h4>
+                                    </div>
+                                </div>
+                                <!-- tinystat -->
+
+                                <br />
+                                <br />
+
+                                <span class="sublabel">Mailboxes <asp:Label ID="lbTotalMailboxes" runat="server" Text="(0)"></asp:Label></span>
                                 <div class="progress progress-sm">
-                                    <div style="width: 40%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-primary"></div>
+                                    <div style="width: 82%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-danger" runat="server" id="progBarMailboxes"></div>
                                 </div>
                                 <!-- progress -->
 
-                                <span class="sublabel">Companies</span>
+                                <span class="sublabel">Citrix Users <asp:Label ID="lbTotalCitrixUsers" runat="server" Text="(0)"></asp:Label></span>
                                 <div class="progress progress-sm">
-                                    <div style="width: 32%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-success"></div>
+                                    <div style="width: 63%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-warning" runat="server" id="progBarCitrix"></div>
                                 </div>
                                 <!-- progress -->
 
-                                <span class="sublabel">Mailboxes</span>
+                                <span class="sublabel">Lync Users <asp:Label ID="lbTotalLyncUsers" runat="server" Text="(0)"></asp:Label></span>
                                 <div class="progress progress-sm">
-                                    <div style="width: 82%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-danger"></div>
-                                </div>
-                                <!-- progress -->
-
-                                <span class="sublabel">Citrix Users</span>
-                                <div class="progress progress-sm">
-                                    <div style="width: 63%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-warning"></div>
-                                </div>
-                                <!-- progress -->
-
-                                <span class="sublabel">Lync Users</span>
-                                <div class="progress progress-sm">
-                                    <div style="width: 63%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-info"></div>
+                                    <div style="width: 63%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-info" runat="server" id="progBarLync"></div>
                                 </div>
                                 <!-- progress -->
 

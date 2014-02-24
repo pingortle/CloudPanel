@@ -19,6 +19,7 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -28,6 +29,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -36,16 +38,21 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.0.2\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer">
       <HintPath>..\packages\EntityFramework.6.0.2\lib\net40\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data.Entity" />
+    <Reference Include="NLog">
+      <HintPath>..\packages\NLog.2.1.0\lib\net40\NLog.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
@@ -54,18 +61,27 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Drawing" />
     <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="companies.aspx" />
+    <Content Include="company\citrix\applications.aspx" />
+    <Content Include="company\domains.aspx" />
+    <Content Include="company\email\contacts.aspx" />
+    <Content Include="company\email\disable.aspx" />
+    <Content Include="company\email\domains.aspx" />
+    <Content Include="company\email\enable.aspx" />
+    <Content Include="company\email\groups.aspx" />
+    <Content Include="company\overview.aspx" />
+    <Content Include="company\users.aspx" />
+    <Content Include="cpcontrols\alertmessage.ascx" />
     <Content Include="css\animate.delay.css" />
     <Content Include="css\animate.min.css" />
     <Content Include="css\bootstrap-fileupload.min.css" />
@@ -128,10 +144,13 @@
     <Content Include="fonts\roboto\Roboto-Thin-webfont.svg" />
     <Content Include="fonts\roboto\Roboto-ThinItalic-webfont.svg" />
     <Content Include="fonts\roboto\roboto.css" />
+    <Content Include="Global.asax" />
     <Content Include="images\calendar-arrow.png" />
     <Content Include="images\chosen-sprite%402x.png" />
     <Content Include="images\chosen-sprite.png" />
     <Content Include="images\chosen.jquery.min.js" />
+    <Content Include="images\citrix\citrix_application.png" />
+    <Content Include="images\citrix\citrix_server.png" />
     <Content Include="images\close-white.png" />
     <Content Include="images\colorpicker\blank.gif" />
     <Content Include="images\colorpicker\colorpicker_background.png" />
@@ -576,9 +595,87 @@
     <Content Include="js\wysihtml5-0.3.0.min.js" />
     <Content Include="login.aspx" />
     <Content Include="resellers.aspx" />
+    <Content Include="security\locked.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="companies.aspx.cs">
+      <DependentUpon>companies.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="companies.aspx.designer.cs">
+      <DependentUpon>companies.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="company\citrix\applications.aspx.cs">
+      <DependentUpon>applications.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="company\citrix\applications.aspx.designer.cs">
+      <DependentUpon>applications.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="company\domains.aspx.cs">
+      <DependentUpon>domains.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="company\domains.aspx.designer.cs">
+      <DependentUpon>domains.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="company\email\contacts.aspx.cs">
+      <DependentUpon>contacts.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="company\email\contacts.aspx.designer.cs">
+      <DependentUpon>contacts.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="company\email\disable.aspx.cs">
+      <DependentUpon>disable.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="company\email\disable.aspx.designer.cs">
+      <DependentUpon>disable.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="company\email\domains.aspx.cs">
+      <DependentUpon>domains.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="company\email\domains.aspx.designer.cs">
+      <DependentUpon>domains.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="company\email\enable.aspx.cs">
+      <DependentUpon>enable.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="company\email\enable.aspx.designer.cs">
+      <DependentUpon>enable.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="company\email\groups.aspx.cs">
+      <DependentUpon>groups.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="company\email\groups.aspx.designer.cs">
+      <DependentUpon>groups.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="company\overview.aspx.cs">
+      <DependentUpon>overview.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="company\overview.aspx.designer.cs">
+      <DependentUpon>overview.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="company\users.aspx.cs">
+      <DependentUpon>users.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="company\users.aspx.designer.cs">
+      <DependentUpon>users.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="cpcontrols\alertmessage.ascx.cs">
+      <DependentUpon>alertmessage.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="cpcontrols\alertmessage.ascx.designer.cs">
+      <DependentUpon>alertmessage.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -586,112 +683,13 @@
     <Compile Include="Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
     </Compile>
-    <Compile Include="database\ApiAccess.cs">
-      <DependentUpon>CloudPanelDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="database\Audit.cs">
-      <DependentUpon>CloudPanelDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="database\AuditLogin.cs">
-      <DependentUpon>CloudPanelDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="database\CloudPanelDB.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CloudPanelDB.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="database\CloudPanelDB.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CloudPanelDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="database\CloudPanelDB.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>CloudPanelDB.edmx</DependentUpon>
-    </Compile>
-    <Compile Include="database\Company.cs">
-      <DependentUpon>CloudPanelDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="database\CompanyStat.cs">
-      <DependentUpon>CloudPanelDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="database\Contact.cs">
-      <DependentUpon>CloudPanelDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="database\DistributionGroup.cs">
-      <DependentUpon>CloudPanelDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="database\Domain.cs">
-      <DependentUpon>CloudPanelDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="database\LogTable.cs">
-      <DependentUpon>CloudPanelDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="database\Plans_Citrix.cs">
-      <DependentUpon>CloudPanelDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="database\Plans_ExchangeActiveSync.cs">
-      <DependentUpon>CloudPanelDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="database\Plans_ExchangeMailbox.cs">
-      <DependentUpon>CloudPanelDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="database\Plans_Organization.cs">
-      <DependentUpon>CloudPanelDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="database\Plans_TerminalServices.cs">
-      <DependentUpon>CloudPanelDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="database\Price.cs">
-      <DependentUpon>CloudPanelDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="database\PriceOverride.cs">
-      <DependentUpon>CloudPanelDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="database\ResourceMailbox.cs">
-      <DependentUpon>CloudPanelDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="database\Setting.cs">
-      <DependentUpon>CloudPanelDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="database\Stats_CitrixCount.cs">
-      <DependentUpon>CloudPanelDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="database\Stats_ExchCount.cs">
-      <DependentUpon>CloudPanelDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="database\Stats_UserCount.cs">
-      <DependentUpon>CloudPanelDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="database\SvcMailboxDatabaseSize.cs">
-      <DependentUpon>CloudPanelDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="database\SvcMailboxSize.cs">
-      <DependentUpon>CloudPanelDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="database\SvcQueue.cs">
-      <DependentUpon>CloudPanelDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="database\SvcTask.cs">
-      <DependentUpon>CloudPanelDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="database\User.cs">
-      <DependentUpon>CloudPanelDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="database\UserPermission.cs">
-      <DependentUpon>CloudPanelDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="database\UserPlan.cs">
-      <DependentUpon>CloudPanelDB.tt</DependentUpon>
-    </Compile>
-    <Compile Include="database\UserPlansCitrix.cs">
-      <DependentUpon>CloudPanelDB.tt</DependentUpon>
-    </Compile>
     <Compile Include="App_GlobalResources\LocalizedText.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>LocalizedText.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="login.aspx.cs">
       <DependentUpon>login.aspx</DependentUpon>
@@ -714,6 +712,13 @@
     </Compile>
     <Compile Include="resellers.aspx.designer.cs">
       <DependentUpon>resellers.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="security\locked.aspx.cs">
+      <DependentUpon>locked.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="security\locked.aspx.designer.cs">
+      <DependentUpon>locked.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -819,23 +824,6 @@
     <Content Include="js\ckeditor\skins\themepixels\readme.md" />
     <Content Include="packages.config" />
     <Content Include="CloudPanel.Master" />
-    <EntityDeploy Include="database\CloudPanelDB.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>CloudPanelDB.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="database\CloudPanelDB.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CloudPanelDB.edmx</DependentUpon>
-      <LastGenOutput>CloudPanelDB.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="database\CloudPanelDB.edmx.diagram">
-      <DependentUpon>CloudPanelDB.edmx</DependentUpon>
-    </Content>
-    <Content Include="database\CloudPanelDB.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>CloudPanelDB.edmx</DependentUpon>
-      <LastGenOutput>CloudPanelDB.cs</LastGenOutput>
-    </Content>
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -847,6 +835,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="config\" />
     <Folder Include="plans\" />
   </ItemGroup>
   <ItemGroup>
@@ -854,6 +843,20 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>LocalizedText.Designer.cs</LastGenOutput>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CloudPanel.Modules.Base\CloudPanel.Modules.Base.csproj">
+      <Project>{8b47db51-6f8e-42a3-b7e1-6c92c0e3628b}</Project>
+      <Name>CloudPanel.Modules.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPanel.Modules.Common\CloudPanel.Modules.Common.csproj">
+      <Project>{118d670a-318a-4dd2-916b-51727e73928a}</Project>
+      <Name>CloudPanel.Modules.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPanel.Modules.Database\CloudPanel.Modules.Database.csproj">
+      <Project>{34a71a23-a7ae-45f5-ad08-533553cd4396}</Project>
+      <Name>CloudPanel.Modules.Database</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

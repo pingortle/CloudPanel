@@ -61,6 +61,204 @@ namespace CloudPanel.App_GlobalResources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add New Company.
+        /// </summary>
+        internal static string Companies_AddNewCompany {
+            get {
+                return ResourceManager.GetString("Companies_AddNewCompany", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Address.
+        /// </summary>
+        internal static string Companies_Address {
+            get {
+                return ResourceManager.GetString("Companies_Address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        internal static string Companies_Cancel {
+            get {
+                return ResourceManager.GetString("Companies_Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to City.
+        /// </summary>
+        internal static string Companies_City {
+            get {
+                return ResourceManager.GetString("Companies_City", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Companies.
+        /// </summary>
+        internal static string Companies_Companies {
+            get {
+                return ResourceManager.GetString("Companies_Companies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Company Name.
+        /// </summary>
+        internal static string Companies_CompanyName {
+            get {
+                return ResourceManager.GetString("Companies_CompanyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contacts Name.
+        /// </summary>
+        internal static string Companies_ContactsName {
+            get {
+                return ResourceManager.GetString("Companies_ContactsName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Country.
+        /// </summary>
+        internal static string Companies_Country {
+            get {
+                return ResourceManager.GetString("Companies_Country", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Created.
+        /// </summary>
+        internal static string Companies_Created {
+            get {
+                return ResourceManager.GetString("Companies_Created", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        internal static string Companies_Delete {
+            get {
+                return ResourceManager.GetString("Companies_Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Domain Name.
+        /// </summary>
+        internal static string Companies_DomainName {
+            get {
+                return ResourceManager.GetString("Companies_DomainName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Companies_Domains.
+        /// </summary>
+        internal static string Companies_Domains {
+            get {
+                return ResourceManager.GetString("Companies_Domains", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit.
+        /// </summary>
+        internal static string Companies_Edit {
+            get {
+                return ResourceManager.GetString("Companies_Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add/Edit Company.
+        /// </summary>
+        internal static string Companies_EditTitle {
+            get {
+                return ResourceManager.GetString("Companies_EditTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E-mail.
+        /// </summary>
+        internal static string Companies_Email {
+            get {
+                return ResourceManager.GetString("Companies_Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Modify.
+        /// </summary>
+        internal static string Companies_Modify {
+            get {
+                return ResourceManager.GetString("Companies_Modify", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to State.
+        /// </summary>
+        internal static string Companies_State {
+            get {
+                return ResourceManager.GetString("Companies_State", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Street Address.
+        /// </summary>
+        internal static string Companies_StreetAddress {
+            get {
+                return ResourceManager.GetString("Companies_StreetAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submit.
+        /// </summary>
+        internal static string Companies_Submit {
+            get {
+                return ResourceManager.GetString("Companies_Submit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Telephone.
+        /// </summary>
+        internal static string Companies_Telephone {
+            get {
+                return ResourceManager.GetString("Companies_Telephone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Use company name for the unique ID.
+        /// </summary>
+        internal static string Companies_UseUniqueID {
+            get {
+                return ResourceManager.GetString("Companies_UseUniqueID", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zip Code.
+        /// </summary>
+        internal static string Companies_ZipCode {
+            get {
+                return ResourceManager.GetString("Companies_ZipCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Login to access your account.
         /// </summary>
         internal static string Login_LoginToAccess {
@@ -300,6 +498,195 @@ namespace CloudPanel.App_GlobalResources {
         internal static string Master_Users {
             get {
                 return ResourceManager.GetString("Master_Users", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add New Reseller.
+        /// </summary>
+        internal static string Resellers_AddNewReseller {
+            get {
+                return ResourceManager.GetString("Resellers_AddNewReseller", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Address.
+        /// </summary>
+        internal static string Resellers_Address {
+            get {
+                return ResourceManager.GetString("Resellers_Address", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        internal static string Resellers_Cancel {
+            get {
+                return ResourceManager.GetString("Resellers_Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to City.
+        /// </summary>
+        internal static string Resellers_City {
+            get {
+                return ResourceManager.GetString("Resellers_City", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Company Name.
+        /// </summary>
+        internal static string Resellers_CompanyName {
+            get {
+                return ResourceManager.GetString("Resellers_CompanyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contacts Name.
+        /// </summary>
+        internal static string Resellers_ContactName {
+            get {
+                return ResourceManager.GetString("Resellers_ContactName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Country.
+        /// </summary>
+        internal static string Resellers_Country {
+            get {
+                return ResourceManager.GetString("Resellers_Country", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Created.
+        /// </summary>
+        internal static string Resellers_Created {
+            get {
+                return ResourceManager.GetString("Resellers_Created", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        internal static string Resellers_Delete {
+            get {
+                return ResourceManager.GetString("Resellers_Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit.
+        /// </summary>
+        internal static string Resellers_Edit {
+            get {
+                return ResourceManager.GetString("Resellers_Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add/Edit Reseller.
+        /// </summary>
+        internal static string Resellers_EditTitle {
+            get {
+                return ResourceManager.GetString("Resellers_EditTitle", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to E-mail.
+        /// </summary>
+        internal static string Resellers_Email {
+            get {
+                return ResourceManager.GetString("Resellers_Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Modify.
+        /// </summary>
+        internal static string Resellers_Modify {
+            get {
+                return ResourceManager.GetString("Resellers_Modify", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reseller Name.
+        /// </summary>
+        internal static string Resellers_Name {
+            get {
+                return ResourceManager.GetString("Resellers_Name", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Resellers.
+        /// </summary>
+        internal static string Resellers_Resellers {
+            get {
+                return ResourceManager.GetString("Resellers_Resellers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to State.
+        /// </summary>
+        internal static string Resellers_State {
+            get {
+                return ResourceManager.GetString("Resellers_State", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Street Address.
+        /// </summary>
+        internal static string Resellers_StreetAddress {
+            get {
+                return ResourceManager.GetString("Resellers_StreetAddress", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submit.
+        /// </summary>
+        internal static string Resellers_Submit {
+            get {
+                return ResourceManager.GetString("Resellers_Submit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Telephone.
+        /// </summary>
+        internal static string Resellers_Telephone {
+            get {
+                return ResourceManager.GetString("Resellers_Telephone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Total Companies.
+        /// </summary>
+        internal static string Resellers_TotalCompanies {
+            get {
+                return ResourceManager.GetString("Resellers_TotalCompanies", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Zip Code.
+        /// </summary>
+        internal static string Resellers_ZipCode {
+            get {
+                return ResourceManager.GetString("Resellers_ZipCode", resourceCulture);
             }
         }
     }

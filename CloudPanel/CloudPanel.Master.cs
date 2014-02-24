@@ -13,5 +13,19 @@ namespace CloudPanel.Template
         {
 
         }
+
+        #region Button Click Events
+
+        /// <summary>
+        /// Locks the screen
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        protected void lnkLockScreen_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        #endregion 
     }
 }
