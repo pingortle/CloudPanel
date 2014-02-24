@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{DC91C958-4E33-4595-AA95-D0188A6B3984}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CloudPanel.Modules.Resellers</RootNamespace>
+    <AssemblyName>CloudPanel.Modules.Resellers</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Create\NewReseller.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CloudPanel.Modules.ActiveDirectory\CloudPanel.Modules.ActiveDirectory.csproj">
+      <Project>{b6359c5d-d73b-4057-98cc-0f1e4862b33c}</Project>
+      <Name>CloudPanel.Modules.ActiveDirectory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPanel.Modules.Base\CloudPanel.Modules.Base.csproj">
+      <Project>{8b47db51-6f8e-42a3-b7e1-6c92c0e3628b}</Project>
+      <Name>CloudPanel.Modules.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPanel.Modules.Common\CloudPanel.Modules.Common.csproj">
+      <Project>{118d670a-318a-4dd2-916b-51727e73928a}</Project>
+      <Name>CloudPanel.Modules.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPanel.Modules.Database\CloudPanel.Modules.Database.csproj">
+      <Project>{34a71a23-a7ae-45f5-ad08-533553cd4396}</Project>
+      <Name>CloudPanel.Modules.Database</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPanel.Modules.RollBack\CloudPanel.Modules.RollBack.csproj">
+      <Project>{fff78648-d290-4119-974d-5e2486b22b4c}</Project>
+      <Name>CloudPanel.Modules.RollBack</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

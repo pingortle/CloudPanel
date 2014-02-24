@@ -1,0 +1,196 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{34A71A23-A7AE-45F5-AD08-533553CD4396}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>CloudPanel.Modules.Database</RootNamespace>
+    <AssemblyName>CloudPanel.Modules.Database</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Companies\Resellers.cs" />
+    <Compile Include="Entity\ApiAccess.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Audit.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\AuditLogin.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\CloudPanelDB.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CloudPanelDB.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\CloudPanelDB.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\CloudPanelDB.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CloudPanelDB.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Company.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\CompanyStat.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Contact.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\DistributionGroup.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Domain.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\LogTable.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Plans_Citrix.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Plans_ExchangeActiveSync.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Plans_ExchangeMailbox.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Plans_Organization.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Plans_TerminalServices.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Price.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\PriceOverride.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\ResourceMailbox.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Setting.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Stats_CitrixCount.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Stats_ExchCount.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Stats_UserCount.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\SvcMailboxDatabaseSize.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\SvcMailboxSize.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\SvcQueue.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\SvcTask.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\User.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\UserPermission.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\UserPlan.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\UserPlansCitrix.cs">
+      <DependentUpon>CloudPanelDB.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Settings\DatabaseSettings.cs" />
+    <Compile Include="Statistics\DashboardStats.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <EntityDeploy Include="Entity\CloudPanelDB.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CloudPanelDB.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Entity\CloudPanelDB.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CloudPanelDB.edmx</DependentUpon>
+      <LastGenOutput>CloudPanelDB.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Entity\CloudPanelDB.edmx.diagram">
+      <DependentUpon>CloudPanelDB.edmx</DependentUpon>
+    </None>
+    <None Include="Entity\CloudPanelDB.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CloudPanelDB.edmx</DependentUpon>
+      <LastGenOutput>CloudPanelDB.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\CloudPanel.Modules.Base\CloudPanel.Modules.Base.csproj">
+      <Project>{8b47db51-6f8e-42a3-b7e1-6c92c0e3628b}</Project>
+      <Name>CloudPanel.Modules.Base</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
