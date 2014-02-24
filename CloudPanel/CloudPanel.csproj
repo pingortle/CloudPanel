@@ -79,6 +79,7 @@
     <Content Include="company\email\domains.aspx" />
     <Content Include="company\email\enable.aspx" />
     <Content Include="company\email\groups.aspx" />
+    <Content Include="company\email\mailboxes.aspx" />
     <Content Include="company\overview.aspx" />
     <Content Include="company\users.aspx" />
     <Content Include="cpcontrols\alertmessage.ascx" />
@@ -654,6 +655,13 @@
     </Compile>
     <Compile Include="company\email\groups.aspx.designer.cs">
       <DependentUpon>groups.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="company\email\mailboxes.aspx.cs">
+      <DependentUpon>mailboxes.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="company\email\mailboxes.aspx.designer.cs">
+      <DependentUpon>mailboxes.aspx</DependentUpon>
     </Compile>
     <Compile Include="company\overview.aspx.cs">
       <DependentUpon>overview.aspx</DependentUpon>

@@ -91,7 +91,7 @@
 
                             <div class="rdio rdio-success">
                                 <asp:RadioButton ID="cbExternalRelay" runat="server" GroupName="AcceptedDomain" />
-                                <label for="<%= cbExternalRelay.ClientID %>">Internal Relay</label>
+                                <label for="<%= cbExternalRelay.ClientID %>">External Relay</label>
                             </div>
 
                         </div>
