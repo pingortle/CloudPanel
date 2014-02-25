@@ -238,8 +238,6 @@ namespace CloudPanel.Modules.Base.Companies
         {
             get
             {
-                string returnAddress = string.Empty;
-
                 return string.Format("{0}<br />{1}, {2}  {3}", Street, City, State, ZipCode);
             }
         }
