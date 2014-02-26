@@ -47,6 +47,9 @@
     <Compile Include="Enumerations\RollBackAction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings\SettingsObject.cs" />
+    <Compile Include="Transactions\Transaction.cs" />
+    <Compile Include="Transactions\IUndoable.cs" />
+    <Compile Include="Transactions\Undoable.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
@@ -57,4 +60,7 @@
   <Target Name="AfterBuild">
   </Target>
   -->
+  <ItemGroup>
+    <Folder Include="Transactions\" />
+  </ItemGroup>
 </Project>

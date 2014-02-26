@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{B07D7377-9874-42D3-8B5E-A8BA0871A997}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>CloudPanel.ViewModel</RootNamespace>
+    <AssemblyName>CloudPanel.ViewModel</AssemblyName>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug</OutputPath>
+    <DefineConstants>DEBUG;</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>full</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <ConsolePause>false</ConsolePause>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UserViewModel.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <ItemGroup>
+    <ProjectReference Include="..\CloudPanel.Modules.Base\CloudPanel.Modules.Base.csproj">
+      <Project>{8B47DB51-6F8E-42A3-B7E1-6C92C0E3628B}</Project>
+      <Name>CloudPanel.Modules.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPanel.Modules.ActiveDirectory\CloudPanel.Modules.ActiveDirectory.csproj">
+      <Project>{B6359C5D-D73B-4057-98CC-0F1E4862B33C}</Project>
+      <Name>CloudPanel.Modules.ActiveDirectory</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPanel.Modules.Database\CloudPanel.Modules.Database.csproj">
+      <Project>{34A71A23-A7AE-45F5-AD08-533553CD4396}</Project>
+      <Name>CloudPanel.Modules.Database</Name>
+    </ProjectReference>
+  </ItemGroup>
+</Project>
