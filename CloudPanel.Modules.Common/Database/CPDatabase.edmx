@@ -1,0 +1,1504 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CloudPanelModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="CloudPanelModelStoreContainer">
+          <EntitySet Name="ApiAccess" EntityType="CloudPanelModel.Store.ApiAccess" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Audit" EntityType="CloudPanelModel.Store.Audit" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="AuditLogin" EntityType="CloudPanelModel.Store.AuditLogin" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Companies" EntityType="CloudPanelModel.Store.Companies" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="CompanyStats" EntityType="CloudPanelModel.Store.CompanyStats" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Contacts" EntityType="CloudPanelModel.Store.Contacts" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="DistributionGroups" EntityType="CloudPanelModel.Store.DistributionGroups" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Domains" EntityType="CloudPanelModel.Store.Domains" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="LogTable" EntityType="CloudPanelModel.Store.LogTable" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Plans_Citrix" EntityType="CloudPanelModel.Store.Plans_Citrix" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Plans_ExchangeActiveSync" EntityType="CloudPanelModel.Store.Plans_ExchangeActiveSync" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Plans_ExchangeMailbox" EntityType="CloudPanelModel.Store.Plans_ExchangeMailbox" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Plans_Organization" EntityType="CloudPanelModel.Store.Plans_Organization" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Plans_TerminalServices" EntityType="CloudPanelModel.Store.Plans_TerminalServices" store:Type="Tables" store:Schema="dbo" store:Name="Plans_TerminalServices">
+            <DefiningQuery>SELECT 
+      [Plans_TerminalServices].[TSPlanID] AS [TSPlanID], 
+      [Plans_TerminalServices].[TSPlanName] AS [TSPlanName], 
+      [Plans_TerminalServices].[ResellerCode] AS [ResellerCode], 
+      [Plans_TerminalServices].[ProductID] AS [ProductID], 
+      [Plans_TerminalServices].[MaxUserSpaceMB] AS [MaxUserSpaceMB]
+      FROM [dbo].[Plans_TerminalServices] AS [Plans_TerminalServices]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PriceOverride" EntityType="CloudPanelModel.Store.PriceOverride" store:Type="Tables" store:Schema="dbo" store:Name="PriceOverride">
+            <DefiningQuery>SELECT 
+      [PriceOverride].[CompanyCode] AS [CompanyCode], 
+      [PriceOverride].[Price] AS [Price], 
+      [PriceOverride].[PlanID] AS [PlanID], 
+      [PriceOverride].[Product] AS [Product]
+      FROM [dbo].[PriceOverride] AS [PriceOverride]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Prices" EntityType="CloudPanelModel.Store.Prices" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="ResourceMailboxes" EntityType="CloudPanelModel.Store.ResourceMailboxes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Settings" EntityType="CloudPanelModel.Store.Settings" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Stats_CitrixCount" EntityType="CloudPanelModel.Store.Stats_CitrixCount" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Stats_ExchCount" EntityType="CloudPanelModel.Store.Stats_ExchCount" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Stats_UserCount" EntityType="CloudPanelModel.Store.Stats_UserCount" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SvcMailboxDatabaseSizes" EntityType="CloudPanelModel.Store.SvcMailboxDatabaseSizes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SvcMailboxSizes" EntityType="CloudPanelModel.Store.SvcMailboxSizes" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SvcQueue" EntityType="CloudPanelModel.Store.SvcQueue" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="SvcTask" EntityType="CloudPanelModel.Store.SvcTask" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserPermissions" EntityType="CloudPanelModel.Store.UserPermissions" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="UserPlans" EntityType="CloudPanelModel.Store.UserPlans" store:Type="Tables" store:Schema="dbo" store:Name="UserPlans">
+            <DefiningQuery>SELECT 
+      [UserPlans].[UserGuid] AS [UserGuid], 
+      [UserPlans].[ProductID] AS [ProductID], 
+      [UserPlans].[PlanID] AS [PlanID], 
+      [UserPlans].[CompanyCode] AS [CompanyCode]
+      FROM [dbo].[UserPlans] AS [UserPlans]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="UserPlansCitrix" EntityType="CloudPanelModel.Store.UserPlansCitrix" store:Type="Tables" Schema="dbo" />
+          <EntitySet Name="Users" EntityType="CloudPanelModel.Store.Users" store:Type="Tables" Schema="dbo" />
+        </EntityContainer>
+        <EntityType Name="ApiAccess">
+          <Key>
+            <PropertyRef Name="CustomerKey" />
+          </Key>
+          <Property Name="CustomerKey" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="CustomerSecret" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="CompanyCode" Type="varchar" Nullable="false" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Audit">
+          <Key>
+            <PropertyRef Name="AuditID" />
+          </Key>
+          <Property Name="AuditID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="SeverityID" Type="int" />
+          <Property Name="MethodName" Type="varchar" MaxLength="100" />
+          <Property Name="Parameters" Type="ntext" />
+          <Property Name="Message" Type="ntext" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AuditLogin">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IPAddress" Type="varchar" Nullable="false" MaxLength="128" />
+          <Property Name="Username" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="LoginStatus" Type="bit" Nullable="false" />
+          <Property Name="AuditTimeStamp" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Companies">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="IsReseller" Type="bit" Nullable="false" />
+          <Property Name="ResellerCode" Type="nvarchar" MaxLength="255" />
+          <Property Name="OrgPlanID" Type="int" />
+          <Property Name="CompanyName" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="CompanyCode" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="Street" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="City" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="State" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="ZipCode" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="PhoneNumber" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="Website" Type="nvarchar" MaxLength="255" />
+          <Property Name="Description" Type="ntext" />
+          <Property Name="AdminName" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="AdminEmail" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="DistinguishedName" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="ExchEnabled" Type="bit" Nullable="false" />
+          <Property Name="LyncEnabled" Type="bit" />
+          <Property Name="CitrixEnabled" Type="bit" />
+          <Property Name="ExchPFPlan" Type="int" />
+          <Property Name="Country" Type="varchar" MaxLength="50" />
+          <Property Name="ExchPermFixed" Type="bit" />
+        </EntityType>
+        <EntityType Name="CompanyStats">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+          </Key>
+          <Property Name="CompanyID" Type="int" Nullable="false" />
+          <Property Name="CompanyCode" Type="varchar" MaxLength="255" />
+          <Property Name="UserCount" Type="int" Nullable="false" />
+          <Property Name="DomainCount" Type="int" Nullable="false" />
+          <Property Name="SubDomainCount" Type="int" Nullable="false" />
+          <Property Name="ExchMailboxCount" Type="int" Nullable="false" />
+          <Property Name="ExchContactsCount" Type="int" Nullable="false" />
+          <Property Name="ExchDistListsCount" Type="int" Nullable="false" />
+          <Property Name="ExchPublicFolderCount" Type="int" Nullable="false" />
+          <Property Name="ExchMailPublicFolderCount" Type="int" Nullable="false" />
+          <Property Name="ExchKeepDeletedItems" Type="int" Nullable="false" />
+          <Property Name="RDPUserCount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contacts">
+          <Key>
+            <PropertyRef Name="DistinguishedName" />
+          </Key>
+          <Property Name="DistinguishedName" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="CompanyCode" Type="varchar" MaxLength="255" />
+          <Property Name="DisplayName" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Email" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Hidden" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DistributionGroups">
+          <Key>
+            <PropertyRef Name="DistinguishedName" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DistinguishedName" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="CompanyCode" Type="varchar" MaxLength="255" />
+          <Property Name="DisplayName" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Email" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Hidden" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Domains">
+          <Key>
+            <PropertyRef Name="DomainID" />
+          </Key>
+          <Property Name="DomainID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyCode" Type="varchar" MaxLength="255" />
+          <Property Name="Domain" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="IsSubDomain" Type="bit" />
+          <Property Name="IsDefault" Type="bit" Nullable="false" />
+          <Property Name="IsAcceptedDomain" Type="bit" Nullable="false" />
+          <Property Name="IsLyncDomain" Type="bit" />
+        </EntityType>
+        <EntityType Name="LogTable">
+          <Key>
+            <PropertyRef Name="AuditID" />
+          </Key>
+          <Property Name="AuditID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="LogTime" Type="datetime" Nullable="false" />
+          <Property Name="LogType" Type="int" Nullable="false" />
+          <Property Name="CodeClass" Type="ntext" />
+          <Property Name="UserPrincipalName" Type="varchar" MaxLength="255" />
+          <Property Name="CompanyCode" Type="varchar" MaxLength="255" />
+          <Property Name="ResellerCode" Type="varchar" MaxLength="255" />
+          <Property Name="Message" Type="ntext" Nullable="false" />
+          <Property Name="RecommendedAction" Type="ntext" />
+          <Property Name="Exception" Type="ntext" />
+        </EntityType>
+        <EntityType Name="Plans_Citrix">
+          <Key>
+            <PropertyRef Name="CitrixPlanID" />
+          </Key>
+          <Property Name="CitrixPlanID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="56" />
+          <Property Name="GroupName" Type="varchar" Nullable="false" MaxLength="64" />
+          <Property Name="Description" Type="ntext" />
+          <Property Name="IsServer" Type="bit" Nullable="false" />
+          <Property Name="CompanyCode" Type="varchar" MaxLength="255" />
+          <Property Name="Price" Type="nvarchar" MaxLength="20" />
+          <Property Name="Cost" Type="nvarchar" MaxLength="20" />
+          <Property Name="PictureURL" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Plans_ExchangeActiveSync">
+          <Key>
+            <PropertyRef Name="ASID" />
+          </Key>
+          <Property Name="ASID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyCode" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="DisplayName" Type="varchar" Nullable="false" MaxLength="150" />
+          <Property Name="Description" Type="ntext" />
+          <Property Name="ExchangeName" Type="varchar" MaxLength="75" />
+          <Property Name="AllowNonProvisionableDevices" Type="bit" />
+          <Property Name="RefreshIntervalInHours" Type="int" />
+          <Property Name="RequirePassword" Type="bit" />
+          <Property Name="RequireAlphanumericPassword" Type="bit" />
+          <Property Name="EnablePasswordRecovery" Type="bit" />
+          <Property Name="RequireEncryptionOnDevice" Type="bit" />
+          <Property Name="RequireEncryptionOnStorageCard" Type="bit" />
+          <Property Name="AllowSimplePassword" Type="bit" />
+          <Property Name="NumberOfFailedAttempted" Type="int" />
+          <Property Name="MinimumPasswordLength" Type="int" />
+          <Property Name="InactivityTimeoutInMinutes" Type="int" />
+          <Property Name="PasswordExpirationInDays" Type="int" />
+          <Property Name="EnforcePasswordHistory" Type="int" />
+          <Property Name="IncludePastCalendarItems" Type="varchar" MaxLength="20" />
+          <Property Name="IncludePastEmailItems" Type="varchar" MaxLength="20" />
+          <Property Name="LimitEmailSizeInKB" Type="int" />
+          <Property Name="AllowDirectPushWhenRoaming" Type="bit" />
+          <Property Name="AllowHTMLEmail" Type="bit" />
+          <Property Name="AllowAttachmentsDownload" Type="bit" />
+          <Property Name="MaximumAttachmentSizeInKB" Type="int" />
+          <Property Name="AllowRemovableStorage" Type="bit" />
+          <Property Name="AllowCamera" Type="bit" />
+          <Property Name="AllowWiFi" Type="bit" />
+          <Property Name="AllowInfrared" Type="bit" />
+          <Property Name="AllowInternetSharing" Type="bit" />
+          <Property Name="AllowRemoteDesktop" Type="bit" />
+          <Property Name="AllowDesktopSync" Type="bit" />
+          <Property Name="AllowBluetooth" Type="varchar" MaxLength="10" />
+          <Property Name="AllowBrowser" Type="bit" />
+          <Property Name="AllowConsumerMail" Type="bit" />
+          <Property Name="IsEnterpriseCAL" Type="bit" />
+          <Property Name="AllowTextMessaging" Type="bit" />
+          <Property Name="AllowUnsignedApplications" Type="bit" />
+          <Property Name="AllowUnsignedInstallationPackages" Type="bit" />
+        </EntityType>
+        <EntityType Name="Plans_ExchangeMailbox">
+          <Key>
+            <PropertyRef Name="MailboxPlanID" />
+          </Key>
+          <Property Name="MailboxPlanID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="MailboxPlanName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ProductID" Type="int" />
+          <Property Name="ResellerCode" Type="varchar" MaxLength="255" />
+          <Property Name="CompanyCode" Type="varchar" MaxLength="255" />
+          <Property Name="MailboxSizeMB" Type="int" Nullable="false" />
+          <Property Name="MaxMailboxSizeMB" Type="int" />
+          <Property Name="MaxSendKB" Type="int" Nullable="false" />
+          <Property Name="MaxReceiveKB" Type="int" Nullable="false" />
+          <Property Name="MaxRecipients" Type="int" Nullable="false" />
+          <Property Name="EnablePOP3" Type="bit" Nullable="false" />
+          <Property Name="EnableIMAP" Type="bit" Nullable="false" />
+          <Property Name="EnableOWA" Type="bit" Nullable="false" />
+          <Property Name="EnableMAPI" Type="bit" Nullable="false" />
+          <Property Name="EnableAS" Type="bit" Nullable="false" />
+          <Property Name="EnableECP" Type="bit" Nullable="false" />
+          <Property Name="MaxKeepDeletedItems" Type="int" Nullable="false" />
+          <Property Name="MailboxPlanDesc" Type="ntext" />
+          <Property Name="Price" Type="nvarchar" MaxLength="20" />
+          <Property Name="Cost" Type="nvarchar" MaxLength="20" />
+          <Property Name="AdditionalGBPrice" Type="nvarchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="Plans_Organization">
+          <Key>
+            <PropertyRef Name="OrgPlanID" />
+          </Key>
+          <Property Name="OrgPlanID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OrgPlanName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="ResellerCode" Type="varchar" MaxLength="255" />
+          <Property Name="MaxUsers" Type="int" Nullable="false" />
+          <Property Name="MaxDomains" Type="int" Nullable="false" />
+          <Property Name="MaxExchangeMailboxes" Type="int" Nullable="false" />
+          <Property Name="MaxExchangeContacts" Type="int" Nullable="false" />
+          <Property Name="MaxExchangeDistLists" Type="int" Nullable="false" />
+          <Property Name="MaxExchangePublicFolders" Type="int" Nullable="false" />
+          <Property Name="MaxExchangeMailPublicFolders" Type="int" Nullable="false" />
+          <Property Name="MaxExchangeKeepDeletedItems" Type="int" Nullable="false" />
+          <Property Name="MaxExchangeActivesyncPolicies" Type="int" />
+          <Property Name="MaxTerminalServerUsers" Type="int" Nullable="false" />
+          <Property Name="MaxExchangeResourceMailboxes" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'CloudPanel.dbo.Plans_TerminalServices' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="Plans_TerminalServices">
+          <Key>
+            <PropertyRef Name="TSPlanID" />
+            <PropertyRef Name="TSPlanName" />
+            <PropertyRef Name="ResellerCode" />
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="TSPlanID" Type="int" Nullable="false" />
+          <Property Name="TSPlanName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="ResellerCode" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="MaxUserSpaceMB" Type="int" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'CloudPanel.dbo.PriceOverride' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="PriceOverride">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Price" Type="nvarchar" MaxLength="25" />
+          <Property Name="PlanID" Type="int" />
+          <Property Name="Product" Type="varchar" MaxLength="25" />
+        </EntityType>
+        <EntityType Name="Prices">
+          <Key>
+            <PropertyRef Name="PriceID" />
+          </Key>
+          <Property Name="PriceID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="PlanID" Type="int" Nullable="false" />
+          <Property Name="CompanyCode" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="Price" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ResourceMailboxes">
+          <Key>
+            <PropertyRef Name="ResourceID" />
+          </Key>
+          <Property Name="ResourceID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DisplayName" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="CompanyCode" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="UserPrincipalName" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="PrimarySmtpAddress" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="ResourceType" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="MailboxPlan" Type="int" Nullable="false" />
+          <Property Name="AdditionalMB" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Settings">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="BaseOU" Type="ntext" Nullable="false" />
+          <Property Name="PrimaryDC" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Username" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="Password" Type="ntext" Nullable="false" />
+          <Property Name="SuperAdmins" Type="ntext" Nullable="false" />
+          <Property Name="BillingAdmins" Type="ntext" Nullable="false" />
+          <Property Name="ExchangeFqdn" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ExchangePFServer" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ExchangeVersion" Type="int" Nullable="false" />
+          <Property Name="ExchangeSSLEnabled" Type="bit" Nullable="false" />
+          <Property Name="ExchangeConnectionType" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="PasswordMinLength" Type="int" Nullable="false" />
+          <Property Name="PasswordComplexityType" Type="int" Nullable="false" />
+          <Property Name="CitrixEnabled" Type="bit" Nullable="false" />
+          <Property Name="PublicFolderEnabled" Type="bit" Nullable="false" />
+          <Property Name="LyncEnabled" Type="bit" Nullable="false" />
+          <Property Name="WebsiteEnabled" Type="bit" Nullable="false" />
+          <Property Name="SQLEnabled" Type="bit" Nullable="false" />
+          <Property Name="CurrencySymbol" Type="nvarchar" MaxLength="10" />
+          <Property Name="CurrencyEnglishName" Type="nvarchar" MaxLength="200" />
+          <Property Name="ResellersEnabled" Type="bit" />
+          <Property Name="CompanysName" Type="varchar" MaxLength="255" />
+          <Property Name="AllowCustomNameAttrib" Type="bit" />
+          <Property Name="ExchStats" Type="bit" />
+          <Property Name="IPBlockingEnabled" Type="bit" />
+          <Property Name="IPBlockingFailedCount" Type="int" />
+          <Property Name="IPBlockingLockedMinutes" Type="int" />
+          <Property Name="ExchDatabases" Type="ntext" />
+          <Property Name="UsersOU" Type="varchar" MaxLength="255" />
+          <Property Name="BrandingLoginLogo" Type="varchar" MaxLength="255" />
+          <Property Name="BrandingCornerLogo" Type="varchar" MaxLength="255" />
+          <Property Name="LockdownEnabled" Type="bit" />
+          <Property Name="LyncFrontEnd" Type="varchar" MaxLength="255" />
+          <Property Name="LyncUserPool" Type="varchar" MaxLength="255" />
+          <Property Name="LyncMeetingUrl" Type="varchar" MaxLength="255" />
+          <Property Name="LyncDialinUrl" Type="varchar" MaxLength="255" />
+          <Property Name="CompanysLogo" Type="varchar" MaxLength="255" />
+          <Property Name="SupportMailEnabled" Type="bit" />
+          <Property Name="SupportMailAddress" Type="varchar" MaxLength="255" />
+          <Property Name="SupportMailServer" Type="varchar" MaxLength="255" />
+          <Property Name="SupportMailPort" Type="int" />
+          <Property Name="SupportMailUsername" Type="varchar" MaxLength="255" />
+          <Property Name="SupportMailPassword" Type="varchar" MaxLength="255" />
+          <Property Name="SupportMailFrom" Type="varchar" MaxLength="255" />
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Stats_CitrixCount">
+          <Key>
+            <PropertyRef Name="StatDate" />
+          </Key>
+          <Property Name="StatDate" Type="date" Nullable="false" />
+          <Property Name="UserCount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Stats_ExchCount">
+          <Key>
+            <PropertyRef Name="StatDate" />
+          </Key>
+          <Property Name="StatDate" Type="date" Nullable="false" />
+          <Property Name="UserCount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Stats_UserCount">
+          <Key>
+            <PropertyRef Name="StatDate" />
+          </Key>
+          <Property Name="StatDate" Type="date" Nullable="false" />
+          <Property Name="UserCount" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SvcMailboxDatabaseSizes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DatabaseName" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="Server" Type="nvarchar" Nullable="false" MaxLength="64" />
+          <Property Name="DatabaseSize" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="Retrieved" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SvcMailboxSizes">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserPrincipalName" Type="varchar" Nullable="false" MaxLength="64" />
+          <Property Name="MailboxDatabase" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="TotalItemSizeInKB" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="TotalDeletedItemSizeInKB" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="ItemCount" Type="int" Nullable="false" />
+          <Property Name="DeletedItemCount" Type="int" Nullable="false" />
+          <Property Name="Retrieved" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SvcQueue">
+          <Key>
+            <PropertyRef Name="SvcQueueID" />
+          </Key>
+          <Property Name="SvcQueueID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TaskID" Type="int" Nullable="false" />
+          <Property Name="UserPrincipalName" Type="varchar" MaxLength="255" />
+          <Property Name="CompanyCode" Type="varchar" MaxLength="255" />
+          <Property Name="TaskOutput" Type="ntext" />
+          <Property Name="TaskCreated" Type="datetime" Nullable="false" />
+          <Property Name="TaskCompleted" Type="datetime" />
+          <Property Name="TaskDelayInMinutes" Type="int" Nullable="false" />
+          <Property Name="TaskSuccess" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SvcTask">
+          <Key>
+            <PropertyRef Name="SvcTaskID" />
+          </Key>
+          <Property Name="SvcTaskID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="TaskType" Type="int" Nullable="false" />
+          <Property Name="LastRun" Type="datetime" Nullable="false" />
+          <Property Name="NextRun" Type="datetime" />
+          <Property Name="TaskOutput" Type="ntext" />
+          <Property Name="TaskDelayInMinutes" Type="int" Nullable="false" />
+          <Property Name="TaskCreated" Type="datetime" />
+          <Property Name="Reoccurring" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserPermissions">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="EnableExchange" Type="bit" Nullable="false" />
+          <Property Name="DisableExchange" Type="bit" Nullable="false" />
+          <Property Name="AddDomain" Type="bit" Nullable="false" />
+          <Property Name="DeleteDomain" Type="bit" Nullable="false" />
+          <Property Name="ModifyAcceptedDomain" Type="bit" Nullable="false" />
+          <Property Name="ImportUsers" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+      warning 6002: The table/view 'CloudPanel.dbo.UserPlans' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
+      -->
+        <EntityType Name="UserPlans">
+          <Key>
+            <PropertyRef Name="UserGuid" />
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="PlanID" />
+          </Key>
+          <Property Name="UserGuid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ProductID" Type="int" Nullable="false" />
+          <Property Name="PlanID" Type="int" Nullable="false" />
+          <Property Name="CompanyCode" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="UserPlansCitrix">
+          <Key>
+            <PropertyRef Name="UPCID" />
+          </Key>
+          <Property Name="UPCID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="int" Nullable="false" />
+          <Property Name="CitrixPlanID" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Users">
+          <Key>
+            <PropertyRef Name="UserGuid" />
+          </Key>
+          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserGuid" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CompanyCode" Type="varchar" MaxLength="255" />
+          <Property Name="sAMAccountName" Type="nvarchar" MaxLength="255" />
+          <Property Name="UserPrincipalName" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="DistinguishedName" Type="varchar" MaxLength="255" />
+          <Property Name="DisplayName" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="Firstname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Middlename" Type="nvarchar" MaxLength="50" />
+          <Property Name="Lastname" Type="nvarchar" MaxLength="50" />
+          <Property Name="Email" Type="nvarchar" MaxLength="255" />
+          <Property Name="Department" Type="nvarchar" MaxLength="255" />
+          <Property Name="IsResellerAdmin" Type="bit" />
+          <Property Name="IsCompanyAdmin" Type="bit" />
+          <Property Name="MailboxPlan" Type="int" />
+          <Property Name="TSPlan" Type="int" />
+          <Property Name="LyncPlan" Type="int" />
+          <Property Name="Created" Type="datetime" />
+          <Property Name="AdditionalMB" Type="int" />
+          <Property Name="ActiveSyncPlan" Type="int" />
+        </EntityType>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CloudPanelModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="CPDatabase" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ApiAccesses" EntityType="CloudPanelModel.ApiAccess" />
+          <EntitySet Name="Audits" EntityType="CloudPanelModel.Audit" />
+          <EntitySet Name="AuditLogins" EntityType="CloudPanelModel.AuditLogin" />
+          <EntitySet Name="Companies" EntityType="CloudPanelModel.Company" />
+          <EntitySet Name="CompanyStats" EntityType="CloudPanelModel.CompanyStat" />
+          <EntitySet Name="Contacts" EntityType="CloudPanelModel.Contact" />
+          <EntitySet Name="DistributionGroups" EntityType="CloudPanelModel.DistributionGroup" />
+          <EntitySet Name="Domains" EntityType="CloudPanelModel.Domain" />
+          <EntitySet Name="LogTables" EntityType="CloudPanelModel.LogTable" />
+          <EntitySet Name="Plans_Citrix" EntityType="CloudPanelModel.Plans_Citrix" />
+          <EntitySet Name="Plans_ExchangeActiveSync" EntityType="CloudPanelModel.Plans_ExchangeActiveSync" />
+          <EntitySet Name="Plans_ExchangeMailbox" EntityType="CloudPanelModel.Plans_ExchangeMailbox" />
+          <EntitySet Name="Plans_Organization" EntityType="CloudPanelModel.Plans_Organization" />
+          <EntitySet Name="Plans_TerminalServices" EntityType="CloudPanelModel.Plans_TerminalServices" />
+          <EntitySet Name="PriceOverrides" EntityType="CloudPanelModel.PriceOverride" />
+          <EntitySet Name="Prices" EntityType="CloudPanelModel.Price" />
+          <EntitySet Name="ResourceMailboxes" EntityType="CloudPanelModel.ResourceMailbox" />
+          <EntitySet Name="Settings" EntityType="CloudPanelModel.Setting" />
+          <EntitySet Name="Stats_CitrixCount" EntityType="CloudPanelModel.Stats_CitrixCount" />
+          <EntitySet Name="Stats_ExchCount" EntityType="CloudPanelModel.Stats_ExchCount" />
+          <EntitySet Name="Stats_UserCount" EntityType="CloudPanelModel.Stats_UserCount" />
+          <EntitySet Name="SvcMailboxDatabaseSizes" EntityType="CloudPanelModel.SvcMailboxDatabaseSize" />
+          <EntitySet Name="SvcMailboxSizes" EntityType="CloudPanelModel.SvcMailboxSize" />
+          <EntitySet Name="SvcQueues" EntityType="CloudPanelModel.SvcQueue" />
+          <EntitySet Name="SvcTasks" EntityType="CloudPanelModel.SvcTask" />
+          <EntitySet Name="UserPermissions" EntityType="CloudPanelModel.UserPermission" />
+          <EntitySet Name="UserPlans" EntityType="CloudPanelModel.UserPlan" />
+          <EntitySet Name="UserPlansCitrices" EntityType="CloudPanelModel.UserPlansCitrix" />
+          <EntitySet Name="Users" EntityType="CloudPanelModel.User" />
+        </EntityContainer>
+        <EntityType Name="ApiAccess">
+          <Key>
+            <PropertyRef Name="CustomerKey" />
+          </Key>
+          <Property Name="CustomerKey" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="CustomerSecret" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="CompanyCode" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Audit">
+          <Key>
+            <PropertyRef Name="AuditID" />
+          </Key>
+          <Property Name="AuditID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="SeverityID" Type="Int32" />
+          <Property Name="MethodName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
+          <Property Name="Parameters" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="AuditLogin">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IPAddress" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="LoginStatus" Type="Boolean" Nullable="false" />
+          <Property Name="AuditTimeStamp" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="Company">
+          <Key>
+            <PropertyRef Name="CompanyId" />
+          </Key>
+          <Property Name="CompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="IsReseller" Type="Boolean" Nullable="false" />
+          <Property Name="ResellerCode" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="OrgPlanID" Type="Int32" />
+          <Property Name="CompanyName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="CompanyCode" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Street" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="City" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="State" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="ZipCode" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="PhoneNumber" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Website" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="AdminName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="AdminEmail" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="DistinguishedName" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ExchEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LyncEnabled" Type="Boolean" />
+          <Property Name="CitrixEnabled" Type="Boolean" />
+          <Property Name="ExchPFPlan" Type="Int32" />
+          <Property Name="Country" Type="String" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ExchPermFixed" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="CompanyStat">
+          <Key>
+            <PropertyRef Name="CompanyID" />
+          </Key>
+          <Property Name="CompanyID" Type="Int32" Nullable="false" />
+          <Property Name="CompanyCode" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="UserCount" Type="Int32" Nullable="false" />
+          <Property Name="DomainCount" Type="Int32" Nullable="false" />
+          <Property Name="SubDomainCount" Type="Int32" Nullable="false" />
+          <Property Name="ExchMailboxCount" Type="Int32" Nullable="false" />
+          <Property Name="ExchContactsCount" Type="Int32" Nullable="false" />
+          <Property Name="ExchDistListsCount" Type="Int32" Nullable="false" />
+          <Property Name="ExchPublicFolderCount" Type="Int32" Nullable="false" />
+          <Property Name="ExchMailPublicFolderCount" Type="Int32" Nullable="false" />
+          <Property Name="ExchKeepDeletedItems" Type="Int32" Nullable="false" />
+          <Property Name="RDPUserCount" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Contact">
+          <Key>
+            <PropertyRef Name="DistinguishedName" />
+          </Key>
+          <Property Name="DistinguishedName" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="CompanyCode" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Hidden" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="DistributionGroup">
+          <Key>
+            <PropertyRef Name="DistinguishedName" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DistinguishedName" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="CompanyCode" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Email" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Hidden" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Domain">
+          <Key>
+            <PropertyRef Name="DomainID" />
+          </Key>
+          <Property Name="DomainID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyCode" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Domain1" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="IsSubDomain" Type="Boolean" />
+          <Property Name="IsDefault" Type="Boolean" Nullable="false" />
+          <Property Name="IsAcceptedDomain" Type="Boolean" Nullable="false" />
+          <Property Name="IsLyncDomain" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="LogTable">
+          <Key>
+            <PropertyRef Name="AuditID" />
+          </Key>
+          <Property Name="AuditID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="LogTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LogType" Type="Int32" Nullable="false" />
+          <Property Name="CodeClass" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="UserPrincipalName" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="CompanyCode" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="ResellerCode" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Message" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="RecommendedAction" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Exception" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Plans_Citrix">
+          <Key>
+            <PropertyRef Name="CitrixPlanID" />
+          </Key>
+          <Property Name="CitrixPlanID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="56" Unicode="false" FixedLength="false" />
+          <Property Name="GroupName" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="IsServer" Type="Boolean" Nullable="false" />
+          <Property Name="CompanyCode" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Price" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Cost" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="PictureURL" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Plans_ExchangeActiveSync">
+          <Key>
+            <PropertyRef Name="ASID" />
+          </Key>
+          <Property Name="ASID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyCode" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ExchangeName" Type="String" MaxLength="75" Unicode="false" FixedLength="false" />
+          <Property Name="AllowNonProvisionableDevices" Type="Boolean" />
+          <Property Name="RefreshIntervalInHours" Type="Int32" />
+          <Property Name="RequirePassword" Type="Boolean" />
+          <Property Name="RequireAlphanumericPassword" Type="Boolean" />
+          <Property Name="EnablePasswordRecovery" Type="Boolean" />
+          <Property Name="RequireEncryptionOnDevice" Type="Boolean" />
+          <Property Name="RequireEncryptionOnStorageCard" Type="Boolean" />
+          <Property Name="AllowSimplePassword" Type="Boolean" />
+          <Property Name="NumberOfFailedAttempted" Type="Int32" />
+          <Property Name="MinimumPasswordLength" Type="Int32" />
+          <Property Name="InactivityTimeoutInMinutes" Type="Int32" />
+          <Property Name="PasswordExpirationInDays" Type="Int32" />
+          <Property Name="EnforcePasswordHistory" Type="Int32" />
+          <Property Name="IncludePastCalendarItems" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="IncludePastEmailItems" Type="String" MaxLength="20" Unicode="false" FixedLength="false" />
+          <Property Name="LimitEmailSizeInKB" Type="Int32" />
+          <Property Name="AllowDirectPushWhenRoaming" Type="Boolean" />
+          <Property Name="AllowHTMLEmail" Type="Boolean" />
+          <Property Name="AllowAttachmentsDownload" Type="Boolean" />
+          <Property Name="MaximumAttachmentSizeInKB" Type="Int32" />
+          <Property Name="AllowRemovableStorage" Type="Boolean" />
+          <Property Name="AllowCamera" Type="Boolean" />
+          <Property Name="AllowWiFi" Type="Boolean" />
+          <Property Name="AllowInfrared" Type="Boolean" />
+          <Property Name="AllowInternetSharing" Type="Boolean" />
+          <Property Name="AllowRemoteDesktop" Type="Boolean" />
+          <Property Name="AllowDesktopSync" Type="Boolean" />
+          <Property Name="AllowBluetooth" Type="String" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="AllowBrowser" Type="Boolean" />
+          <Property Name="AllowConsumerMail" Type="Boolean" />
+          <Property Name="IsEnterpriseCAL" Type="Boolean" />
+          <Property Name="AllowTextMessaging" Type="Boolean" />
+          <Property Name="AllowUnsignedApplications" Type="Boolean" />
+          <Property Name="AllowUnsignedInstallationPackages" Type="Boolean" />
+        </EntityType>
+        <EntityType Name="Plans_ExchangeMailbox">
+          <Key>
+            <PropertyRef Name="MailboxPlanID" />
+          </Key>
+          <Property Name="MailboxPlanID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MailboxPlanName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ProductID" Type="Int32" />
+          <Property Name="ResellerCode" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="CompanyCode" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="MailboxSizeMB" Type="Int32" Nullable="false" />
+          <Property Name="MaxMailboxSizeMB" Type="Int32" />
+          <Property Name="MaxSendKB" Type="Int32" Nullable="false" />
+          <Property Name="MaxReceiveKB" Type="Int32" Nullable="false" />
+          <Property Name="MaxRecipients" Type="Int32" Nullable="false" />
+          <Property Name="EnablePOP3" Type="Boolean" Nullable="false" />
+          <Property Name="EnableIMAP" Type="Boolean" Nullable="false" />
+          <Property Name="EnableOWA" Type="Boolean" Nullable="false" />
+          <Property Name="EnableMAPI" Type="Boolean" Nullable="false" />
+          <Property Name="EnableAS" Type="Boolean" Nullable="false" />
+          <Property Name="EnableECP" Type="Boolean" Nullable="false" />
+          <Property Name="MaxKeepDeletedItems" Type="Int32" Nullable="false" />
+          <Property Name="MailboxPlanDesc" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="Price" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="Cost" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+          <Property Name="AdditionalGBPrice" Type="String" MaxLength="20" Unicode="true" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Plans_Organization">
+          <Key>
+            <PropertyRef Name="OrgPlanID" />
+          </Key>
+          <Property Name="OrgPlanID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrgPlanName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="ResellerCode" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="MaxUsers" Type="Int32" Nullable="false" />
+          <Property Name="MaxDomains" Type="Int32" Nullable="false" />
+          <Property Name="MaxExchangeMailboxes" Type="Int32" Nullable="false" />
+          <Property Name="MaxExchangeContacts" Type="Int32" Nullable="false" />
+          <Property Name="MaxExchangeDistLists" Type="Int32" Nullable="false" />
+          <Property Name="MaxExchangePublicFolders" Type="Int32" Nullable="false" />
+          <Property Name="MaxExchangeMailPublicFolders" Type="Int32" Nullable="false" />
+          <Property Name="MaxExchangeKeepDeletedItems" Type="Int32" Nullable="false" />
+          <Property Name="MaxExchangeActivesyncPolicies" Type="Int32" />
+          <Property Name="MaxTerminalServerUsers" Type="Int32" Nullable="false" />
+          <Property Name="MaxExchangeResourceMailboxes" Type="Int32" />
+        </EntityType>
+        <EntityType Name="Plans_TerminalServices">
+          <Key>
+            <PropertyRef Name="TSPlanID" />
+            <PropertyRef Name="TSPlanName" />
+            <PropertyRef Name="ResellerCode" />
+            <PropertyRef Name="ProductID" />
+          </Key>
+          <Property Name="TSPlanID" Type="Int32" Nullable="false" />
+          <Property Name="TSPlanName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="ResellerCode" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="MaxUserSpaceMB" Type="Int32" />
+        </EntityType>
+        <EntityType Name="PriceOverride">
+          <Key>
+            <PropertyRef Name="CompanyCode" />
+          </Key>
+          <Property Name="CompanyCode" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Price" Type="String" MaxLength="25" Unicode="true" FixedLength="false" />
+          <Property Name="PlanID" Type="Int32" />
+          <Property Name="Product" Type="String" MaxLength="25" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="Price">
+          <Key>
+            <PropertyRef Name="PriceID" />
+          </Key>
+          <Property Name="PriceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="PlanID" Type="Int32" Nullable="false" />
+          <Property Name="CompanyCode" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="Price1" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+        </EntityType>
+        <EntityType Name="ResourceMailbox">
+          <Key>
+            <PropertyRef Name="ResourceID" />
+          </Key>
+          <Property Name="ResourceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="CompanyCode" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="UserPrincipalName" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="PrimarySmtpAddress" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="ResourceType" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="MailboxPlan" Type="Int32" Nullable="false" />
+          <Property Name="AdditionalMB" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Setting">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="BaseOU" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="PrimaryDC" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Username" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="Password" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="SuperAdmins" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="BillingAdmins" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="ExchangeFqdn" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ExchangePFServer" Type="String" Nullable="false" MaxLength="50" Unicode="false" FixedLength="false" />
+          <Property Name="ExchangeVersion" Type="Int32" Nullable="false" />
+          <Property Name="ExchangeSSLEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="ExchangeConnectionType" Type="String" Nullable="false" MaxLength="10" Unicode="false" FixedLength="false" />
+          <Property Name="PasswordMinLength" Type="Int32" Nullable="false" />
+          <Property Name="PasswordComplexityType" Type="Int32" Nullable="false" />
+          <Property Name="CitrixEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="PublicFolderEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LyncEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="WebsiteEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="SQLEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="CurrencySymbol" Type="String" MaxLength="10" Unicode="true" FixedLength="false" />
+          <Property Name="CurrencyEnglishName" Type="String" MaxLength="200" Unicode="true" FixedLength="false" />
+          <Property Name="ResellersEnabled" Type="Boolean" />
+          <Property Name="CompanysName" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="AllowCustomNameAttrib" Type="Boolean" />
+          <Property Name="ExchStats" Type="Boolean" />
+          <Property Name="IPBlockingEnabled" Type="Boolean" />
+          <Property Name="IPBlockingFailedCount" Type="Int32" />
+          <Property Name="IPBlockingLockedMinutes" Type="Int32" />
+          <Property Name="ExchDatabases" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="UsersOU" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="BrandingLoginLogo" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="BrandingCornerLogo" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="LockdownEnabled" Type="Boolean" />
+          <Property Name="LyncFrontEnd" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="LyncUserPool" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="LyncMeetingUrl" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="LyncDialinUrl" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="CompanysLogo" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="SupportMailEnabled" Type="Boolean" />
+          <Property Name="SupportMailAddress" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="SupportMailServer" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="SupportMailPort" Type="Int32" />
+          <Property Name="SupportMailUsername" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="SupportMailPassword" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="SupportMailFrom" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+        </EntityType>
+        <EntityType Name="Stats_CitrixCount">
+          <Key>
+            <PropertyRef Name="StatDate" />
+          </Key>
+          <Property Name="StatDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UserCount" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Stats_ExchCount">
+          <Key>
+            <PropertyRef Name="StatDate" />
+          </Key>
+          <Property Name="StatDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UserCount" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Stats_UserCount">
+          <Key>
+            <PropertyRef Name="StatDate" />
+          </Key>
+          <Property Name="StatDate" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="UserCount" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SvcMailboxDatabaseSize">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DatabaseName" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="Server" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" />
+          <Property Name="DatabaseSize" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Retrieved" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="SvcMailboxSize">
+          <Key>
+            <PropertyRef Name="ID" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserPrincipalName" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
+          <Property Name="MailboxDatabase" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="TotalItemSizeInKB" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="TotalDeletedItemSizeInKB" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="ItemCount" Type="Int32" Nullable="false" />
+          <Property Name="DeletedItemCount" Type="Int32" Nullable="false" />
+          <Property Name="Retrieved" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="SvcQueue">
+          <Key>
+            <PropertyRef Name="SvcQueueID" />
+          </Key>
+          <Property Name="SvcQueueID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaskID" Type="Int32" Nullable="false" />
+          <Property Name="UserPrincipalName" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="CompanyCode" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="TaskOutput" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="TaskCreated" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="TaskCompleted" Type="DateTime" Precision="3" />
+          <Property Name="TaskDelayInMinutes" Type="Int32" Nullable="false" />
+          <Property Name="TaskSuccess" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SvcTask">
+          <Key>
+            <PropertyRef Name="SvcTaskID" />
+          </Key>
+          <Property Name="SvcTaskID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TaskType" Type="Int32" Nullable="false" />
+          <Property Name="LastRun" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="NextRun" Type="DateTime" Precision="3" />
+          <Property Name="TaskOutput" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="TaskDelayInMinutes" Type="Int32" Nullable="false" />
+          <Property Name="TaskCreated" Type="DateTime" Precision="3" />
+          <Property Name="Reoccurring" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserPermission">
+          <Key>
+            <PropertyRef Name="UserID" />
+          </Key>
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="EnableExchange" Type="Boolean" Nullable="false" />
+          <Property Name="DisableExchange" Type="Boolean" Nullable="false" />
+          <Property Name="AddDomain" Type="Boolean" Nullable="false" />
+          <Property Name="DeleteDomain" Type="Boolean" Nullable="false" />
+          <Property Name="ModifyAcceptedDomain" Type="Boolean" Nullable="false" />
+          <Property Name="ImportUsers" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="UserPlan">
+          <Key>
+            <PropertyRef Name="UserGuid" />
+            <PropertyRef Name="ProductID" />
+            <PropertyRef Name="PlanID" />
+          </Key>
+          <Property Name="UserGuid" Type="Guid" Nullable="false" />
+          <Property Name="ProductID" Type="Int32" Nullable="false" />
+          <Property Name="PlanID" Type="Int32" Nullable="false" />
+          <Property Name="CompanyCode" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+        </EntityType>
+        <EntityType Name="UserPlansCitrix">
+          <Key>
+            <PropertyRef Name="UPCID" />
+          </Key>
+          <Property Name="UPCID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserID" Type="Int32" Nullable="false" />
+          <Property Name="CitrixPlanID" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="User">
+          <Key>
+            <PropertyRef Name="UserGuid" />
+          </Key>
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserGuid" Type="Guid" Nullable="false" />
+          <Property Name="CompanyCode" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="sAMAccountName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="UserPrincipalName" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="DistinguishedName" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
+          <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="Firstname" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Middlename" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Lastname" Type="String" MaxLength="50" Unicode="true" FixedLength="false" />
+          <Property Name="Email" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="Department" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
+          <Property Name="IsResellerAdmin" Type="Boolean" />
+          <Property Name="IsCompanyAdmin" Type="Boolean" />
+          <Property Name="MailboxPlan" Type="Int32" />
+          <Property Name="TSPlan" Type="Int32" />
+          <Property Name="LyncPlan" Type="Int32" />
+          <Property Name="Created" Type="DateTime" Precision="3" />
+          <Property Name="AdditionalMB" Type="Int32" />
+          <Property Name="ActiveSyncPlan" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CloudPanelModelStoreContainer" CdmEntityContainer="CPDatabase">
+          <EntitySetMapping Name="ApiAccesses">
+            <EntityTypeMapping TypeName="CloudPanelModel.ApiAccess">
+              <MappingFragment StoreEntitySet="ApiAccess">
+                <ScalarProperty Name="CustomerKey" ColumnName="CustomerKey" />
+                <ScalarProperty Name="CustomerSecret" ColumnName="CustomerSecret" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Audits">
+            <EntityTypeMapping TypeName="CloudPanelModel.Audit">
+              <MappingFragment StoreEntitySet="Audit">
+                <ScalarProperty Name="AuditID" ColumnName="AuditID" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="SeverityID" ColumnName="SeverityID" />
+                <ScalarProperty Name="MethodName" ColumnName="MethodName" />
+                <ScalarProperty Name="Parameters" ColumnName="Parameters" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AuditLogins">
+            <EntityTypeMapping TypeName="CloudPanelModel.AuditLogin">
+              <MappingFragment StoreEntitySet="AuditLogin">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="IPAddress" ColumnName="IPAddress" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="LoginStatus" ColumnName="LoginStatus" />
+                <ScalarProperty Name="AuditTimeStamp" ColumnName="AuditTimeStamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Companies">
+            <EntityTypeMapping TypeName="CloudPanelModel.Company">
+              <MappingFragment StoreEntitySet="Companies">
+                <ScalarProperty Name="CompanyId" ColumnName="CompanyId" />
+                <ScalarProperty Name="IsReseller" ColumnName="IsReseller" />
+                <ScalarProperty Name="ResellerCode" ColumnName="ResellerCode" />
+                <ScalarProperty Name="OrgPlanID" ColumnName="OrgPlanID" />
+                <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+                <ScalarProperty Name="Street" ColumnName="Street" />
+                <ScalarProperty Name="City" ColumnName="City" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="Website" ColumnName="Website" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="AdminName" ColumnName="AdminName" />
+                <ScalarProperty Name="AdminEmail" ColumnName="AdminEmail" />
+                <ScalarProperty Name="DistinguishedName" ColumnName="DistinguishedName" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="ExchEnabled" ColumnName="ExchEnabled" />
+                <ScalarProperty Name="LyncEnabled" ColumnName="LyncEnabled" />
+                <ScalarProperty Name="CitrixEnabled" ColumnName="CitrixEnabled" />
+                <ScalarProperty Name="ExchPFPlan" ColumnName="ExchPFPlan" />
+                <ScalarProperty Name="Country" ColumnName="Country" />
+                <ScalarProperty Name="ExchPermFixed" ColumnName="ExchPermFixed" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CompanyStats">
+            <EntityTypeMapping TypeName="CloudPanelModel.CompanyStat">
+              <MappingFragment StoreEntitySet="CompanyStats">
+                <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+                <ScalarProperty Name="UserCount" ColumnName="UserCount" />
+                <ScalarProperty Name="DomainCount" ColumnName="DomainCount" />
+                <ScalarProperty Name="SubDomainCount" ColumnName="SubDomainCount" />
+                <ScalarProperty Name="ExchMailboxCount" ColumnName="ExchMailboxCount" />
+                <ScalarProperty Name="ExchContactsCount" ColumnName="ExchContactsCount" />
+                <ScalarProperty Name="ExchDistListsCount" ColumnName="ExchDistListsCount" />
+                <ScalarProperty Name="ExchPublicFolderCount" ColumnName="ExchPublicFolderCount" />
+                <ScalarProperty Name="ExchMailPublicFolderCount" ColumnName="ExchMailPublicFolderCount" />
+                <ScalarProperty Name="ExchKeepDeletedItems" ColumnName="ExchKeepDeletedItems" />
+                <ScalarProperty Name="RDPUserCount" ColumnName="RDPUserCount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contacts">
+            <EntityTypeMapping TypeName="CloudPanelModel.Contact">
+              <MappingFragment StoreEntitySet="Contacts">
+                <ScalarProperty Name="DistinguishedName" ColumnName="DistinguishedName" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Hidden" ColumnName="Hidden" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DistributionGroups">
+            <EntityTypeMapping TypeName="CloudPanelModel.DistributionGroup">
+              <MappingFragment StoreEntitySet="DistributionGroups">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DistinguishedName" ColumnName="DistinguishedName" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Hidden" ColumnName="Hidden" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Domains">
+            <EntityTypeMapping TypeName="CloudPanelModel.Domain">
+              <MappingFragment StoreEntitySet="Domains">
+                <ScalarProperty Name="DomainID" ColumnName="DomainID" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+                <ScalarProperty Name="Domain1" ColumnName="Domain" />
+                <ScalarProperty Name="IsSubDomain" ColumnName="IsSubDomain" />
+                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+                <ScalarProperty Name="IsAcceptedDomain" ColumnName="IsAcceptedDomain" />
+                <ScalarProperty Name="IsLyncDomain" ColumnName="IsLyncDomain" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="LogTables">
+            <EntityTypeMapping TypeName="CloudPanelModel.LogTable">
+              <MappingFragment StoreEntitySet="LogTable">
+                <ScalarProperty Name="AuditID" ColumnName="AuditID" />
+                <ScalarProperty Name="LogTime" ColumnName="LogTime" />
+                <ScalarProperty Name="LogType" ColumnName="LogType" />
+                <ScalarProperty Name="CodeClass" ColumnName="CodeClass" />
+                <ScalarProperty Name="UserPrincipalName" ColumnName="UserPrincipalName" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+                <ScalarProperty Name="ResellerCode" ColumnName="ResellerCode" />
+                <ScalarProperty Name="Message" ColumnName="Message" />
+                <ScalarProperty Name="RecommendedAction" ColumnName="RecommendedAction" />
+                <ScalarProperty Name="Exception" ColumnName="Exception" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plans_Citrix">
+            <EntityTypeMapping TypeName="CloudPanelModel.Plans_Citrix">
+              <MappingFragment StoreEntitySet="Plans_Citrix">
+                <ScalarProperty Name="CitrixPlanID" ColumnName="CitrixPlanID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="GroupName" ColumnName="GroupName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="IsServer" ColumnName="IsServer" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="PictureURL" ColumnName="PictureURL" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plans_ExchangeActiveSync">
+            <EntityTypeMapping TypeName="CloudPanelModel.Plans_ExchangeActiveSync">
+              <MappingFragment StoreEntitySet="Plans_ExchangeActiveSync">
+                <ScalarProperty Name="ASID" ColumnName="ASID" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ExchangeName" ColumnName="ExchangeName" />
+                <ScalarProperty Name="AllowNonProvisionableDevices" ColumnName="AllowNonProvisionableDevices" />
+                <ScalarProperty Name="RefreshIntervalInHours" ColumnName="RefreshIntervalInHours" />
+                <ScalarProperty Name="RequirePassword" ColumnName="RequirePassword" />
+                <ScalarProperty Name="RequireAlphanumericPassword" ColumnName="RequireAlphanumericPassword" />
+                <ScalarProperty Name="EnablePasswordRecovery" ColumnName="EnablePasswordRecovery" />
+                <ScalarProperty Name="RequireEncryptionOnDevice" ColumnName="RequireEncryptionOnDevice" />
+                <ScalarProperty Name="RequireEncryptionOnStorageCard" ColumnName="RequireEncryptionOnStorageCard" />
+                <ScalarProperty Name="AllowSimplePassword" ColumnName="AllowSimplePassword" />
+                <ScalarProperty Name="NumberOfFailedAttempted" ColumnName="NumberOfFailedAttempted" />
+                <ScalarProperty Name="MinimumPasswordLength" ColumnName="MinimumPasswordLength" />
+                <ScalarProperty Name="InactivityTimeoutInMinutes" ColumnName="InactivityTimeoutInMinutes" />
+                <ScalarProperty Name="PasswordExpirationInDays" ColumnName="PasswordExpirationInDays" />
+                <ScalarProperty Name="EnforcePasswordHistory" ColumnName="EnforcePasswordHistory" />
+                <ScalarProperty Name="IncludePastCalendarItems" ColumnName="IncludePastCalendarItems" />
+                <ScalarProperty Name="IncludePastEmailItems" ColumnName="IncludePastEmailItems" />
+                <ScalarProperty Name="LimitEmailSizeInKB" ColumnName="LimitEmailSizeInKB" />
+                <ScalarProperty Name="AllowDirectPushWhenRoaming" ColumnName="AllowDirectPushWhenRoaming" />
+                <ScalarProperty Name="AllowHTMLEmail" ColumnName="AllowHTMLEmail" />
+                <ScalarProperty Name="AllowAttachmentsDownload" ColumnName="AllowAttachmentsDownload" />
+                <ScalarProperty Name="MaximumAttachmentSizeInKB" ColumnName="MaximumAttachmentSizeInKB" />
+                <ScalarProperty Name="AllowRemovableStorage" ColumnName="AllowRemovableStorage" />
+                <ScalarProperty Name="AllowCamera" ColumnName="AllowCamera" />
+                <ScalarProperty Name="AllowWiFi" ColumnName="AllowWiFi" />
+                <ScalarProperty Name="AllowInfrared" ColumnName="AllowInfrared" />
+                <ScalarProperty Name="AllowInternetSharing" ColumnName="AllowInternetSharing" />
+                <ScalarProperty Name="AllowRemoteDesktop" ColumnName="AllowRemoteDesktop" />
+                <ScalarProperty Name="AllowDesktopSync" ColumnName="AllowDesktopSync" />
+                <ScalarProperty Name="AllowBluetooth" ColumnName="AllowBluetooth" />
+                <ScalarProperty Name="AllowBrowser" ColumnName="AllowBrowser" />
+                <ScalarProperty Name="AllowConsumerMail" ColumnName="AllowConsumerMail" />
+                <ScalarProperty Name="IsEnterpriseCAL" ColumnName="IsEnterpriseCAL" />
+                <ScalarProperty Name="AllowTextMessaging" ColumnName="AllowTextMessaging" />
+                <ScalarProperty Name="AllowUnsignedApplications" ColumnName="AllowUnsignedApplications" />
+                <ScalarProperty Name="AllowUnsignedInstallationPackages" ColumnName="AllowUnsignedInstallationPackages" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plans_ExchangeMailbox">
+            <EntityTypeMapping TypeName="CloudPanelModel.Plans_ExchangeMailbox">
+              <MappingFragment StoreEntitySet="Plans_ExchangeMailbox">
+                <ScalarProperty Name="MailboxPlanID" ColumnName="MailboxPlanID" />
+                <ScalarProperty Name="MailboxPlanName" ColumnName="MailboxPlanName" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ResellerCode" ColumnName="ResellerCode" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+                <ScalarProperty Name="MailboxSizeMB" ColumnName="MailboxSizeMB" />
+                <ScalarProperty Name="MaxMailboxSizeMB" ColumnName="MaxMailboxSizeMB" />
+                <ScalarProperty Name="MaxSendKB" ColumnName="MaxSendKB" />
+                <ScalarProperty Name="MaxReceiveKB" ColumnName="MaxReceiveKB" />
+                <ScalarProperty Name="MaxRecipients" ColumnName="MaxRecipients" />
+                <ScalarProperty Name="EnablePOP3" ColumnName="EnablePOP3" />
+                <ScalarProperty Name="EnableIMAP" ColumnName="EnableIMAP" />
+                <ScalarProperty Name="EnableOWA" ColumnName="EnableOWA" />
+                <ScalarProperty Name="EnableMAPI" ColumnName="EnableMAPI" />
+                <ScalarProperty Name="EnableAS" ColumnName="EnableAS" />
+                <ScalarProperty Name="EnableECP" ColumnName="EnableECP" />
+                <ScalarProperty Name="MaxKeepDeletedItems" ColumnName="MaxKeepDeletedItems" />
+                <ScalarProperty Name="MailboxPlanDesc" ColumnName="MailboxPlanDesc" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Cost" ColumnName="Cost" />
+                <ScalarProperty Name="AdditionalGBPrice" ColumnName="AdditionalGBPrice" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plans_Organization">
+            <EntityTypeMapping TypeName="CloudPanelModel.Plans_Organization">
+              <MappingFragment StoreEntitySet="Plans_Organization">
+                <ScalarProperty Name="OrgPlanID" ColumnName="OrgPlanID" />
+                <ScalarProperty Name="OrgPlanName" ColumnName="OrgPlanName" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="ResellerCode" ColumnName="ResellerCode" />
+                <ScalarProperty Name="MaxUsers" ColumnName="MaxUsers" />
+                <ScalarProperty Name="MaxDomains" ColumnName="MaxDomains" />
+                <ScalarProperty Name="MaxExchangeMailboxes" ColumnName="MaxExchangeMailboxes" />
+                <ScalarProperty Name="MaxExchangeContacts" ColumnName="MaxExchangeContacts" />
+                <ScalarProperty Name="MaxExchangeDistLists" ColumnName="MaxExchangeDistLists" />
+                <ScalarProperty Name="MaxExchangePublicFolders" ColumnName="MaxExchangePublicFolders" />
+                <ScalarProperty Name="MaxExchangeMailPublicFolders" ColumnName="MaxExchangeMailPublicFolders" />
+                <ScalarProperty Name="MaxExchangeKeepDeletedItems" ColumnName="MaxExchangeKeepDeletedItems" />
+                <ScalarProperty Name="MaxExchangeActivesyncPolicies" ColumnName="MaxExchangeActivesyncPolicies" />
+                <ScalarProperty Name="MaxTerminalServerUsers" ColumnName="MaxTerminalServerUsers" />
+                <ScalarProperty Name="MaxExchangeResourceMailboxes" ColumnName="MaxExchangeResourceMailboxes" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Plans_TerminalServices">
+            <EntityTypeMapping TypeName="CloudPanelModel.Plans_TerminalServices">
+              <MappingFragment StoreEntitySet="Plans_TerminalServices">
+                <ScalarProperty Name="TSPlanID" ColumnName="TSPlanID" />
+                <ScalarProperty Name="TSPlanName" ColumnName="TSPlanName" />
+                <ScalarProperty Name="ResellerCode" ColumnName="ResellerCode" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="MaxUserSpaceMB" ColumnName="MaxUserSpaceMB" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PriceOverrides">
+            <EntityTypeMapping TypeName="CloudPanelModel.PriceOverride">
+              <MappingFragment StoreEntitySet="PriceOverride">
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="PlanID" ColumnName="PlanID" />
+                <ScalarProperty Name="Product" ColumnName="Product" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Prices">
+            <EntityTypeMapping TypeName="CloudPanelModel.Price">
+              <MappingFragment StoreEntitySet="Prices">
+                <ScalarProperty Name="PriceID" ColumnName="PriceID" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="PlanID" ColumnName="PlanID" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+                <ScalarProperty Name="Price1" ColumnName="Price" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ResourceMailboxes">
+            <EntityTypeMapping TypeName="CloudPanelModel.ResourceMailbox">
+              <MappingFragment StoreEntitySet="ResourceMailboxes">
+                <ScalarProperty Name="ResourceID" ColumnName="ResourceID" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+                <ScalarProperty Name="UserPrincipalName" ColumnName="UserPrincipalName" />
+                <ScalarProperty Name="PrimarySmtpAddress" ColumnName="PrimarySmtpAddress" />
+                <ScalarProperty Name="ResourceType" ColumnName="ResourceType" />
+                <ScalarProperty Name="MailboxPlan" ColumnName="MailboxPlan" />
+                <ScalarProperty Name="AdditionalMB" ColumnName="AdditionalMB" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Settings">
+            <EntityTypeMapping TypeName="CloudPanelModel.Setting">
+              <MappingFragment StoreEntitySet="Settings">
+                <ScalarProperty Name="BaseOU" ColumnName="BaseOU" />
+                <ScalarProperty Name="PrimaryDC" ColumnName="PrimaryDC" />
+                <ScalarProperty Name="Username" ColumnName="Username" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="SuperAdmins" ColumnName="SuperAdmins" />
+                <ScalarProperty Name="BillingAdmins" ColumnName="BillingAdmins" />
+                <ScalarProperty Name="ExchangeFqdn" ColumnName="ExchangeFqdn" />
+                <ScalarProperty Name="ExchangePFServer" ColumnName="ExchangePFServer" />
+                <ScalarProperty Name="ExchangeVersion" ColumnName="ExchangeVersion" />
+                <ScalarProperty Name="ExchangeSSLEnabled" ColumnName="ExchangeSSLEnabled" />
+                <ScalarProperty Name="ExchangeConnectionType" ColumnName="ExchangeConnectionType" />
+                <ScalarProperty Name="PasswordMinLength" ColumnName="PasswordMinLength" />
+                <ScalarProperty Name="PasswordComplexityType" ColumnName="PasswordComplexityType" />
+                <ScalarProperty Name="CitrixEnabled" ColumnName="CitrixEnabled" />
+                <ScalarProperty Name="PublicFolderEnabled" ColumnName="PublicFolderEnabled" />
+                <ScalarProperty Name="LyncEnabled" ColumnName="LyncEnabled" />
+                <ScalarProperty Name="WebsiteEnabled" ColumnName="WebsiteEnabled" />
+                <ScalarProperty Name="SQLEnabled" ColumnName="SQLEnabled" />
+                <ScalarProperty Name="CurrencySymbol" ColumnName="CurrencySymbol" />
+                <ScalarProperty Name="CurrencyEnglishName" ColumnName="CurrencyEnglishName" />
+                <ScalarProperty Name="ResellersEnabled" ColumnName="ResellersEnabled" />
+                <ScalarProperty Name="CompanysName" ColumnName="CompanysName" />
+                <ScalarProperty Name="AllowCustomNameAttrib" ColumnName="AllowCustomNameAttrib" />
+                <ScalarProperty Name="ExchStats" ColumnName="ExchStats" />
+                <ScalarProperty Name="IPBlockingEnabled" ColumnName="IPBlockingEnabled" />
+                <ScalarProperty Name="IPBlockingFailedCount" ColumnName="IPBlockingFailedCount" />
+                <ScalarProperty Name="IPBlockingLockedMinutes" ColumnName="IPBlockingLockedMinutes" />
+                <ScalarProperty Name="ExchDatabases" ColumnName="ExchDatabases" />
+                <ScalarProperty Name="UsersOU" ColumnName="UsersOU" />
+                <ScalarProperty Name="BrandingLoginLogo" ColumnName="BrandingLoginLogo" />
+                <ScalarProperty Name="BrandingCornerLogo" ColumnName="BrandingCornerLogo" />
+                <ScalarProperty Name="LockdownEnabled" ColumnName="LockdownEnabled" />
+                <ScalarProperty Name="LyncFrontEnd" ColumnName="LyncFrontEnd" />
+                <ScalarProperty Name="LyncUserPool" ColumnName="LyncUserPool" />
+                <ScalarProperty Name="LyncMeetingUrl" ColumnName="LyncMeetingUrl" />
+                <ScalarProperty Name="LyncDialinUrl" ColumnName="LyncDialinUrl" />
+                <ScalarProperty Name="CompanysLogo" ColumnName="CompanysLogo" />
+                <ScalarProperty Name="SupportMailEnabled" ColumnName="SupportMailEnabled" />
+                <ScalarProperty Name="SupportMailAddress" ColumnName="SupportMailAddress" />
+                <ScalarProperty Name="SupportMailServer" ColumnName="SupportMailServer" />
+                <ScalarProperty Name="SupportMailPort" ColumnName="SupportMailPort" />
+                <ScalarProperty Name="SupportMailUsername" ColumnName="SupportMailUsername" />
+                <ScalarProperty Name="SupportMailPassword" ColumnName="SupportMailPassword" />
+                <ScalarProperty Name="SupportMailFrom" ColumnName="SupportMailFrom" />
+                <ScalarProperty Name="ID" ColumnName="ID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stats_CitrixCount">
+            <EntityTypeMapping TypeName="CloudPanelModel.Stats_CitrixCount">
+              <MappingFragment StoreEntitySet="Stats_CitrixCount">
+                <ScalarProperty Name="StatDate" ColumnName="StatDate" />
+                <ScalarProperty Name="UserCount" ColumnName="UserCount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stats_ExchCount">
+            <EntityTypeMapping TypeName="CloudPanelModel.Stats_ExchCount">
+              <MappingFragment StoreEntitySet="Stats_ExchCount">
+                <ScalarProperty Name="StatDate" ColumnName="StatDate" />
+                <ScalarProperty Name="UserCount" ColumnName="UserCount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Stats_UserCount">
+            <EntityTypeMapping TypeName="CloudPanelModel.Stats_UserCount">
+              <MappingFragment StoreEntitySet="Stats_UserCount">
+                <ScalarProperty Name="StatDate" ColumnName="StatDate" />
+                <ScalarProperty Name="UserCount" ColumnName="UserCount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SvcMailboxDatabaseSizes">
+            <EntityTypeMapping TypeName="CloudPanelModel.SvcMailboxDatabaseSize">
+              <MappingFragment StoreEntitySet="SvcMailboxDatabaseSizes">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="DatabaseName" ColumnName="DatabaseName" />
+                <ScalarProperty Name="Server" ColumnName="Server" />
+                <ScalarProperty Name="DatabaseSize" ColumnName="DatabaseSize" />
+                <ScalarProperty Name="Retrieved" ColumnName="Retrieved" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SvcMailboxSizes">
+            <EntityTypeMapping TypeName="CloudPanelModel.SvcMailboxSize">
+              <MappingFragment StoreEntitySet="SvcMailboxSizes">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserPrincipalName" ColumnName="UserPrincipalName" />
+                <ScalarProperty Name="MailboxDatabase" ColumnName="MailboxDatabase" />
+                <ScalarProperty Name="TotalItemSizeInKB" ColumnName="TotalItemSizeInKB" />
+                <ScalarProperty Name="TotalDeletedItemSizeInKB" ColumnName="TotalDeletedItemSizeInKB" />
+                <ScalarProperty Name="ItemCount" ColumnName="ItemCount" />
+                <ScalarProperty Name="DeletedItemCount" ColumnName="DeletedItemCount" />
+                <ScalarProperty Name="Retrieved" ColumnName="Retrieved" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SvcQueues">
+            <EntityTypeMapping TypeName="CloudPanelModel.SvcQueue">
+              <MappingFragment StoreEntitySet="SvcQueue">
+                <ScalarProperty Name="SvcQueueID" ColumnName="SvcQueueID" />
+                <ScalarProperty Name="TaskID" ColumnName="TaskID" />
+                <ScalarProperty Name="UserPrincipalName" ColumnName="UserPrincipalName" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+                <ScalarProperty Name="TaskOutput" ColumnName="TaskOutput" />
+                <ScalarProperty Name="TaskCreated" ColumnName="TaskCreated" />
+                <ScalarProperty Name="TaskCompleted" ColumnName="TaskCompleted" />
+                <ScalarProperty Name="TaskDelayInMinutes" ColumnName="TaskDelayInMinutes" />
+                <ScalarProperty Name="TaskSuccess" ColumnName="TaskSuccess" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SvcTasks">
+            <EntityTypeMapping TypeName="CloudPanelModel.SvcTask">
+              <MappingFragment StoreEntitySet="SvcTask">
+                <ScalarProperty Name="SvcTaskID" ColumnName="SvcTaskID" />
+                <ScalarProperty Name="TaskType" ColumnName="TaskType" />
+                <ScalarProperty Name="LastRun" ColumnName="LastRun" />
+                <ScalarProperty Name="NextRun" ColumnName="NextRun" />
+                <ScalarProperty Name="TaskOutput" ColumnName="TaskOutput" />
+                <ScalarProperty Name="TaskDelayInMinutes" ColumnName="TaskDelayInMinutes" />
+                <ScalarProperty Name="TaskCreated" ColumnName="TaskCreated" />
+                <ScalarProperty Name="Reoccurring" ColumnName="Reoccurring" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserPermissions">
+            <EntityTypeMapping TypeName="CloudPanelModel.UserPermission">
+              <MappingFragment StoreEntitySet="UserPermissions">
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="EnableExchange" ColumnName="EnableExchange" />
+                <ScalarProperty Name="DisableExchange" ColumnName="DisableExchange" />
+                <ScalarProperty Name="AddDomain" ColumnName="AddDomain" />
+                <ScalarProperty Name="DeleteDomain" ColumnName="DeleteDomain" />
+                <ScalarProperty Name="ModifyAcceptedDomain" ColumnName="ModifyAcceptedDomain" />
+                <ScalarProperty Name="ImportUsers" ColumnName="ImportUsers" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserPlans">
+            <EntityTypeMapping TypeName="CloudPanelModel.UserPlan">
+              <MappingFragment StoreEntitySet="UserPlans">
+                <ScalarProperty Name="UserGuid" ColumnName="UserGuid" />
+                <ScalarProperty Name="ProductID" ColumnName="ProductID" />
+                <ScalarProperty Name="PlanID" ColumnName="PlanID" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="UserPlansCitrices">
+            <EntityTypeMapping TypeName="CloudPanelModel.UserPlansCitrix">
+              <MappingFragment StoreEntitySet="UserPlansCitrix">
+                <ScalarProperty Name="UPCID" ColumnName="UPCID" />
+                <ScalarProperty Name="UserID" ColumnName="UserID" />
+                <ScalarProperty Name="CitrixPlanID" ColumnName="CitrixPlanID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Users">
+            <EntityTypeMapping TypeName="CloudPanelModel.User">
+              <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="ID" ColumnName="ID" />
+                <ScalarProperty Name="UserGuid" ColumnName="UserGuid" />
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
+                <ScalarProperty Name="sAMAccountName" ColumnName="sAMAccountName" />
+                <ScalarProperty Name="UserPrincipalName" ColumnName="UserPrincipalName" />
+                <ScalarProperty Name="DistinguishedName" ColumnName="DistinguishedName" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="Firstname" ColumnName="Firstname" />
+                <ScalarProperty Name="Middlename" ColumnName="Middlename" />
+                <ScalarProperty Name="Lastname" ColumnName="Lastname" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Department" ColumnName="Department" />
+                <ScalarProperty Name="IsResellerAdmin" ColumnName="IsResellerAdmin" />
+                <ScalarProperty Name="IsCompanyAdmin" ColumnName="IsCompanyAdmin" />
+                <ScalarProperty Name="MailboxPlan" ColumnName="MailboxPlan" />
+                <ScalarProperty Name="TSPlan" ColumnName="TSPlan" />
+                <ScalarProperty Name="LyncPlan" ColumnName="LyncPlan" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="AdditionalMB" ColumnName="AdditionalMB" />
+                <ScalarProperty Name="ActiveSyncPlan" ColumnName="ActiveSyncPlan" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

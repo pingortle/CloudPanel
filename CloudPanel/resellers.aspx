@@ -39,7 +39,7 @@
                                         <td><%# Eval("CompanyName") %></td>
                                         <td><%# Eval("FullAddressFormatted") %></td>
                                         <td><%# Eval("Created") %></td>
-                                        <td><%# CloudPanel.Modules.Database.Companies.Resellers.GetResellersCompanyCount(Eval("CompanyCode").ToString()) %></td>
+                                        <td></td>
                                         <td>
                                             <div class="btn-group">
                                                 <span class="btn btn-xs btn-primary"><%= Resources.LocalizedText.Resellers_Modify %></span>

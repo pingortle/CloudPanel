@@ -11,7 +11,7 @@ namespace CloudPanel.Modules.Common.Codes
         public readonly T Object;
         public readonly String Message;
 
-        public Status(ErrorID _code, string _message)
+        public Status(AlertID _code, string _message)
         {
             this.Message = _message;
         }        

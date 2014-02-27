@@ -1,5 +1,5 @@
 ﻿using CloudPanel.Modules.Base.Companies;
-using CloudPanel.Modules.Database.Companies;
+using CloudPanel.Modules.Common.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,42 +16,39 @@ namespace CloudPanel
             if (!IsPostBack)
             {
                 // Get a list of resellers
-                GetResellers();
+                PopulateResellers();
             }
-        }
-
-        private void CreateNewReseller()
-        {
-            CompanyObject company = new CompanyObject();
-            company.CompanyName = txtName.Text;
-
-
-            // CALL COMMON
-            //Common.Resellers.CreateReseller(company);
         }
 
         /// <summary>
         /// Gets a list of resellers from the database
         /// </summary>
-        private void GetResellers()
+        private void PopulateResellers()
         {
-            List<ResellerObject> resellers = Resellers.GetResellers();
-            resellersRepeater.DataSource = resellers;
+            ResellerViewModel resellerModel = new ResellerViewModel();
+            resellerModel.ViewModelEvent += resellerModel_ViewModelEvent;
+
+            List<ResellerObject> foundResellers = resellerModel.GetResellers();
+            resellersRepeater.DataSource = foundResellers;
             resellersRepeater.DataBind();
 
-            // Show panel
-            panelResellerList.Visible = true;
+            // Show the panel no matter what
             panelEditCreateReseller.Visible = false;
+            panelResellerList.Visible = true;
         }
 
         /// <summary>
-        /// Gets a reseller that was selected for editing
+        /// Populates a specific reseller
         /// </summary>
-        /// <param name="resellerCode"></param>
-        private void GetReseller(string resellerCode)
+        /// <param name="companyCode"></param>
+        private void PopulateReseller(string companyCode)
         {
-            ResellerObject reseller = Resellers.GetReseller(resellerCode);
-            hfResellerCode.Value = reseller.CompanyCode;
+            ResellerViewModel resellerModel = new ResellerViewModel();
+            resellerModel.ViewModelEvent += resellerModel_ViewModelEvent;
+
+            ResellerObject reseller = resellerModel.GetReseller(companyCode);
+
+            hfResellerCode.Value = companyCode;
             txtName.Text = reseller.CompanyName;
             txtContactsName.Text = reseller.AdminName;
             txtEmail.Text = reseller.AdminEmail;
@@ -61,14 +58,14 @@ namespace CloudPanel
             txtState.Text = reseller.State;
             txtZipCode.Text = reseller.ZipCode;
 
-            if (!string.IsNullOrEmpty(reseller.Country))
+            ListItem item = ddlCountry.Items.FindByValue(reseller.Country);
+            if (item != null)
             {
-                ListItem item = ddlCountry.Items.FindByValue(reseller.Country);
-                if (item != null)
-                    ddlCountry.SelectedIndex = ddlCountry.Items.IndexOf(item);
+                ddlCountry.SelectedValue = item.Value;
             }
 
-            // Show panel
+            // Show the edit panel and readonly the textbox
+            txtName.ReadOnly = true;
             panelEditCreateReseller.Visible = true;
             panelResellerList.Visible = false;
         }
@@ -76,14 +73,23 @@ namespace CloudPanel
         protected void resellersRepeater_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
             if (e.CommandName == "Edit")
-                GetReseller(e.CommandArgument.ToString());
+                PopulateReseller(e.CommandArgument.ToString());
         }
+
+        #region Events
+
+        void resellerModel_ViewModelEvent(Modules.Base.Enumerations.AlertID errorID, string message)
+        {
+            alertmessage.SetMessage(errorID, message);
+        }
+
+        #endregion
 
         #region Button Clicks
 
         protected void btnCancel_Click(object sender, EventArgs e)
         {
-            GetResellers();
+            PopulateResellers();
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
@@ -95,6 +101,8 @@ namespace CloudPanel
         {
             // Set the hidden field to null because we are creating a new reseller
             hfResellerCode.Value = string.Empty;
+
+            txtName.ReadOnly = false;
 
             panelEditCreateReseller.Visible = true;
             panelResellerList.Visible = false;

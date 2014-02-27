@@ -5,9 +5,12 @@ using System.Text;
 
 namespace CloudPanel.Modules.Base.Enumerations
 {
-    public enum RollBackAction
+    public enum AlertID
     {
-        CreateResellerOU,
-        CreateResellerGPOAccessGroup
+        FAILED_CREATE_OU,
+        FAILED_CREATE_GROUP,
+        FAILED,
+        WARNING,
+        SUCCESS
     }
 }

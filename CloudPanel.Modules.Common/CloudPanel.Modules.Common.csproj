@@ -30,9 +30,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer">
+      <HintPath>..\packages\EntityFramework.6.0.2\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -41,20 +51,140 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Codes\Status.cs" />
+    <Compile Include="Database\ApiAccess.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Audit.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\AuditLogin.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Company.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\CompanyStat.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Contact.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\CPDatabase.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CPDatabase.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\CPDatabase.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\CPDatabase.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CPDatabase.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Database\DistributionGroup.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Domain.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\LogTable.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Plans_Citrix.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Plans_ExchangeActiveSync.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Plans_ExchangeMailbox.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Plans_Organization.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Plans_TerminalServices.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Price.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\PriceOverride.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\ResourceMailbox.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Setting.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Stats_CitrixCount.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Stats_ExchCount.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\Stats_UserCount.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SvcMailboxDatabaseSize.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SvcMailboxSize.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SvcQueue.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\SvcTask.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\User.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\UserPermission.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\UserPlan.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Database\UserPlansCitrix.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
     <Compile Include="Other\Randoms.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Settings\StaticSettings.cs" />
-    <Compile Include="ViewModel\Resellers.cs" />
-    <Compile Include="ViewModel\UsersViewModel.cs" />
+    <Compile Include="ViewModel\IViewModel.cs" />
+    <Compile Include="ViewModel\LoginViewModel.cs" />
+    <Compile Include="ViewModel\ResellerViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.config" />
+    <EntityDeploy Include="Database\CPDatabase.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CPDatabase.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="App.Config" />
+    <None Include="Database\CPDatabase.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CPDatabase.edmx</DependentUpon>
+      <LastGenOutput>CPDatabase.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Database\CPDatabase.edmx.diagram">
+      <DependentUpon>CPDatabase.edmx</DependentUpon>
+    </None>
+    <None Include="Database\CPDatabase.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CPDatabase.edmx</DependentUpon>
+      <LastGenOutput>CPDatabase.cs</LastGenOutput>
+    </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CloudPanel.Modules.ActiveDirectory\CloudPanel.Modules.ActiveDirectory.csproj">
-      <Project>{b6359c5d-d73b-4057-98cc-0f1e4862b33c}</Project>
-      <Name>CloudPanel.Modules.ActiveDirectory</Name>
-    </ProjectReference>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\CloudPanel.Modules.Base\CloudPanel.Modules.Base.csproj">
       <Project>{8b47db51-6f8e-42a3-b7e1-6c92c0e3628b}</Project>
       <Name>CloudPanel.Modules.Base</Name>

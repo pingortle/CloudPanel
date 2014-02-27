@@ -1,5 +1,4 @@
 ﻿using CloudPanel.Modules.Base.Dashboard;
-using CloudPanel.Modules.Database.Statistics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +20,7 @@ namespace CloudPanel
 
         private void GetEnvironmentOverview()
         {
-            OverviewStats stats = DashboardStats.GetDashboardStatistics();
+            /*OverviewStats stats = DashboardStats.GetDashboardStatistics();
             lbTotalUsers.Text = stats.TotalUsers.ToString();
             lbTotalResellers.Text = stats.Resellers.ToString();
             lbTotalCompanies.Text = stats.Companies.ToString();
@@ -34,7 +33,7 @@ namespace CloudPanel
             progBarCitrix.Style.Add("width", string.Format("{0}%", stats.CitrixPercent));
 
             lbTotalLyncUsers.Text = string.Format("({0})", stats.LyncUsers);
-            progBarLync.Style.Add("width", string.Format("{0}%", stats.LyncPercent));
+            progBarLync.Style.Add("width", string.Format("{0}%", stats.LyncPercent));*/
         }
     }
 }

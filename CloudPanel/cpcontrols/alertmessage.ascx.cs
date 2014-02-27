@@ -14,19 +14,19 @@ namespace CloudPanel.cpcontrols
         {
         }
 
-        public void SetMessage(AlertType alertType, string message)
+        public void SetMessage(AlertID alertType, string message)
         {
             switch (alertType)
             {
-                case AlertType.SUCCESS:
+                case AlertID.SUCCESS:
                     alertMessageDiv.Attributes["class"] = "alert alert-success";
                     lbErrorType.Text = "SUCCESS!";
                     break;
-                case AlertType.WARNING:
+                case AlertID.WARNING:
                     alertMessageDiv.Attributes["class"] = "alert alert-warning";
                     lbErrorType.Text = "WARNING!";
                     break;
-                case AlertType.ERROR:
+                case AlertID.FAILED:
                     alertMessageDiv.Attributes["class"] = "alert alert-danger";
                     lbErrorType.Text = "DANGER!";
                     break;

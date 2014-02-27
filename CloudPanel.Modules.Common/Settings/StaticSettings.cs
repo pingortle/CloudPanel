@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CloudPanel.Modules.Common.Database;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -55,5 +56,32 @@ namespace CloudPanel.Modules.Common.Settings
 
         public static int ExchangeVersion { get; set; }
 
+        /// <summary>
+        /// Retrieves the settings from the database
+        /// </summary>
+        /// <returns></returns>
+        public static void GetSettings()
+        {
+            CPDatabase database = null;
+
+            try
+            {
+                database = new CPDatabase();
+
+                var settings = (from s in database.Settings
+                                select s).FirstOrDefault();
+
+                // Populate static settings
+            }
+            catch (Exception ex)
+            {
+                throw;
+            }
+            finally
+            {
+                if (database != null)
+                    database.Dispose();
+            }
+        }
     }
 }

@@ -41,13 +41,6 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.6.0.2\lib\net40\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.0.2\lib\net40\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="NLog">
       <HintPath>..\packages\NLog.2.1.0\lib\net40\NLog.dll</HintPath>
@@ -860,10 +853,6 @@
     <ProjectReference Include="..\CloudPanel.Modules.Common\CloudPanel.Modules.Common.csproj">
       <Project>{118d670a-318a-4dd2-916b-51727e73928a}</Project>
       <Name>CloudPanel.Modules.Common</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CloudPanel.Modules.Database\CloudPanel.Modules.Database.csproj">
-      <Project>{34a71a23-a7ae-45f5-ad08-533553cd4396}</Project>
-      <Name>CloudPanel.Modules.Database</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
