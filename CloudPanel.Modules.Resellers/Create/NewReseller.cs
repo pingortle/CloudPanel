@@ -28,6 +28,7 @@ namespace CloudPanel.Modules.Resellers.Create
             }
             catch (Exception ex)
             {
+
             }
         }
     }

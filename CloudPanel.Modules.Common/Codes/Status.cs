@@ -6,14 +6,13 @@ using System.Text;
 
 namespace CloudPanel.Modules.Common.Codes
 {
-    public class Status
+    public class Status<T>
     {
-        public readonly ErrorID Code;
+        public readonly T Object;
         public readonly String Message;
 
         public Status(ErrorID _code, string _message)
         {
-            this.Code = _code;
             this.Message = _message;
         }        
     }

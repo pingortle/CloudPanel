@@ -1,4 +1,6 @@
-﻿using CloudPanel.Modules.Database.Entity;
+﻿using CloudPanel.Modules.Base.Companies;
+using CloudPanel.Modules.Common.ViewModel;
+using CloudPanel.Modules.Database.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +14,28 @@ namespace CloudPanel.company
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+        }
+
+        private void CreateUserTest()
+        {
+            CompanyObject obj = new CompanyObject();
+            obj.CompanyName = "Jacob Dixon";
+
+            UsersViewModel users = new UsersViewModel();
+            users.UserEvent += users_UserEvent;
+
+            users.CreateNewUser(obj);
+
+            // if (cbEnableMailbox..checked) {
+            // users.EnableMailbox(obj);
+            // }
+
+            // ReloadPage();
+        }
+
+        void users_UserEvent(Modules.Base.Enumerations.ErrorID errorID, string message)
+        {
+            alertmessage.SetMessage(Modules.Base.Enumerations.AlertType.ERROR, message);
         }
 
         private void PopulateCompanyData()

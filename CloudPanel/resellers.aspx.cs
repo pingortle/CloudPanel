@@ -20,6 +20,16 @@ namespace CloudPanel
             }
         }
 
+        private void CreateNewReseller()
+        {
+            CompanyObject company = new CompanyObject();
+            company.CompanyName = txtName.Text;
+
+
+            // CALL COMMON
+            //Common.Resellers.CreateReseller(company);
+        }
+
         /// <summary>
         /// Gets a list of resellers from the database
         /// </summary>
