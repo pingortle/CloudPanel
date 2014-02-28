@@ -183,6 +183,17 @@ namespace CloudPanel.Modules.Base.Companies
             }
         }
 
+        /// <summary>
+        /// Generates a unique company code based on the reseller's company name
+        /// </summary>
+        /// <param name="companyName"></param>
+        /// <returns></returns>
+        public static string GenerateCompanyCode(string companyName)
+        {
+            char[] stripped = companyName.Where(c => char.IsLetter(c)).ToArray();
+            return new string(stripped).Substring(0, 3).ToUpper(); // This should contain only letters and no whitespaces
+        }
+
         #endregion
     }
 }

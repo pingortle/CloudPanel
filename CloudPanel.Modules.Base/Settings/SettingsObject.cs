@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CloudPanel.Modules.Base.Security;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,7 @@ namespace CloudPanel.Modules.Base.Settings
         private string _usersou;
         private string _loginlogo;
         private string _cornerlogo;
+        private string _securitykey;
 
         private int _exchangeversion;
         private int _ipblockingfailedcount;
@@ -67,7 +69,12 @@ namespace CloudPanel.Modules.Base.Settings
 
         public string Password
         {
-            get { return _password; }
+            get 
+            { 
+                // Decrypt password first
+                string decrypted = DataProtection.Decrypt(_password, SecurityKey);
+                return decrypted;
+            }
             set { _password = value; }
         }
 
@@ -189,6 +196,12 @@ namespace CloudPanel.Modules.Base.Settings
         {
             get { return _ipblockingenabled; }
             set { _ipblockingenabled = value; }
+        }
+
+        public string SecurityKey
+        {
+            get { return _securitykey; }
+            set { _securitykey = value; }
         }
 
         #endregion

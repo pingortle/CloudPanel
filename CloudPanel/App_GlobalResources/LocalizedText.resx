@@ -117,6 +117,72 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Companies_AddNewCompany" xml:space="preserve">
+    <value>Add New Company</value>
+  </data>
+  <data name="Companies_Address" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="Companies_Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Companies_City" xml:space="preserve">
+    <value>City</value>
+  </data>
+  <data name="Companies_Companies" xml:space="preserve">
+    <value>Companies</value>
+  </data>
+  <data name="Companies_CompanyName" xml:space="preserve">
+    <value>Company Name</value>
+  </data>
+  <data name="Companies_ContactsName" xml:space="preserve">
+    <value>Contacts Name</value>
+  </data>
+  <data name="Companies_Country" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="Companies_Created" xml:space="preserve">
+    <value>Created</value>
+  </data>
+  <data name="Companies_Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Companies_DomainName" xml:space="preserve">
+    <value>Domain Name</value>
+  </data>
+  <data name="Companies_Domains" xml:space="preserve">
+    <value>Companies_Domains</value>
+  </data>
+  <data name="Companies_Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="Companies_EditTitle" xml:space="preserve">
+    <value>Add/Edit Company</value>
+  </data>
+  <data name="Companies_Email" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="Companies_Modify" xml:space="preserve">
+    <value>Modify</value>
+  </data>
+  <data name="Companies_State" xml:space="preserve">
+    <value>State</value>
+  </data>
+  <data name="Companies_StreetAddress" xml:space="preserve">
+    <value>Street Address</value>
+  </data>
+  <data name="Companies_Submit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="Companies_Telephone" xml:space="preserve">
+    <value>Telephone</value>
+  </data>
+  <data name="Companies_UseUniqueID" xml:space="preserve">
+    <value>Use company name for the unique ID</value>
+  </data>
+  <data name="Companies_ZipCode" xml:space="preserve">
+    <value>Zip Code</value>
+  </data>
   <data name="Login_LoginToAccess" xml:space="preserve">
     <value>Login to access your account</value>
   </data>
@@ -197,72 +263,6 @@
   </data>
   <data name="Master_Users" xml:space="preserve">
     <value>Users</value>
-  </data>
-  <data name="Companies_AddNewCompany" xml:space="preserve">
-    <value>Add New Company</value>
-  </data>
-  <data name="Companies_Address" xml:space="preserve">
-    <value>Address</value>
-  </data>
-  <data name="Companies_Cancel" xml:space="preserve">
-    <value>Cancel</value>
-  </data>
-  <data name="Companies_City" xml:space="preserve">
-    <value>City</value>
-  </data>
-  <data name="Companies_Companies" xml:space="preserve">
-    <value>Companies</value>
-  </data>
-  <data name="Companies_CompanyName" xml:space="preserve">
-    <value>Company Name</value>
-  </data>
-  <data name="Companies_ContactsName" xml:space="preserve">
-    <value>Contacts Name</value>
-  </data>
-  <data name="Companies_Country" xml:space="preserve">
-    <value>Country</value>
-  </data>
-  <data name="Companies_Created" xml:space="preserve">
-    <value>Created</value>
-  </data>
-  <data name="Companies_Delete" xml:space="preserve">
-    <value>Delete</value>
-  </data>
-  <data name="Companies_DomainName" xml:space="preserve">
-    <value>Domain Name</value>
-  </data>
-  <data name="Companies_Domains" xml:space="preserve">
-    <value>Companies_Domains</value>
-  </data>
-  <data name="Companies_Edit" xml:space="preserve">
-    <value>Edit</value>
-  </data>
-  <data name="Companies_EditTitle" xml:space="preserve">
-    <value>Add/Edit Company</value>
-  </data>
-  <data name="Companies_Email" xml:space="preserve">
-    <value>E-mail</value>
-  </data>
-  <data name="Companies_Modify" xml:space="preserve">
-    <value>Modify</value>
-  </data>
-  <data name="Companies_State" xml:space="preserve">
-    <value>State</value>
-  </data>
-  <data name="Companies_StreetAddress" xml:space="preserve">
-    <value>Street Address</value>
-  </data>
-  <data name="Companies_Submit" xml:space="preserve">
-    <value>Submit</value>
-  </data>
-  <data name="Companies_Telephone" xml:space="preserve">
-    <value>Telephone</value>
-  </data>
-  <data name="Companies_UseUniqueID" xml:space="preserve">
-    <value>Use company name for the unique ID</value>
-  </data>
-  <data name="Companies_ZipCode" xml:space="preserve">
-    <value>Zip Code</value>
   </data>
   <data name="Resellers_AddNewReseller" xml:space="preserve">
     <value>Add New Reseller</value>

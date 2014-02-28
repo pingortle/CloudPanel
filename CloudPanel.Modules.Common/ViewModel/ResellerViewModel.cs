@@ -1,15 +1,25 @@
-﻿using CloudPanel.Modules.Base.Companies;
+﻿using CloudPanel.Modules.ActiveDirectory.Groups;
+using CloudPanel.Modules.ActiveDirectory.OrganizationalUnits;
+using CloudPanel.Modules.Base.Companies;
 using CloudPanel.Modules.Base.Enumerations;
 using CloudPanel.Modules.Common.Database;
+using CloudPanel.Modules.Common.Other;
+using CloudPanel.Modules.Common.Settings;
+using CloudPanel.Modules.RollBack;
+using System.Data.Entity;
+using log4net;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 
 namespace CloudPanel.Modules.Common.ViewModel
 {
     public class ResellerViewModel : IViewModel
     {
+        private readonly ILog logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
         /// <summary>
         /// Gets a list of resellers from the database
         /// </summary>
@@ -79,6 +89,7 @@ namespace CloudPanel.Modules.Common.ViewModel
 
                 var reseller = (from r in database.Companies
                                 where r.IsReseller
+                                where r.CompanyCode == companyCode
                                 orderby r.CompanyName
                                 select r).FirstOrDefault();
 
@@ -104,6 +115,96 @@ namespace CloudPanel.Modules.Common.ViewModel
             {
                 ThrowEvent(AlertID.FAILED, ex.Message);
                 return null;
+            }
+            finally
+            {
+                if (database != null)
+                    database.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Creates a new reseller
+        /// </summary>
+        /// <param name="reseller"></param>
+        /// <param name="baseOrganizationalUnit"></param>
+        public void NewReseller(ResellerObject reseller, string baseOrganizationalUnit)
+        {
+            CPDatabase database = null;
+
+            // Rollback class in case something goes wrong we can undo changes
+            CloudPanelTransaction events = new CloudPanelTransaction();
+
+            try
+            {
+                database = new CPDatabase();
+
+                // Generate the company code
+                string companyCode = ResellerObject.GenerateCompanyCode(reseller.CompanyName);
+                
+                // Loop and make sure one does exist or find one that does
+                int count = 0;
+                for (int i = 0; i < 1000; i++)
+                {
+                    if (Validation.DoesCompanyCodeExist(companyCode))
+                    {
+                        this.logger.Info("Tried to create a new reseller with company code " + companyCode + " but it already existed... trying another code");
+
+                        companyCode = companyCode + count.ToString();
+                        count++;
+                    }
+                    else
+                    {
+                        reseller.CompanyCode = companyCode; // Assign company code to object
+                        break;
+                    }
+                }
+
+                // Create the reseller in Active Directory
+                ADOrganizationalUnit adOrg = new ADOrganizationalUnit(StaticSettings.Username, StaticSettings.Password, StaticSettings.PrimaryDC);
+                string distinguishedName = adOrg.CreateReseller(StaticSettings.HostingOU, reseller);
+                events.NewOrganizationalUnitEvent(distinguishedName);
+
+                // Create the security group
+                ADGroup adGroup = new ADGroup(StaticSettings.Username, StaticSettings.Password, StaticSettings.PrimaryDC);
+                adGroup.Create(distinguishedName, "GPOAccess@" + companyCode, "", true, false);
+                events.NewSecurityGroup("GPOAccess@" + companyCode);
+
+                // Add the new group to the GPOAccess@Hosting group for group policy permissions
+                adGroup.AddMember("GPOAccess@Hosting", "GPOAccess@" + companyCode, "name");
+
+                // Add access rights
+                adOrg.AddAccessRights(distinguishedName, "GPOAccess@" + companyCode);
+
+                // Insert into database
+                Company company = new Company();
+                company.IsReseller = true;
+                company.CompanyName = reseller.CompanyName;
+                company.CompanyCode = companyCode;
+                company.Street = reseller.Street;
+                company.City = reseller.City;
+                company.State = reseller.State;
+                company.ZipCode = reseller.ZipCode;
+                company.Country = reseller.Country;
+                company.PhoneNumber = reseller.Telephone;
+                company.AdminName = reseller.AdminName;
+                company.AdminEmail = reseller.AdminEmail;
+                company.DistinguishedName = ""; // TODO
+                company.Created = DateTime.Now;
+                company.DistinguishedName = distinguishedName;
+
+                database.Companies.Add(company);
+                database.SaveChanges();
+
+                // Notify success
+                ThrowEvent(AlertID.SUCCESS, "Successfully created new reseller " + reseller.CompanyName);
+            }
+            catch (Exception ex)
+            {
+                ThrowEvent(AlertID.FAILED, ex.Message);
+
+                // Rollback on error
+                events.RollBack();
             }
             finally
             {

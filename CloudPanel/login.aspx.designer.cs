@@ -9,8 +9,6 @@
 
 namespace CloudPanel
 {
-
-
     public partial class login
     {
 

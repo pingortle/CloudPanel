@@ -42,16 +42,12 @@
                                         <td></td>
                                         <td>
                                             <div class="btn-group">
-                                                <span class="btn btn-xs btn-primary"><%= Resources.LocalizedText.Resellers_Modify %></span>
+                                                <asp:Button ID="btnModify" runat="server" CssClass="btn btn-xs btn-primary" CommandName="Edit" CommandArgument='<%# Eval("CompanyCode") %>' Text='<%$ Resources:LocalizedText, Resellers_Modify %>' />
                                                 <button type="button" class="btn btn-xs btn-primary dropdown-toggle" data-toggle="dropdown">
                                                     <span class="caret"></span>
                                                     <span class="sr-only">Toggle Dropdown</span>
                                                 </button>
                                                 <ul class="dropdown-menu" role="menu">
-                                                    <li>
-                                                        <asp:LinkButton ID="lnkEdit" runat="server" CommandName="Edit" CommandArgument='<%# Eval("CompanyCode") %>'><%= Resources.LocalizedText.Resellers_Edit %></asp:LinkButton>
-                                                    </li>
-                                                    <li class="divider"></li>
                                                     <li>
                                                         <asp:LinkButton ID="lnkDelete" runat="server" CommandName="Delete" CommandArgument='<%# Eval("CompanyCode") %>'><%= Resources.LocalizedText.Resellers_Delete %></asp:LinkButton>
                                                     </li>

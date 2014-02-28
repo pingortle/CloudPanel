@@ -13,6 +13,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudPanel.Modules.Base", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudPanel.Modules.ActiveDirectory", "CloudPanel.Modules.ActiveDirectory\CloudPanel.Modules.ActiveDirectory.csproj", "{B6359C5D-D73B-4057-98CC-0F1E4862B33C}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudPanel.Modules.RollBack", "CloudPanel.Modules.RollBack\CloudPanel.Modules.RollBack.csproj", "{FFF78648-D290-4119-974D-5E2486B22B4C}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -35,6 +37,10 @@ Global
 		{B6359C5D-D73B-4057-98CC-0F1E4862B33C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B6359C5D-D73B-4057-98CC-0F1E4862B33C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B6359C5D-D73B-4057-98CC-0F1E4862B33C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FFF78648-D290-4119-974D-5E2486B22B4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFF78648-D290-4119-974D-5E2486B22B4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFF78648-D290-4119-974D-5E2486B22B4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFF78648-D290-4119-974D-5E2486B22B4C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,5 +50,6 @@ Global
 		{118D670A-318A-4DD2-916B-51727E73928A} = {5F649A1E-1E59-4F0B-BFC8-FB2B124DEC98}
 		{8B47DB51-6F8E-42A3-B7E1-6C92C0E3628B} = {5F649A1E-1E59-4F0B-BFC8-FB2B124DEC98}
 		{B6359C5D-D73B-4057-98CC-0F1E4862B33C} = {5F649A1E-1E59-4F0B-BFC8-FB2B124DEC98}
+		{FFF78648-D290-4119-974D-5E2486B22B4C} = {5F649A1E-1E59-4F0B-BFC8-FB2B124DEC98}
 	EndGlobalSection
 EndGlobal

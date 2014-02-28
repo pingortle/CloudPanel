@@ -45,6 +45,7 @@
     <Compile Include="Enumerations\AlertID.cs" />
     <Compile Include="Enumerations\Messages.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Security\DataProtection.cs" />
     <Compile Include="Settings\SettingsObject.cs" />
   </ItemGroup>
   <ItemGroup />

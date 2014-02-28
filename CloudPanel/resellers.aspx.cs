@@ -1,4 +1,5 @@
 ﻿using CloudPanel.Modules.Base.Companies;
+using CloudPanel.Modules.Common.Settings;
 using CloudPanel.Modules.Common.ViewModel;
 using System;
 using System.Collections.Generic;
@@ -65,9 +66,36 @@ namespace CloudPanel
             }
 
             // Show the edit panel and readonly the textbox
-            txtName.ReadOnly = true;
             panelEditCreateReseller.Visible = true;
             panelResellerList.Visible = false;
+        }
+
+        /// <summary>
+        /// Adds a new reseller to the environment
+        /// </summary>
+        private void AddNewReseller()
+        {
+            ResellerObject newReseller = new ResellerObject();
+            newReseller.CompanyName = txtName.Text;
+            newReseller.AdminName = txtContactsName.Text;
+            newReseller.AdminEmail = txtEmail.Text;
+            newReseller.Telephone = txtTelephone.Text;
+            newReseller.Street = txtStreetAddress.Text;
+            newReseller.City = txtCity.Text;
+            newReseller.State = txtState.Text;
+            newReseller.ZipCode = txtZipCode.Text;
+
+            if (ddlCountry.SelectedIndex > 0)
+                newReseller.Country = ddlCountry.SelectedValue;
+            else
+                newReseller.Country = string.Empty;
+
+            //
+            // Create new reseller
+            //
+            ResellerViewModel resellerModel = new ResellerViewModel();
+            resellerModel.ViewModelEvent += resellerModel_ViewModelEvent;
+            resellerModel.NewReseller(newReseller, StaticSettings.HostingOU);
         }
 
         protected void resellersRepeater_ItemCommand(object source, RepeaterCommandEventArgs e)
@@ -81,6 +109,9 @@ namespace CloudPanel
         void resellerModel_ViewModelEvent(Modules.Base.Enumerations.AlertID errorID, string message)
         {
             alertmessage.SetMessage(errorID, message);
+
+            // Repopulate resellers
+            PopulateResellers();
         }
 
         #endregion
@@ -94,7 +125,8 @@ namespace CloudPanel
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-
+            if (string.IsNullOrEmpty(hfResellerCode.Value))
+                AddNewReseller();
         }
 
         protected void btnAddReseller_Click(object sender, EventArgs e)
