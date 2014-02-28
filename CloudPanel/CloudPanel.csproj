@@ -598,6 +598,7 @@
     <Content Include="login.aspx" />
     <Content Include="resellers.aspx" />
     <Content Include="security\locked.aspx" />
+    <Content Include="settings.aspx" />
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
@@ -729,6 +730,13 @@
     <Compile Include="security\locked.aspx.designer.cs">
       <DependentUpon>locked.aspx</DependentUpon>
     </Compile>
+    <Compile Include="settings.aspx.cs">
+      <DependentUpon>settings.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="settings.aspx.designer.cs">
+      <DependentUpon>settings.aspx</DependentUpon>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\.DS_Store" />
@@ -831,9 +839,10 @@
     <Content Include="js\ckeditor\samples\sample_posteddata.php" />
     <Content Include="js\ckeditor\skins\moono\readme.md" />
     <Content Include="js\ckeditor\skins\themepixels\readme.md" />
-    <Content Include="packages.config" />
     <Content Include="CloudPanel.Master" />
+    <Content Include="packages.config" />
     <Content Include="logging\Default.log" />
+    <None Include="Properties\PublishProfiles\CloudPanel LAB.pubxml" />
     <None Include="Properties\PublishProfiles\LAB DC.pubxml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>

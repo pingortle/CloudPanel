@@ -16,6 +16,8 @@ namespace CloudPanel.Modules.Common.Settings
 
         #region Variables
 
+        public static string Key { get; set;}
+
         public static string HostingOU { get; set; }
 
         public static string PrimaryDC { get; set; }
@@ -23,6 +25,16 @@ namespace CloudPanel.Modules.Common.Settings
         public static string Username { get; set; }
 
         public static string Password { get; set; }
+
+        public static string DecryptedPassword
+        {
+            get { return DataProtection.Decrypt(Password, Key); }
+        }
+
+        public static string EncryptedPassword
+        {
+            get { return Password; }
+        }
 
         public static string SuperAdmins { get; set; }
 
@@ -43,6 +55,8 @@ namespace CloudPanel.Modules.Common.Settings
         public static string CornerLogo { get; set; }
 
         public static string SecurityKey { get; set; }
+
+        public static string ExchangeDatabases { get; set; }
 
         public static bool ExchangeSSLEnabled { get; set; }
 
@@ -80,51 +94,223 @@ namespace CloudPanel.Modules.Common.Settings
             {
                 database = new CPDatabase();
 
+                Key = securityKey;
+
                 var settings = (from s in database.Settings
                                 select s).FirstOrDefault();
-
+                
                 // Populate static settings
-                SecurityKey = securityKey;
-                logger.Debug("Security Key: " + SecurityKey);
+                if (settings != null)
+                {
+                    SecurityKey = securityKey;
+                    logger.Debug("Security Key: " + SecurityKey);
 
-                HostingOU = settings.BaseOU;
-                logger.Debug("Hosting OU: " + HostingOU);
+                    HostingOU = settings.BaseOU;
+                    logger.Debug("Hosting OU: " + HostingOU);
 
-                PrimaryDC = settings.PrimaryDC;
-                logger.Debug("Domain Controller: " + PrimaryDC);
+                    PrimaryDC = settings.PrimaryDC;
+                    logger.Debug("Domain Controller: " + PrimaryDC);
 
-                Username = settings.Username;
-                logger.Debug("Username: " + Username);
+                    Username = settings.Username;
+                    logger.Debug("Username: " + Username);
 
-                Password = DataProtection.Decrypt(settings.Password, SecurityKey);
-                logger.Debug("Password: " + Password);
+                    Password = settings.Password;
 
-                UsersOU = settings.UsersOU;
+                    UsersOU = settings.UsersOU;
 
-                SuperAdmins = settings.SuperAdmins;
-                BillingAdmins = settings.BillingAdmins;
+                    SuperAdmins = settings.SuperAdmins;
+                    BillingAdmins = settings.BillingAdmins;
 
-                ExchangeServer = settings.ExchangeFqdn;
-                ExchangePublicFolderServer = settings.ExchangePFServer;
-                ExchangeVersion = settings.ExchangeVersion;
-                ExchangeSSLEnabled = settings.ExchangeSSLEnabled;
-                ExchangeConnectionType = settings.ExchangeConnectionType;
-                PublicFoldersEnabled = settings.PublicFolderEnabled;
+                    ExchangeServer = settings.ExchangeFqdn;
+                    ExchangePublicFolderServer = settings.ExchangePFServer;
+                    ExchangeVersion = settings.ExchangeVersion;
+                    ExchangeSSLEnabled = settings.ExchangeSSLEnabled;
+                    ExchangeConnectionType = settings.ExchangeConnectionType;
+                    ExchangeDatabases = settings.ExchDatabases;
+                    PublicFoldersEnabled = settings.PublicFolderEnabled;
 
-                CitrixEnabled = settings.CitrixEnabled;
-                LyncEnabled = settings.LyncEnabled;
-                ResellersEnabled = (bool)settings.ResellersEnabled;
+                    CitrixEnabled = settings.CitrixEnabled;
+                    LyncEnabled = settings.LyncEnabled;
 
-                HostersName = settings.CompanysName;
+                    bool isResellersEnabled = false;
+                    bool.TryParse(settings.ResellersEnabled.ToString(), out isResellersEnabled);
+                    ResellersEnabled = isResellersEnabled;
 
-                AllowCustomNameAttribute = (bool)settings.AllowCustomNameAttrib;
+                    HostersName = settings.CompanysName;
 
-                CornerLogo = settings.BrandingCornerLogo;
-                LoginLogo = settings.BrandingLoginLogo;
+                    bool allowCustomAttrib = false;
+                    bool.TryParse(settings.AllowCustomNameAttrib.ToString(), out allowCustomAttrib);
+                    AllowCustomNameAttribute = allowCustomAttrib;
 
-                IPBlockingEnabled = (bool)settings.IPBlockingEnabled;
-                IPBlockingFailedCount = (int)settings.IPBlockingFailedCount;
-                IPBlockingLockedInMinutes = (int)settings.IPBlockingLockedMinutes;
+                    CornerLogo = settings.BrandingCornerLogo;
+                    LoginLogo = settings.BrandingLoginLogo;
+
+                    bool ipBlockingEnabled = false;
+                    bool.TryParse(settings.IPBlockingEnabled.ToString(), out ipBlockingEnabled);
+
+
+                    int ipBlockingFailedCount = 0;
+                    int.TryParse(settings.IPBlockingFailedCount.ToString(), out ipBlockingFailedCount);
+
+
+                    int ipBlockingInMinutes = 0;
+                    int.TryParse(settings.IPBlockingLockedMinutes.ToString(), out ipBlockingInMinutes);
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (database != null)
+                    database.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Commits the current static settings to the database
+        /// </summary>
+        /// <param name="securityKey"></param>
+        public static void CommitSettings(string securityKey)
+        {
+            CPDatabase database = null;
+
+            try
+            {
+                database = new CPDatabase();
+
+                var newSettings = (from s in database.Settings
+                                select s).FirstOrDefault();
+
+                if (newSettings == null)
+                {
+                    // No settings found.. insert new
+                    newSettings = new Setting();
+
+                    #region General
+
+                    newSettings.CompanysName = HostersName;
+                    newSettings.ResellersEnabled = ResellersEnabled;
+
+                    #endregion
+
+                    #region Active Directory
+
+                    newSettings.BaseOU = HostingOU;
+                    newSettings.UsersOU = UsersOU;
+                    newSettings.PrimaryDC = PrimaryDC;
+                    newSettings.Username = Username;
+                    newSettings.Password = EncryptedPassword;
+
+                    #endregion
+
+                    #region Security Groups
+
+                    newSettings.SuperAdmins = SuperAdmins;
+                    newSettings.BillingAdmins = BillingAdmins;
+
+                    #endregion
+
+                    #region Billing
+
+                    #endregion
+
+                    #region Exchange
+
+                    newSettings.ExchangeConnectionType = ExchangeConnectionType;
+                    newSettings.ExchangeVersion = ExchangeVersion;
+                    newSettings.ExchangeFqdn = ExchangeServer;
+                    newSettings.ExchangePFServer = ExchangePublicFolderServer;
+                    newSettings.ExchDatabases = ExchangeDatabases;
+                    newSettings.PublicFolderEnabled = PublicFoldersEnabled;
+                    newSettings.ExchangeSSLEnabled = ExchangeSSLEnabled;
+
+                    #endregion
+
+                    #region Modules
+
+                    newSettings.CitrixEnabled = CitrixEnabled;
+                    newSettings.LyncEnabled = LyncEnabled;
+
+                    #endregion
+
+                    #region Other
+
+                    newSettings.LockdownEnabled = LockdownEnabled;
+                    newSettings.AllowCustomNameAttrib = AllowCustomNameAttribute;
+                    newSettings.IPBlockingEnabled = IPBlockingEnabled;
+                    newSettings.IPBlockingFailedCount = IPBlockingFailedCount;
+                    newSettings.IPBlockingLockedMinutes = IPBlockingLockedInMinutes;
+
+                    #endregion
+
+                    // Insert
+                    database.Settings.Add(newSettings);
+                    database.SaveChanges();
+                }
+                else
+                {
+                    #region General
+
+                    newSettings.CompanysName = HostersName;
+                    newSettings.ResellersEnabled = ResellersEnabled;
+
+                    #endregion
+
+                    #region Active Directory
+
+                    newSettings.BaseOU = HostingOU;
+                    newSettings.UsersOU = UsersOU;
+                    newSettings.PrimaryDC = PrimaryDC;
+                    newSettings.Username = Username;
+                    newSettings.Password = EncryptedPassword;
+
+                    #endregion
+
+                    #region Security Groups
+
+                    newSettings.SuperAdmins = SuperAdmins;
+                    newSettings.BillingAdmins = BillingAdmins;
+
+                    #endregion
+
+                    #region Billing
+
+                    #endregion
+
+                    #region Exchange
+
+                    newSettings.ExchangeConnectionType = ExchangeConnectionType;
+                    newSettings.ExchangeVersion = ExchangeVersion;
+                    newSettings.ExchangeFqdn = ExchangeServer;
+                    newSettings.ExchangePFServer = ExchangePublicFolderServer;
+                    newSettings.ExchDatabases = ExchangeDatabases;
+                    newSettings.PublicFolderEnabled = PublicFoldersEnabled;
+                    newSettings.ExchangeSSLEnabled = ExchangeSSLEnabled;
+
+                    #endregion
+
+                    #region Modules
+
+                    newSettings.CitrixEnabled = CitrixEnabled;
+                    newSettings.LyncEnabled = LyncEnabled;
+
+                    #endregion
+
+                    #region Other
+
+                    newSettings.LockdownEnabled = LockdownEnabled;
+                    newSettings.AllowCustomNameAttrib = AllowCustomNameAttribute;
+                    newSettings.IPBlockingEnabled = IPBlockingEnabled;
+                    newSettings.IPBlockingFailedCount = IPBlockingFailedCount;
+                    newSettings.IPBlockingLockedMinutes = IPBlockingLockedInMinutes;
+
+                    #endregion
+
+                    // Save
+                    database.SaveChanges();
+                }
             }
             catch (Exception)
             {

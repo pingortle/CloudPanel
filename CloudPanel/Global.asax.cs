@@ -30,7 +30,7 @@ namespace CloudPanel
             {
                 this.logger.Fatal("Error loading settings", ex);
 
-                throw;
+                // TODO SHOW ERROR
             }
         }
 

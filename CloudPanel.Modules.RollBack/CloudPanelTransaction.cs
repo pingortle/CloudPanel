@@ -49,6 +49,24 @@ namespace CloudPanel.Modules.RollBack
         public void RollBack()
         {
             // Roll back all CloudPanelEvents that have occurred
+            Events.Reverse();
+
+            foreach (CloudPanelEvent e in Events)
+            {
+                switch (e.EventType)
+                {
+                    case CloudPanelEventType.Create_OrganizationalUnit:
+                        // Delete Organizational Unit
+
+                        break;
+                    case CloudPanelEventType.Create_SecurityGroup:
+                        // Delete Security Gorup
+
+                        break;
+                    default:
+                        break;
+                }
+            }
         }
 
         #endregion

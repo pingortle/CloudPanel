@@ -220,6 +220,15 @@ namespace CloudPanel.Template {
         protected global::System.Web.UI.WebControls.HyperLink hlBilling;
         
         /// <summary>
+        /// hlSettings control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HyperLink hlSettings;
+        
+        /// <summary>
         /// lnkLockScreen control.
         /// </summary>
         /// <remarks>

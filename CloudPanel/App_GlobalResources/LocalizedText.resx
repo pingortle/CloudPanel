@@ -327,4 +327,139 @@
   <data name="Resellers_ZipCode" xml:space="preserve">
     <value>Zip Code</value>
   </data>
+  <data name="Settings_ActiveDirectory" xml:space="preserve">
+    <value>Active Directory</value>
+  </data>
+  <data name="Settings_AdvCustomNameAttrib" xml:space="preserve">
+    <value>Enable Custom 'Name' Attribute</value>
+  </data>
+  <data name="Settings_AdvIPBlockingEnabled" xml:space="preserve">
+    <value>IP Blocking Enabled</value>
+  </data>
+  <data name="Settings_AdvIPBlockingFailed" xml:space="preserve">
+    <value>IP Blocking Failed Count</value>
+  </data>
+  <data name="Settings_AdvIPBlockingLockout" xml:space="preserve">
+    <value>IP Blocking Lockout In Minutes</value>
+  </data>
+  <data name="Settings_AdvOnlySuperAdmins" xml:space="preserve">
+    <value>Only Allow Super Admins</value>
+  </data>
+  <data name="Settings_Billing" xml:space="preserve">
+    <value>Billing</value>
+  </data>
+  <data name="Settings_BillingAdmins" xml:space="preserve">
+    <value>Billing Admins</value>
+  </data>
+  <data name="Settings_CompanyName" xml:space="preserve">
+    <value>Company Name</value>
+  </data>
+  <data name="Settings_CornerLogo" xml:space="preserve">
+    <value>Corner Logo</value>
+  </data>
+  <data name="Settings_DefaultCurrencySymbol" xml:space="preserve">
+    <value>Default Currency Symbol</value>
+  </data>
+  <data name="Settings_DomainController" xml:space="preserve">
+    <value>Domain Controller</value>
+  </data>
+  <data name="Settings_EnableCitrixHosting" xml:space="preserve">
+    <value>Enable Citrix Hosting</value>
+  </data>
+  <data name="Settings_EnableExchangeHosting" xml:space="preserve">
+    <value>Enable Exchange Hosting</value>
+  </data>
+  <data name="Settings_EnableLyncHosting" xml:space="preserve">
+    <value>Enable Lync Hosting</value>
+  </data>
+  <data name="Settings_EnableResellerAccounts" xml:space="preserve">
+    <value>Enable Reseller Accounts?</value>
+  </data>
+  <data name="Settings_EnableSharepointHosting" xml:space="preserve">
+    <value>Enable Sharepoint Hosting</value>
+  </data>
+  <data name="Settings_EnableWebsiteHosting" xml:space="preserve">
+    <value>Enable Website Hosting</value>
+  </data>
+  <data name="Settings_Exchange" xml:space="preserve">
+    <value>Exchange</value>
+  </data>
+  <data name="Settings_ExchConnectionType" xml:space="preserve">
+    <value>Connection Type</value>
+  </data>
+  <data name="Settings_ExchDatabases" xml:space="preserve">
+    <value>Exchange Databases</value>
+  </data>
+  <data name="Settings_ExchPFEnabled" xml:space="preserve">
+    <value>Public Folders Enabled</value>
+  </data>
+  <data name="Settings_ExchPFServer" xml:space="preserve">
+    <value>Public Folder Server</value>
+  </data>
+  <data name="Settings_ExchServer" xml:space="preserve">
+    <value>Exchange Server</value>
+  </data>
+  <data name="Settings_ExchSSLEnabled" xml:space="preserve">
+    <value>Communicate using SSL</value>
+  </data>
+  <data name="Settings_ExchVersion" xml:space="preserve">
+    <value>Exchange Version</value>
+  </data>
+  <data name="Settings_General" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="Settings_HostingOU" xml:space="preserve">
+    <value>Hosting OU</value>
+  </data>
+  <data name="Settings_LoginLogo" xml:space="preserve">
+    <value>Login Logo</value>
+  </data>
+  <data name="Settings_Modules" xml:space="preserve">
+    <value>Modules</value>
+  </data>
+  <data name="Settings_Notifications" xml:space="preserve">
+    <value>Notifications</value>
+  </data>
+  <data name="Settings_NotificationsEnable" xml:space="preserve">
+    <value>Enable Error Notifications</value>
+  </data>
+  <data name="Settings_NotificationsFrom" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="Settings_NotificationsPassword" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Settings_NotificationsPort" xml:space="preserve">
+    <value>Port</value>
+  </data>
+  <data name="Settings_NotificationsServer" xml:space="preserve">
+    <value>Server</value>
+  </data>
+  <data name="Settings_NotificationsTo" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="Settings_NotificationsUsername" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="Settings_Other" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="Settings_Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Settings_SecurityGroups" xml:space="preserve">
+    <value>Security Groups</value>
+  </data>
+  <data name="Settings_Settings" xml:space="preserve">
+    <value>Settings</value>
+  </data>
+  <data name="Settings_SuperAdmins" xml:space="preserve">
+    <value>Super Admins</value>
+  </data>
+  <data name="Settings_Username" xml:space="preserve">
+    <value>DOMAIN\Username</value>
+  </data>
+  <data name="Settings_UsersOU" xml:space="preserve">
+    <value>Users OU</value>
+  </data>
 </root>

@@ -30,8 +30,11 @@ namespace CloudPanel
             resellerModel.ViewModelEvent += resellerModel_ViewModelEvent;
 
             List<ResellerObject> foundResellers = resellerModel.GetResellers();
-            resellersRepeater.DataSource = foundResellers;
-            resellersRepeater.DataBind();
+            if (foundResellers != null)
+            {
+                resellersRepeater.DataSource = foundResellers;
+                resellersRepeater.DataBind();
+            }
 
             // Show the panel no matter what
             panelEditCreateReseller.Visible = false;
@@ -90,12 +93,18 @@ namespace CloudPanel
             else
                 newReseller.Country = string.Empty;
 
-            //
-            // Create new reseller
-            //
-            ResellerViewModel resellerModel = new ResellerViewModel();
-            resellerModel.ViewModelEvent += resellerModel_ViewModelEvent;
-            resellerModel.NewReseller(newReseller, StaticSettings.HostingOU);
+            // Validate
+            if (newReseller.CompanyName.Length < 3)
+                alertmessage.SetMessage(Modules.Base.Enumerations.AlertID.WARNING, "The company name must be three characters or more");
+            else
+            {
+                //
+                // Create new reseller
+                //
+                ResellerViewModel resellerModel = new ResellerViewModel();
+                resellerModel.ViewModelEvent += resellerModel_ViewModelEvent;
+                resellerModel.NewReseller(newReseller, StaticSettings.HostingOU);
+            }
         }
 
         protected void resellersRepeater_ItemCommand(object source, RepeaterCommandEventArgs e)
@@ -133,8 +142,6 @@ namespace CloudPanel
         {
             // Set the hidden field to null because we are creating a new reseller
             hfResellerCode.Value = string.Empty;
-
-            txtName.ReadOnly = false;
 
             panelEditCreateReseller.Visible = true;
             panelResellerList.Visible = false;
