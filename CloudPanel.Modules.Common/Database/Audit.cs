@@ -21,5 +21,6 @@ namespace CloudPanel.Modules.Common.Database
         public string MethodName { get; set; }
         public string Parameters { get; set; }
         public string Message { get; set; }
+        public string CompanyCode { get; set; }
     }
 }

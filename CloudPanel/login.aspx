@@ -37,7 +37,7 @@
 
                         <div class="signin-info">
                             <div class="logopanel">
-                                <h1><span>[</span> bracket <span>]</span></h1>
+                                <h1><span>[</span> CloudPanel <span>]</span></h1>
                             </div>
                             <!-- logopanel -->
 
@@ -60,14 +60,20 @@
                     <!-- col-sm-7 -->
 
                     <div class="col-md-5">
-
+                        <div class="cppanel">
                             <h4 class="nomargin"><%= Resources.LocalizedText.Login_Signin %></h4>
                             <p class="mt5 mb20"><%= Resources.LocalizedText.Login_LoginToAccess %></p>
 
-                            <input type="text" class="form-control uname" placeholder='<%= Resources.LocalizedText.Login_Username %>' />
-                            <input type="password" class="form-control pword" placeholder='<%= Resources.LocalizedText.Login_Password %>' />
-                            <button class="btn btn-success btn-block"><%= Resources.LocalizedText.Login_Signin %></button>
+                            <asp:TextBox ID="txtUsername" runat="server" CssClass="form-control uname" placeholder='<%$ Resources:LocalizedText, Login_Username %>'></asp:TextBox>
+                            <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control pword" placeholder='<%$ Resources:LocalizedText, Login_Password %>' TextMode="Password"></asp:TextBox>
+                            
+                            <asp:Button ID="btnLogin" runat="server" Text='<%$ Resources:LocalizedText, Login_Signin %>' CssClass="btn btn-success btn-block" OnClick="btnLogin_Click" />
 
+                            <br />
+
+                            <asp:Label ID="lbLoginMessage" runat="server" Text="" ForeColor="Red"></asp:Label>
+                            
+                        </div>
                     </div>
                     <!-- col-sm-5 -->
 

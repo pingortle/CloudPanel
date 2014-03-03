@@ -78,6 +78,44 @@ namespace CloudPanel.Modules.ActiveDirectory.Groups
         }
 
         /// <summary>
+        /// Deletes a group from Active Directory
+        /// </summary>
+        /// <param name="groupname"></param>
+        public void Delete(string groupname)
+        {
+            PrincipalContext pc = null;
+            GroupPrincipal gp = null;
+
+            try
+            {
+                // Remove all whitespaces
+                groupname = groupname.Replace(" ", string.Empty);
+
+                this.logger.Debug("Deleting group " + groupname);
+
+                pc = new PrincipalContext(ContextType.Domain, this.domainController, this.username, this.password);
+                gp = GroupPrincipal.FindByIdentity(pc, IdentityType.Name, groupname);
+
+                if (gp != null)
+                {
+                    gp.Delete();
+                }
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (gp != null)
+                    gp.Dispose();
+
+                if (pc != null)
+                    pc.Dispose();
+            }
+        }
+
+        /// <summary>
         /// Adds a member to a group
         /// </summary>
         /// <param name="groupName"></param>
@@ -91,6 +129,7 @@ namespace CloudPanel.Modules.ActiveDirectory.Groups
             {
                 // Replace whitespaces
                 groupName = groupName.Replace(" ", string.Empty);
+                objectToAdd = objectToAdd.Replace(" ", string.Empty);
 
                 this.logger.Debug("Attempting to add " + objectToAdd + " to group " + groupName);
 

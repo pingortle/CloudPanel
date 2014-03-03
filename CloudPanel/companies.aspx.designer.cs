@@ -13,6 +13,15 @@ namespace CloudPanel {
     public partial class companies {
         
         /// <summary>
+        /// alertmessage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::CloudPanel.cpcontrols.alertmessage alertmessage;
+        
+        /// <summary>
         /// btnAddCompany control.
         /// </summary>
         /// <remarks>
@@ -22,31 +31,22 @@ namespace CloudPanel {
         protected global::System.Web.UI.WebControls.Button btnAddCompany;
         
         /// <summary>
-        /// panelResellerList control.
+        /// panelCompanyList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel panelResellerList;
+        protected global::System.Web.UI.WebControls.Panel panelCompanyList;
         
         /// <summary>
-        /// LinkButton3 control.
+        /// repeaterCompanies control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton3;
-        
-        /// <summary>
-        /// LinkButton4 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton LinkButton4;
+        protected global::System.Web.UI.WebControls.Repeater repeaterCompanies;
         
         /// <summary>
         /// panelEditCreateCompany control.
@@ -74,6 +74,15 @@ namespace CloudPanel {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox cbUseCompanyName;
+        
+        /// <summary>
+        /// hfCompanyCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfCompanyCode;
         
         /// <summary>
         /// txtContactsName control.

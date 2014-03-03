@@ -117,44 +117,76 @@ namespace CloudPanel.Modules.Common.Settings
                     Password = settings.Password;
 
                     UsersOU = settings.UsersOU;
+                    logger.Debug("Users OU: " + UsersOU);
 
                     SuperAdmins = settings.SuperAdmins;
+                    logger.Debug("Super Admins: " + SuperAdmins);
+
                     BillingAdmins = settings.BillingAdmins;
+                    logger.Debug("Billing Admins: " + BillingAdmins);
 
                     ExchangeServer = settings.ExchangeFqdn;
+                    logger.Debug("Exchange Server: " + ExchangeServer);
+
                     ExchangePublicFolderServer = settings.ExchangePFServer;
+                    logger.Debug("Exchange Public Folder Server: " + ExchangePublicFolderServer);
+
                     ExchangeVersion = settings.ExchangeVersion;
+                    logger.Debug("Exchange Version: " + ExchangeVersion.ToString());
+
                     ExchangeSSLEnabled = settings.ExchangeSSLEnabled;
+                    logger.Debug("Exchange SSL Enabled: " +  ExchangeSSLEnabled.ToString());
+
                     ExchangeConnectionType = settings.ExchangeConnectionType;
+                    logger.Debug("Exchange Connection Type: " + ExchangeConnectionType);
+
                     ExchangeDatabases = settings.ExchDatabases;
+                    logger.Debug("Exchange Databases: " + ExchangeDatabases);
+
                     PublicFoldersEnabled = settings.PublicFolderEnabled;
+                    logger.Debug("Public Folders Enabled: " + PublicFoldersEnabled.ToString());
 
                     CitrixEnabled = settings.CitrixEnabled;
+                    logger.Debug("Citrix Enabled: " + CitrixEnabled.ToString());
+
                     LyncEnabled = settings.LyncEnabled;
+                    logger.Debug("Lync Enabled: " + LyncEnabled.ToString());
+
+                    HostersName = settings.CompanysName;
+                    logger.Debug("Hosters Name: " + HostersName);
 
                     bool isResellersEnabled = false;
                     bool.TryParse(settings.ResellersEnabled.ToString(), out isResellersEnabled);
                     ResellersEnabled = isResellersEnabled;
-
-                    HostersName = settings.CompanysName;
+                    logger.Debug("Resellers Enabled: " + ResellersEnabled.ToString());
 
                     bool allowCustomAttrib = false;
                     bool.TryParse(settings.AllowCustomNameAttrib.ToString(), out allowCustomAttrib);
                     AllowCustomNameAttribute = allowCustomAttrib;
+                    logger.Debug("Allow Custom Name Attribute: " + AllowCustomNameAttribute);
 
                     CornerLogo = settings.BrandingCornerLogo;
+                    logger.Debug("Corner Logo: " + CornerLogo);
+
                     LoginLogo = settings.BrandingLoginLogo;
+                    logger.Debug("Login Logo: " + LoginLogo);
 
                     bool ipBlockingEnabled = false;
                     bool.TryParse(settings.IPBlockingEnabled.ToString(), out ipBlockingEnabled);
+                    IPBlockingEnabled = ipBlockingEnabled;
+                    logger.Debug("IP Blocking Enabled: " + IPBlockingEnabled.ToString());
 
 
                     int ipBlockingFailedCount = 0;
                     int.TryParse(settings.IPBlockingFailedCount.ToString(), out ipBlockingFailedCount);
+                    IPBlockingFailedCount = ipBlockingFailedCount;
+                    logger.Debug("IP Blocking Failed Count: " + IPBlockingFailedCount.ToString());
 
 
                     int ipBlockingInMinutes = 0;
                     int.TryParse(settings.IPBlockingLockedMinutes.ToString(), out ipBlockingInMinutes);
+                    IPBlockingLockedInMinutes = ipBlockingInMinutes;
+                    logger.Debug("IP Blocking Locked Out In Minutes: " + IPBlockingLockedInMinutes.ToString());
                 }
             }
             catch (Exception)

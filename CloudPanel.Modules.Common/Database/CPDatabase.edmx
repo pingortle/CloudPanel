@@ -1,77 +1,25 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
   <!-- EF Runtime content -->
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="CloudPanelModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
-        <EntityContainer Name="CloudPanelModelStoreContainer">
-          <EntitySet Name="ApiAccess" EntityType="CloudPanelModel.Store.ApiAccess" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Audit" EntityType="CloudPanelModel.Store.Audit" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="AuditLogin" EntityType="CloudPanelModel.Store.AuditLogin" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Companies" EntityType="CloudPanelModel.Store.Companies" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="CompanyStats" EntityType="CloudPanelModel.Store.CompanyStats" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Contacts" EntityType="CloudPanelModel.Store.Contacts" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="DistributionGroups" EntityType="CloudPanelModel.Store.DistributionGroups" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Domains" EntityType="CloudPanelModel.Store.Domains" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="LogTable" EntityType="CloudPanelModel.Store.LogTable" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Plans_Citrix" EntityType="CloudPanelModel.Store.Plans_Citrix" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Plans_ExchangeActiveSync" EntityType="CloudPanelModel.Store.Plans_ExchangeActiveSync" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Plans_ExchangeMailbox" EntityType="CloudPanelModel.Store.Plans_ExchangeMailbox" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Plans_Organization" EntityType="CloudPanelModel.Store.Plans_Organization" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Plans_TerminalServices" EntityType="CloudPanelModel.Store.Plans_TerminalServices" store:Type="Tables" store:Schema="dbo" store:Name="Plans_TerminalServices">
-            <DefiningQuery>SELECT 
-      [Plans_TerminalServices].[TSPlanID] AS [TSPlanID], 
-      [Plans_TerminalServices].[TSPlanName] AS [TSPlanName], 
-      [Plans_TerminalServices].[ResellerCode] AS [ResellerCode], 
-      [Plans_TerminalServices].[ProductID] AS [ProductID], 
-      [Plans_TerminalServices].[MaxUserSpaceMB] AS [MaxUserSpaceMB]
-      FROM [dbo].[Plans_TerminalServices] AS [Plans_TerminalServices]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="PriceOverride" EntityType="CloudPanelModel.Store.PriceOverride" store:Type="Tables" store:Schema="dbo" store:Name="PriceOverride">
-            <DefiningQuery>SELECT 
-      [PriceOverride].[CompanyCode] AS [CompanyCode], 
-      [PriceOverride].[Price] AS [Price], 
-      [PriceOverride].[PlanID] AS [PlanID], 
-      [PriceOverride].[Product] AS [Product]
-      FROM [dbo].[PriceOverride] AS [PriceOverride]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="Prices" EntityType="CloudPanelModel.Store.Prices" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="ResourceMailboxes" EntityType="CloudPanelModel.Store.ResourceMailboxes" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Settings" EntityType="CloudPanelModel.Store.Settings" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Stats_CitrixCount" EntityType="CloudPanelModel.Store.Stats_CitrixCount" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Stats_ExchCount" EntityType="CloudPanelModel.Store.Stats_ExchCount" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Stats_UserCount" EntityType="CloudPanelModel.Store.Stats_UserCount" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="SvcMailboxDatabaseSizes" EntityType="CloudPanelModel.Store.SvcMailboxDatabaseSizes" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="SvcMailboxSizes" EntityType="CloudPanelModel.Store.SvcMailboxSizes" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="SvcQueue" EntityType="CloudPanelModel.Store.SvcQueue" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="SvcTask" EntityType="CloudPanelModel.Store.SvcTask" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="UserPermissions" EntityType="CloudPanelModel.Store.UserPermissions" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="UserPlans" EntityType="CloudPanelModel.Store.UserPlans" store:Type="Tables" store:Schema="dbo" store:Name="UserPlans">
-            <DefiningQuery>SELECT 
-      [UserPlans].[UserGuid] AS [UserGuid], 
-      [UserPlans].[ProductID] AS [ProductID], 
-      [UserPlans].[PlanID] AS [PlanID], 
-      [UserPlans].[CompanyCode] AS [CompanyCode]
-      FROM [dbo].[UserPlans] AS [UserPlans]</DefiningQuery>
-          </EntitySet>
-          <EntitySet Name="UserPlansCitrix" EntityType="CloudPanelModel.Store.UserPlansCitrix" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="Users" EntityType="CloudPanelModel.Store.Users" store:Type="Tables" Schema="dbo" />
-        </EntityContainer>
+    <Schema Namespace="CloudPanelModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="ApiAccess">
           <Key>
             <PropertyRef Name="CustomerKey" />
           </Key>
-          <Property Name="CustomerKey" Type="varchar" Nullable="false" MaxLength="255" />
-          <Property Name="CustomerSecret" Type="varchar" Nullable="false" MaxLength="255" />
-          <Property Name="CompanyCode" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="CustomerKey" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="CustomerSecret" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="CompanyCode" Type="varchar" MaxLength="255" Nullable="false" />
         </EntityType>
         <EntityType Name="Audit">
           <Key>
             <PropertyRef Name="AuditID" />
           </Key>
-          <Property Name="AuditID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Username" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="AuditID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyCode" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Date" Type="datetime" Nullable="false" />
           <Property Name="SeverityID" Type="int" />
           <Property Name="MethodName" Type="varchar" MaxLength="100" />
@@ -82,9 +30,9 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="IPAddress" Type="varchar" Nullable="false" MaxLength="128" />
-          <Property Name="Username" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="IPAddress" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="LoginStatus" Type="bit" Nullable="false" />
           <Property Name="AuditTimeStamp" Type="datetime" Nullable="false" />
         </EntityType>
@@ -92,22 +40,22 @@
           <Key>
             <PropertyRef Name="CompanyId" />
           </Key>
-          <Property Name="CompanyId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="IsReseller" Type="bit" Nullable="false" />
           <Property Name="ResellerCode" Type="nvarchar" MaxLength="255" />
           <Property Name="OrgPlanID" Type="int" />
-          <Property Name="CompanyName" Type="nvarchar" Nullable="false" MaxLength="100" />
-          <Property Name="CompanyCode" Type="nvarchar" Nullable="false" MaxLength="255" />
-          <Property Name="Street" Type="nvarchar" Nullable="false" MaxLength="255" />
-          <Property Name="City" Type="nvarchar" Nullable="false" MaxLength="100" />
-          <Property Name="State" Type="nvarchar" Nullable="false" MaxLength="100" />
-          <Property Name="ZipCode" Type="nvarchar" Nullable="false" MaxLength="50" />
-          <Property Name="PhoneNumber" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="CompanyName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="CompanyCode" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Street" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="City" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="State" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="ZipCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Website" Type="nvarchar" MaxLength="255" />
           <Property Name="Description" Type="ntext" />
-          <Property Name="AdminName" Type="nvarchar" Nullable="false" MaxLength="100" />
-          <Property Name="AdminEmail" Type="nvarchar" Nullable="false" MaxLength="255" />
-          <Property Name="DistinguishedName" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="AdminName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="AdminEmail" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="DistinguishedName" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="Created" Type="datetime" Nullable="false" />
           <Property Name="ExchEnabled" Type="bit" Nullable="false" />
           <Property Name="LyncEnabled" Type="bit" />
@@ -137,30 +85,30 @@
           <Key>
             <PropertyRef Name="DistinguishedName" />
           </Key>
-          <Property Name="DistinguishedName" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="DistinguishedName" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="CompanyCode" Type="varchar" MaxLength="255" />
-          <Property Name="DisplayName" Type="varchar" Nullable="false" MaxLength="255" />
-          <Property Name="Email" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="DisplayName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Hidden" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="DistributionGroups">
           <Key>
             <PropertyRef Name="DistinguishedName" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="DistinguishedName" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DistinguishedName" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="CompanyCode" Type="varchar" MaxLength="255" />
-          <Property Name="DisplayName" Type="varchar" Nullable="false" MaxLength="255" />
-          <Property Name="Email" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="DisplayName" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Hidden" Type="bit" Nullable="false" />
         </EntityType>
         <EntityType Name="Domains">
           <Key>
             <PropertyRef Name="DomainID" />
           </Key>
-          <Property Name="DomainID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="DomainID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="CompanyCode" Type="varchar" MaxLength="255" />
-          <Property Name="Domain" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="Domain" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="IsSubDomain" Type="bit" />
           <Property Name="IsDefault" Type="bit" Nullable="false" />
           <Property Name="IsAcceptedDomain" Type="bit" Nullable="false" />
@@ -170,7 +118,7 @@
           <Key>
             <PropertyRef Name="AuditID" />
           </Key>
-          <Property Name="AuditID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AuditID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="LogTime" Type="datetime" Nullable="false" />
           <Property Name="LogType" Type="int" Nullable="false" />
           <Property Name="CodeClass" Type="ntext" />
@@ -185,9 +133,9 @@
           <Key>
             <PropertyRef Name="CitrixPlanID" />
           </Key>
-          <Property Name="CitrixPlanID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="Name" Type="varchar" Nullable="false" MaxLength="56" />
-          <Property Name="GroupName" Type="varchar" Nullable="false" MaxLength="64" />
+          <Property Name="CitrixPlanID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="56" Nullable="false" />
+          <Property Name="GroupName" Type="varchar" MaxLength="64" Nullable="false" />
           <Property Name="Description" Type="ntext" />
           <Property Name="IsServer" Type="bit" Nullable="false" />
           <Property Name="CompanyCode" Type="varchar" MaxLength="255" />
@@ -199,9 +147,9 @@
           <Key>
             <PropertyRef Name="ASID" />
           </Key>
-          <Property Name="ASID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="CompanyCode" Type="varchar" Nullable="false" MaxLength="255" />
-          <Property Name="DisplayName" Type="varchar" Nullable="false" MaxLength="150" />
+          <Property Name="ASID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CompanyCode" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="DisplayName" Type="varchar" MaxLength="150" Nullable="false" />
           <Property Name="Description" Type="ntext" />
           <Property Name="ExchangeName" Type="varchar" MaxLength="75" />
           <Property Name="AllowNonProvisionableDevices" Type="bit" />
@@ -243,8 +191,8 @@
           <Key>
             <PropertyRef Name="MailboxPlanID" />
           </Key>
-          <Property Name="MailboxPlanID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="MailboxPlanName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="MailboxPlanID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MailboxPlanName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ProductID" Type="int" />
           <Property Name="ResellerCode" Type="varchar" MaxLength="255" />
           <Property Name="CompanyCode" Type="varchar" MaxLength="255" />
@@ -269,8 +217,8 @@
           <Key>
             <PropertyRef Name="OrgPlanID" />
           </Key>
-          <Property Name="OrgPlanID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="OrgPlanName" Type="nvarchar" Nullable="false" MaxLength="50" />
+          <Property Name="OrgPlanID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="OrgPlanName" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="ProductID" Type="int" Nullable="false" />
           <Property Name="ResellerCode" Type="varchar" MaxLength="255" />
           <Property Name="MaxUsers" Type="int" Nullable="false" />
@@ -286,8 +234,7 @@
           <Property Name="MaxExchangeResourceMailboxes" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
-      warning 6002: The table/view 'CloudPanel.dbo.Plans_TerminalServices' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
+warning 6002: The table/view 'CloudPanel.dbo.Plans_TerminalServices' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Plans_TerminalServices">
           <Key>
             <PropertyRef Name="TSPlanID" />
@@ -296,19 +243,18 @@
             <PropertyRef Name="ProductID" />
           </Key>
           <Property Name="TSPlanID" Type="int" Nullable="false" />
-          <Property Name="TSPlanName" Type="nvarchar" Nullable="false" MaxLength="50" />
-          <Property Name="ResellerCode" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="TSPlanName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ResellerCode" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="ProductID" Type="int" Nullable="false" />
           <Property Name="MaxUserSpaceMB" Type="int" />
         </EntityType>
         <!--Errors Found During Generation:
-      warning 6002: The table/view 'CloudPanel.dbo.PriceOverride' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
+warning 6002: The table/view 'CloudPanel.dbo.PriceOverride' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="PriceOverride">
           <Key>
             <PropertyRef Name="CompanyCode" />
           </Key>
-          <Property Name="CompanyCode" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="CompanyCode" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Price" Type="nvarchar" MaxLength="25" />
           <Property Name="PlanID" Type="int" />
           <Property Name="Product" Type="varchar" MaxLength="25" />
@@ -317,22 +263,22 @@
           <Key>
             <PropertyRef Name="PriceID" />
           </Key>
-          <Property Name="PriceID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="PriceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="ProductID" Type="int" Nullable="false" />
           <Property Name="PlanID" Type="int" Nullable="false" />
-          <Property Name="CompanyCode" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="CompanyCode" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="Price" Type="money" Nullable="false" />
         </EntityType>
         <EntityType Name="ResourceMailboxes">
           <Key>
             <PropertyRef Name="ResourceID" />
           </Key>
-          <Property Name="ResourceID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="DisplayName" Type="nvarchar" Nullable="false" MaxLength="255" />
-          <Property Name="CompanyCode" Type="varchar" Nullable="false" MaxLength="255" />
-          <Property Name="UserPrincipalName" Type="nvarchar" Nullable="false" MaxLength="255" />
-          <Property Name="PrimarySmtpAddress" Type="nvarchar" Nullable="false" MaxLength="255" />
-          <Property Name="ResourceType" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="ResourceID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="CompanyCode" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="UserPrincipalName" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="PrimarySmtpAddress" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="ResourceType" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="MailboxPlan" Type="int" Nullable="false" />
           <Property Name="AdditionalMB" Type="int" Nullable="false" />
         </EntityType>
@@ -341,16 +287,16 @@
             <PropertyRef Name="ID" />
           </Key>
           <Property Name="BaseOU" Type="ntext" Nullable="false" />
-          <Property Name="PrimaryDC" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="Username" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="PrimaryDC" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Username" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Password" Type="ntext" Nullable="false" />
           <Property Name="SuperAdmins" Type="ntext" Nullable="false" />
           <Property Name="BillingAdmins" Type="ntext" Nullable="false" />
-          <Property Name="ExchangeFqdn" Type="varchar" Nullable="false" MaxLength="50" />
-          <Property Name="ExchangePFServer" Type="varchar" Nullable="false" MaxLength="50" />
+          <Property Name="ExchangeFqdn" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="ExchangePFServer" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="ExchangeVersion" Type="int" Nullable="false" />
           <Property Name="ExchangeSSLEnabled" Type="bit" Nullable="false" />
-          <Property Name="ExchangeConnectionType" Type="varchar" Nullable="false" MaxLength="10" />
+          <Property Name="ExchangeConnectionType" Type="varchar" MaxLength="10" Nullable="false" />
           <Property Name="PasswordMinLength" Type="int" Nullable="false" />
           <Property Name="PasswordComplexityType" Type="int" Nullable="false" />
           <Property Name="CitrixEnabled" Type="bit" Nullable="false" />
@@ -384,7 +330,7 @@
           <Property Name="SupportMailUsername" Type="varchar" MaxLength="255" />
           <Property Name="SupportMailPassword" Type="varchar" MaxLength="255" />
           <Property Name="SupportMailFrom" Type="varchar" MaxLength="255" />
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
         </EntityType>
         <EntityType Name="Stats_CitrixCount">
           <Key>
@@ -411,21 +357,21 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="DatabaseName" Type="nvarchar" Nullable="false" MaxLength="64" />
-          <Property Name="Server" Type="nvarchar" Nullable="false" MaxLength="64" />
-          <Property Name="DatabaseSize" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="DatabaseName" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="Server" Type="nvarchar" MaxLength="64" Nullable="false" />
+          <Property Name="DatabaseSize" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="Retrieved" Type="datetime" Nullable="false" />
         </EntityType>
         <EntityType Name="SvcMailboxSizes">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
-          <Property Name="UserPrincipalName" Type="varchar" Nullable="false" MaxLength="64" />
-          <Property Name="MailboxDatabase" Type="varchar" Nullable="false" MaxLength="255" />
-          <Property Name="TotalItemSizeInKB" Type="varchar" Nullable="false" MaxLength="255" />
-          <Property Name="TotalDeletedItemSizeInKB" Type="varchar" Nullable="false" MaxLength="255" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserPrincipalName" Type="varchar" MaxLength="64" Nullable="false" />
+          <Property Name="MailboxDatabase" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="TotalItemSizeInKB" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="TotalDeletedItemSizeInKB" Type="varchar" MaxLength="255" Nullable="false" />
           <Property Name="ItemCount" Type="int" Nullable="false" />
           <Property Name="DeletedItemCount" Type="int" Nullable="false" />
           <Property Name="Retrieved" Type="datetime" Nullable="false" />
@@ -434,7 +380,7 @@
           <Key>
             <PropertyRef Name="SvcQueueID" />
           </Key>
-          <Property Name="SvcQueueID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SvcQueueID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TaskID" Type="int" Nullable="false" />
           <Property Name="UserPrincipalName" Type="varchar" MaxLength="255" />
           <Property Name="CompanyCode" Type="varchar" MaxLength="255" />
@@ -448,7 +394,7 @@
           <Key>
             <PropertyRef Name="SvcTaskID" />
           </Key>
-          <Property Name="SvcTaskID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="SvcTaskID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="TaskType" Type="int" Nullable="false" />
           <Property Name="LastRun" Type="datetime" Nullable="false" />
           <Property Name="NextRun" Type="datetime" />
@@ -470,8 +416,7 @@
           <Property Name="ImportUsers" Type="bit" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
-      warning 6002: The table/view 'CloudPanel.dbo.UserPlans' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-      -->
+warning 6002: The table/view 'CloudPanel.dbo.UserPlans' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="UserPlans">
           <Key>
             <PropertyRef Name="UserGuid" />
@@ -487,7 +432,7 @@
           <Key>
             <PropertyRef Name="UPCID" />
           </Key>
-          <Property Name="UPCID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UPCID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserID" Type="int" Nullable="false" />
           <Property Name="CitrixPlanID" Type="int" Nullable="false" />
         </EntityType>
@@ -495,13 +440,13 @@
           <Key>
             <PropertyRef Name="UserGuid" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserGuid" Type="uniqueidentifier" Nullable="false" />
           <Property Name="CompanyCode" Type="varchar" MaxLength="255" />
           <Property Name="sAMAccountName" Type="nvarchar" MaxLength="255" />
-          <Property Name="UserPrincipalName" Type="nvarchar" Nullable="false" MaxLength="255" />
+          <Property Name="UserPrincipalName" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="DistinguishedName" Type="varchar" MaxLength="255" />
-          <Property Name="DisplayName" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="100" Nullable="false" />
           <Property Name="Firstname" Type="nvarchar" MaxLength="50" />
           <Property Name="Middlename" Type="nvarchar" MaxLength="50" />
           <Property Name="Lastname" Type="nvarchar" MaxLength="50" />
@@ -516,11 +461,64 @@
           <Property Name="AdditionalMB" Type="int" />
           <Property Name="ActiveSyncPlan" Type="int" />
         </EntityType>
+        <EntityContainer Name="CloudPanelModelStoreContainer">
+          <EntitySet Name="ApiAccess" EntityType="Self.ApiAccess" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Audit" EntityType="Self.Audit" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AuditLogin" EntityType="Self.AuditLogin" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Companies" EntityType="Self.Companies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CompanyStats" EntityType="Self.CompanyStats" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Contacts" EntityType="Self.Contacts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="DistributionGroups" EntityType="Self.DistributionGroups" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Domains" EntityType="Self.Domains" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LogTable" EntityType="Self.LogTable" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Plans_Citrix" EntityType="Self.Plans_Citrix" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Plans_ExchangeActiveSync" EntityType="Self.Plans_ExchangeActiveSync" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Plans_ExchangeMailbox" EntityType="Self.Plans_ExchangeMailbox" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Plans_Organization" EntityType="Self.Plans_Organization" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Prices" EntityType="Self.Prices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ResourceMailboxes" EntityType="Self.ResourceMailboxes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Settings" EntityType="Self.Settings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stats_CitrixCount" EntityType="Self.Stats_CitrixCount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stats_ExchCount" EntityType="Self.Stats_ExchCount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Stats_UserCount" EntityType="Self.Stats_UserCount" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SvcMailboxDatabaseSizes" EntityType="Self.SvcMailboxDatabaseSizes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SvcMailboxSizes" EntityType="Self.SvcMailboxSizes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SvcQueue" EntityType="Self.SvcQueue" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SvcTask" EntityType="Self.SvcTask" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserPermissions" EntityType="Self.UserPermissions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="UserPlansCitrix" EntityType="Self.UserPlansCitrix" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Users" EntityType="Self.Users" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Plans_TerminalServices" EntityType="Self.Plans_TerminalServices" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Plans_TerminalServices].[TSPlanID] AS [TSPlanID], 
+    [Plans_TerminalServices].[TSPlanName] AS [TSPlanName], 
+    [Plans_TerminalServices].[ResellerCode] AS [ResellerCode], 
+    [Plans_TerminalServices].[ProductID] AS [ProductID], 
+    [Plans_TerminalServices].[MaxUserSpaceMB] AS [MaxUserSpaceMB]
+    FROM [dbo].[Plans_TerminalServices] AS [Plans_TerminalServices]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="PriceOverride" EntityType="Self.PriceOverride" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [PriceOverride].[CompanyCode] AS [CompanyCode], 
+    [PriceOverride].[Price] AS [Price], 
+    [PriceOverride].[PlanID] AS [PlanID], 
+    [PriceOverride].[Product] AS [Product]
+    FROM [dbo].[PriceOverride] AS [PriceOverride]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="UserPlans" EntityType="Self.UserPlans" store:Type="Tables" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [UserPlans].[UserGuid] AS [UserGuid], 
+    [UserPlans].[ProductID] AS [ProductID], 
+    [UserPlans].[PlanID] AS [PlanID], 
+    [UserPlans].[CompanyCode] AS [CompanyCode]
+    FROM [dbo].[UserPlans] AS [UserPlans]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="CloudPanelModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
-        <EntityContainer Name="CPDatabase" annotation:LazyLoadingEnabled="true">
+      <Schema Namespace="CloudPanelModel" Alias="Self" xmlns="http://schemas.microsoft.com/ado/2009/11/edm" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
+        <EntityContainer Name="CPDatabase" annotation:LazyLoadingEnabled="true" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation">
           <EntitySet Name="ApiAccesses" EntityType="CloudPanelModel.ApiAccess" />
           <EntitySet Name="Audits" EntityType="CloudPanelModel.Audit" />
           <EntitySet Name="AuditLogins" EntityType="CloudPanelModel.AuditLogin" />
@@ -563,19 +561,20 @@
           <Key>
             <PropertyRef Name="AuditID" />
           </Key>
-          <Property Name="AuditID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AuditID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Username" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="SeverityID" Type="Int32" />
           <Property Name="MethodName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
           <Property Name="Parameters" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="Message" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
+          <Property Name="CompanyCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
         </EntityType>
         <EntityType Name="AuditLogin">
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="IPAddress" Type="String" Nullable="false" MaxLength="128" Unicode="false" FixedLength="false" />
           <Property Name="Username" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
           <Property Name="LoginStatus" Type="Boolean" Nullable="false" />
@@ -585,7 +584,7 @@
           <Key>
             <PropertyRef Name="CompanyId" />
           </Key>
-          <Property Name="CompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CompanyId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="IsReseller" Type="Boolean" Nullable="false" />
           <Property Name="ResellerCode" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
           <Property Name="OrgPlanID" Type="Int32" />
@@ -640,7 +639,7 @@
           <Key>
             <PropertyRef Name="DistinguishedName" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="DistinguishedName" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
           <Property Name="CompanyCode" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
           <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
@@ -651,7 +650,7 @@
           <Key>
             <PropertyRef Name="DomainID" />
           </Key>
-          <Property Name="DomainID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="DomainID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="CompanyCode" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
           <Property Name="Domain1" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
           <Property Name="IsSubDomain" Type="Boolean" />
@@ -663,7 +662,7 @@
           <Key>
             <PropertyRef Name="AuditID" />
           </Key>
-          <Property Name="AuditID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AuditID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="LogTime" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="LogType" Type="Int32" Nullable="false" />
           <Property Name="CodeClass" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
@@ -678,7 +677,7 @@
           <Key>
             <PropertyRef Name="CitrixPlanID" />
           </Key>
-          <Property Name="CitrixPlanID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CitrixPlanID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Name" Type="String" Nullable="false" MaxLength="56" Unicode="false" FixedLength="false" />
           <Property Name="GroupName" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
           <Property Name="Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
@@ -692,7 +691,7 @@
           <Key>
             <PropertyRef Name="ASID" />
           </Key>
-          <Property Name="ASID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ASID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="CompanyCode" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
           <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="150" Unicode="false" FixedLength="false" />
           <Property Name="Description" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
@@ -736,7 +735,7 @@
           <Key>
             <PropertyRef Name="MailboxPlanID" />
           </Key>
-          <Property Name="MailboxPlanID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MailboxPlanID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="MailboxPlanName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="ProductID" Type="Int32" />
           <Property Name="ResellerCode" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
@@ -762,7 +761,7 @@
           <Key>
             <PropertyRef Name="OrgPlanID" />
           </Key>
-          <Property Name="OrgPlanID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="OrgPlanID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="OrgPlanName" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="ProductID" Type="Int32" Nullable="false" />
           <Property Name="ResellerCode" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
@@ -804,7 +803,7 @@
           <Key>
             <PropertyRef Name="PriceID" />
           </Key>
-          <Property Name="PriceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="PriceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="ProductID" Type="Int32" Nullable="false" />
           <Property Name="PlanID" Type="Int32" Nullable="false" />
           <Property Name="CompanyCode" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
@@ -814,7 +813,7 @@
           <Key>
             <PropertyRef Name="ResourceID" />
           </Key>
-          <Property Name="ResourceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ResourceID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="DisplayName" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
           <Property Name="CompanyCode" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
           <Property Name="UserPrincipalName" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
@@ -871,7 +870,7 @@
           <Property Name="SupportMailUsername" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
           <Property Name="SupportMailPassword" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
           <Property Name="SupportMailFrom" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
         </EntityType>
         <EntityType Name="Stats_CitrixCount">
           <Key>
@@ -898,7 +897,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="DatabaseName" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" />
           <Property Name="Server" Type="String" Nullable="false" MaxLength="64" Unicode="true" FixedLength="false" />
           <Property Name="DatabaseSize" Type="String" Nullable="false" MaxLength="255" Unicode="true" FixedLength="false" />
@@ -908,7 +907,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="UserPrincipalName" Type="String" Nullable="false" MaxLength="64" Unicode="false" FixedLength="false" />
           <Property Name="MailboxDatabase" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
           <Property Name="TotalItemSizeInKB" Type="String" Nullable="false" MaxLength="255" Unicode="false" FixedLength="false" />
@@ -921,7 +920,7 @@
           <Key>
             <PropertyRef Name="SvcQueueID" />
           </Key>
-          <Property Name="SvcQueueID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SvcQueueID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="TaskID" Type="Int32" Nullable="false" />
           <Property Name="UserPrincipalName" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
           <Property Name="CompanyCode" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
@@ -935,7 +934,7 @@
           <Key>
             <PropertyRef Name="SvcTaskID" />
           </Key>
-          <Property Name="SvcTaskID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="SvcTaskID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="TaskType" Type="Int32" Nullable="false" />
           <Property Name="LastRun" Type="DateTime" Nullable="false" Precision="3" />
           <Property Name="NextRun" Type="DateTime" Precision="3" />
@@ -971,7 +970,7 @@
           <Key>
             <PropertyRef Name="UPCID" />
           </Key>
-          <Property Name="UPCID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UPCID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="UserID" Type="Int32" Nullable="false" />
           <Property Name="CitrixPlanID" Type="Int32" Nullable="false" />
         </EntityType>
@@ -979,7 +978,7 @@
           <Key>
             <PropertyRef Name="UserGuid" />
           </Key>
-          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="UserGuid" Type="Guid" Nullable="false" />
           <Property Name="CompanyCode" Type="String" MaxLength="255" Unicode="false" FixedLength="false" />
           <Property Name="sAMAccountName" Type="String" MaxLength="255" Unicode="true" FixedLength="false" />
@@ -1004,7 +1003,7 @@
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
-      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="CloudPanelModelStoreContainer" CdmEntityContainer="CPDatabase">
           <EntitySetMapping Name="ApiAccesses">
             <EntityTypeMapping TypeName="CloudPanelModel.ApiAccess">
@@ -1018,6 +1017,7 @@
           <EntitySetMapping Name="Audits">
             <EntityTypeMapping TypeName="CloudPanelModel.Audit">
               <MappingFragment StoreEntitySet="Audit">
+                <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
                 <ScalarProperty Name="AuditID" ColumnName="AuditID" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
@@ -1484,21 +1484,22 @@
     </edmx:Mappings>
   </edmx:Runtime>
   <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
-  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
-    <Connection>
-      <DesignerInfoPropertySet>
-        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
-      </DesignerInfoPropertySet>
-    </Connection>
-    <Options>
-      <DesignerInfoPropertySet>
-        <DesignerProperty Name="ValidateOnBuild" Value="true" />
-        <DesignerProperty Name="EnablePluralization" Value="True" />
-        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
-        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
-      </DesignerInfoPropertySet>
-    </Options>
+  <edmx:Designer>
+    <edmx:Connection>
+      <edmx:DesignerInfoPropertySet>
+        <edmx:DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </edmx:DesignerInfoPropertySet>
+    </edmx:Connection>
+    <edmx:Options>
+      <edmx:DesignerInfoPropertySet>
+        <edmx:DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <edmx:DesignerProperty Name="EnablePluralization" Value="True" />
+        <edmx:DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <edmx:DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <edmx:DesignerProperty Name="UseLegacyProvider" Value="False" />
+      </edmx:DesignerInfoPropertySet>
+    </edmx:Options>
     <!-- Diagram content (shape and connector positions) -->
-    <Diagrams></Diagrams>
-  </Designer>
+    <edmx:Diagrams />
+  </edmx:Designer>
 </edmx:Edmx>

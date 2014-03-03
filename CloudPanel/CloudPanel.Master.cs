@@ -11,7 +11,7 @@ namespace CloudPanel.Template
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         #region Button Click Events

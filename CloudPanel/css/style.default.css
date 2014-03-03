@@ -2829,7 +2829,7 @@ div.error label.error:before {
    margin-top: 15px;
 }
 
-.signinpanel form {
+.signinpanel .cppanel {
    background: rgba(255,255,255,0.2);
    border: 1px solid #ccc;
    -moz-box-shadow: 0 3px 0 rgba(12,12,12,0.03);
@@ -2841,7 +2841,7 @@ div.error label.error:before {
    padding: 30px;
 }
 
-.signinpanel form a {
+.signinpanel .cppanel a {
    color: #666;
 }
 

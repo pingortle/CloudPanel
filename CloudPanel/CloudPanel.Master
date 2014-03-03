@@ -14,6 +14,8 @@
 
     <link href="~/css/style.default.css" rel="stylesheet" runat="server" />
     <link href="~/css/jquery.datatables.css" rel="stylesheet" runat="server" />
+
+    <script src='<%= this.ResolveClientUrl("~/js/jquery-1.10.2.min.js") %>'></script>
     
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -116,7 +118,7 @@
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                         <img src="~/images/photos/loggeduser.png" alt="" runat="server" />
-                                        <%= HttpContext.Current.User.Identity.Name %>
+                                        <%= CloudPanel.WebSessionHandler.DisplayName %>
                                         <span class="caret"></span>
                                     </button>
                                     <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
@@ -142,7 +144,6 @@
         </section>
 
 
-        <script src='<%= this.ResolveClientUrl("~/js/jquery-1.10.2.min.js") %>'></script>
         <script src='<%= this.ResolveClientUrl("~/js/jquery-migrate-1.2.1.min.js") %>'></script>
         <script src='<%= this.ResolveClientUrl("~/js/bootstrap.min.js") %>'></script>
         <script src='<%= this.ResolveClientUrl("~/js/modernizr.min.js") %>'></script>

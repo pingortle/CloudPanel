@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Auditing\Audits.cs" />
     <Compile Include="Companies\CompanyObject.cs" />
     <Compile Include="Companies\ResellerObject.cs" />
     <Compile Include="Dashboard\OverviewStats.cs" />
@@ -47,6 +48,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\DataProtection.cs" />
     <Compile Include="Settings\SettingsObject.cs" />
+    <Compile Include="Statistics\OverallStats.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

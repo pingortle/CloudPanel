@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CloudPanel.Modules.ActiveDirectory.OrganizationalUnits;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -66,6 +67,24 @@ namespace CloudPanel.Modules.RollBack
                     default:
                         break;
                 }
+            }
+        }
+
+        #endregion
+
+        #region Roll Back Actions
+
+        private void Delete_OrganizationalUnit(string distinguishedName)
+        {
+            ADOrganizationalUnit org = null;
+
+            try
+            {
+
+            }
+            catch(Exception ex)
+            {
+
             }
         }
 

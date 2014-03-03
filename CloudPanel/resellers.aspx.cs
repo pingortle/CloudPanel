@@ -1,4 +1,5 @@
 ﻿using CloudPanel.Modules.Base.Companies;
+using CloudPanel.Modules.Common.GlobalActions;
 using CloudPanel.Modules.Common.Settings;
 using CloudPanel.Modules.Common.ViewModel;
 using System;
@@ -111,13 +112,28 @@ namespace CloudPanel
         {
             if (e.CommandName == "Edit")
                 PopulateReseller(e.CommandArgument.ToString());
+            else if (e.CommandName == "Select")
+            {
+                WebSessionHandler.SelectedResellerCode = e.CommandArgument.ToString();
+                Response.Redirect("companies.aspx", false);
+            }
         }
 
         #region Events
 
         void resellerModel_ViewModelEvent(Modules.Base.Enumerations.AlertID errorID, string message)
         {
-            alertmessage.SetMessage(errorID, message);
+            if (errorID == Modules.Base.Enumerations.AlertID.SUCCESS_NEW_RESELLER)
+            {
+                string successMessage = string.Format("{0} {1}", Resources.LocalizedText.Audits_NewReseller, message);
+                AuditGlobal.AddAudit(WebSessionHandler.SelectedCompanyCode, WebSessionHandler.Username, successMessage);
+
+                // Set the success message
+                alertmessage.SetMessage(errorID, successMessage);
+            }
+            else
+                alertmessage.SetMessage(errorID, message);
+
 
             // Repopulate resellers
             PopulateResellers();

@@ -5,7 +5,6 @@ using CloudPanel.Modules.Base.Enumerations;
 using CloudPanel.Modules.Common.Database;
 using CloudPanel.Modules.Common.Other;
 using CloudPanel.Modules.Common.Settings;
-using CloudPanel.Modules.RollBack;
 using System.Data.Entity;
 using log4net;
 using System;
@@ -13,6 +12,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
+using CloudPanel.Modules.Common.Rollback;
 
 namespace CloudPanel.Modules.Common.ViewModel
 {
@@ -39,25 +39,28 @@ namespace CloudPanel.Modules.Common.ViewModel
 
                 List<ResellerObject> resellers = new List<ResellerObject>();
 
-                foreach (var reseller in resellersDb)
+                if (resellersDb != null)
                 {
-                    ResellerObject tmp = new ResellerObject();
-                    tmp.CompanyID = reseller.CompanyId;
-                    tmp.CompanyName = reseller.CompanyName;
-                    tmp.CompanyCode = reseller.CompanyCode;
-                    tmp.Street = reseller.Street;
-                    tmp.City = reseller.City;
-                    tmp.State = reseller.State;
-                    tmp.ZipCode = reseller.ZipCode;
-                    tmp.Country = reseller.Country;
-                    tmp.Telephone = reseller.PhoneNumber;
-                    tmp.Description = reseller.Description;
-                    tmp.AdminName = reseller.AdminName;
-                    tmp.AdminEmail = reseller.AdminEmail;
-                    tmp.DistinguishedName = reseller.DistinguishedName;
-                    tmp.Created = reseller.Created;
+                    foreach (var reseller in resellersDb)
+                    {
+                        ResellerObject tmp = new ResellerObject();
+                        tmp.CompanyID = reseller.CompanyId;
+                        tmp.CompanyName = reseller.CompanyName;
+                        tmp.CompanyCode = reseller.CompanyCode;
+                        tmp.Street = reseller.Street;
+                        tmp.City = reseller.City;
+                        tmp.State = reseller.State;
+                        tmp.ZipCode = reseller.ZipCode;
+                        tmp.Country = reseller.Country;
+                        tmp.Telephone = reseller.PhoneNumber;
+                        tmp.Description = reseller.Description;
+                        tmp.AdminName = reseller.AdminName;
+                        tmp.AdminEmail = reseller.AdminEmail;
+                        tmp.DistinguishedName = reseller.DistinguishedName;
+                        tmp.Created = reseller.Created;
 
-                    resellers.Add(tmp);
+                        resellers.Add(tmp);
+                    }
                 }
 
                 return resellers;
@@ -161,12 +164,12 @@ namespace CloudPanel.Modules.Common.ViewModel
                 }
 
                 // Create the reseller in Active Directory
-                ADOrganizationalUnit adOrg = new ADOrganizationalUnit(StaticSettings.Username, StaticSettings.Password, StaticSettings.PrimaryDC);
+                ADOrganizationalUnit adOrg = new ADOrganizationalUnit(StaticSettings.Username, StaticSettings.DecryptedPassword, StaticSettings.PrimaryDC);
                 string distinguishedName = adOrg.CreateReseller(StaticSettings.HostingOU, reseller);
                 events.NewOrganizationalUnitEvent(distinguishedName);
 
                 // Create the security group
-                ADGroup adGroup = new ADGroup(StaticSettings.Username, StaticSettings.Password, StaticSettings.PrimaryDC);
+                ADGroup adGroup = new ADGroup(StaticSettings.Username, StaticSettings.DecryptedPassword, StaticSettings.PrimaryDC);
                 adGroup.Create(distinguishedName, "GPOAccess@" + companyCode, "", true, false);
                 events.NewSecurityGroup("GPOAccess@" + companyCode);
 
@@ -189,7 +192,6 @@ namespace CloudPanel.Modules.Common.ViewModel
                 company.PhoneNumber = reseller.Telephone;
                 company.AdminName = reseller.AdminName;
                 company.AdminEmail = reseller.AdminEmail;
-                company.DistinguishedName = ""; // TODO
                 company.Created = DateTime.Now;
                 company.DistinguishedName = distinguishedName;
 
@@ -197,7 +199,7 @@ namespace CloudPanel.Modules.Common.ViewModel
                 database.SaveChanges();
 
                 // Notify success
-                ThrowEvent(AlertID.SUCCESS, "Successfully created new reseller " + reseller.CompanyName);
+                ThrowEvent(AlertID.SUCCESS_NEW_RESELLER, reseller.CompanyName);
             }
             catch (Exception ex)
             {

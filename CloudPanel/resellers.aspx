@@ -36,7 +36,9 @@
                             <asp:Repeater ID="resellersRepeater" runat="server" OnItemCommand="resellersRepeater_ItemCommand">
                                 <ItemTemplate>
                                     <tr>
-                                        <td><%# Eval("CompanyName") %></td>
+                                        <td>
+                                            <asp:LinkButton ID="lnkCompanyName" runat="server" CommandName="Select" CommandArgument='<%# Eval("CompanyCode") %>'><%# Eval("CompanyName") %></asp:LinkButton>
+                                        </td>
                                         <td><%# Eval("FullAddressFormatted") %></td>
                                         <td><%# Eval("Created") %></td>
                                         <td></td>

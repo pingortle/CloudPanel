@@ -7,6 +7,7 @@ using System.DirectoryServices.AccountManagement;
 using System.Linq;
 using System.Reflection;
 using System.Security.AccessControl;
+using System.Security.Principal;
 using System.Text;
 
 namespace CloudPanel.Modules.ActiveDirectory.OrganizationalUnits
@@ -101,6 +102,158 @@ namespace CloudPanel.Modules.ActiveDirectory.OrganizationalUnits
         }
 
         /// <summary>
+        /// Creates a new company organizational unit
+        /// </summary>
+        /// <param name="hostingOrganizationalUnit"></param>
+        /// <param name="company"></param>
+        /// <returns></returns>
+        public string CreateCompany(string parentOrganizationalUnit, CompanyObject company)
+        {
+            DirectoryEntry de = null;
+            DirectoryEntry newOrg = null;
+
+            try
+            {
+                this.logger.Debug("Attempting to create new organizational unit for company " + company.CompanyName + " on path " + parentOrganizationalUnit);
+
+                de = new DirectoryEntry("LDAP://" + this.domainController + "/" + parentOrganizationalUnit, this.username, this.password);
+
+                // Add organizational unit
+                newOrg = de.Children.Add("OU=" + company.CompanyCode, "OrganizationalUnit");
+
+                // Set additional information
+                newOrg.Properties["description"].Add(company.CompanyName);
+                newOrg.Properties["displayName"].Add(company.CompanyName);
+                newOrg.Properties["uPNSuffixes"].Add(company.Domains[0]);
+
+                // These values may not be set so only set if they are valid
+                if (!string.IsNullOrEmpty(company.Street))
+                    newOrg.Properties["street"].Add(company.Street);
+
+                if (!string.IsNullOrEmpty(company.City))
+                    newOrg.Properties["l"].Add(company.City);
+
+                if (!string.IsNullOrEmpty(company.State))
+                    newOrg.Properties["st"].Add(company.State);
+
+                if (!string.IsNullOrEmpty(company.ZipCode))
+                    newOrg.Properties["postalCode"].Add(company.ZipCode);
+
+                if (!string.IsNullOrEmpty(company.Telephone))
+                    newOrg.Properties["telephoneNumber"].Add(company.Telephone);
+
+                if (!string.IsNullOrEmpty(company.AdminName))
+                    newOrg.Properties["adminDisplayName"].Add(company.AdminName);
+
+                if (!string.IsNullOrEmpty(company.AdminEmail))
+                    newOrg.Properties["adminDescription"].Add(company.AdminEmail);
+
+                // Commit all the changes to the new OU
+                newOrg.CommitChanges();
+                this.logger.Debug("Committed changes to new organizational unit for company " + company.CompanyName);
+
+                // Commit the changes to the parent OU
+                de.CommitChanges();
+                this.logger.Info("Finished creating new organizational unit for company " + company.CompanyName);
+
+                // Return the distinguished name
+                return newOrg.Properties["distinguishedName"][0].ToString();
+            }
+            catch (Exception ex)
+            {
+                this.logger.Error("There was an error creating a new organizational unit for company " + company.CompanyName, ex);
+
+                throw;
+            }
+            finally
+            {
+                if (newOrg != null)
+                    newOrg.Dispose();
+
+                if (de != null)
+                    de.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Creates a new organizational unit
+        /// </summary>
+        /// <param name="parentOrganizationalUnit"></param>
+        /// <param name="organizationalUnitName"></param>
+        /// <param name="domain"></param>
+        /// <returns></returns>
+        public string CreateOU(string parentOrganizationalUnit, string organizationalUnitName, string domain)
+        {
+            DirectoryEntry de = null;
+            DirectoryEntry newOrg = null;
+
+            try
+            {
+                this.logger.Debug("Attempting to create new organizational unit " + organizationalUnitName);
+
+                de = new DirectoryEntry("LDAP://" + this.domainController + "/" + parentOrganizationalUnit, this.username, this.password);
+
+                // Add organizational unit
+                newOrg = de.Children.Add("OU=" + organizationalUnitName, "OrganizationalUnit");
+
+                // Set additional information
+                if (!string.IsNullOrEmpty(domain))
+                    newOrg.Properties["uPNSuffixes"].Add(domain);
+
+                // Commit all the changes to the new OU
+                newOrg.CommitChanges();
+                this.logger.Debug("Committed changes to new organizational unit " + newOrg.Properties["distinguishedName"][0].ToString());
+
+                // Commit the changes to the parent OU
+                de.CommitChanges();
+                this.logger.Info("Finished creating new organizational unit " + newOrg.Properties["distinguishedName"][0].ToString());
+
+                // Return the distinguished name
+                return newOrg.Properties["distinguishedName"][0].ToString();
+            }
+            catch (Exception ex)
+            {
+                this.logger.Error("There was an error creating a new organizational unit " + organizationalUnitName + " in path " + parentOrganizationalUnit, ex);
+
+                throw;
+            }
+            finally
+            {
+                if (newOrg != null)
+                    newOrg.Dispose();
+
+                if (de != null)
+                    de.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Deletes an OU from Active Directory
+        /// </summary>
+        /// <param name="distinguishedName"></param>
+        public void DeleteOU(string distinguishedName)
+        {
+            DirectoryEntry de = null;
+
+            try
+            {
+                this.logger.Debug("Deleting organizational unit " + distinguishedName);
+
+                de = new DirectoryEntry("LDAP://" + this.domainController + "/" + distinguishedName, this.username, this.password);
+                de.DeleteTree();
+            }
+            catch (Exception)
+            {
+                throw;
+            }
+            finally
+            {
+                if (de != null)
+                    de.Dispose();
+            }
+        }
+
+        /// <summary>
         /// Adds access rights to the OU for a specific group
         /// </summary>
         /// <param name="ouDistinguishedName"></param>
@@ -150,6 +303,35 @@ namespace CloudPanel.Modules.ActiveDirectory.OrganizationalUnits
 
                 if (de != null)
                     de.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Removes Authenticated Users from the OU
+        /// </summary>
+        /// <param name="oupath"></param>
+        public void RemoveAuthUsersRights(string oupath)
+        {
+            using (DirectoryEntry de = new DirectoryEntry("LDAP://" + this.domainController + "/" + oupath, this.username, this.password))
+            {
+                try
+                {
+                    AuthorizationRuleCollection arc = de.ObjectSecurity.GetAccessRules(true, true, typeof(NTAccount));
+                    foreach (ActiveDirectoryAccessRule adar in arc)
+                    {
+                        if (adar.IdentityReference.Value.Equals("NT AUTHORITY\\AUTHENTICATED USERS", StringComparison.CurrentCultureIgnoreCase))
+                        {
+                            bool modified = false;
+                            de.ObjectSecurity.ModifyAccessRule(AccessControlModification.RemoveAll, adar, out modified);
+                            de.CommitChanges();
+                        }
+                    }
+                }
+                catch (Exception ex)
+                {
+                    this.logger.Error("Failed to remove authenticated users access rights from " + oupath, ex);
+                    throw;
+                }
             }
         }
     }

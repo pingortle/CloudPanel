@@ -41,6 +41,9 @@
     <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DotNet.Highcharts">
+      <HintPath>..\packages\DotNet.Highcharts.2.0\lib\DotNet.Highcharts.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\EntityFramework.6.0.2\lib\net40\EntityFramework.dll</HintPath>
@@ -597,6 +600,26 @@
     <Content Include="js\wysihtml5-0.3.0.min.js" />
     <Content Include="login.aspx" />
     <Content Include="resellers.aspx" />
+    <Content Include="js\Highcharts-3.0.1\js\adapters\mootools-adapter.js" />
+    <Content Include="js\Highcharts-3.0.1\js\adapters\mootools-adapter.src.js" />
+    <Content Include="js\Highcharts-3.0.1\js\adapters\prototype-adapter.js" />
+    <Content Include="js\Highcharts-3.0.1\js\adapters\prototype-adapter.src.js" />
+    <Content Include="js\Highcharts-3.0.1\js\highcharts-more.js" />
+    <Content Include="js\Highcharts-3.0.1\js\highcharts.js" />
+    <Content Include="js\Highcharts-3.0.1\js\highcharts.src.js" />
+    <Content Include="js\Highcharts-3.0.1\js\modules\canvas-tools.js" />
+    <Content Include="js\Highcharts-3.0.1\js\modules\canvas-tools.src.js" />
+    <Content Include="js\Highcharts-3.0.1\js\modules\data.js" />
+    <Content Include="js\Highcharts-3.0.1\js\modules\data.src.js" />
+    <Content Include="js\Highcharts-3.0.1\js\modules\exporting.js" />
+    <Content Include="js\Highcharts-3.0.1\js\modules\exporting.src.js" />
+    <Content Include="js\Highcharts-3.0.1\js\modules\funnel.js" />
+    <Content Include="js\Highcharts-3.0.1\js\modules\funnel.src.js" />
+    <Content Include="js\Highcharts-3.0.1\js\themes\dark-blue.js" />
+    <Content Include="js\Highcharts-3.0.1\js\themes\dark-green.js" />
+    <Content Include="js\Highcharts-3.0.1\js\themes\gray.js" />
+    <Content Include="js\Highcharts-3.0.1\js\themes\grid.js" />
+    <Content Include="js\Highcharts-3.0.1\js\themes\skies.js" />
     <Content Include="security\locked.aspx" />
     <Content Include="settings.aspx" />
     <Content Include="Web.config" />
@@ -730,6 +753,7 @@
     <Compile Include="security\locked.aspx.designer.cs">
       <DependentUpon>locked.aspx</DependentUpon>
     </Compile>
+    <Compile Include="session\WebSessionHandler.cs" />
     <Compile Include="settings.aspx.cs">
       <DependentUpon>settings.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -842,6 +866,7 @@
     <Content Include="CloudPanel.Master" />
     <Content Include="packages.config" />
     <Content Include="logging\Default.log" />
+    <None Include="Properties\PublishProfiles\CloudPanel HOME.pubxml" />
     <None Include="Properties\PublishProfiles\CloudPanel LAB.pubxml" />
     <None Include="Properties\PublishProfiles\LAB DC.pubxml" />
     <None Include="Web.Debug.config">

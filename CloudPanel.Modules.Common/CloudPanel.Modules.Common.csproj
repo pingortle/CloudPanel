@@ -51,7 +51,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Codes\Status.cs" />
     <Compile Include="Database\ApiAccess.cs">
       <DependentUpon>CPDatabase.tt</DependentUpon>
     </Compile>
@@ -154,10 +153,16 @@
     <Compile Include="Database\UserPlansCitrix.cs">
       <DependentUpon>CPDatabase.tt</DependentUpon>
     </Compile>
+    <Compile Include="GlobalActions\AuditGlobal.cs" />
     <Compile Include="Other\Randoms.cs" />
     <Compile Include="Other\Validation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rollback\CloudPanelEvent.cs" />
+    <Compile Include="Rollback\CloudPanelEventType.cs" />
+    <Compile Include="Rollback\CloudPanelTransaction.cs" />
     <Compile Include="Settings\StaticSettings.cs" />
+    <Compile Include="ViewModel\CompanyViewModel.cs" />
+    <Compile Include="ViewModel\DashboardViewModel.cs" />
     <Compile Include="ViewModel\IViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\ResellerViewModel.cs" />
@@ -168,6 +173,7 @@
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>CPDatabase.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <None Include="App.Config" />
     <None Include="Database\CPDatabase.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>CPDatabase.edmx</DependentUpon>
@@ -194,10 +200,6 @@
     <ProjectReference Include="..\CloudPanel.Modules.Base\CloudPanel.Modules.Base.csproj">
       <Project>{8b47db51-6f8e-42a3-b7e1-6c92c0e3628b}</Project>
       <Name>CloudPanel.Modules.Base</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\CloudPanel.Modules.RollBack\CloudPanel.Modules.RollBack.csproj">
-      <Project>{fff78648-d290-4119-974d-5e2486b22b4c}</Project>
-      <Name>CloudPanel.Modules.RollBack</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

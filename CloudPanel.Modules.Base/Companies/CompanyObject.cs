@@ -16,6 +16,7 @@ namespace CloudPanel.Modules.Base.Companies
         private bool _islyncenabled;
         private bool _iscitrixenabled;
         private bool _isexchangepermissionsfixed;
+        private bool _usecompanynameinsteadofcompanycode;
 
         private string _resellercode;
         private string _companyname;
@@ -31,6 +32,8 @@ namespace CloudPanel.Modules.Base.Companies
         private string _adminname;
         private string _adminemail;
         private string _distinguishedname;
+
+        private string[] _domains;
 
         private DateTime _created;
 
@@ -90,6 +93,15 @@ namespace CloudPanel.Modules.Base.Companies
         {
             get { return _isexchangepermissionsfixed; }
             set { _isexchangepermissionsfixed = value; }
+        }
+
+        /// <summary>
+        /// If we are using the company name instead of a auto generated one
+        /// </summary>
+        public bool UseCompanyNameInsteadofCompanyCode
+        {
+            get { return _usecompanynameinsteadofcompanycode; }
+            set { _usecompanynameinsteadofcompanycode = value; }
         }
 
         /// <summary>
@@ -219,6 +231,15 @@ namespace CloudPanel.Modules.Base.Companies
         }
 
         /// <summary>
+        /// Domains that the company has
+        /// </summary>
+        public string[] Domains
+        {
+            get { return _domains;  }
+            set { _domains = value; }
+        }
+
+        /// <summary>
         /// When the company was created in CloudPanel
         /// </summary>
         public DateTime Created
@@ -242,6 +263,22 @@ namespace CloudPanel.Modules.Base.Companies
 
                 return string.Format("{0}<br />{1}, {2}  {3}", Street, City, State, ZipCode);
             }
+        }
+
+        /// <summary>
+        /// Generates a unique company code based on the company's company name
+        /// </summary>
+        /// <param name="companyName"></param>
+        /// <returns></returns>
+        public static string GenerateCompanyCode(string companyName, bool useCompanyName)
+        {
+            char[] stripped = null;
+            if (useCompanyName)
+                stripped = companyName.Where(c => char.IsLetter(c) || char.IsWhiteSpace(c) || char.IsNumber(c)).ToArray();
+            else
+                stripped = companyName.Where(c => char.IsLetter(c)).ToArray();
+
+            return new string(stripped); // This should contain only letters, numbers, and whitespaces if not using company code generator 
         }
 
         #endregion

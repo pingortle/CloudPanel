@@ -462,4 +462,91 @@
   <data name="Settings_UsersOU" xml:space="preserve">
     <value>Users OU</value>
   </data>
+  <data name="Login_BruteForceBlocked" xml:space="preserve">
+    <value>Your IP address has been blocked because of too many failed login attempts. Please try again later.</value>
+  </data>
+  <data name="Login_GroupsFailed" xml:space="preserve">
+    <value>Failed to retrieve groups for your account. Please contact support.</value>
+  </data>
+  <data name="Login_LoginFailed" xml:space="preserve">
+    <value>Incorrect username and/or password.</value>
+  </data>
+  <data name="Dashboard_ErrorPopulatingAreaChart" xml:space="preserve">
+    <value>There was an error populating the area chart.</value>
+  </data>
+  <data name="Dashboard_ErrorPopulatingBarChart" xml:space="preserve">
+    <value>There was an error populating the bar chart.</value>
+  </data>
+  <data name="Dashboard_MailboxDatabaseSizeSubTitle" xml:space="preserve">
+    <value>Microsoft Exchange mailbox database sizes in gigabytes</value>
+  </data>
+  <data name="Dashboard_MailboxDatabaseSizeTitle" xml:space="preserve">
+    <value>Mailbox Database Sizes</value>
+  </data>
+  <data name="Dashboard_MostRecentActionsSubTitle" xml:space="preserve">
+    <value>The top 10 most recent actions that were performed in the system</value>
+  </data>
+  <data name="Dashboard_MostRecentActionsTitle" xml:space="preserve">
+    <value>Most Recent Actions</value>
+  </data>
+  <data name="Formats_DecimalSeperator" xml:space="preserve">
+    <value>.</value>
+  </data>
+  <data name="Formats_NumberGroupSeperator" xml:space="preserve">
+    <value>,</value>
+  </data>
+  <data name="Audits_NewReseller" xml:space="preserve">
+    <value>Successfully created a new reseller</value>
+  </data>
+  <data name="Audits_NewCompany" xml:space="preserve">
+    <value>Successfully created company</value>
+  </data>
+  <data name="Audits_SavedSettings" xml:space="preserve">
+    <value>Successfully saved CloudPanel settings to the database</value>
+  </data>
+  <data name="Audits_UpdateCompany" xml:space="preserve">
+    <value>Successfully updated company</value>
+  </data>
+  <data name="Audits_UpdateReseller" xml:space="preserve">
+    <value>Successfully updated reseller</value>
+  </data>
+  <data name="Dashboard_AllocatedEmailSpace" xml:space="preserve">
+    <value>Allocated Email Space</value>
+  </data>
+  <data name="Dashboard_CitrixUsers" xml:space="preserve">
+    <value>Citrix Users</value>
+  </data>
+  <data name="Dashboard_EnvironmentHistory" xml:space="preserve">
+    <value>Environment History</value>
+  </data>
+  <data name="Dashboard_EnvironmentHistoryInfo" xml:space="preserve">
+    <value>Statistics over the past 12 months</value>
+  </data>
+  <data name="Dashboard_EnvironmentOverview" xml:space="preserve">
+    <value>Environment Overview</value>
+  </data>
+  <data name="Dashboard_EnvironmentOverviewInfo" xml:space="preserve">
+    <value>Overview of your entire environment</value>
+  </data>
+  <data name="Dashboard_LyncUsers" xml:space="preserve">
+    <value>Lync Users</value>
+  </data>
+  <data name="Dashboard_Mailboxes" xml:space="preserve">
+    <value>Mailboxes</value>
+  </data>
+  <data name="Dashboard_TotalAcceptedDomains" xml:space="preserve">
+    <value>Accepted Domains</value>
+  </data>
+  <data name="Dashboard_TotalCompanies" xml:space="preserve">
+    <value>Companies</value>
+  </data>
+  <data name="Dashboard_TotalDomains" xml:space="preserve">
+    <value>Domains</value>
+  </data>
+  <data name="Dashboard_TotalResellers" xml:space="preserve">
+    <value>Resellers</value>
+  </data>
+  <data name="Dashboard_TotalUsers" xml:space="preserve">
+    <value>Users</value>
+  </data>
 </root>
