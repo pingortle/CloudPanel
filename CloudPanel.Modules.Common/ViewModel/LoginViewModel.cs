@@ -54,7 +54,7 @@ namespace CloudPanel.Modules.Common.ViewModel
                         AuditLogin(username, ipAddress, true);
 
                         // Now check the groups
-                        string[] cpGroups = StaticSettings.SuperAdmins.Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+                        string[] cpGroups = StaticSettings.SuperAdmins.ToLower().Split(new char[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
 
                         // User could be null if it is a domain admin which won't be in the database.
                         if (user != null)
@@ -75,9 +75,10 @@ namespace CloudPanel.Modules.Common.ViewModel
                         }
 
                         // Now check if they are a super admin
-                        foreach (string g in groups)
+                        foreach (string g in cpGroups)
                         {
-                            if (cpGroups.Contains(g, StringComparer.OrdinalIgnoreCase))
+                            var isFound = groups.Where(a => a.ToLower().StartsWith("cn=" + g)).Count();
+                            if (isFound >0)
                             {
                                 IsSuperAdmin = true;
                                 break;
@@ -90,6 +91,7 @@ namespace CloudPanel.Modules.Common.ViewModel
             }
             catch (Exception ex)
             {
+                this.logger.Error("Error logging in user " + username, ex);
                 ThrowEvent(AlertID.FAILED, ex.Message);
                 return false;
             }
@@ -187,6 +189,8 @@ namespace CloudPanel.Modules.Common.ViewModel
 
                 database.AuditLogins.Add(audit);
                 database.SaveChanges();
+
+                this.logger.Debug(username + "attempted to login to CloudPanel. Is valid login? " + isValidLogin.ToString());
             }
             catch (Exception ex)
             {

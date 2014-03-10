@@ -11,7 +11,9 @@ namespace CloudPanel.Modules.Common.Database
 {
     using System;
     using System.Data.Entity;
+    using System.Data.Entity.Core.Objects;
     using System.Data.Entity.Infrastructure;
+    using System.Linq;
     
     public partial class CPDatabase : DbContext
     {
@@ -54,5 +56,14 @@ namespace CloudPanel.Modules.Common.Database
         public DbSet<UserPlan> UserPlans { get; set; }
         public DbSet<UserPlansCitrix> UserPlansCitrices { get; set; }
         public DbSet<User> Users { get; set; }
+    
+        public virtual int DeleteUser(string userPrincipalName)
+        {
+            var userPrincipalNameParameter = userPrincipalName != null ?
+                new ObjectParameter("UserPrincipalName", userPrincipalName) :
+                new ObjectParameter("UserPrincipalName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteUser", userPrincipalNameParameter);
+        }
     }
 }

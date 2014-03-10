@@ -21,13 +21,8 @@
       <script src="../js/respond.min.js"></script>
     <![endif]-->
 </head>
-<body>
+<body class="notfound" style="overflow: visible">
     <form id="form1" runat="server">
-    
-<!-- Preloader -->
-<div id="preloader">
-    <div id="status"><i class="fa fa-spinner fa-spin"></i></div>
-</div>
 
         <section>
 
@@ -36,16 +31,26 @@
                     <i class="fa fa-lock"></i>
                 </div>
                 <div class="loginuser">
-                    <img src="images/photos/loggeduser.png" alt="" />
+                    <img src="../images/man-icon.png" alt="" />
                 </div>
                 <div class="logged">
-                    <h4><asp:Label ID="lbDisplayName" runat="server" Text=""></asp:Label></h4>
-                    <small class="text-muted"><asp:Label ID="lbLoginName" runat="server" Text=""></asp:Label></small>
+                    <h4>
+                        <asp:Label ID="lbDisplayName" runat="server" Text=""></asp:Label></h4>
+                    <small class="text-muted">
+                        <asp:Label ID="lbLoginName" runat="server" Text=""></asp:Label></small>
                 </div>
-                
-                    <input type="password" class="form-control" placeholder="Enter your password" />
-                    <button class="btn btn-success btn-block">Unlock</button>
-                
+
+                <br />
+                <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" placeholder="Enter your password" TextMode="Password"></asp:TextBox>
+                <br />
+                <asp:Button ID="btnLogin" runat="server" Text="Unlock" CssClass="btn btn-success btn-block" />
+
+                <br />
+                <br />
+
+                <small class="text-muted">
+                    <a href="../login.aspx">Sign in as another user</a>
+                </small>
             </div>
             <!-- lockedpanel -->
 
@@ -57,8 +62,6 @@
         <script src="../js/bootstrap.min.js"></script>
         <script src="../js/modernizr.min.js"></script>
         <script src="../js/retina.min.js"></script>
-
-        <script src="../js/custom.js"></script>
     </form>
 </body>
 </html>

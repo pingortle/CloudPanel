@@ -13,7 +13,7 @@ namespace CloudPanel
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Response.Cache.SetCacheability(HttpCacheability.NoCache);
         }
 
         protected void btnLogin_Click(object sender, EventArgs e)

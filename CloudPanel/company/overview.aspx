@@ -87,40 +87,43 @@
                 <div class="panel-body">
 
                     <span class="sublabel">Users
-                        <asp:Label ID="lbUsers" runat="server" Text="(60 / 100)"></asp:Label></span>
+                        <asp:Label ID="lbUsers" runat="server" Text="(0 / 1)"></asp:Label></span>
                     <div class="progress progress-sm">
-                        <div style="width: 60%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-primary" runat="server" id="Div1"></div>
+                        <div style="width: 60%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-primary" runat="server" id="progBarUsers"></div>
                     </div>
                     <!-- progress -->
 
                     <span class="sublabel">Domains
-                        <asp:Label ID="lbTotalMailboxes" runat="server" Text="(1 / 10)"></asp:Label></span>
+                        <asp:Label ID="lbDomains" runat="server" Text="(0 / 1)"></asp:Label></span>
+                    <div class="progress progress-sm">
+                        <div style="width: 50%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-success" runat="server" id="progBarDomains"></div>
+                    </div>
+                    <!-- progress -->
+
+                    <span class="sublabel">Mailboxes
+                        <asp:Label ID="lbTotalMailboxes" runat="server" Text="(0 / 1)"></asp:Label></span>
                     <div class="progress progress-sm">
                         <div style="width: 10%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-danger" runat="server" id="progBarMailboxes"></div>
                     </div>
                     <!-- progress -->
 
-                    <span class="sublabel">Mailboxes
-                        <asp:Label ID="lbTotalCitrixUsers" runat="server" Text="(30 / 100)"></asp:Label></span>
+                    <% if (CloudPanel.Modules.Common.Settings.StaticSettings.CitrixEnabled) { %>
+                    <span class="sublabel">Citrix
+                        <asp:Label ID="lbTotalCitrixUsers" runat="server" Text="(0/ 1)"></asp:Label></span>
                     <div class="progress progress-sm">
                         <div style="width: 30%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-warning" runat="server" id="progBarCitrix"></div>
                     </div>
                     <!-- progress -->
+                    <% } %>
 
-                    <span class="sublabel">Contacts
-                        <asp:Label ID="lbTotalLyncUsers" runat="server" Text="(2 / 20)"></asp:Label></span>
+                    <% if (CloudPanel.Modules.Common.Settings.StaticSettings.LyncEnabled) { %>
+                    <span class="sublabel">Lync
+                        <asp:Label ID="lbTotalLyncUsers" runat="server" Text="(0 / 1)"></asp:Label></span>
                     <div class="progress progress-sm">
                         <div style="width: 10%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-info" runat="server" id="progBarLync"></div>
                     </div>
                     <!-- progress -->
-
-                    <span class="sublabel">Distribution Groups
-                        <asp:Label ID="Label2" runat="server" Text="(5 / 10)"></asp:Label></span>
-                    <div class="progress progress-sm">
-                        <div style="width: 50%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-success" runat="server" id="Div2"></div>
-                    </div>
-                    <!-- progress -->
-
+                    <% } %>
                 </div>
             </div>
             <!-- panel -->
@@ -155,16 +158,15 @@
                     </div>
                     <div class="panel-body">
                         <ul>
-                            <li>
-                                <small class="pull-right">Dec 10</small>
-                                <h4 class="sender">Enabled Mailbox</h4>
-                                <small>Enabled mailbox for user jdixon@compsysar.com</small>
-                            </li>
-                            <li>
-                                <small class="pull-right">Dec 9</small>
-                                <h4 class="sender">Created User</h4>
-                                <small>Created a new user jdixon@compsysar.com</small>
-                            </li>
+                            <asp:Repeater ID="repeaterAudits" runat="server">
+                                <ItemTemplate>
+                                    <li style="background-color: #fcfcfc">
+                                        <small class="pull-right"><%# ((DateTime)Eval("WhenEntered")).ToString("MMMM dd hh:mm tt") %></small>
+                                        <h4 class="sender"><%# Eval("Username") %></h4>
+                                        <small><%# string.Format("{0}: {1}, {2}", Eval("ActionIDGlobalization"), Eval("Variable1"), Eval("Variable2")) %></small>
+                                    </li>
+                                </ItemTemplate>
+                            </asp:Repeater>
                         </ul>
                     </div>
                     <!-- panel-body -->
@@ -183,23 +185,33 @@
     <script src="http://maps.google.com/maps/api/js?sensor=true"></script>
     <script src='<%= this.ResolveClientUrl("~/js/gmaps.js") %>'></script>
     <script type="text/javascript">
+        var address = '<%= Address %>';
 
         jQuery(document).ready(function () {
 
             // Chosen Select
             jQuery(".chosen-select").chosen({ 'width': '100%', 'white-space': 'nowrap' });
 
-            var map_marker = new GMaps({
-                div: '#gmap-marker',
-                lat: -12.043333,
-                lng: -77.028333
-            });
+            var geocoder = new google.maps.Geocoder();
+            geocoder.geocode({ 'address': address }, function (results, status) {
 
-            map_marker.addMarker({
-                lat: -12.043333,
-                lng: -77.028333,
-                click: function (e) {
-                    alert('You clicked in this marker');
+                if (status == google.maps.GeocoderStatus.OK) {
+                    var lat = results[0].geometry.location.lat();
+                    var lng = results[0].geometry.location.lng();
+
+                    var map_marker = new GMaps({
+                        div: '#gmap-marker',
+                        lat: lat,
+                        lng: lng
+                    });
+
+                    map_marker.addMarker({
+                        lat: lat,
+                        lng: lng,
+                        click: function (e) {
+                            window.open("http://maps.google.com/maps?z=12&t=m&q=loc:" + lat + "+" + lng, "_blank");
+                        }
+                    });
                 }
             });
 

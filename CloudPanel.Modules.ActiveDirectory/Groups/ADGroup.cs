@@ -12,6 +12,9 @@ namespace CloudPanel.Modules.ActiveDirectory.Groups
     {
         private readonly ILog logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
+        // Disposing information
+        private bool disposed = false;
+
         // Information for connecting
         private string username;
         private string password;
@@ -171,6 +174,62 @@ namespace CloudPanel.Modules.ActiveDirectory.Groups
         }
 
         /// <summary>
+        /// Removes a member from a group
+        /// </summary>
+        /// <param name="groupName"></param>
+        /// <param name="objectToRemove"></param>
+        /// <param name="objectIdentityType"></param>
+        public void RemoveMember(string groupName, string objectToRemove, string objectIdentityType)
+        {
+            PrincipalContext pc = null;
+            GroupPrincipal gp = null;
+
+            try
+            {
+                // Replace whitespaces
+                groupName = groupName.Replace(" ", string.Empty);
+                objectToRemove = objectToRemove.Replace(" ", string.Empty);
+
+                this.logger.Debug("Attempting to remove " + objectToRemove + " from group " + groupName);
+
+                pc = new PrincipalContext(ContextType.Domain, this.domainController, this.username, this.password);
+                gp = GroupPrincipal.FindByIdentity(pc, IdentityType.Name, groupName);
+                if (gp != null)
+                {
+                    this.logger.Debug("Checking to see if " + groupName + " already contains " + objectToRemove + " as a member.");
+                    bool isMember = gp.Members.Contains(pc, GetIdentityType(objectIdentityType), objectToRemove);
+
+                    if (isMember)
+                    {
+                        gp.Members.Remove(pc, GetIdentityType(objectIdentityType), objectToRemove);
+                        gp.Save();
+
+                        this.logger.Info("Successfully removed " + objectToRemove + " from group " + groupName);
+                    }
+                    else
+                        this.logger.Debug("Object " + objectToRemove + " is already not a member of group " + groupName);
+                }
+                else
+                    throw new Exception("Unable to find the group " + groupName + " in the system.");
+
+            }
+            catch (Exception ex)
+            {
+                this.logger.Error("Error removing member " + objectToRemove + " to group " + groupName, ex);
+
+                throw;
+            }
+            finally
+            {
+                if (pc != null)
+                    pc.Dispose();
+
+                if (gp != null)
+                    gp.Dispose();
+            }
+        }
+
+        /// <summary>
         /// Gets the identity type from a string
         /// </summary>
         /// <param name="identityType"></param>
@@ -195,5 +254,35 @@ namespace CloudPanel.Modules.ActiveDirectory.Groups
                     return IdentityType.UserPrincipalName;
             }
         }
+
+        #region Dispose
+        /// <summary>
+        /// Disposing
+        /// </summary>
+        /// <param name="disposing"></param>
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!disposed)
+            {
+                if (disposing)
+                {
+                    username = null;
+                    password = null;
+                    domainController = null;
+                }
+
+                disposed = true;
+            }
+        }
+
+        /// <summary>
+        /// Dispose
+        /// </summary>
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+        #endregion
     }
 }

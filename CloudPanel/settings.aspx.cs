@@ -218,7 +218,7 @@ namespace CloudPanel
                 StaticSettings.CommitSettings(ConfigurationManager.AppSettings["Key"]);
 
                 // Audit
-                AuditGlobal.AddAudit(WebSessionHandler.SelectedCompanyCode, WebSessionHandler.Username, Resources.LocalizedText.Audits_SavedSettings);
+                AuditGlobal.AddAudit(WebSessionHandler.SelectedCompanyCode, WebSessionHandler.Username, Modules.Base.Enumerations.ActionID.SaveSettings, "", "");
 
                 // Show Success
                 alertmessage.SetMessage(Modules.Base.Enumerations.AlertID.SUCCESS, "Successfully saved settings");

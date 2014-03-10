@@ -43,12 +43,12 @@
 
                             <div class="mb20"></div>
 
-                            <h5><strong>Welcome to Bracket Bootstrap 3 Template!</strong></h5>
+                            <h5><strong>Welcome</strong></h5>
                             <ul>
-                                <li><i class="fa fa-arrow-circle-o-right mr5"></i>Fully Responsive Layout</li>
-                                <li><i class="fa fa-arrow-circle-o-right mr5"></i>HTML5/CSS3 Valid</li>
-                                <li><i class="fa fa-arrow-circle-o-right mr5"></i>Retina Ready</li>
-                                <li><i class="fa fa-arrow-circle-o-right mr5"></i>WYSIWYG CKEditor</li>
+                                <li><i class="fa fa-arrow-circle-o-right mr5"></i>Low Cost Exchange Hosting</li>
+                                <li><i class="fa fa-arrow-circle-o-right mr5"></i>Free instant messaging with select mailbox packages</li>
+                                <li><i class="fa fa-arrow-circle-o-right mr5"></i>More Info..</li>
+                                <li><i class="fa fa-arrow-circle-o-right mr5"></i>More Info...</li>
                                 <li><i class="fa fa-arrow-circle-o-right mr5"></i>and much more...</li>
                             </ul>
                             <div class="mb20"></div>

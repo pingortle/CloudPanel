@@ -14,6 +14,7 @@
 
     <link href="~/css/style.default.css" rel="stylesheet" runat="server" />
     <link href="~/css/jquery.datatables.css" rel="stylesheet" runat="server" />
+    <link href="~/css/jquery.gritter.css" rel="stylesheet" runat="server" />
 
     <script src='<%= this.ResolveClientUrl("~/js/jquery-1.10.2.min.js") %>'></script>
     
@@ -26,7 +27,7 @@
     <asp:ContentPlaceHolder ID="head" runat="server">
     </asp:ContentPlaceHolder>
 </head>
-<body>
+<body onload="OnLoadTimeout();">
     <form id="form1" runat="server">
 
         <!-- Preloader -->
@@ -56,8 +57,15 @@
                     <h5 class="sidebartitle">Navigation</h5>
                     <ul class="nav nav-pills nav-stacked nav-bracket">
                         <li><asp:HyperLink ID="hlDashboard" runat="server" NavigateUrl="~/Dashboard.aspx"><i class="fa fa-home"></i><span><%= Resources.LocalizedText.Master_Dashboard %></span></asp:HyperLink></li>
+                        
+                        <% if (CloudPanel.Modules.Common.Settings.StaticSettings.ResellersEnabled) { %>
                         <li><asp:HyperLink ID="hlResellers" runat="server" NavigateUrl="~/Resellers.aspx"><i class="fa fa-user"></i><span><%= Resources.LocalizedText.Master_Resellers %></span></asp:HyperLink></li>
+                        <% } %>
+                        
+                        <% if (!string.IsNullOrEmpty(CloudPanel.WebSessionHandler.SelectedResellerCode)) { %>
                         <li><asp:HyperLink ID="hlCompanies" runat="server" NavigateUrl="~/Companies.aspx"><i class="fa fa-building-o"></i><span><%= Resources.LocalizedText.Master_Companies %></span></asp:HyperLink></li>
+                        <% } %>
+
                         <li class="nav-parent"><a href="#"><i class="fa fa-edit"></i><span><%= Resources.LocalizedText.Master_Plans %></span></a>
                             <ul class="children">
                                 <li><asp:HyperLink ID="hlPlansCompany" runat="server" NavigateUrl="~/plans/company.aspx"><i class="fa fa-caret-right"></i><%= Resources.LocalizedText.Master_CompanyPlans %></asp:HyperLink></li>
@@ -71,26 +79,32 @@
 
                     <hr />
 
-                    <h5 class="sidebartitle">Company Name Here</h5>
+                    <% if (!string.IsNullOrEmpty(CloudPanel.WebSessionHandler.SelectedCompanyCode)) { %>
+                    <h5 class="sidebartitle"><%= CloudPanel.WebSessionHandler.SelectedCompanyName %></h5>
                     <ul class="nav nav-pills nav-stacked nav-bracket">
                         <li><asp:HyperLink ID="hlOverview" runat="server" NavigateUrl="~/company/overview.aspx"><i class="fa fa-info"></i><span><%= Resources.LocalizedText.Master_Overview %></span></asp:HyperLink></li>
                         <li><asp:HyperLink ID="hlDomains" runat="server" NavigateUrl="~/company/domains.aspx"><i class="fa fa-globe"></i><span><%= Resources.LocalizedText.Master_Domains %></span></asp:HyperLink></li>
                         <li><asp:HyperLink ID="hlUsers" runat="server" NavigateUrl="~/company/users.aspx"><i class="fa fa-users"></i><span><%= Resources.LocalizedText.Master_Users %></span></asp:HyperLink></li>
                         <li class="nav-parent"><a href="#"><i class="fa fa-envelope-o"></i><span><%= Resources.LocalizedText.Master_Email %></span></a>
                             <ul class="children">
+                                <% if (!CloudPanel.Modules.Common.GlobalActions.CompanyChecks.IsExchangeEnabled(CloudPanel.WebSessionHandler.SelectedCompanyCode)) { %>
                                 <li><asp:HyperLink ID="hlEnableEmail" runat="server" NavigateUrl="~/company/email/enable.aspx"><i class="fa fa-caret-right"></i><%= Resources.LocalizedText.Master_EnableEmail %></asp:HyperLink></li>
-                                <li><asp:HyperLink ID="hlDisableEmail" runat="server" NavigateUrl="~/company/email/disable.aspx"><i class="fa fa-caret-right"></i><%= Resources.LocalizedText.Master_DisableEmail %></asp:HyperLink></li>
-                                <li><asp:HyperLink ID="hlAcceptedDomains" runat="server" NavigateUrl="~/company/email/domains.aspx"><i class="fa fa-caret-right"></i><%= Resources.LocalizedText.Master_AcceptedDomains %></asp:HyperLink></li>
-                                <li><asp:HyperLink ID="hlContacts" runat="server" NavigateUrl="~/company/email/contacts.aspx"><i class="fa fa-caret-right"></i><%= Resources.LocalizedText.Master_Contacts %></asp:HyperLink></li>
-                                <li><asp:HyperLink ID="hlDistributionGroups" runat="server" NavigateUrl="~/company/email/groups.aspx"><i class="fa fa-caret-right"></i><%= Resources.LocalizedText.Master_DistributionGroups %></asp:HyperLink></li>
-                                <li><asp:HyperLink ID="hlMailboxes" runat="server" NavigateUrl="~/company/email/mailboxes.aspx"><i class="fa fa-caret-right"></i><%= Resources.LocalizedText.Master_Mailboxes %></asp:HyperLink></li>
-                                <li><asp:HyperLink ID="hlResourceMailboxes" runat="server" NavigateUrl="~/company/email/resourcemailboxes.aspx"><i class="fa fa-caret-right"></i><%= Resources.LocalizedText.Master_ResourceMailboxes %></asp:HyperLink></li>
-                                <li><asp:HyperLink ID="hlPublicFolders" runat="server" NavigateUrl="~/company/email/publicfolders.aspx"><i class="fa fa-caret-right"></i><%= Resources.LocalizedText.Master_PublicFolders %></asp:HyperLink></li>
+                                <% } 
+                                   else { %>
+                                    <li><asp:HyperLink ID="hlDisableEmail" runat="server" NavigateUrl="~/company/email/disable.aspx"><i class="fa fa-caret-right"></i><%= Resources.LocalizedText.Master_DisableEmail %></asp:HyperLink></li>
+                                    <li><asp:HyperLink ID="hlAcceptedDomains" runat="server" NavigateUrl="~/company/email/domains.aspx"><i class="fa fa-caret-right"></i><%= Resources.LocalizedText.Master_AcceptedDomains %></asp:HyperLink></li>
+                                    <li><asp:HyperLink ID="hlContacts" runat="server" NavigateUrl="~/company/email/contacts.aspx"><i class="fa fa-caret-right"></i><%= Resources.LocalizedText.Master_Contacts %></asp:HyperLink></li>
+                                    <li><asp:HyperLink ID="hlDistributionGroups" runat="server" NavigateUrl="~/company/email/groups.aspx"><i class="fa fa-caret-right"></i><%= Resources.LocalizedText.Master_DistributionGroups %></asp:HyperLink></li>
+                                    <li><asp:HyperLink ID="hlMailboxes" runat="server" NavigateUrl="~/company/email/mailboxes.aspx"><i class="fa fa-caret-right"></i><%= Resources.LocalizedText.Master_Mailboxes %></asp:HyperLink></li>
+                                    <li><asp:HyperLink ID="hlResourceMailboxes" runat="server" NavigateUrl="~/company/email/resourcemailboxes.aspx"><i class="fa fa-caret-right"></i><%= Resources.LocalizedText.Master_ResourceMailboxes %></asp:HyperLink></li>
+                                    <li><asp:HyperLink ID="hlPublicFolders" runat="server" NavigateUrl="~/company/email/publicfolders.aspx"><i class="fa fa-caret-right"></i><%= Resources.LocalizedText.Master_PublicFolders %></asp:HyperLink></li>
+                                <% } %>
                             </ul>
                         </li>
                         <li><asp:HyperLink ID="hlCitrix" runat="server" NavigateUrl="~/company/citrix/applications.aspx"><i class="fa fa-cloud"></i><span><%= Resources.LocalizedText.Master_Citrix %></span></asp:HyperLink></li>
                         <li><asp:HyperLink ID="hlBilling" runat="server" NavigateUrl="~/company/billing/customprices.aspx"><i class="fa fa-money"></i><span><%= Resources.LocalizedText.Master_Billing %></span></asp:HyperLink></li>
                     </ul>
+                    <% } %>
 
                 </div>
                 <!-- leftpanelinner -->
@@ -110,11 +124,13 @@
                     <div class="header-right">
                         <ul class="headermenu">
                             <li>
+                                <% if (CloudPanel.WebSessionHandler.IsSuperAdmin) { %>
                                 <div class="btn-group">
                                     <asp:HyperLink ID="hlSettings" runat="server" CssClass="btn btn-default dropdown-toggle tp-icon" NavigateUrl="~/settings.aspx">
                                         <i class="glyphicon glyphicon-cog"></i>
                                     </asp:HyperLink>
                                 </div>
+                                <% } %>
                                 <div class="btn-group">
                                     <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                         <img src="~/images/photos/loggeduser.png" alt="" runat="server" />
@@ -150,12 +166,40 @@
         <script src='<%= this.ResolveClientUrl("~/js/toggles.min.js") %>'></script>
         <script src='<%= this.ResolveClientUrl("~/js/retina.min.js") %>'></script>
         <script src='<%= this.ResolveClientUrl("~/js/jquery.cookies.js") %>'></script>
-
         <script src='<%= this.ResolveClientUrl("~/js/custom.js") %>'></script>
-
         <script src='<%= this.ResolveClientUrl("~/js/chosen.jquery.min.js") %>'></script>
-
+        <script src='<%= this.ResolveClientUrl("~/js/jquery.gritter.min.js") %>'></script>
         <script type="text/javascript">
+
+            function OnLoadTimeout()
+            {
+                setTimeout('ShowTimeoutWarning()', <%= warningTimeoutInMilliseconds %>);
+                setTimeout('ExpireTimeout()', <%= expiredTimeoutInMilliseconds %>);
+            }
+
+            function ShowTimeoutWarning()
+            {
+                jQuery.gritter.add({
+                    title: 'Session Expiring',
+                    text: '.',
+                    sticky: false,
+                    time: ''
+                });
+            }
+
+            function ExpireTimeout()
+            {
+                jQuery.gritter.add({
+                    title: 'Session Expired',
+                    text: 'Your session has expired and are being logged out',
+                    sticky: false,
+                    time: '15000',
+                    after_close: function(e, manual_close) {
+                        document.location.href = '<%= this.ResolveClientUrl("~/security/locked.aspx") %>?username=<%= HttpContext.Current.User.Identity.Name %>';
+                    }
+                });
+            }
+
         </script>
 
         <asp:ContentPlaceHolder ID="cphJavascript" runat="server"></asp:ContentPlaceHolder>

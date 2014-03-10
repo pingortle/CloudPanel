@@ -68,6 +68,8 @@ namespace CloudPanel.Modules.Common.Settings
 
         public static bool ResellersEnabled { get; set; }
 
+        public static bool ExchangeEnabled { get; set; }
+
         public static bool AllowCustomNameAttribute { get; set; }
 
         public static bool IPBlockingEnabled { get; set; }
@@ -151,6 +153,9 @@ namespace CloudPanel.Modules.Common.Settings
 
                     LyncEnabled = settings.LyncEnabled;
                     logger.Debug("Lync Enabled: " + LyncEnabled.ToString());
+
+                    ExchangeEnabled = true;
+                    logger.Debug("Exchange Enabled: " + ExchangeEnabled.ToString());
 
                     HostersName = settings.CompanysName;
                     logger.Debug("Hosters Name: " + HostersName);

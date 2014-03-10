@@ -114,6 +114,15 @@ namespace CloudPanel
         {
             if (e.CommandName == "Edit")
                 PopulateCompany(e.CommandName.ToString());
+            else if (e.CommandName == "Select")
+            {
+                string[] selectedArray = e.CommandArgument.ToString().Split('|');
+
+                WebSessionHandler.SelectedCompanyCode = selectedArray[0];
+                WebSessionHandler.SelectedCompanyName = selectedArray[1];
+
+                Response.Redirect("company/overview.aspx", false);
+            }
         }
 
         #region Events
@@ -122,11 +131,10 @@ namespace CloudPanel
         {
             if (errorID == Modules.Base.Enumerations.AlertID.SUCCESS_NEW_COMPANY)
             {
-                string successMessage = string.Format("{0} {1}", Resources.LocalizedText.Audits_NewCompany, message);
-                AuditGlobal.AddAudit(WebSessionHandler.SelectedCompanyCode, WebSessionHandler.Username, successMessage);
+                AuditGlobal.AddAudit(WebSessionHandler.SelectedCompanyCode, WebSessionHandler.Username, Modules.Base.Enumerations.ActionID.CreateCompany, message);
 
                 // Set the success message
-                alertmessage.SetMessage(errorID, successMessage);
+                alertmessage.SetMessage(errorID, Resources.LocalizedText.Success_NewCompany);
             }
             else
                 alertmessage.SetMessage(errorID, message);

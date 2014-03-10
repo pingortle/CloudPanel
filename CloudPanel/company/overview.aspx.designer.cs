@@ -85,13 +85,31 @@ namespace CloudPanel.company {
         protected global::System.Web.UI.WebControls.Label lbUsers;
         
         /// <summary>
-        /// Div1 control.
+        /// progBarUsers control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div1;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl progBarUsers;
+        
+        /// <summary>
+        /// lbDomains control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbDomains;
+        
+        /// <summary>
+        /// progBarDomains control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl progBarDomains;
         
         /// <summary>
         /// lbTotalMailboxes control.
@@ -148,21 +166,12 @@ namespace CloudPanel.company {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl progBarLync;
         
         /// <summary>
-        /// Label2 control.
+        /// repeaterAudits control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label2;
-        
-        /// <summary>
-        /// Div2 control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl Div2;
+        protected global::System.Web.UI.WebControls.Repeater repeaterAudits;
     }
 }

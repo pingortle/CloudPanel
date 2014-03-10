@@ -216,16 +216,14 @@ namespace CloudPanel
 
         private void GetRecentAudits()
         {
-            DashboardViewModel dashboard = new DashboardViewModel();
-            dashboard.ViewModelEvent += dashboard_ViewModelEvent;
+            var audits = AuditGlobalization.GetAuditing(string.Empty);
 
-            List<Audits> audits = dashboard.RetrieveAudits();
             if (audits != null)
             {
-                // Filter out the top 10
-                IEnumerable<Audits> top10Audits = audits.Take(10);
+                // Select only the top 20
+                IEnumerable<Audits> top20Audits = audits.Take(20);
 
-                repeaterAudits.DataSource = top10Audits;
+                repeaterAudits.DataSource = top20Audits;
                 repeaterAudits.DataBind();
             }
         }

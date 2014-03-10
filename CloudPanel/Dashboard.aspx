@@ -65,17 +65,21 @@
                                 </div>
                                 <!-- progress -->
 
+                                <% if (CloudPanel.Modules.Common.Settings.StaticSettings.CitrixEnabled) { %>
                                 <span class="sublabel"><%= Resources.LocalizedText.Dashboard_CitrixUsers %> <asp:Label ID="lbTotalCitrixUsers" runat="server" Text="(0)"></asp:Label></span>
                                 <div class="progress progress-sm">
                                     <div style="width: 63%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-warning" runat="server" id="progBarCitrix"></div>
                                 </div>
                                 <!-- progress -->
+                                <% } %>
 
+                                <% if (CloudPanel.Modules.Common.Settings.StaticSettings.LyncEnabled) { %>
                                 <span class="sublabel"><%= Resources.LocalizedText.Dashboard_LyncUsers %> <asp:Label ID="lbTotalLyncUsers" runat="server" Text="(0)"></asp:Label></span>
                                 <div class="progress progress-sm">
                                     <div style="width: 63%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-info" runat="server" id="progBarLync"></div>
                                 </div>
                                 <!-- progress -->
+                                <% } %>
 
                                 <div class="tinystat mr20">
                                     <div class="datainfo">
@@ -131,7 +135,7 @@
                                                 <li style="background-color: #fcfcfc">
                                                     <small class="pull-right"><%# ((DateTime)Eval("WhenEntered")).ToString("MMMM dd hh:mm tt") %></small>
                                                     <h4 class="sender"><%# Eval("Username") %></h4>
-                                                    <small><%# Eval("Message") %></small>
+                                                    <small><%# string.Format("{0}: {1}, {2}", Eval("ActionIDGlobalization"), Eval("Variable1"), Eval("Variable2")) %></small>
                                                 </li>
                                             </ItemTemplate>
                                         </asp:Repeater>
@@ -158,51 +162,5 @@
 
 
 <asp:Content ID="Content3" ContentPlaceHolderID="cphJavascript" runat="server">
-    <script src='<%= this.ResolveClientUrl("~/js/flot/flot.min.js") %>'></script>
-    <script src='<%= this.ResolveClientUrl("~/js/flot/flot.resize.min.js") %>'></script>
-    <script src='<%= this.ResolveClientUrl("~/js/raphael-2.1.0.min.js") %>'></script>
 
-    <script src='<%= this.ResolveClientUrl("~/js/flot/flot.symbol.min.js") %>'></script>
-    <script src='<%= this.ResolveClientUrl("~/js/flot/flot.crosshair.min.js") %>'></script>
-    <script src='<%= this.ResolveClientUrl("~/js/flot/flot.categories.min.js") %>'></script>
-    <script src='<%= this.ResolveClientUrl("~/js/flot/flot.pie.min.js") %>'></script>
-
-    <script type="text/javascript">
-
-        jQuery(document).ready(function () {
-
-            /***** PIE CHART *****/
-
-            var piedata = [
-                { label: "Series 1", data: [[1, 10]], color: '#D9534F' },
-                { label: "Series 2", data: [[1, 30]], color: '#1CAF9A' },
-                { label: "Series 3", data: [[1, 90]], color: '#F0AD4E' },
-                { label: "Series 4", data: [[1, 70]], color: '#428BCA' },
-                { label: "Series 5", data: [[1, 80]], color: '#5BC0DE' }
-            ];
-
-            jQuery.plot('#piechart', piedata, {
-                series: {
-                    pie: {
-                        show: true,
-                        radius: 1,
-                        label: {
-                            show: true,
-                            radius: 2 / 3,
-                            formatter: labelFormatter,
-                            threshold: 0.1
-                        }
-                    }
-                },
-                grid: {
-                    hoverable: true,
-                    clickable: true
-                }
-            });
-
-            function labelFormatter(label, series) {
-                return "<div style='font-size:8pt; text-align:center; padding:2px; color:white;'>" + label + "<br/>" + Math.round(series.percent) + "%</div>";
-            }
-        });
-    </script>
 </asp:Content>

@@ -221,6 +221,7 @@
     <Content Include="images\loaders\loader8.gif" />
     <Content Include="images\loaders\loader9.gif" />
     <Content Include="images\locked.png" />
+    <Content Include="images\man-icon.png" />
     <Content Include="images\minus%402x.png" />
     <Content Include="images\minus.png" />
     <Content Include="images\photos\blog1.jpg" />
@@ -269,6 +270,8 @@
     <Content Include="images\sort_desc_disabled.png" />
     <Content Include="images\spritemap%402x.png" />
     <Content Include="images\spritemap.png" />
+    <Content Include="images\system-users-md.png" />
+    <Content Include="images\system-users-th.png" />
     <Content Include="images\themeforest.png" />
     <Content Include="images\themepixels.png" />
     <Content Include="images\uploadfile%402x.png" />
@@ -625,6 +628,7 @@
     <Content Include="Web.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Code\AuditGlobalization.cs" />
     <Compile Include="App_GlobalResources\LocalizedText.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

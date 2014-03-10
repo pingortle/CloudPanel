@@ -55,7 +55,7 @@ jQuery(document).ready(function() {
    
    
    // Tooltip
-   jQuery('.tooltips').tooltip({ container: 'body'});
+   jQuery('.tooltips').tooltip({ container: 'body', tooltipClass: null });
    
    // Popover
    jQuery('.popovers').popover();

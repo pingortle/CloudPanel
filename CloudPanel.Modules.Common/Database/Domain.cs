@@ -21,5 +21,6 @@ namespace CloudPanel.Modules.Common.Database
         public bool IsDefault { get; set; }
         public bool IsAcceptedDomain { get; set; }
         public Nullable<bool> IsLyncDomain { get; set; }
+        public Nullable<int> DomainType { get; set; }
     }
 }

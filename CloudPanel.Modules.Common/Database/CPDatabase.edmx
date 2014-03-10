@@ -21,10 +21,9 @@
           <Property Name="CompanyCode" Type="nvarchar" MaxLength="255" Nullable="false" />
           <Property Name="Username" Type="nvarchar" MaxLength="50" Nullable="false" />
           <Property Name="Date" Type="datetime" Nullable="false" />
-          <Property Name="SeverityID" Type="int" />
-          <Property Name="MethodName" Type="varchar" MaxLength="100" />
-          <Property Name="Parameters" Type="ntext" />
-          <Property Name="Message" Type="ntext" Nullable="false" />
+          <Property Name="ActionID" Type="int" Nullable="false" />
+          <Property Name="Variable1" Type="ntext" Nullable="false" />
+          <Property Name="Variable2" Type="ntext" />
         </EntityType>
         <EntityType Name="AuditLogin">
           <Key>
@@ -113,6 +112,7 @@
           <Property Name="IsDefault" Type="bit" Nullable="false" />
           <Property Name="IsAcceptedDomain" Type="bit" Nullable="false" />
           <Property Name="IsLyncDomain" Type="bit" />
+          <Property Name="DomainType" Type="int" />
         </EntityType>
         <EntityType Name="LogTable">
           <Key>
@@ -412,8 +412,8 @@ warning 6002: The table/view 'CloudPanel.dbo.PriceOverride' does not have a prim
           <Property Name="DisableExchange" Type="bit" Nullable="false" />
           <Property Name="AddDomain" Type="bit" Nullable="false" />
           <Property Name="DeleteDomain" Type="bit" Nullable="false" />
-          <Property Name="ModifyAcceptedDomain" Type="bit" Nullable="false" />
-          <Property Name="ImportUsers" Type="bit" Nullable="false" />
+          <Property Name="EnableAcceptedDomain" Type="bit" Nullable="false" />
+          <Property Name="DisableAcceptedDomain" Type="bit" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'CloudPanel.dbo.UserPlans' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
@@ -461,6 +461,9 @@ warning 6002: The table/view 'CloudPanel.dbo.UserPlans' does not have a primary 
           <Property Name="AdditionalMB" Type="int" />
           <Property Name="ActiveSyncPlan" Type="int" />
         </EntityType>
+        <Function Name="DeleteUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserPrincipalName" Type="nvarchar" Mode="In" />
+        </Function>
         <EntityContainer Name="CloudPanelModelStoreContainer">
           <EntitySet Name="ApiAccess" EntityType="Self.ApiAccess" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Audit" EntityType="Self.Audit" Schema="dbo" store:Type="Tables" />
@@ -548,6 +551,9 @@ warning 6002: The table/view 'CloudPanel.dbo.UserPlans' does not have a primary 
           <EntitySet Name="UserPlans" EntityType="CloudPanelModel.UserPlan" />
           <EntitySet Name="UserPlansCitrices" EntityType="CloudPanelModel.UserPlansCitrix" />
           <EntitySet Name="Users" EntityType="CloudPanelModel.User" />
+          <FunctionImport Name="DeleteUser">
+          <Parameter Name="UserPrincipalName" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="ApiAccess">
           <Key>
@@ -564,11 +570,10 @@ warning 6002: The table/view 'CloudPanel.dbo.UserPlans' does not have a primary 
           <Property Name="AuditID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" />
           <Property Name="Username" Type="String" Nullable="false" MaxLength="50" Unicode="true" FixedLength="false" />
           <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
-          <Property Name="SeverityID" Type="Int32" />
-          <Property Name="MethodName" Type="String" MaxLength="100" Unicode="false" FixedLength="false" />
-          <Property Name="Parameters" Type="String" MaxLength="Max" Unicode="true" FixedLength="false" />
-          <Property Name="Message" Type="String" Nullable="false" MaxLength="Max" Unicode="true" FixedLength="false" />
           <Property Name="CompanyCode" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ActionID" Type="Int32" Nullable="false" />
+          <Property Name="Variable1" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Variable2" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
         </EntityType>
         <EntityType Name="AuditLogin">
           <Key>
@@ -657,6 +662,7 @@ warning 6002: The table/view 'CloudPanel.dbo.UserPlans' does not have a primary 
           <Property Name="IsDefault" Type="Boolean" Nullable="false" />
           <Property Name="IsAcceptedDomain" Type="Boolean" Nullable="false" />
           <Property Name="IsLyncDomain" Type="Boolean" />
+          <Property Name="DomainType" Type="Int32" />
         </EntityType>
         <EntityType Name="LogTable">
           <Key>
@@ -952,8 +958,8 @@ warning 6002: The table/view 'CloudPanel.dbo.UserPlans' does not have a primary 
           <Property Name="DisableExchange" Type="Boolean" Nullable="false" />
           <Property Name="AddDomain" Type="Boolean" Nullable="false" />
           <Property Name="DeleteDomain" Type="Boolean" Nullable="false" />
-          <Property Name="ModifyAcceptedDomain" Type="Boolean" Nullable="false" />
-          <Property Name="ImportUsers" Type="Boolean" Nullable="false" />
+          <Property Name="EnableAcceptedDomain" Type="Boolean" Nullable="false" />
+          <Property Name="DisableAcceptedDomain" Type="Boolean" Nullable="false" />
         </EntityType>
         <EntityType Name="UserPlan">
           <Key>
@@ -1017,15 +1023,14 @@ warning 6002: The table/view 'CloudPanel.dbo.UserPlans' does not have a primary 
           <EntitySetMapping Name="Audits">
             <EntityTypeMapping TypeName="CloudPanelModel.Audit">
               <MappingFragment StoreEntitySet="Audit">
+                <ScalarProperty Name="Variable2" ColumnName="Variable2" />
+                <ScalarProperty Name="Variable1" ColumnName="Variable1" />
+                <ScalarProperty Name="ActionID" ColumnName="ActionID" />
                 <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
                 <ScalarProperty Name="AuditID" ColumnName="AuditID" />
                 <ScalarProperty Name="Username" ColumnName="Username" />
                 <ScalarProperty Name="Date" ColumnName="Date" />
-                <ScalarProperty Name="SeverityID" ColumnName="SeverityID" />
-                <ScalarProperty Name="MethodName" ColumnName="MethodName" />
-                <ScalarProperty Name="Parameters" ColumnName="Parameters" />
-                <ScalarProperty Name="Message" ColumnName="Message" />
-              </MappingFragment>
+                </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="AuditLogins">
@@ -1112,6 +1117,7 @@ warning 6002: The table/view 'CloudPanel.dbo.UserPlans' does not have a primary 
           <EntitySetMapping Name="Domains">
             <EntityTypeMapping TypeName="CloudPanelModel.Domain">
               <MappingFragment StoreEntitySet="Domains">
+                <ScalarProperty Name="DomainType" ColumnName="DomainType" />
                 <ScalarProperty Name="DomainID" ColumnName="DomainID" />
                 <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
                 <ScalarProperty Name="Domain1" ColumnName="Domain" />
@@ -1424,14 +1430,14 @@ warning 6002: The table/view 'CloudPanel.dbo.UserPlans' does not have a primary 
           <EntitySetMapping Name="UserPermissions">
             <EntityTypeMapping TypeName="CloudPanelModel.UserPermission">
               <MappingFragment StoreEntitySet="UserPermissions">
+                <ScalarProperty Name="DisableAcceptedDomain" ColumnName="DisableAcceptedDomain" />
+                <ScalarProperty Name="EnableAcceptedDomain" ColumnName="EnableAcceptedDomain" />
                 <ScalarProperty Name="UserID" ColumnName="UserID" />
                 <ScalarProperty Name="EnableExchange" ColumnName="EnableExchange" />
                 <ScalarProperty Name="DisableExchange" ColumnName="DisableExchange" />
                 <ScalarProperty Name="AddDomain" ColumnName="AddDomain" />
                 <ScalarProperty Name="DeleteDomain" ColumnName="DeleteDomain" />
-                <ScalarProperty Name="ModifyAcceptedDomain" ColumnName="ModifyAcceptedDomain" />
-                <ScalarProperty Name="ImportUsers" ColumnName="ImportUsers" />
-              </MappingFragment>
+                </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="UserPlans">
@@ -1479,6 +1485,7 @@ warning 6002: The table/view 'CloudPanel.dbo.UserPlans' does not have a primary 
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="DeleteUser" FunctionName="CloudPanelModel.Store.DeleteUser" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

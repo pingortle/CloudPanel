@@ -17,10 +17,9 @@ namespace CloudPanel.Modules.Common.Database
         public int AuditID { get; set; }
         public string Username { get; set; }
         public System.DateTime Date { get; set; }
-        public Nullable<int> SeverityID { get; set; }
-        public string MethodName { get; set; }
-        public string Parameters { get; set; }
-        public string Message { get; set; }
         public string CompanyCode { get; set; }
+        public int ActionID { get; set; }
+        public string Variable1 { get; set; }
+        public string Variable2 { get; set; }
     }
 }

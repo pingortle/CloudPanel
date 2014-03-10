@@ -35,7 +35,7 @@
                                 <ItemTemplate>
                                     <tr>
                                         <td>
-                                            <asp:LinkButton ID="lnkCompanyName" runat="server" CommandName="Select" CommandArgument='<%# Eval("CompanyCode") %>'><%# Eval("CompanyName") %></asp:LinkButton>
+                                            <asp:LinkButton ID="lnkCompanyName" runat="server" CommandName="Select" CommandArgument='<%# Eval("CompanyCode") + "|" + Eval("CompanyName") %>'><%# Eval("CompanyName") %></asp:LinkButton>
                                         </td>
                                         <td><%# Eval("FullAddressFormatted") %></td>
                                         <td><%# String.Join("<br />", (string[])Eval("Domains")) %></td>

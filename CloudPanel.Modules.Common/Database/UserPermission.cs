@@ -19,7 +19,7 @@ namespace CloudPanel.Modules.Common.Database
         public bool DisableExchange { get; set; }
         public bool AddDomain { get; set; }
         public bool DeleteDomain { get; set; }
-        public bool ModifyAcceptedDomain { get; set; }
-        public bool ImportUsers { get; set; }
+        public bool EnableAcceptedDomain { get; set; }
+        public bool DisableAcceptedDomain { get; set; }
     }
 }

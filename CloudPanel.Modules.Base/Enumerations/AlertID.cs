@@ -10,6 +10,7 @@ namespace CloudPanel.Modules.Base.Enumerations
         FAILED_CREATE_OU,
         FAILED_CREATE_GROUP,
         USER_UNKNOWN,
+        USER_ALREADY_EXISTS,
         LOGIN_FAILED,
         RETRIEVE_GROUPS_FAILED,
         BRUTE_FORCE_BLOCKED,

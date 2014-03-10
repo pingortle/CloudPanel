@@ -40,22 +40,13 @@ namespace CloudPanel.company {
         protected global::System.Web.UI.WebControls.Button btnAddUser;
         
         /// <summary>
-        /// lnkEdit control.
+        /// repeaterUsers control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkEdit;
-        
-        /// <summary>
-        /// lnkDelete control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkDelete;
+        protected global::System.Web.UI.WebControls.Repeater repeaterUsers;
         
         /// <summary>
         /// panelEditCreateUser control.
@@ -85,40 +76,40 @@ namespace CloudPanel.company {
         protected global::System.Web.UI.WebControls.HiddenField hfEditUserPrincipalName;
         
         /// <summary>
-        /// TextBox1 control.
+        /// txtMiddleName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txtMiddleName;
         
         /// <summary>
-        /// TextBox2 control.
+        /// txtLastname control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox2;
+        protected global::System.Web.UI.WebControls.TextBox txtLastname;
         
         /// <summary>
-        /// TextBox3 control.
+        /// txtDisplayName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox3;
+        protected global::System.Web.UI.WebControls.TextBox txtDisplayName;
         
         /// <summary>
-        /// TextBox4 control.
+        /// txtDepartment control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox4;
+        protected global::System.Web.UI.WebControls.TextBox txtDepartment;
         
         /// <summary>
         /// txtLoginName control.
@@ -139,22 +130,22 @@ namespace CloudPanel.company {
         protected global::System.Web.UI.WebControls.DropDownList ddlLoginDomain;
         
         /// <summary>
-        /// TextBox6 control.
+        /// txtPassword1 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox6;
+        protected global::System.Web.UI.WebControls.TextBox txtPassword1;
         
         /// <summary>
-        /// TextBox5 control.
+        /// txtPassword2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox5;
+        protected global::System.Web.UI.WebControls.TextBox txtPassword2;
         
         /// <summary>
         /// cbPasswordNeverExpires control.
@@ -164,6 +155,15 @@ namespace CloudPanel.company {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox cbPasswordNeverExpires;
+        
+        /// <summary>
+        /// panelUserRights control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel panelUserRights;
         
         /// <summary>
         /// cbCompanyAdmin control.
@@ -236,6 +236,15 @@ namespace CloudPanel.company {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox cbDisableAcceptedDomain;
+        
+        /// <summary>
+        /// panelEmail control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel panelEmail;
         
         /// <summary>
         /// cbEnableMailbox control.

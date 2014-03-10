@@ -18,13 +18,13 @@
             <div class="row">
 
                 <h2>Servers</h2>
-                <asp:Repeater ID="serversRepeater" runat="server">
+                <asp:Repeater ID="repeaterServers" runat="server">
                     <ItemTemplate>
                         <div class="col-md-6">
                             <div class="people-item">
                                 <div class="media">
                                     <a href="#" class="pull-left">
-                                        <asp:Image ID="imgServerPicture" runat="server" ImageUrl='<%# Eval("PictureURL") %>' CssClass="thumbnail media-object" />
+                                        <asp:Image ID="imgServerPicture" runat="server" ImageUrl='<%# (Eval("PictureURL") == null || string.IsNullOrEmpty(Eval("PictureURL").ToString())) ? "~/images/citrix/citrix_server.png" : Eval("PictureURL").ToString() %>' CssClass="thumbnail media-object" />
                                     </a>
                                     <div class="media-body">
                                         <div style="float: right">
@@ -32,7 +32,7 @@
                                         </div>
 
                                         <h4 class="person-name">
-                                            <asp:Label ID="lbServerName" runat="server" Text='<%# Eval("Name") %>'></asp:Label>
+                                            <asp:Label ID="lbServerName" runat="server" Text='<%# Eval("DisplayName") %>'></asp:Label>
                                         </h4>
                                         <div class="text-muted">
                                             <i class="fa fa-money"></i>
@@ -62,14 +62,14 @@
                             <div class="people-item">
                                 <div class="media">
                                     <a href="#" class="pull-left">
-                                        <asp:Image ID="imgAppPicture" runat="server" ImageUrl='<%# Eval("PictureURL") %>' CssClass="thumbnail media-object" />
+                                        <asp:Image ID="imgAppPicture" runat="server" ImageUrl='<%# (Eval("PictureURL") == null || string.IsNullOrEmpty(Eval("PictureURL").ToString())) ? "~/images/citrix/citrix_application.png" : Eval("PictureURL").ToString() %>' CssClass="thumbnail media-object" />
                                     </a>
                                     <div class="media-body">
                                         <div style="float: right">
                                             <asp:Button ID="btnEditMembers" runat="server" Text="Edit Members" CssClass="btn btn-primary btn-xs" />
                                         </div>
                                         <h4 class="person-name">
-                                            <asp:Label ID="lbAppName" runat="server" Text='<%# Eval("Name") %>'></asp:Label>
+                                            <asp:Label ID="lbAppName" runat="server" Text='<%# Eval("DisplayName") %>'></asp:Label>
                                         </h4>
                                         <div class="text-muted">
                                             <i class="fa fa-money"></i>

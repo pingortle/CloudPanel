@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Security;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -13,17 +14,31 @@ namespace CloudPanel.security
         {
             if (!IsPostBack)
             {
+                DestroySessions();
+
                 GetLockInfo();
+            }
+        }
+
+        private void DestroySessions()
+        {
+            if (HttpContext.Current != null)
+            {
+                HttpContext.Current.Session.Abandon();
             }
         }
 
         private void GetLockInfo()
         {
-            string displayName = Request.QueryString["DisplayName"];
-            string loginName = Request.QueryString["LoginName"];
+            if (!string.IsNullOrEmpty(Request.QueryString["DisplayName"]))
+                lbDisplayName.Text = Request.QueryString["DisplayName"];
+            else
+                lbDisplayName.Text = "Unknown";
 
-            lbDisplayName.Text = displayName;
-            lbLoginName.Text = loginName;
+            if (!string.IsNullOrEmpty(Request.QueryString["Username"]))
+                lbLoginName.Text = Request.QueryString["Username"];
+            else
+                Response.Redirect("~/login.aspx", true);
         }
     }
 }

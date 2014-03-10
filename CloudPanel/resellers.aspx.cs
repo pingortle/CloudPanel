@@ -125,8 +125,8 @@ namespace CloudPanel
         {
             if (errorID == Modules.Base.Enumerations.AlertID.SUCCESS_NEW_RESELLER)
             {
-                string successMessage = string.Format("{0} {1}", Resources.LocalizedText.Audits_NewReseller, message);
-                AuditGlobal.AddAudit(WebSessionHandler.SelectedCompanyCode, WebSessionHandler.Username, successMessage);
+                string successMessage = string.Format("{0} {1}", Resources.LocalizedText.Audit_NewReseller, message);
+                AuditGlobal.AddAudit(WebSessionHandler.SelectedCompanyCode, WebSessionHandler.Username, Modules.Base.Enumerations.ActionID.CreateReseller, message);
 
                 // Set the success message
                 alertmessage.SetMessage(errorID, successMessage);

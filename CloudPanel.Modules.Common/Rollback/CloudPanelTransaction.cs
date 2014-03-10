@@ -1,5 +1,6 @@
 ﻿using CloudPanel.Modules.ActiveDirectory.Groups;
 using CloudPanel.Modules.ActiveDirectory.OrganizationalUnits;
+using CloudPanel.Modules.ActiveDirectory.Users;
 using CloudPanel.Modules.Common.Database;
 using CloudPanel.Modules.Common.Settings;
 using log4net;
@@ -59,6 +60,15 @@ namespace CloudPanel.Modules.Common.Rollback
             });
         }
 
+        public void NewUser(string userPrincipalName)
+        {
+            Events.Add(new CloudPanelEvent()
+                {
+                    EventType = CloudPanelEventType.Create_NewUser,
+                    UserPrincipalName = userPrincipalName
+                });
+        }
+
         #endregion
 
         #region RollBack
@@ -77,12 +87,16 @@ namespace CloudPanel.Modules.Common.Rollback
                         Delete_OrganizationalUnit(e.DistinguishedName);
                         break;
                     case CloudPanelEventType.Create_SecurityGroup:
-                        // Delete Security Gorup
+                        // Delete Security Group
                         Delete_Group(e.GroupName);
                         break;
                     case CloudPanelEventType.Insert_Company_Into_Database:
                         // Delete the company from the database
                         Delete_CompanyFromDatabase(e.CompanyCode);
+                        break;
+                    case CloudPanelEventType.Create_NewUser:
+                        // Delete the user
+                        Delete_UserFromAD(e.UserPrincipalName);
                         break;
                     default:
                         break;
@@ -159,6 +173,26 @@ namespace CloudPanel.Modules.Common.Rollback
             {
                 if (database != null)
                     database.Dispose();
+            }
+        }
+
+        private void Delete_UserFromAD(string userPrincipalName)
+        {
+            ADUser user = null;
+
+            try
+            {
+                user = new ADUser(StaticSettings.Username, StaticSettings.DecryptedPassword, StaticSettings.PrimaryDC);
+                user.DeleteUser(userPrincipalName);
+            }
+            catch (Exception ex)
+            {
+                this.logger.Error("Failed to roll back action... Deleting user from Active Directory " + userPrincipalName, ex);
+            }
+            finally
+            {
+                if (user != null)
+                    user.Dispose();
             }
         }
 

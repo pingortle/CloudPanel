@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CloudPanel.Modules.Base.Plans;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -36,6 +37,8 @@ namespace CloudPanel.Modules.Base.Companies
         private string[] _domains;
 
         private DateTime _created;
+
+        private CompanyPlanObject _companyplanobject;
 
         #endregion
 
@@ -246,6 +249,12 @@ namespace CloudPanel.Modules.Base.Companies
         {
             get { return _created; }
             set { _created = value; }
+        }
+
+        public CompanyPlanObject CompanyPlanObject
+        {
+            get { return _companyplanobject; }
+            set { _companyplanobject = value; }
         }
 
         #endregion

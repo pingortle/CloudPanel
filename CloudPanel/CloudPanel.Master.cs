@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
@@ -9,9 +10,24 @@ namespace CloudPanel.Template
 {
     public partial class CloudPanel : System.Web.UI.MasterPage
     {
+        protected int warningTimeoutInMilliseconds = 60000;
+        protected int expiredTimeoutInMilliseconds = 120000;
         protected void Page_Load(object sender, EventArgs e)
         {
-            
+            // Check if user is authenticated
+            if (!WebSessionHandler.IsLoggedIn)
+                Response.Redirect("~/login.aspx", true);
+
+            SetSessionTimeout();
+        }
+
+        private void SetSessionTimeout()
+        {
+            int expiredDefault = HttpContext.Current.Session.Timeout * 60 * 1000;
+            int warningDefault = expiredDefault - 2;
+
+            expiredTimeoutInMilliseconds = int.Parse(expiredDefault.ToString(), CultureInfo.InvariantCulture);
+            warningTimeoutInMilliseconds = int.Parse(warningDefault.ToString(), CultureInfo.InvariantCulture);
         }
 
         #region Button Click Events

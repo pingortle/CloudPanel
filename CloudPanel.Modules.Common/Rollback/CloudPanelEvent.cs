@@ -26,6 +26,11 @@ namespace CloudPanel.Modules.Common.Rollback
         /// </summary>
         public string CompanyCode { get; set; }
 
+        /// <summary>
+        /// The userprincipalname of the user
+        /// </summary>
+        public string UserPrincipalName { get; set; }
+
         #endregion
     }
 }

@@ -97,14 +97,40 @@ namespace CloudPanel
             }
         }
 
+        public static string SelectedCompanyName
+        {
+            get
+            {
+                if (HttpContext.Current.Session["CP_SelectedCompanyName"] != null)
+                    return HttpContext.Current.Session["CP_SelectedCompanyName"].ToString();
+                else
+                    return "";
+            }
+            set
+            {
+                HttpContext.Current.Session["CP_SelectedCompanyName"] = value;
+            }
+        }
+
         public static string Username
         {
             get
             {
-                if (HttpContext.Current.User.Identity != null)
+                if (!string.IsNullOrEmpty(HttpContext.Current.User.Identity.Name))
                     return HttpContext.Current.User.Identity.Name;
                 else
                     return "Not logged in user";
+            }
+        }
+
+        public static bool IsLoggedIn
+        {
+            get
+            {
+                if (!HttpContext.Current.User.Identity.IsAuthenticated || string.IsNullOrEmpty(HttpContext.Current.User.Identity.Name) || string.IsNullOrEmpty(DisplayName))
+                    return false;
+                else
+                    return true;
             }
         }
     }

@@ -154,6 +154,7 @@
       <DependentUpon>CPDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="GlobalActions\AuditGlobal.cs" />
+    <Compile Include="GlobalActions\CompanyChecks.cs" />
     <Compile Include="Other\Randoms.cs" />
     <Compile Include="Other\Validation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -161,12 +162,15 @@
     <Compile Include="Rollback\CloudPanelEventType.cs" />
     <Compile Include="Rollback\CloudPanelTransaction.cs" />
     <Compile Include="Settings\StaticSettings.cs" />
+    <Compile Include="ViewModel\CompanyCitrixViewModel.cs" />
+    <Compile Include="ViewModel\CompanyOverviewViewModel.cs" />
     <Compile Include="ViewModel\CompanyViewModel.cs" />
     <Compile Include="ViewModel\DashboardViewModel.cs" />
     <Compile Include="ViewModel\IViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\ResellerViewModel.cs" />
     <Compile Include="ViewModel\SettingsViewModel.cs" />
+    <Compile Include="ViewModel\UsersViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Database\CPDatabase.edmx">

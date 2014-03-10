@@ -495,19 +495,19 @@
   <data name="Formats_NumberGroupSeperator" xml:space="preserve">
     <value>,</value>
   </data>
-  <data name="Audits_NewReseller" xml:space="preserve">
+  <data name="Audit_NewReseller" xml:space="preserve">
     <value>Successfully created a new reseller</value>
   </data>
-  <data name="Audits_NewCompany" xml:space="preserve">
+  <data name="Audit_NewCompany" xml:space="preserve">
     <value>Successfully created company</value>
   </data>
-  <data name="Audits_SavedSettings" xml:space="preserve">
+  <data name="Audit_SavedSettings" xml:space="preserve">
     <value>Successfully saved CloudPanel settings to the database</value>
   </data>
-  <data name="Audits_UpdateCompany" xml:space="preserve">
+  <data name="Audit_UpdateCompany" xml:space="preserve">
     <value>Successfully updated company</value>
   </data>
-  <data name="Audits_UpdateReseller" xml:space="preserve">
+  <data name="Audit_UpdateReseller" xml:space="preserve">
     <value>Successfully updated reseller</value>
   </data>
   <data name="Dashboard_AllocatedEmailSpace" xml:space="preserve">
@@ -548,5 +548,140 @@
   </data>
   <data name="Dashboard_TotalUsers" xml:space="preserve">
     <value>Users</value>
+  </data>
+  <data name="Users_AddDomain" xml:space="preserve">
+    <value>Add Domain</value>
+  </data>
+  <data name="Users_AddNew" xml:space="preserve">
+    <value>Add New User</value>
+  </data>
+  <data name="Users_APIAccess" xml:space="preserve">
+    <value>Has API Access?</value>
+  </data>
+  <data name="Users_Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Users_Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Users_DeleteDomain" xml:space="preserve">
+    <value>Delete Domain</value>
+  </data>
+  <data name="Users_Department" xml:space="preserve">
+    <value>Department</value>
+  </data>
+  <data name="Users_DisableAcceptedDomains" xml:space="preserve">
+    <value>Disable Accepted Domains</value>
+  </data>
+  <data name="Users_DisableExchange" xml:space="preserve">
+    <value>Disable Exchange</value>
+  </data>
+  <data name="Users_DisplayName" xml:space="preserve">
+    <value>Display Name</value>
+  </data>
+  <data name="Users_Domain" xml:space="preserve">
+    <value>Domain</value>
+  </data>
+  <data name="Users_Email" xml:space="preserve">
+    <value>E-mail</value>
+  </data>
+  <data name="Users_EmailAddress" xml:space="preserve">
+    <value>E-mail Address</value>
+  </data>
+  <data name="Users_EnableAcceptedDomains" xml:space="preserve">
+    <value>Enable Accepted Domains</value>
+  </data>
+  <data name="Users_EnableExchange" xml:space="preserve">
+    <value>Enable Exchange</value>
+  </data>
+  <data name="Users_EnableMailbox" xml:space="preserve">
+    <value>Enable a mailbox for this user?</value>
+  </data>
+  <data name="Users_FirstName" xml:space="preserve">
+    <value>First Name</value>
+  </data>
+  <data name="Users_IsCompanyAdmin" xml:space="preserve">
+    <value>Is Company Admin?</value>
+  </data>
+  <data name="Users_IsResellerAdmin" xml:space="preserve">
+    <value>Is Reseller Admin?</value>
+  </data>
+  <data name="Users_LastName" xml:space="preserve">
+    <value>LastName</value>
+  </data>
+  <data name="Users_LoginDetails" xml:space="preserve">
+    <value>Login Details</value>
+  </data>
+  <data name="Users_LoginName" xml:space="preserve">
+    <value>Login Name</value>
+  </data>
+  <data name="Users_MailboxPlan" xml:space="preserve">
+    <value>Mailbox Plan</value>
+  </data>
+  <data name="Users_MailboxSize" xml:space="preserve">
+    <value>Mailbox Size</value>
+  </data>
+  <data name="Users_Messages_NoDomainsFound" xml:space="preserve">
+    <value>You cannot continue because there were no domains found for your company. Please make sure this company has a valid domain.</value>
+  </data>
+  <data name="Users_MiddleName" xml:space="preserve">
+    <value>Middle Name</value>
+  </data>
+  <data name="Users_Modify" xml:space="preserve">
+    <value>Modify</value>
+  </data>
+  <data name="Users_Password" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="Users_PasswordNeverExpires" xml:space="preserve">
+    <value>Password Never Expires</value>
+  </data>
+  <data name="Users_RetypePassword" xml:space="preserve">
+    <value>Retype Password</value>
+  </data>
+  <data name="Users_SamAccountName" xml:space="preserve">
+    <value>sAMAccountName</value>
+  </data>
+  <data name="Users_Submit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="Users_UserInformation" xml:space="preserve">
+    <value>UserInformation</value>
+  </data>
+  <data name="Users_UserRights" xml:space="preserve">
+    <value>User Rights</value>
+  </data>
+  <data name="Users_CompanyAdmin" xml:space="preserve">
+    <value>Is a Company Admin</value>
+  </data>
+  <data name="Users_IsEmailEnabled" xml:space="preserve">
+    <value>Is Email Enabled</value>
+  </data>
+  <data name="Users_IsLyncEnabled" xml:space="preserve">
+    <value>Is Lync Enabled</value>
+  </data>
+  <data name="Users_ResellerAdmin" xml:space="preserve">
+    <value>Is a Reseller Admin</value>
+  </data>
+  <data name="Audit_DeleteUser" xml:space="preserve">
+    <value>Deleted user</value>
+  </data>
+  <data name="Audit_NewUser" xml:space="preserve">
+    <value>Created a new user</value>
+  </data>
+  <data name="Audit_UpdateUser" xml:space="preserve">
+    <value>Updated user</value>
+  </data>
+  <data name="Success_NewCompany" xml:space="preserve">
+    <value>Successfully created new company</value>
+  </data>
+  <data name="Users_CouldNotFindUser" xml:space="preserve">
+    <value>Unable to find user</value>
+  </data>
+  <data name="Users_UserAlreadyExist" xml:space="preserve">
+    <value>The user already exists</value>
+  </data>
+  <data name="Users_UserAlreadyExists" xml:space="preserve">
+    <value>The user already exists</value>
   </data>
 </root>

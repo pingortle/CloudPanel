@@ -395,55 +395,5 @@ namespace CloudPanel.Modules.Common.ViewModel
         }
 
         #endregion
-
-        #region Recent Actions
-
-        public List<Audits> RetrieveAudits()
-        {
-            CPDatabase database = null;
-
-            try
-            {
-                database = new CPDatabase();
-
-                var audits = from a in database.Audits
-                             orderby a.Date descending
-                             select a;
-
-                if (audits == null)
-                    return null;
-                else
-                {
-                    List<Audits> foundAudits = new List<Audits>();
-                    foreach (var a in audits)
-                    {
-                        foundAudits.Add(new Audits()
-                            {
-                                AuditID = a.AuditID,
-                                Username = a.Username,
-                                Message = a.Message,
-                                WhenEntered = a.Date,
-                                CompanyCode = a.CompanyCode
-                            });
-                    }
-
-                    return foundAudits;
-                }
-            }
-            catch (Exception ex)
-            {
-                this.logger.Error("Failed to retrieve audits from the database", ex);
-                
-                ThrowEvent(AlertID.FAILED_RETRIEVE_AUDITS, ex.Message);
-                return null;
-            }
-            finally
-            {
-                if (database != null)
-                    database.Dispose();
-            }
-        }
-
-        #endregion
     }
 }
