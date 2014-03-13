@@ -1,6 +1,5 @@
 ﻿using CloudPanel.Modules.Base.Companies;
 using CloudPanel.Modules.Base.Enumerations;
-using CloudPanel.Modules.Base.Exchange;
 using CloudPanel.Modules.Base.Plans;
 using CloudPanel.Modules.Base.Users;
 using CloudPanel.Modules.Common.GlobalActions;
@@ -31,7 +30,7 @@ namespace CloudPanel.company
             UsersViewModel viewModel = new UsersViewModel();
             viewModel.ViewModelEvent += viewModel_ViewModelEvent;
 
-            List<Domains> foundDomains = viewModel.GetDomains(WebSessionHandler.SelectedCompanyCode);
+            List<DomainsObject> foundDomains = viewModel.GetDomains(WebSessionHandler.SelectedCompanyCode);
             if (foundDomains != null)
             {
                 ddlLoginDomain.DataSource = foundDomains;
@@ -163,7 +162,7 @@ namespace CloudPanel.company
                     cbResellerAdmin.Checked = false;
 
                 // Populate the domains field
-                List<Domains> foundDomains = viewModel.GetDomains(WebSessionHandler.SelectedCompanyCode);
+                List<DomainsObject> foundDomains = viewModel.GetDomains(WebSessionHandler.SelectedCompanyCode);
                 if (foundDomains != null)
                 {
                     ddlLoginDomain.DataSource = foundDomains;

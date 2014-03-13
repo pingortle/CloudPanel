@@ -7,10 +7,10 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace CloudPanel.company {
+namespace CloudPanel.plans {
     
     
-    public partial class domains {
+    public partial class company {
         
         /// <summary>
         /// alertmessage control.
@@ -22,84 +22,120 @@ namespace CloudPanel.company {
         protected global::CloudPanel.cpcontrols.alertmessage alertmessage;
         
         /// <summary>
-        /// panelDomainList control.
+        /// panelPlan control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel panelDomainList;
+        protected global::System.Web.UI.WebControls.Panel panelPlan;
         
         /// <summary>
-        /// btnAddDomain control.
+        /// ddlCompanyPlans control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnAddDomain;
+        protected global::System.Web.UI.WebControls.DropDownList ddlCompanyPlans;
         
         /// <summary>
-        /// repeaterDomains control.
+        /// hfSelectedPlanID control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Repeater repeaterDomains;
+        protected global::System.Web.UI.WebControls.HiddenField hfSelectedPlanID;
         
         /// <summary>
-        /// panelEditCreateDomain control.
+        /// txtDisplayName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Panel panelEditCreateDomain;
+        protected global::System.Web.UI.WebControls.TextBox txtDisplayName;
         
         /// <summary>
-        /// txtDomainName control.
+        /// txtMaxUsers control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtDomainName;
+        protected global::System.Web.UI.WebControls.TextBox txtMaxUsers;
         
         /// <summary>
-        /// hfDomainID control.
+        /// txtMaxDomains control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.HiddenField hfDomainID;
+        protected global::System.Web.UI.WebControls.TextBox txtMaxDomains;
         
         /// <summary>
-        /// cbIsDefaultDomain control.
+        /// txtMaxMailboxes control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.CheckBox cbIsDefaultDomain;
+        protected global::System.Web.UI.WebControls.TextBox txtMaxMailboxes;
         
         /// <summary>
-        /// btnCancel control.
+        /// txtMaxContacts control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancel;
+        protected global::System.Web.UI.WebControls.TextBox txtMaxContacts;
         
         /// <summary>
-        /// btnSubmit control.
+        /// txtMaxGroups control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSubmit;
+        protected global::System.Web.UI.WebControls.TextBox txtMaxGroups;
+        
+        /// <summary>
+        /// txtMaxResourceMailboxes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtMaxResourceMailboxes;
+        
+        /// <summary>
+        /// txtMaxMailPublicFolders control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtMaxMailPublicFolders;
+        
+        /// <summary>
+        /// btnDelete control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnDelete;
+        
+        /// <summary>
+        /// btnSave control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnSave;
     }
 }

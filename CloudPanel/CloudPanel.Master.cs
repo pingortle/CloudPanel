@@ -10,15 +10,22 @@ namespace CloudPanel.Template
 {
     public partial class CloudPanel : System.Web.UI.MasterPage
     {
-        protected int warningTimeoutInMilliseconds = 60000;
-        protected int expiredTimeoutInMilliseconds = 120000;
+        protected int warningTimeoutInMilliseconds = 600000000;
+        protected int expiredTimeoutInMilliseconds = 1200000000;
         protected void Page_Load(object sender, EventArgs e)
         {
-            // Check if user is authenticated
-            if (!WebSessionHandler.IsLoggedIn)
-                Response.Redirect("~/login.aspx", true);
+            if (Request.Url.AbsoluteUri.Contains("/settings.aspx") && Request.IsLocal)
+            {
+                // Do not redirect local requests access settings page
+            }
+            else
+            {
+                // Check if user is authenticated
+                if (!WebSessionHandler.IsLoggedIn)
+                    Response.Redirect("~/login.aspx", true);
 
-            SetSessionTimeout();
+                SetSessionTimeout();
+            }
         }
 
         private void SetSessionTimeout()

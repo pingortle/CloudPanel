@@ -1,4 +1,5 @@
 ﻿using CloudPanel.Modules.Base.Companies;
+using CloudPanel.Modules.Base.Enumerations;
 using CloudPanel.Modules.Common.GlobalActions;
 using CloudPanel.Modules.Common.ViewModel;
 using System;
@@ -50,30 +51,32 @@ namespace CloudPanel
             companyModel.ViewModelEvent += companyModel_ViewModelEvent;
 
             CompanyObject company = companyModel.GetCompany(companyCode);
-
-            hfCompanyCode.Value = companyCode;
-            txtName.Text = company.CompanyCode;
-            txtContactsName.Text = company.AdminName;
-            txtEmail.Text = company.AdminEmail;
-            txtTelephone.Text = company.Telephone;
-            txtStreetAddress.Text = company.Street;
-            txtCity.Text = company.City;
-            txtState.Text = company.State;
-            txtZipCode.Text = company.ZipCode;
-
-            ListItem item = ddlCountry.Items.FindByValue(company.Country);
-            if (item != null)
+            if (company != null)
             {
-                ddlCountry.SelectedValue = item.Value;
+                hfCompanyCode.Value = companyCode;
+                txtName.Text = company.CompanyCode;
+                txtContactsName.Text = company.AdminName;
+                txtEmail.Text = company.AdminEmail;
+                txtTelephone.Text = company.Telephone;
+                txtStreetAddress.Text = company.Street;
+                txtCity.Text = company.City;
+                txtState.Text = company.State;
+                txtZipCode.Text = company.ZipCode;
+
+                ListItem item = ddlCountry.Items.FindByValue(company.Country);
+                if (item != null)
+                {
+                    ddlCountry.SelectedValue = item.Value;
+                }
+
+                // Show the edit panel and readonly the textbox
+                panelEditCreateCompany.Visible = true;
+                panelCompanyList.Visible = false;
+
+                // Disable the domain textbox
+                txtDomainName.Text = string.Empty;
+                txtDomainName.ReadOnly = true;
             }
-
-            // Show the edit panel and readonly the textbox
-            panelEditCreateCompany.Visible = true;
-            panelCompanyList.Visible = false;
-
-            // Disable the domain textbox
-            txtDomainName.Text = string.Empty;
-            txtDomainName.ReadOnly = true;
         }
 
         private void AddNewCompany()
@@ -113,7 +116,7 @@ namespace CloudPanel
         protected void repeaterCompanies_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
             if (e.CommandName == "Edit")
-                PopulateCompany(e.CommandName.ToString());
+                PopulateCompany(e.CommandArgument.ToString());
             else if (e.CommandName == "Select")
             {
                 string[] selectedArray = e.CommandArgument.ToString().Split('|');
@@ -134,7 +137,7 @@ namespace CloudPanel
                 AuditGlobal.AddAudit(WebSessionHandler.SelectedCompanyCode, WebSessionHandler.Username, Modules.Base.Enumerations.ActionID.CreateCompany, message);
 
                 // Set the success message
-                alertmessage.SetMessage(errorID, Resources.LocalizedText.Success_NewCompany);
+                alertmessage.SetMessage(AlertID.SUCCESS, Resources.LocalizedText.Success_NewCompany);
             }
             else
                 alertmessage.SetMessage(errorID, message);

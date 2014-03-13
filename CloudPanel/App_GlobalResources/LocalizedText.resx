@@ -684,4 +684,88 @@
   <data name="Users_UserAlreadyExists" xml:space="preserve">
     <value>The user already exists</value>
   </data>
+  <data name="Buttons_Cancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="Buttons_CreateNew" xml:space="preserve">
+    <value>Create New</value>
+  </data>
+  <data name="Buttons_Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Buttons_Edit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="Buttons_Modify" xml:space="preserve">
+    <value>Modify</value>
+  </data>
+  <data name="Buttons_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="Buttons_Submit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="Domains_AddEditDomain" xml:space="preserve">
+    <value>Add/Edit Domain</value>
+  </data>
+  <data name="Domains_AddNewDomain" xml:space="preserve">
+    <value>Add New Domain</value>
+  </data>
+  <data name="Domains_DomainName" xml:space="preserve">
+    <value>Domain Name</value>
+  </data>
+  <data name="Domains_IsDefault" xml:space="preserve">
+    <value>Is Default?</value>
+  </data>
+  <data name="PlanCompany_Citrix" xml:space="preserve">
+    <value>Citrix</value>
+  </data>
+  <data name="PlanCompany_Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="PlanCompany_Details" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="PlanCompany_DisplayName" xml:space="preserve">
+    <value>Display Name</value>
+  </data>
+  <data name="PlanCompany_Exchange" xml:space="preserve">
+    <value>Microsoft Exchange</value>
+  </data>
+  <data name="PlanCompany_MaxCitrixUsers" xml:space="preserve">
+    <value>Max Users</value>
+  </data>
+  <data name="PlanCompany_MaxContacts" xml:space="preserve">
+    <value>Max Contacts</value>
+  </data>
+  <data name="PlanCompany_MaxDomains" xml:space="preserve">
+    <value>Max Domains</value>
+  </data>
+  <data name="PlanCompany_MaxGroups" xml:space="preserve">
+    <value>Max Groups</value>
+  </data>
+  <data name="PlanCompany_MaxMailboxes" xml:space="preserve">
+    <value>Max Mailboxes</value>
+  </data>
+  <data name="PlanCompany_MaxMailPublicFolders" xml:space="preserve">
+    <value>Max Email Public Folders</value>
+  </data>
+  <data name="PlanCompany_MaxResourceMailboxes" xml:space="preserve">
+    <value>Max Resource Mailboxes</value>
+  </data>
+  <data name="PlanCompany_MaxUsers" xml:space="preserve">
+    <value>Max Users</value>
+  </data>
+  <data name="PlanCompany_Plan" xml:space="preserve">
+    <value>Plan</value>
+  </data>
+  <data name="PlanCompany_PlanInUse" xml:space="preserve">
+    <value>Unable to modify the plan because it is currently in use.</value>
+  </data>
+  <data name="PlanCompany_Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="PlanCompany_UpdatePlanNotFound" xml:space="preserve">
+    <value>Unable to find the plan you selected in the database. Please contact support.</value>
+  </data>
 </root>

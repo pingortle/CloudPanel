@@ -163,5 +163,36 @@ namespace CloudPanel.Modules.Common.ViewModel
                     database.Dispose();
             }
         }
+
+        public void UpdateCompanyPlan(string companyCode, int planID)
+        {
+            CPDatabase database = null;
+
+            try
+            {
+                database = new CPDatabase();
+
+                var foundCompany = (from c in database.Companies
+                                    where !c.IsReseller
+                                    where c.CompanyCode == companyCode
+                                    select c).FirstOrDefault();
+
+                if (foundCompany != null)
+                {
+                    foundCompany.OrgPlanID = planID;
+                    database.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                this.logger.Error("Error changing company " + companyCode + "'s plan ID to " + planID.ToString(), ex);
+                ThrowEvent(Base.Enumerations.AlertID.FAILED, ex.Message);
+            }
+            finally
+            {
+                if (database != null)
+                    database.Dispose();
+            }
+        }
     }
 }

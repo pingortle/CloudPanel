@@ -20,12 +20,17 @@ namespace CloudPanel.company
         {
             if (!IsPostBack)
             {
-                PopulateCompanyPlans();
-
-                PopulateCompanyDetails();
-
-                PopulateRecentActions();
+                LoadCompany();
             }
+        }
+
+        private void LoadCompany()
+        {
+            PopulateCompanyPlans();
+
+            PopulateCompanyDetails();
+
+            PopulateRecentActions();
         }
 
         private void PopulateCompanyPlans()
@@ -34,10 +39,24 @@ namespace CloudPanel.company
             viewModel.ViewModelEvent += viewModel_ViewModelEvent;
 
             List<CompanyPlanObject> companyPlans = viewModel.GetCompanyPlans(WebSessionHandler.SelectedCompanyCode);
-            ddlCurrentPlan.DataTextField = "CompanyPlanName";
-            ddlCurrentPlan.DataValueField = "CompanyPlanID";
-            ddlCurrentPlan.DataSource = companyPlans;
-            ddlCurrentPlan.DataBind();
+            if (companyPlans != null)
+            {
+                ddlCurrentPlan.Items.Clear();
+                ddlCurrentPlan.Items.Add(new ListItem()
+                    {
+                        Value = "0",
+                        Text = "--- Plan Not Set ---"
+                    });
+
+                foreach (CompanyPlanObject o in companyPlans)
+                {
+                    ListItem item = new ListItem();
+                    item.Value = o.CompanyPlanID.ToString();
+                    item.Text = o.CompanyPlanName;
+                    ddlCurrentPlan.Items.Add(item);
+                }
+
+            }
         }
 
         private void PopulateCompanyDetails()
@@ -54,12 +73,14 @@ namespace CloudPanel.company
                 lbTelephone.Text = company.Telephone;
                 lbWhenCreated.Text = company.Created.ToString();
 
-                Address = company.FullAddressFormatted;
+                Address = string.Format("{0}, {1}, {2} {3}", company.Street, company.City, company.State, company.ZipCode);
 
                 // Set the plan
                 ListItem item = ddlCurrentPlan.Items.FindByValue(company.CompanyPlanID.ToString());
                 if (item != null)
                     ddlCurrentPlan.SelectedValue = item.Value;
+                else
+                    ddlCurrentPlan.SelectedIndex = 0;
 
                 if (company.CompanyPlanObject != null)
                 {
@@ -97,6 +118,25 @@ namespace CloudPanel.company
         void viewModel_ViewModelEvent(Modules.Base.Enumerations.AlertID errorID, string message)
         {
             alertmessage.SetMessage(errorID, message);
+        }
+
+        protected void ddlCurrentPlan_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (ddlCurrentPlan.SelectedIndex > 0)
+            {
+                int planID = 0;
+                int.TryParse(ddlCurrentPlan.SelectedItem.Value, out planID);
+
+                if (planID > 0)
+                {
+                    CompanyOverviewViewModel viewModel = new CompanyOverviewViewModel();
+                    viewModel.ViewModelEvent += viewModel_ViewModelEvent;
+                    viewModel.UpdateCompanyPlan(WebSessionHandler.SelectedCompanyCode, planID);
+
+                    // Load the company again
+                    LoadCompany();
+                }
+            }
         }
     }
 }

@@ -41,7 +41,7 @@ namespace CloudPanel.Modules.Common.ViewModel
                 // Start with the users
                 //
                 Dictionary<string, object> usersStatistics = new Dictionary<string, object>();
-                for (int i = 12; i >= 0; i--)
+                for (int i = 11; i >= 0; i--)
                 {
                     DateTime newDate = todaysDate.AddMonths(-i);
                     GetUserHistory(ref database, newDate, ref mfi, ref usersStatistics);
@@ -52,7 +52,7 @@ namespace CloudPanel.Modules.Common.ViewModel
                 // Get mailbox stats
                 //
                 Dictionary<string, object> mailboxStatistics = new Dictionary<string, object>();
-                for (int i = 12; i >= 0; i--)
+                for (int i = 11; i >= 0; i--)
                 {
                     DateTime newDate = todaysDate.AddMonths(-i);
                     GetMailboxHistory(ref database, newDate, ref mfi, ref mailboxStatistics);
@@ -63,7 +63,7 @@ namespace CloudPanel.Modules.Common.ViewModel
                 // Get Citrix stats
                 //
                 Dictionary<string, object> citrixStatistics = new Dictionary<string, object>();
-                for (int i = 12; i >= 0; i--)
+                for (int i = 11; i >= 0; i--)
                 {
                     DateTime newDate = todaysDate.AddMonths(-i);
                     GetCitrixHistory(ref database, newDate, ref mfi, ref citrixStatistics);

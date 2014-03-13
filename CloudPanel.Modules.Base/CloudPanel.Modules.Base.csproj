@@ -48,7 +48,7 @@
     <Compile Include="Enumerations\AlertID.cs" />
     <Compile Include="Enumerations\DomainType.cs" />
     <Compile Include="Enumerations\Messages.cs" />
-    <Compile Include="Companies\Domains.cs" />
+    <Compile Include="Companies\DomainsObject.cs" />
     <Compile Include="Plans\CompanyPlanObject.cs" />
     <Compile Include="Plans\MailboxPlanObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

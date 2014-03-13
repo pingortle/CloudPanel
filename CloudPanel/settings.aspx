@@ -46,13 +46,13 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Settings_LoginLogo %> <span class="asterisk">*</span></label>
+                                        <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Settings_LoginLogo %> </label>
                                         <div class="col-sm-4">
                                             <asp:FileUpload ID="fileLoginLogo" runat="server" />
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Settings_CornerLogo %> <span class="asterisk">*</span></label>
+                                        <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Settings_CornerLogo %> </label>
                                         <div class="col-sm-4">
                                             <asp:FileUpload ID="fileCornerLogo" runat="server" />
                                         </div>

@@ -1,7 +1,7 @@
 ﻿using CloudPanel.Modules.ActiveDirectory.Groups;
 using CloudPanel.Modules.ActiveDirectory.Users;
+using CloudPanel.Modules.Base.Companies;
 using CloudPanel.Modules.Base.Enumerations;
-using CloudPanel.Modules.Base.Exchange;
 using CloudPanel.Modules.Base.Plans;
 using CloudPanel.Modules.Base.Users;
 using CloudPanel.Modules.Common.Database;
@@ -19,7 +19,7 @@ namespace CloudPanel.Modules.Common.ViewModel
     {
         private readonly ILog logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
-        public List<Domains> GetDomains(string companyCode)
+        public List<DomainsObject> GetDomains(string companyCode)
         {
             CPDatabase database = null;
 
@@ -30,7 +30,7 @@ namespace CloudPanel.Modules.Common.ViewModel
                 var foundDomains = from d in database.Domains
                                    where d.CompanyCode == companyCode
                                    orderby d.Domain1
-                                   select new Domains()
+                                   select new DomainsObject()
                                    {
                                        DomainID = d.DomainID,
                                        CompanyCode = d.CompanyCode,

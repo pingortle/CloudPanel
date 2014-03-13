@@ -173,9 +173,10 @@
                             <div class="row">
                                 <div class="col-sm-12">
                                     <div class="form-group">
-                                        <label class="control-label"></label>
-                                        <asp:CheckBox ID="cbPasswordNeverExpires" runat="server" />
-                                        <%= Resources.LocalizedText.Users_PasswordNeverExpires %>
+                                        <div class="ckbox ckbox-primary">
+                                            <asp:CheckBox ID="cbPasswordNeverExpires" runat="server" />
+                                            <label for='<%= cbPasswordNeverExpires.ClientID %>'><%= Resources.LocalizedText.Users_PasswordNeverExpires %></label>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

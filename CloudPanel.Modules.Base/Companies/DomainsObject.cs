@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace CloudPanel.Modules.Base.Exchange
+namespace CloudPanel.Modules.Base.Companies
 {
-    public class Domains
+    public class DomainsObject
     {
         public int DomainID { get; set; }
 

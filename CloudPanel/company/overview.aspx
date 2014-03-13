@@ -63,7 +63,7 @@
                     <div class="form-group">
                         <label class="col-sm-3 control-label">Current Plan</label>
                         <div class="col-sm-4">
-                            <asp:DropDownList ID="ddlCurrentPlan" runat="server" CssClass="form-control chosen-select">
+                            <asp:DropDownList ID="ddlCurrentPlan" runat="server" CssClass="form-control chosen-select" AutoPostBack="true" OnSelectedIndexChanged="ddlCurrentPlan_SelectedIndexChanged">
 
                             </asp:DropDownList>
                         </div>

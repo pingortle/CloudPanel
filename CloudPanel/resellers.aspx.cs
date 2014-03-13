@@ -1,4 +1,5 @@
 ﻿using CloudPanel.Modules.Base.Companies;
+using CloudPanel.Modules.Base.Enumerations;
 using CloudPanel.Modules.Common.GlobalActions;
 using CloudPanel.Modules.Common.Settings;
 using CloudPanel.Modules.Common.ViewModel;
@@ -129,7 +130,7 @@ namespace CloudPanel
                 AuditGlobal.AddAudit(WebSessionHandler.SelectedCompanyCode, WebSessionHandler.Username, Modules.Base.Enumerations.ActionID.CreateReseller, message);
 
                 // Set the success message
-                alertmessage.SetMessage(errorID, successMessage);
+                alertmessage.SetMessage(AlertID.SUCCESS, successMessage);
             }
             else
                 alertmessage.SetMessage(errorID, message);

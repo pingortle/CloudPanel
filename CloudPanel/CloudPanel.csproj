@@ -602,6 +602,7 @@
     <Content Include="js\toggles.min.js" />
     <Content Include="js\wysihtml5-0.3.0.min.js" />
     <Content Include="login.aspx" />
+    <Content Include="plans\company.aspx" />
     <Content Include="resellers.aspx" />
     <Content Include="js\Highcharts-3.0.1\js\adapters\mootools-adapter.js" />
     <Content Include="js\Highcharts-3.0.1\js\adapters\mootools-adapter.src.js" />
@@ -734,6 +735,13 @@
     </Compile>
     <Compile Include="login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="plans\company.aspx.cs">
+      <DependentUpon>company.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="plans\company.aspx.designer.cs">
+      <DependentUpon>company.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CloudPanel.Master.cs">
@@ -885,7 +893,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="config\" />
-    <Folder Include="plans\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CloudPanel.Modules.Base\CloudPanel.Modules.Base.csproj">

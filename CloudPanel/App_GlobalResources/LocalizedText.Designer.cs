@@ -133,6 +133,69 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        internal static string Buttons_Cancel {
+            get {
+                return ResourceManager.GetString("Buttons_Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Create New.
+        /// </summary>
+        internal static string Buttons_CreateNew {
+            get {
+                return ResourceManager.GetString("Buttons_CreateNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        internal static string Buttons_Delete {
+            get {
+                return ResourceManager.GetString("Buttons_Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Edit.
+        /// </summary>
+        internal static string Buttons_Edit {
+            get {
+                return ResourceManager.GetString("Buttons_Edit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Modify.
+        /// </summary>
+        internal static string Buttons_Modify {
+            get {
+                return ResourceManager.GetString("Buttons_Modify", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        internal static string Buttons_Save {
+            get {
+                return ResourceManager.GetString("Buttons_Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submit.
+        /// </summary>
+        internal static string Buttons_Submit {
+            get {
+                return ResourceManager.GetString("Buttons_Submit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add New Company.
         /// </summary>
         internal static string Companies_AddNewCompany {
@@ -502,6 +565,42 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add/Edit Domain.
+        /// </summary>
+        internal static string Domains_AddEditDomain {
+            get {
+                return ResourceManager.GetString("Domains_AddEditDomain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add New Domain.
+        /// </summary>
+        internal static string Domains_AddNewDomain {
+            get {
+                return ResourceManager.GetString("Domains_AddNewDomain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Domain Name.
+        /// </summary>
+        internal static string Domains_DomainName {
+            get {
+                return ResourceManager.GetString("Domains_DomainName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Is Default?.
+        /// </summary>
+        internal static string Domains_IsDefault {
+            get {
+                return ResourceManager.GetString("Domains_IsDefault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to ..
         /// </summary>
         internal static string Formats_DecimalSeperator {
@@ -786,6 +885,159 @@ namespace Resources {
         internal static string Master_Users {
             get {
                 return ResourceManager.GetString("Master_Users", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Citrix.
+        /// </summary>
+        internal static string PlanCompany_Citrix {
+            get {
+                return ResourceManager.GetString("PlanCompany_Citrix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        internal static string PlanCompany_Delete {
+            get {
+                return ResourceManager.GetString("PlanCompany_Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Details.
+        /// </summary>
+        internal static string PlanCompany_Details {
+            get {
+                return ResourceManager.GetString("PlanCompany_Details", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display Name.
+        /// </summary>
+        internal static string PlanCompany_DisplayName {
+            get {
+                return ResourceManager.GetString("PlanCompany_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Microsoft Exchange.
+        /// </summary>
+        internal static string PlanCompany_Exchange {
+            get {
+                return ResourceManager.GetString("PlanCompany_Exchange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max Users.
+        /// </summary>
+        internal static string PlanCompany_MaxCitrixUsers {
+            get {
+                return ResourceManager.GetString("PlanCompany_MaxCitrixUsers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max Contacts.
+        /// </summary>
+        internal static string PlanCompany_MaxContacts {
+            get {
+                return ResourceManager.GetString("PlanCompany_MaxContacts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max Domains.
+        /// </summary>
+        internal static string PlanCompany_MaxDomains {
+            get {
+                return ResourceManager.GetString("PlanCompany_MaxDomains", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max Groups.
+        /// </summary>
+        internal static string PlanCompany_MaxGroups {
+            get {
+                return ResourceManager.GetString("PlanCompany_MaxGroups", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max Mailboxes.
+        /// </summary>
+        internal static string PlanCompany_MaxMailboxes {
+            get {
+                return ResourceManager.GetString("PlanCompany_MaxMailboxes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max Email Public Folders.
+        /// </summary>
+        internal static string PlanCompany_MaxMailPublicFolders {
+            get {
+                return ResourceManager.GetString("PlanCompany_MaxMailPublicFolders", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max Resource Mailboxes.
+        /// </summary>
+        internal static string PlanCompany_MaxResourceMailboxes {
+            get {
+                return ResourceManager.GetString("PlanCompany_MaxResourceMailboxes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max Users.
+        /// </summary>
+        internal static string PlanCompany_MaxUsers {
+            get {
+                return ResourceManager.GetString("PlanCompany_MaxUsers", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plan.
+        /// </summary>
+        internal static string PlanCompany_Plan {
+            get {
+                return ResourceManager.GetString("PlanCompany_Plan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to modify the plan because it is currently in use..
+        /// </summary>
+        internal static string PlanCompany_PlanInUse {
+            get {
+                return ResourceManager.GetString("PlanCompany_PlanInUse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Save.
+        /// </summary>
+        internal static string PlanCompany_Save {
+            get {
+                return ResourceManager.GetString("PlanCompany_Save", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to find the plan you selected in the database. Please contact support..
+        /// </summary>
+        internal static string PlanCompany_UpdatePlanNotFound {
+            get {
+                return ResourceManager.GetString("PlanCompany_UpdatePlanNotFound", resourceCulture);
             }
         }
         
