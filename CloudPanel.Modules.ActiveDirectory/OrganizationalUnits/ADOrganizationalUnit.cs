@@ -1,6 +1,7 @@
 ﻿using CloudPanel.Modules.Base.Companies;
 using log4net;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.DirectoryServices;
 using System.DirectoryServices.AccountManagement;
@@ -332,6 +333,130 @@ namespace CloudPanel.Modules.ActiveDirectory.OrganizationalUnits
                     this.logger.Error("Failed to remove authenticated users access rights from " + oupath, ex);
                     throw;
                 }
+            }
+        }
+
+        /// <summary>
+        /// Adds a new domain to the company OU and all child OU's
+        /// </summary>
+        /// <param name="companyOUPath"></param>
+        /// <param name="domainName"></param>
+        public void AddDomain(string companyOUPath, string domainName)
+        {
+            DirectoryEntry de = null;
+            DirectorySearcher ds = null;
+
+            try
+            {
+                this.logger.Debug("Attempting to add domain to all organizational units for company on path " + companyOUPath);
+
+                de = new DirectoryEntry("LDAP://" + this.domainController + "/" + companyOUPath, this.username, this.password);
+
+                // Add domain to all children and the base
+                ds = new DirectorySearcher(de);
+                ds.Filter = "(objectClass=organizationalUnit)";
+                ds.SearchScope = SearchScope.Subtree;
+
+                foreach (SearchResult sr in ds.FindAll())
+                {
+                    DirectoryEntry tmp = sr.GetDirectoryEntry();
+
+                    // Make sure it doesn't already exists
+                    bool alreadyExists = false;
+                    foreach (string upn in tmp.Properties["uPNSuffixes"])
+                    {
+                        if (upn.Equals(domainName, StringComparison.CurrentCultureIgnoreCase))
+                        {
+                            alreadyExists = true;
+                            break;
+                        }
+                    }
+
+                    if (!alreadyExists)
+                    {
+                        tmp.Properties["uPNSuffixes"].Add(domainName);
+                        tmp.CommitChanges();
+                        this.logger.Info("Added new domain to organiational unit " + tmp.Path);
+                    }
+                }
+
+                de.CommitChanges();
+            }
+            catch (Exception ex)
+            {
+                this.logger.Error("There was an error adding the domain "+ domainName + " to the path (and all child org units) " + companyOUPath, ex);
+
+                throw;
+            }
+            finally
+            {
+                if (ds != null)
+                    ds.Dispose();
+
+                if (de != null)
+                    de.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Removes a domain from the company OU and all child OU's
+        /// </summary>
+        /// <param name="companyOUPath"></param>
+        /// <param name="domainName"></param>
+        public void RemoveDomain(string companyOUPath, string domainName)
+        {
+            DirectoryEntry de = null;
+            DirectorySearcher ds = null;
+
+            try
+            {
+                this.logger.Debug("Attempting to remove domain to all organizational units for company on path " + companyOUPath);
+
+                de = new DirectoryEntry("LDAP://" + this.domainController + "/" + companyOUPath, this.username, this.password);
+
+                // Add domain to all children and the base
+                ds = new DirectorySearcher(de);
+                ds.Filter = "(objectClass=organizationalUnit)";
+                ds.SearchScope = SearchScope.Subtree;
+
+                foreach (SearchResult sr in ds.FindAll())
+                {
+                    DirectoryEntry tmp = sr.GetDirectoryEntry();
+
+                    // Make sure it doesn't already exists
+                    bool alreadyExists = false;
+                    foreach (string upn in tmp.Properties["uPNSuffixes"])
+                    {
+                        if (upn.Equals(domainName, StringComparison.CurrentCultureIgnoreCase))
+                        {
+                            alreadyExists = true;
+                            break;
+                        }
+                    }
+
+                    if (alreadyExists)
+                    {
+                        tmp.Properties["uPNSuffixes"].Remove(domainName);
+                        tmp.CommitChanges();
+                        this.logger.Info("Removed domain " + domainName + " from organiational unit " + tmp.Path);
+                    }
+                }
+
+                de.CommitChanges();
+            }
+            catch (Exception ex)
+            {
+                this.logger.Error("There was an error removing the domain " + domainName + " from the path (and all child org units) " + companyOUPath, ex);
+
+                throw;
+            }
+            finally
+            {
+                if (ds != null)
+                    ds.Dispose();
+
+                if (de != null)
+                    de.Dispose();
             }
         }
     }

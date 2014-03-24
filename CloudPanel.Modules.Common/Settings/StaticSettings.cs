@@ -58,6 +58,14 @@ namespace CloudPanel.Modules.Common.Settings
 
         public static string ExchangeDatabases { get; set; }
 
+        public static string ExchangeURI
+        {
+            get
+            {
+                return string.Format("https://{0}/powershell", ExchangeServer);
+            }
+        }
+
         public static bool ExchangeSSLEnabled { get; set; }
 
         public static bool CitrixEnabled { get; set; }
@@ -75,6 +83,17 @@ namespace CloudPanel.Modules.Common.Settings
         public static bool IPBlockingEnabled { get; set; }
 
         public static bool LockdownEnabled { get; set; }
+
+        public static bool ExchangeUseKerberos
+        {
+            get
+            {
+                if (ExchangeConnectionType == "Kerberos")
+                    return true;
+                else
+                    return false;
+            }
+        }
 
         public static int IPBlockingFailedCount { get; set; }
 

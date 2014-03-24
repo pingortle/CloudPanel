@@ -464,6 +464,9 @@ warning 6002: The table/view 'CloudPanel.dbo.UserPlans' does not have a primary 
         <Function Name="DeleteUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UserPrincipalName" Type="nvarchar" Mode="In" />
         </Function>
+        <Function Name="DisableExchange" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="CompanyCode" Type="varchar" Mode="In" />
+        </Function>
         <EntityContainer Name="CloudPanelModelStoreContainer">
           <EntitySet Name="ApiAccess" EntityType="Self.ApiAccess" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Audit" EntityType="Self.Audit" Schema="dbo" store:Type="Tables" />
@@ -553,6 +556,9 @@ warning 6002: The table/view 'CloudPanel.dbo.UserPlans' does not have a primary 
           <EntitySet Name="Users" EntityType="CloudPanelModel.User" />
           <FunctionImport Name="DeleteUser">
           <Parameter Name="UserPrincipalName" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DisableExchange">
+          <Parameter Name="CompanyCode" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="ApiAccess">
@@ -1486,6 +1492,7 @@ warning 6002: The table/view 'CloudPanel.dbo.UserPlans' does not have a primary 
             </EntityTypeMapping>
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="DeleteUser" FunctionName="CloudPanelModel.Store.DeleteUser" />
+          <FunctionImportMapping FunctionImportName="DisableExchange" FunctionName="CloudPanelModel.Store.DisableExchange" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

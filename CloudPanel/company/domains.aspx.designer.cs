@@ -85,6 +85,51 @@ namespace CloudPanel.company {
         protected global::System.Web.UI.WebControls.CheckBox cbIsDefaultDomain;
         
         /// <summary>
+        /// divExchangeDomain control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divExchangeDomain;
+        
+        /// <summary>
+        /// cbIsAcceptedDomain control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbIsAcceptedDomain;
+        
+        /// <summary>
+        /// cbAuthoritative control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton cbAuthoritative;
+        
+        /// <summary>
+        /// cbInternalRelay control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton cbInternalRelay;
+        
+        /// <summary>
+        /// cbExternalRelay control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RadioButton cbExternalRelay;
+        
+        /// <summary>
         /// btnCancel control.
         /// </summary>
         /// <remarks>

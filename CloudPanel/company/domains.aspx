@@ -28,6 +28,7 @@
                                     <tr>
                                         <th><%= Resources.LocalizedText.Domains_DomainName %></th>
                                         <th><%= Resources.LocalizedText.Domains_IsDefault %></th>
+                                        <th><%= Resources.LocalizedText.Domains_DomainType %></th>
                                         <th style="width: 10%"></th>
                                     </tr>
                                 </thead>
@@ -37,6 +38,7 @@
                             <tr>
                                 <td><%# Eval("DomainName") %></td>
                                 <td><%# ((bool)Eval("IsDefault")).ToString() %></td>
+                                <td><%# Eval("TypeOfDomain").ToString() %></td>
                                 <td>
                                     <div class="btn-group">
                                         <asp:Button ID="btnModify" runat="server" CssClass="btn btn-xs btn-primary" CommandName="Edit" CommandArgument='<%# Eval("DomainID") %>' Text='<%$ Resources:LocalizedText, Buttons_Modify %>' />
@@ -46,7 +48,7 @@
                                         </button>
                                         <ul class="dropdown-menu" role="menu">
                                             <li>
-                                                <asp:LinkButton ID="lnkDelete" runat="server" CommandName="Delete" CommandArgument='<%# Eval("DomainID") %>'><%= Resources.LocalizedText.Buttons_Delete %></asp:LinkButton>
+                                                <asp:LinkButton ID="lnkDelete" runat="server" CommandName="Delete" CommandArgument='<%# Eval("DomainName") %>'><%= Resources.LocalizedText.Buttons_Delete %></asp:LinkButton>
                                             </li>
                                         </ul>
                                     </div>
@@ -66,10 +68,12 @@
         </asp:Panel>
 
         <asp:Panel ID="panelEditCreateDomain" runat="server" CssClass="row" Visible="false">
+
+            <!-- Domain -->
             <div class="form-horizontal">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4 class="panel-title">Add/Edit Domain</h4>
+                        <h4 class="panel-title"><%= Resources.LocalizedText.Domains_AddEditDomain %></h4>
                     </div>
 
                     <div class="panel-body">
@@ -94,14 +98,60 @@
 
                     </div>
                     <!-- panel-body -->
-
-                    <div class="panel-footer" style="text-align: right">
-                        <asp:Button ID="btnCancel" runat="server" Text='<%$ Resources:LocalizedText, buttons_Cancel %>' CssClass="btn btn-default" OnClick="btnCancel_Click" />
-                        <asp:Button ID="btnSubmit" runat="server" Text='<%$ Resources:LocalizedText, buttons_Submit %>' CssClass="btn btn-primary" OnClick="btnSubmit_Click" />
-                    </div>
-                    <!-- panel-footer -->
                 </div>
             </div>
+
+            <!-- Exchange Domain -->
+            <div class="form-horizontal" id="divExchangeDomain" runat="server">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title"><%= Resources.LocalizedText.Domains_ExchangeDomain %></h4>
+                    </div>
+
+                    <div class="panel-body">
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"></label>
+                            <div class="col-sm-4">
+                                <div class="ckbox ckbox-primary">
+                                    <asp:CheckBox ID="cbIsAcceptedDomain" runat="server" />
+                                    <label for='<%= cbIsAcceptedDomain.ClientID %>'><%= Resources.LocalizedText.Domains_EnableAcceptedDomain %></label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="col-sm-2 control-label"></label>
+                            <div class="col-sm-4">
+                                <div class="rdio rdio-success">
+                                        <asp:RadioButton ID="cbAuthoritative" runat="server" GroupName="DomainType" Checked="true" />
+                                        <label for="<%= cbAuthoritative.ClientID %>"><%= Resources.LocalizedText.Domains_Authoritative %></label>
+                                    </div>
+
+                                    <div class="rdio rdio-success">
+                                        <asp:RadioButton ID="cbInternalRelay" runat="server" GroupName="DomainType" />
+                                        <label for="<%= cbInternalRelay.ClientID %>"><%= Resources.LocalizedText.Domains_InternalRelay %></label>
+                                    </div>
+
+                                    <div class="rdio rdio-success">
+                                        <asp:RadioButton ID="cbExternalRelay" runat="server" GroupName="DomainType" />
+                                        <label for="<%= cbExternalRelay.ClientID %>"><%= Resources.LocalizedText.Domains_ExternalRelay %></label>
+                                    </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- panel-body -->
+                </div>
+            </div>
+
+            <br />
+            
+            <div class="panel-footer" style="text-align: right">
+                <asp:Button ID="btnCancel" runat="server" Text='<%$ Resources:LocalizedText, buttons_Cancel %>' CssClass="btn btn-default" OnClick="btnCancel_Click" />
+                <asp:Button ID="btnSubmit" runat="server" Text='<%$ Resources:LocalizedText, buttons_Submit %>' CssClass="btn btn-primary" OnClick="btnSubmit_Click" />
+            </div>
+            <!-- panel-footer -->
         </asp:Panel>
 
     </div>

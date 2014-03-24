@@ -6,7 +6,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMainPanel" runat="server">
     <div class="pageheader">
-        <h2><i class="fa fa-envelope-o"></i>Enable E-mail</h2>
+        <h2><i class="fa fa-envelope-o"></i><%= Resources.LocalizedText.ExchangeEnable_Title %></h2>
     </div>
 
     <div class="contentpanel">
@@ -20,13 +20,13 @@
                         <br />
 
                         <p style="text-align: center">
-                            Your company has not been enabled for E-mail. Before you can create mailboxes, distribution groups, contacts, and other Microsoft Exchange objects you must first enable the company.
+                            <%= Resources.LocalizedText.ExchangeEnable_Warning %>
                         </p>
 
                         <br />
 
                         <div style="text-align: center">
-                            <asp:Button ID="btnEnableExchange" runat="server" Text="Enable E-mail" CssClass="btn btn-primary" />
+                            <asp:Button ID="btnEnableExchange" runat="server" Text='<%$ Resources:LocalizedText, ExchangeEnable_ButtonEnable %>' CssClass="btn btn-primary" OnClick="btnEnableExchange_Click" />
                         </div>
                     </div>
                 </div>

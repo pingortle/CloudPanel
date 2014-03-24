@@ -44,7 +44,7 @@ namespace CloudPanel.Modules.ActiveDirectory.Users
         /// <param name="userName"></param>
         /// <param name="userPassword"></param>
         /// <returns>Array of groups the user belongs to</returns>
-        public string[] Authenticate(string userName, string userPassword)
+        public UsersObject Authenticate(string userName, string userPassword)
         {
             PrincipalContext pc = null;
             UserPrincipal up = null;
@@ -63,18 +63,24 @@ namespace CloudPanel.Modules.ActiveDirectory.Users
                 {
                     logger.Debug(userName + " successfully authenticated. Attempting to retrieve groups that the user belongs to.");
 
+                    UsersObject loggedInUser = new UsersObject();
+
                     up = UserPrincipal.FindByIdentity(pc, IdentityType.UserPrincipalName, userName);
                     de = up.GetUnderlyingObject() as DirectoryEntry;
-                    
-                    string[] groups = new string[de.Properties["memberOf"].Count];
-                    for (int i = 0; i < groups.Length; i++)
+
+                    // Set values
+                    loggedInUser.UserPrincipalName = up.UserPrincipalName;
+                    loggedInUser.DisplayName = up.DisplayName;
+
+                    loggedInUser.Groups = new List<string>();
+                    for (int i = 0; i < de.Properties["memberOf"].Count; i++)
                     {
-                        groups[i] = de.Properties["memberOf"][i].ToString();
+                        loggedInUser.Groups.Add(de.Properties["memberOf"][i].ToString());
                     }
 
-                    logger.Debug(userName + " belongs to the following groups: " + String.Join(", ", groups));
+                    logger.Debug(userName + " belongs to the following groups: " + String.Join(", ", loggedInUser.Groups));
 
-                    return groups;
+                    return loggedInUser;
                 }
                 else
                     return null;
@@ -419,6 +425,49 @@ namespace CloudPanel.Modules.ActiveDirectory.Users
 
                 if (pc != null)
                     pc.Dispose();
+            }
+        }
+
+        public byte[] GetPhoto(string userPrincipalName)
+        {
+            DirectoryEntry de = null;
+            DirectorySearcher ds = null;
+
+            try
+            {
+                logger.Debug("Attempting to find photo for " + userPrincipalName);
+
+                de = new DirectoryEntry("LDAP://" + this.domainController, this.username, this.password);
+                ds = new DirectorySearcher(de);
+                ds.SearchScope = SearchScope.Subtree;
+                ds.Filter = string.Format("(&(objectClass=User)(userPrincipalName={0}))", userPrincipalName);
+
+                SearchResult found = ds.FindOne();
+
+                byte[] data = null;
+                if (found != null)
+                {
+                    using (DirectoryEntry u = new DirectoryEntry(found.Path))
+                    {
+                        if (u.Properties["thumbnailPhoto"].Value != null)
+                            data = u.Properties["thumbnailPhoto"].Value as byte[];
+                    }
+                }
+
+                return data;
+            }
+            catch (Exception ex)
+            {
+                this.logger.Error("Error getting photto for " + userPrincipalName, ex);
+                throw;
+            }
+            finally
+            {
+                if (ds != null)
+                    ds.Dispose();
+
+                if (de != null)
+                    de.Dispose();
             }
         }
 

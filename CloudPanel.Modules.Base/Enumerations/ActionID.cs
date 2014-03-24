@@ -27,6 +27,7 @@ namespace CloudPanel.Modules.Base.Enumerations
         DeleteReseller = 18,
         SaveSettings = 19,
         UpdateCompany = 20,
-        UpdateReseller = 21
+        UpdateReseller = 21,
+        UpdateDomain = 22
     }
 }

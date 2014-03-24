@@ -1,5 +1,6 @@
 ﻿using CloudPanel.Modules.Base.Companies;
 using CloudPanel.Modules.Base.Enumerations;
+using CloudPanel.Modules.Base.Exchange;
 using CloudPanel.Modules.Base.Plans;
 using CloudPanel.Modules.Base.Users;
 using CloudPanel.Modules.Common.GlobalActions;
@@ -17,11 +18,26 @@ namespace CloudPanel.company
 {
     public partial class users : System.Web.UI.Page
     {
+        protected bool _isExchangeEnabled = true;
+
+        private List<MailAliasObject> emailAliases;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
+                emailAliases = new List<MailAliasObject>();
+
                 GetUsers();
+            }
+            else
+            {
+                if (panelEditUser.Visible)
+                {
+                    emailAliases = (List<MailAliasObject>)ViewState["CPEmailAliases"];
+                    gridEmailAliases.DataSource = emailAliases;
+                    gridEmailAliases.DataBind();
+                }
             }
         }
 
@@ -44,31 +60,21 @@ namespace CloudPanel.company
                     // If we found accepted domains then we can show the email section
                     if (acceptedDomains != null && acceptedDomains.Count() > 0)
                     {
-                        ddlAcceptedDomains.DataSource = acceptedDomains;
-                        ddlAcceptedDomains.DataBind();
+                        ddlEditMailboxDomain.DataSource = acceptedDomains;
+                        ddlEditMailboxDomain.DataBind();
 
-                        cbEnableMailbox.Checked = false;
+                        ddlEditAddEmailAliasDomain.DataSource = acceptedDomains;
+                        ddlEditAddEmailAliasDomain.DataBind();
 
                         // Get email plans. This will show the Exchange panel if successful
                         GetMailboxPlans();
                     }
-                    else
-                    {
-                        // No accepted domains were found so hide the email panel
-                        panelEmail.Visible = false;
-                        cbEnableMailbox.Checked = false;
-                    }
-                }
-                else
-                {
-                    panelEmail.Visible = false;
-                    cbEnableMailbox.Checked = false;
                 }
             }
             else
             {
                 alertmessage.SetMessage(Modules.Base.Enumerations.AlertID.WARNING, Resources.LocalizedText.Users_Messages_NoDomainsFound);
-                btnSubmit.Enabled = false;
+                btnEditSave.Enabled = false;
             }
         }
 
@@ -81,8 +87,27 @@ namespace CloudPanel.company
             repeaterUsers.DataSource = users;
             repeaterUsers.DataBind();
 
-            panelEditCreateUser.Visible = false;
+            panelCreateUser.Visible = false;
+            panelEditUser.Visible = false;
             panelUserList.Visible = true;
+        }
+
+        private void GetUsersForPermissions()
+        {
+            UsersViewModel viewModel = new UsersViewModel();
+            viewModel.ViewModelEvent += viewModel_ViewModelEvent;
+
+            List<UsersObject> users = viewModel.GetUsers(WebSessionHandler.SelectedCompanyCode);
+            
+            // Filter only users with sAMAccountName
+            users = users.FindAll(x => !string.IsNullOrEmpty(x.sAMAccountName));
+
+            // Bind to list
+            ddlEditMailboxFullAccess.DataSource = users;
+            ddlEditMailboxFullAccess.DataBind();
+
+            ddlEditMailboxSendAs.DataSource = users;
+            ddlEditMailboxSendAs.DataBind();
         }
 
         private void GetMailboxPlans()
@@ -94,7 +119,7 @@ namespace CloudPanel.company
 
                 List<MailboxPlanObject> mailboxPlans = viewModel.GetMailboxPlans(WebSessionHandler.SelectedCompanyCode);
 
-                ddlMailboxPlan.Items.Clear();
+                ddlEditMailboxPlan.Items.Clear();
                 if (mailboxPlans != null && mailboxPlans.Count > 0)
                 {
                     foreach (MailboxPlanObject o in mailboxPlans)
@@ -108,81 +133,123 @@ namespace CloudPanel.company
                         item.Attributes.Add("Price", o.Price);
                         item.Attributes.Add("Extra", o.AdditionalGBPrice);
 
-                        ddlMailboxPlan.Items.Add(item);
+                        ddlEditMailboxPlan.Items.Add(item);
                     }
-
-                    ddlMailboxPlan.SelectedIndex = 0;
-                    panelEmail.Visible = true;
-                }
-                else
-                {
-                    panelEmail.Visible = false;
                 }
             }
-            else
-                panelEmail.Visible = false;
         }
 
-        private void GetUser(string userPrincipalName)
+        private void GetForwardToList()
+        {
+            ddlEditMailboxForwardTo.Items.Clear();
+            ddlEditMailboxForwardTo.Items.Add("Not Selected");
+        }
+
+        private void EditUser(string userPrincipalName)
         {
             UsersViewModel viewModel = new UsersViewModel();
             viewModel.ViewModelEvent += viewModel_ViewModelEvent;
 
+            //                      //
+            // GET USER INFORMATION //
+            //                      //
             UsersObject user = viewModel.GetUser(userPrincipalName);
-
             if (user != null)
             {
+                lbProfileDisplayName.Text = user.DisplayName;
+                lbProfileUsername.Text = user.UserPrincipalName;
+                lbProfileSamAccountName.Text = user.sAMAccountName;
+
                 hfEditUserPrincipalName.Value = user.UserPrincipalName;
-                txtFirstName.Text = user.Firstname;
-                txtMiddleName.Text = user.Middlename;
-                txtLastname.Text = user.Lastname;
-                txtDisplayName.Text = user.DisplayName;
-                txtDepartment.Text = user.Department;
-                txtLoginName.Text = user.UserPrincipalName.Split('@')[0];
+                txtEditFirstName.Text = user.Firstname;
+                txtEditMiddleName.Text = user.Middlename;
+                txtEditLastname.Text = user.Lastname;
+                txtEditDisplayName.Text = user.DisplayName;
+                txtEditDepartment.Text = user.Department;
 
-                // User Rights
-                if (user.IsCompanyAdmin)
-                {
-                    cbCompanyAdmin.Checked = true;
-
-                    // Set permissions checkbox
-                    cbEnableExchange.Checked = user.EnableExchangePerm;
-                    cbDisableExchange.Checked = user.DisableExchangePerm;
-                    cbAddDomain.Checked = user.AddDomainPerm;
-                    cbDeleteDomain.Checked = user.DeleteDomainPerm;
-                    cbEnableAcceptedDomain.Checked = user.EnableAcceptedDomainPerm;
-                    cbDisableAcceptedDomain.Checked = user.DisableAcceptedDomainPerm;
-                }
-                else
-                    cbCompanyAdmin.Checked = false;
-
-                if (user.IsResellerAdmin)
-                    cbResellerAdmin.Checked = true;
-                else
-                    cbResellerAdmin.Checked = false;
-
-                // Populate the domains field
-                List<DomainsObject> foundDomains = viewModel.GetDomains(WebSessionHandler.SelectedCompanyCode);
-                if (foundDomains != null)
-                {
-                    ddlLoginDomain.DataSource = foundDomains;
-                    ddlLoginDomain.DataBind();
-
-                    // Populate domain field
-                    ListItem item = ddlLoginDomain.Items.FindByText(user.UserPrincipalName.Split('@')[1]);
-                    if (item != null)
-                        ddlLoginDomain.SelectedValue = item.Value;
-                }
-
-                // Disable login name and domain because this cannot be changed
-                txtLoginName.Enabled = false;
-                ddlLoginDomain.Enabled = false;
-
-                // Change panels
-                panelEditCreateUser.Visible = true;
-                panelUserList.Visible = false;
-                panelEmail.Visible = false; // Can't edit email settings from the users section. Does this from the mailbox section
+                // Get the user photo
+                imgUserPhoto.ImageUrl = string.Format("services/UserPhotoHandler.ashx?id={0}", user.UserPrincipalName);
             }
+
+            //                          //
+            // GET MAILBOX INFORMATION  //
+            //                          //
+            if (CompanyChecks.IsExchangeEnabled(WebSessionHandler.SelectedCompanyCode))
+            {
+                // Get list of accepted domains
+                GetDomains();
+
+                // Get list of mailbox plans
+                GetMailboxPlans();
+
+                // Get users that can be granted full access and send as permissions
+                GetUsersForPermissions();
+
+                // Get mailbox information
+                if (user != null)
+                {
+                    if (user.MailboxPlan > 0)
+                    {
+                        ListItem item = ddlEditMailboxPlan.Items.FindByValue(user.MailboxPlan.ToString());
+                        if (item != null)
+                            ddlEditMailboxPlan.SelectedValue = item.Value;
+                    }
+
+                    UsersObject mailboxUser = viewModel.GetUserMailbox(userPrincipalName);
+                    if (mailboxUser != null)
+                    {
+                        string[] primaryEmailAddress = mailboxUser.PrimarySmtpAddress.Split('@');
+
+                        // Populate email information
+                        txtEditMailboxEmail.Text = primaryEmailAddress[0];
+                        ListItem item = ddlEditMailboxDomain.Items.FindByText(primaryEmailAddress[1]);
+                        if (item != null)
+                            ddlEditMailboxDomain.SelectedValue = item.Value;
+
+                        // Populate email aliases
+                        emailAliases = new List<MailAliasObject>();
+                        foreach (string s in mailboxUser.EmailAliases)
+                        {
+                            emailAliases.Add(new MailAliasObject() { Email = s });
+                        }
+                        ViewState["CPEmailAliases"] = emailAliases;
+                        gridEmailAliases.DataSource = emailAliases;
+                        gridEmailAliases.DataBind();
+
+                        // Populate forwarding
+                        if (!string.IsNullOrEmpty(mailboxUser.ForwardingTo))
+                        {
+                            ListItem fItem = ddlEditMailboxForwardTo.Items.FindByValue(mailboxUser.ForwardingTo);
+                            if (fItem != null)
+                                ddlEditMailboxForwardTo.SelectedValue = fItem.Value;
+                            else
+                                ddlEditMailboxForwardTo.SelectedIndex = -1;
+                        }
+                        cbEditMailboxForwardBoth.Checked = mailboxUser.DeliverToMailboxAndForward;
+
+                        // Populate permissions
+                        foreach (string fullAccess in mailboxUser.FullAccessUsers)
+                        {
+                            ListItem fullItem = ddlEditMailboxFullAccess.Items.FindByValue(fullAccess);
+                            if (fullItem != null)
+                                fullItem.Selected = true;
+                        }
+
+                        foreach (string sendAs in mailboxUser.SendAsUsers)
+                        {
+                            ListItem sendAsItem = ddlEditMailboxSendAs.Items.FindByValue(sendAs);
+                            if (sendAsItem != null)
+                                sendAsItem.Selected = true;
+                        }
+
+                    }
+                }
+            }
+
+            // Change panels
+            panelCreateUser.Visible = false;
+            panelUserList.Visible = false;
+            panelEditUser.Visible = true;
         }
 
         private void CheckUserRights()
@@ -310,35 +377,53 @@ namespace CloudPanel.company
             // Check if the user has rights to modify the user rights section
             CheckUserRights();
 
-            // Enable login name and domain
-            txtLoginName.Enabled = true;
-            ddlLoginDomain.Enabled = true;
-
             // Show the panels
             panelUserList.Visible = false;
-            panelEditCreateUser.Visible = true;
-
-            // Clear the hidden field since we are adding a new user
-            hfEditUserPrincipalName.Value = string.Empty;
+            panelEditUser.Visible = false;
+            panelCreateUser.Visible = true;
         }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(hfEditUserPrincipalName.Value))
-            {
-                SaveNewUser();
-            }
-            else
-            {
-                UpdateUser();
-            }
+            SaveNewUser();
         }
 
         protected void btnCancel_Click(object sender, EventArgs e)
         {
             // GET LIST OF USERS
             panelUserList.Visible = true;
-            panelEditCreateUser.Visible = false;
+            panelEditUser.Visible = false;
+            panelCreateUser.Visible = false;
+        }
+
+        protected void btnEditInsertEmailAlias_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(txtEditAddEmailAlias.Text) || string.IsNullOrEmpty(ddlEditAddEmailAliasDomain.SelectedValue))
+                return;
+            else
+            {
+                string enteredEmail = Server.HtmlEncode(txtEditAddEmailAlias.Text.Replace(" ", string.Empty));
+                string enteredDomain = ddlEditAddEmailAliasDomain.SelectedItem.Text;
+
+                string formattedEmail = string.Format("{0}@{1}", enteredEmail, enteredDomain);
+
+                // Don't add if it already exists
+                if (emailAliases.Find(x => x.Email.Equals(formattedEmail, StringComparison.CurrentCultureIgnoreCase)) == null)
+                {
+                    // Add to our list
+                    emailAliases.Add(new MailAliasObject()
+                        {
+                            Email = formattedEmail
+                        });
+
+                    // Set the viewstate
+                    ViewState["CPEmailAliases"] = emailAliases;
+
+                    // Rebind the grid view
+                    gridEmailAliases.DataSource = emailAliases;
+                    gridEmailAliases.DataBind();
+                }
+            }
         }
 
         #endregion
@@ -348,9 +433,59 @@ namespace CloudPanel.company
         protected void repeaterUsers_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
             if (e.CommandName == "Edit")
-                GetUser(e.CommandArgument.ToString());
+            {
+                // Clear list box selected items
+                ddlEditMailboxFullAccess.ClearSelection();
+                ddlEditMailboxSendAs.ClearSelection();
+
+                EditUser(e.CommandArgument.ToString());
+            }
             else if (e.CommandName == "Delete")
                 DeleteUser(e.CommandArgument.ToString());
+        }
+
+        #endregion
+
+        #region Gridview
+
+        protected void gridEmailAliases_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Delete")
+            {
+                string selectedEmail = e.CommandArgument.ToString();
+
+                // Remove from our list
+                emailAliases.RemoveAll(x => x.Email.Equals(selectedEmail, StringComparison.CurrentCultureIgnoreCase));
+
+                // Set view state
+                ViewState["CPEmailAliases"] = emailAliases;
+
+                // Rebind
+                gridEmailAliases.DataBind();
+            }
+        }
+
+        protected void gridEmailAliases_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            TableCell cell = gridEmailAliases.Rows[e.RowIndex].Cells[0];
+
+            // Remove from our list
+            emailAliases.RemoveAll(x => x.Email.Equals(cell.Text, StringComparison.CurrentCultureIgnoreCase));
+
+            // Set view state
+            ViewState["CPEmailAliases"] = emailAliases;
+
+            // Rebind
+            gridEmailAliases.DataBind();
+        }
+
+        protected void gridEmailAliases_PreRender(object sender, EventArgs e)
+        {
+            if (gridEmailAliases.Rows.Count > 0)
+            {
+                gridEmailAliases.UseAccessibleHeader = true;
+                gridEmailAliases.HeaderRow.TableSection = TableRowSection.TableHeader;
+            }
         }
 
         #endregion

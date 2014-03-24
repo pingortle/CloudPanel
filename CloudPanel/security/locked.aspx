@@ -1,4 +1,5 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="locked.aspx.cs" Inherits="CloudPanel.security.locked" %>
+<%@ OutputCache Location="None" VaryByParam="None" %>
 
 <!DOCTYPE html>
 
@@ -31,7 +32,7 @@
                     <i class="fa fa-lock"></i>
                 </div>
                 <div class="loginuser">
-                    <img src="../images/man-icon.png" alt="" />
+                    <asp:Image ID="imgLoggedInUser" runat="server" ImageUrl="~/images/photos/unknown-user.png" />
                 </div>
                 <div class="logged">
                     <h4>
@@ -43,7 +44,11 @@
                 <br />
                 <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" placeholder="Enter your password" TextMode="Password"></asp:TextBox>
                 <br />
-                <asp:Button ID="btnLogin" runat="server" Text="Unlock" CssClass="btn btn-success btn-block" />
+                <asp:Button ID="btnLogin" runat="server" Text="Unlock" CssClass="btn btn-success btn-block" OnClick="btnLogin_Click" />
+
+                <br />
+
+                <asp:Label ID="lbError" runat="server" Text="" ForeColor="Red"></asp:Label>
 
                 <br />
                 <br />

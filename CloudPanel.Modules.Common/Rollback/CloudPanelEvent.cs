@@ -31,6 +31,16 @@ namespace CloudPanel.Modules.Common.Rollback
         /// </summary>
         public string UserPrincipalName { get; set; }
 
+        /// <summary>
+        /// The domain name used for add domains to companies (or removing)
+        /// </summary>
+        public string DomainName { get; set; }
+
+        /// <summary>
+        /// Used for various methods (such as address lists, gal, etc)
+        /// </summary>
+        public string Name { get; set; }
+
         #endregion
     }
 }

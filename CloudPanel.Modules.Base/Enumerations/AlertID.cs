@@ -22,6 +22,8 @@ namespace CloudPanel.Modules.Base.Enumerations
         SUCCESS_NEW_COMPANY,
         SUCCESS_UPDATE_RESELLER,
         SUCCESS_UPDATE_COMPANY,
-        PLAN_IN_USE
+        PLAN_IN_USE,
+        DOMAIN_ALREADY_EXISTS,
+        DOMAIN_IN_USE
     }
 }

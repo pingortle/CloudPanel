@@ -66,11 +66,6 @@ jQuery(document).ready(function() {
       return false;
    });
    
-   // Form Toggles
-   jQuery('.toggle').toggles({on: true});
-   
-   jQuery('.toggle-chat1').toggles({on: false});
-   
    // Minimize Button in Panels
    jQuery('.minimize').click(function(){
       var t = jQuery(this);
@@ -153,35 +148,6 @@ jQuery(document).ready(function() {
       } else {
          jQuery('.searchform').insertBefore('.header-right');
       }
-   }
-   
-   
-   // Sticky Header
-   if(jQuery.cookie('sticky-header'))
-      jQuery('body').addClass('stickyheader');
-      
-   // Sticky Left Panel
-   if(jQuery.cookie('sticky-leftpanel')) {
-      jQuery('body').addClass('stickyheader');
-      jQuery('.leftpanel').addClass('sticky-leftpanel');
-   }
-   
-   // Left Panel Collapsed
-   if(jQuery.cookie('leftpanel-collapsed')) {
-      jQuery('body').addClass('leftpanel-collapsed');
-      jQuery('.menutoggle').addClass('menu-collapsed');
-   }
-   
-   // Changing Skin
-   var c = jQuery.cookie('change-skin');
-   if(c) {
-      jQuery('head').append('<link id="skinswitch" rel="stylesheet" href="css/style.'+c+'.css" />');
-   }
-   
-   // Changing Font
-   var fnt = jQuery.cookie('change-font');
-   if(fnt) {
-      jQuery('head').append('<link id="fontswitch" rel="stylesheet" href="css/font.'+fnt+'.css" />');
    }
    
    // Check if leftpanel is collapsed

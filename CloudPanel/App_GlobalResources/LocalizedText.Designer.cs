@@ -133,6 +133,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Unable to log you in because there has been too many invalid password attempts from your network.
+        /// </summary>
+        internal static string BruteForce_Failed {
+            get {
+                return ResourceManager.GetString("BruteForce_Failed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         internal static string Buttons_Cancel {
@@ -583,6 +592,33 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to You cannot add this domain because the domain already exists.
+        /// </summary>
+        internal static string Domains_AlreadyExists {
+            get {
+                return ResourceManager.GetString("Domains_AlreadyExists", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Authoritative Domain (Default).
+        /// </summary>
+        internal static string Domains_Authoritative {
+            get {
+                return ResourceManager.GetString("Domains_Authoritative", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to You cannot delete this domain because the domain is in use by a user and/or a distribution group.
+        /// </summary>
+        internal static string Domains_DomainInUse {
+            get {
+                return ResourceManager.GetString("Domains_DomainInUse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Domain Name.
         /// </summary>
         internal static string Domains_DomainName {
@@ -592,11 +628,218 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Domain Type.
+        /// </summary>
+        internal static string Domains_DomainType {
+            get {
+                return ResourceManager.GetString("Domains_DomainType", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable to receive e-mail with this domain.
+        /// </summary>
+        internal static string Domains_EnableAcceptedDomain {
+            get {
+                return ResourceManager.GetString("Domains_EnableAcceptedDomain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Exchange Domain.
+        /// </summary>
+        internal static string Domains_ExchangeDomain {
+            get {
+                return ResourceManager.GetString("Domains_ExchangeDomain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to External Relay Domain.
+        /// </summary>
+        internal static string Domains_ExternalRelay {
+            get {
+                return ResourceManager.GetString("Domains_ExternalRelay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Internal Relay Domain.
+        /// </summary>
+        internal static string Domains_InternalRelay {
+            get {
+                return ResourceManager.GetString("Domains_InternalRelay", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Is Default?.
         /// </summary>
         internal static string Domains_IsDefault {
             get {
                 return ResourceManager.GetString("Domains_IsDefault", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add/Edit Contact.
+        /// </summary>
+        internal static string ExchangeContact_AddEdit {
+            get {
+                return ResourceManager.GetString("ExchangeContact_AddEdit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Add New Contact.
+        /// </summary>
+        internal static string ExchangeContact_AddNew {
+            get {
+                return ResourceManager.GetString("ExchangeContact_AddNew", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cancel.
+        /// </summary>
+        internal static string ExchangeContact_Cancel {
+            get {
+                return ResourceManager.GetString("ExchangeContact_Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Delete.
+        /// </summary>
+        internal static string ExchangeContact_Delete {
+            get {
+                return ResourceManager.GetString("ExchangeContact_Delete", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display Name.
+        /// </summary>
+        internal static string ExchangeContact_DisplayName {
+            get {
+                return ResourceManager.GetString("ExchangeContact_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Email.
+        /// </summary>
+        internal static string ExchangeContact_Email {
+            get {
+                return ResourceManager.GetString("ExchangeContact_Email", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hidden.
+        /// </summary>
+        internal static string ExchangeContact_Hidden {
+            get {
+                return ResourceManager.GetString("ExchangeContact_Hidden", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Hide contact from global address list?.
+        /// </summary>
+        internal static string ExchangeContact_HideContact {
+            get {
+                return ResourceManager.GetString("ExchangeContact_HideContact", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Modify.
+        /// </summary>
+        internal static string ExchangeContact_Modify {
+            get {
+                return ResourceManager.GetString("ExchangeContact_Modify", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Submit.
+        /// </summary>
+        internal static string ExchangeContact_Submit {
+            get {
+                return ResourceManager.GetString("ExchangeContact_Submit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disable E-mail.
+        /// </summary>
+        internal static string ExchangeDisable_ButtonDisable {
+            get {
+                return ResourceManager.GetString("ExchangeDisable_ButtonDisable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The characters you entered did not match the characters that were listed on the page to disable Exchange. Please try again..
+        /// </summary>
+        internal static string ExchangeDisable_IncorrectCode {
+            get {
+                return ResourceManager.GetString("ExchangeDisable_IncorrectCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to To disable E-mail please type the following characters in the textbox below:.
+        /// </summary>
+        internal static string ExchangeDisable_RandomCharacters {
+            get {
+                return ResourceManager.GetString("ExchangeDisable_RandomCharacters", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disable E-mail.
+        /// </summary>
+        internal static string ExchangeDisable_Title {
+            get {
+                return ResourceManager.GetString("ExchangeDisable_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Disabling E-mail will delete all emails, mailboxes, groups, contacts, and any other objects that were created for your company. This action is not reversable and please make sure this is what you are wanting to do before continuing..
+        /// </summary>
+        internal static string ExchangeDisable_Warning {
+            get {
+                return ResourceManager.GetString("ExchangeDisable_Warning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable E-mail.
+        /// </summary>
+        internal static string ExchangeEnable_ButtonEnable {
+            get {
+                return ResourceManager.GetString("ExchangeEnable_ButtonEnable", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable E-mail.
+        /// </summary>
+        internal static string ExchangeEnable_Title {
+            get {
+                return ResourceManager.GetString("ExchangeEnable_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Your company has not been enabled for E-mail. Before you can create mailboxes, distribution groups, contacts, and other Microsoft Exchange objects you must first enable the company..
+        /// </summary>
+        internal static string ExchangeEnable_Warning {
+            get {
+                return ResourceManager.GetString("ExchangeEnable_Warning", resourceCulture);
             }
         }
         

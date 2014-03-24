@@ -148,15 +148,6 @@ namespace CloudPanel.Template {
         protected global::System.Web.UI.WebControls.HyperLink hlDisableEmail;
         
         /// <summary>
-        /// hlAcceptedDomains control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.HyperLink hlAcceptedDomains;
-        
-        /// <summary>
         /// hlContacts control.
         /// </summary>
         /// <remarks>
@@ -227,6 +218,15 @@ namespace CloudPanel.Template {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HyperLink hlSettings;
+        
+        /// <summary>
+        /// imgLoggedInUser control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Image imgLoggedInUser;
         
         /// <summary>
         /// lnkLockScreen control.

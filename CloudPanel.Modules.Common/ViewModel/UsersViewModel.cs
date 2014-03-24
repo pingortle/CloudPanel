@@ -7,6 +7,7 @@ using CloudPanel.Modules.Base.Users;
 using CloudPanel.Modules.Common.Database;
 using CloudPanel.Modules.Common.Rollback;
 using CloudPanel.Modules.Common.Settings;
+using CloudPanel.Modules.Exchange;
 using log4net;
 using System;
 using System.Collections.Generic;
@@ -104,7 +105,6 @@ namespace CloudPanel.Modules.Common.ViewModel
         public UsersObject GetUser(string userPrincipalName)
         {
             CPDatabase database = null;
-            ADUser adUser = null;
 
             try
             {
@@ -121,8 +121,18 @@ namespace CloudPanel.Modules.Common.ViewModel
                                     CompanyCode = u.CompanyCode,
                                     sAMAccountName = u.sAMAccountName,
                                     UserPrincipalName = u.UserPrincipalName,
+                                    Firstname = u.Firstname,
+                                    Middlename = u.Middlename,
+                                    Lastname = u.Lastname,
+                                    DisplayName = u.DisplayName,
+                                    Department = u.Department,
+                                    DistinguishedName = u.DistinguishedName,
+                                    Created = u.Created,
                                     IsCompanyAdmin = u.IsCompanyAdmin == null ? false : (bool)u.IsCompanyAdmin,
                                     IsResellerAdmin = u.IsResellerAdmin == null ? false : (bool)u.IsResellerAdmin,
+                                    MailboxPlan = u.MailboxPlan == null ? 0 : (int)u.MailboxPlan,
+                                    AdditionalMB = u.AdditionalMB == null ? 0 : (int)u.AdditionalMB,
+                                    ActiveSyncPlan = u.ActiveSyncPlan == null ? 0 : (int)u.ActiveSyncPlan,
                                     EnableExchangePerm = p.EnableExchange == null ? false : p.EnableExchange,
                                     DisableExchangePerm = p.DisableExchange == null ? false : p.DisableExchange,
                                     AddDomainPerm = p.AddDomain == null ? false : p.AddDomain,
@@ -131,20 +141,7 @@ namespace CloudPanel.Modules.Common.ViewModel
                                     DisableAcceptedDomainPerm = p.DisableAcceptedDomain == null ? false : p.DisableAcceptedDomain
                                 }).FirstOrDefault();
 
-                // Get from Active Directory
-                adUser = new ADUser(StaticSettings.Username, StaticSettings.DecryptedPassword, StaticSettings.PrimaryDC);
-
-                UsersObject foundAdUser = adUser.GetUser(userPrincipalName);
-                foundAdUser.IsCompanyAdmin = findUser.IsCompanyAdmin;
-                foundAdUser.IsResellerAdmin = findUser.IsResellerAdmin;
-                foundAdUser.EnableExchangePerm = findUser.EnableExchangePerm;
-                foundAdUser.DisableExchangePerm = findUser.DisableExchangePerm;
-                foundAdUser.AddDomainPerm = findUser.AddDomainPerm;
-                foundAdUser.DeleteDomainPerm = findUser.DeleteDomainPerm;
-                foundAdUser.EnableAcceptedDomainPerm = findUser.EnableAcceptedDomainPerm;
-                foundAdUser.DisableAcceptedDomainPerm = findUser.DisableAcceptedDomainPerm;
-
-                return foundAdUser;                
+                return findUser;               
             }
             catch (Exception ex)
             {
@@ -156,6 +153,31 @@ namespace CloudPanel.Modules.Common.ViewModel
             {
                 if (database != null)
                     database.Dispose();
+            }
+        }
+
+        public UsersObject GetUserMailbox(string identity)
+        {
+            ExchangePowershell powershell = null;
+
+            try
+            {
+                powershell = new ExchangePowershell(StaticSettings.ExchangeURI, StaticSettings.Username, StaticSettings.DecryptedPassword, StaticSettings.ExchangeUseKerberos, StaticSettings.PrimaryDC);
+
+                UsersObject obj = powershell.GetUser(identity, StaticSettings.ExchangeVersion);
+                
+                return obj;
+            }
+            catch (Exception ex)
+            {
+                this.logger.Error("Failed to retrieve user mailbox information " + identity, ex);
+                ThrowEvent(AlertID.FAILED, ex.Message);
+                return null;
+            }
+            finally
+            {
+                if (powershell != null)
+                    powershell.Dispose();
             }
         }
 
@@ -198,6 +220,29 @@ namespace CloudPanel.Modules.Common.ViewModel
             {
                 if (database != null)
                     database.Dispose();
+            }
+        }
+
+        public byte[] GetPhoto(string userPrincipalName)
+        {
+            ADUser user = null;
+
+            try
+            {
+                user = new ADUser(StaticSettings.Username, StaticSettings.DecryptedPassword, StaticSettings.PrimaryDC);
+
+                byte[] data = user.GetPhoto(userPrincipalName);
+
+                return data;
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
+            finally
+            {
+                if (user != null)
+                    user.Dispose();
             }
         }
 

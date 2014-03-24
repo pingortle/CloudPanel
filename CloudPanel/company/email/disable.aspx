@@ -6,7 +6,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMainPanel" runat="server">
         <div class="pageheader">
-        <h2><i class="fa fa-envelope-o"></i>Disable E-mail</h2>
+        <h2><i class="fa fa-envelope-o"></i><%= Resources.LocalizedText.ExchangeDisable_Title %></h2>
     </div>
 
     <div class="contentpanel">
@@ -20,14 +20,14 @@
                         <br />
 
                         <p style="text-align: center">
-                            Disabling E-mail will delete all emails, mailboxes, groups, contacts, and any other objects that were created for your company. This action is not reversable and please make sure this is what you are wanting to do before continuing.
+                            <%= Resources.LocalizedText.ExchangeDisable_Warning %>
                         </p>
 
                         <br />
                         <br />
 
                         <p style="text-align: center">
-                            <b>To disable E-mail please type the following characters in the textbox below:</b> <asp:Label ID="lbRandomCharacters" runat="server" Text="3H206AA0"></asp:Label>
+                            <b><%= Resources.LocalizedText.ExchangeDisable_RandomCharacters %></b> <asp:Label ID="lbRandomCharacters" runat="server" Text="3H206AA0"></asp:Label>
                         </p>
 
                         <div style="text-align: center">
@@ -35,7 +35,7 @@
 
                             <br /><br />
 
-                            <asp:Button ID="btnDisableExchange" runat="server" Text="Disable E-mail" CssClass="btn btn-danger" />
+                            <asp:Button ID="btnDisableExchange" runat="server" Text='<%$ Resources:LocalizedText, ExchangeDisable_ButtonDisable %>' CssClass="btn btn-danger" OnClick="btnDisableExchange_Click" />
                         </div>
                     </div>
                 </div>

@@ -1,5 +1,6 @@
 ﻿using CloudPanel.Modules.ActiveDirectory.Users;
 using CloudPanel.Modules.Base.Enumerations;
+using CloudPanel.Modules.Base.Users;
 using CloudPanel.Modules.Common.Database;
 using CloudPanel.Modules.Common.Settings;
 using log4net;
@@ -17,7 +18,7 @@ namespace CloudPanel.Modules.Common.ViewModel
     {
         private readonly ILog logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
 
-        public bool Authenticate(string username, string password, string ipAddress, bool isLocalRequest, ref string displayName, ref bool IsSuperAdmin, ref bool IsResellerAdmin, ref bool IsCompanyAdmin, ref string companyCode, ref string resellerCode)
+        public UsersObject Authenticate(string username, string password, string ipAddress, bool isLocalRequest)
         {
             ADUser ldap = null;
             CPDatabase database = null;
@@ -26,7 +27,10 @@ namespace CloudPanel.Modules.Common.ViewModel
             {
                 // Check if IP address is blocked from brute force
                 if (IsBlockedFromBruteForce(ipAddress) && !isLocalRequest)
-                    return false;
+                {
+                    ThrowEvent(AlertID.BRUTE_FORCE_BLOCKED, ipAddress);
+                    return null;
+                }
                 else
                 {
                     database = new CPDatabase();
@@ -39,14 +43,14 @@ namespace CloudPanel.Modules.Common.ViewModel
                     ldap = new ADUser(StaticSettings.Username, StaticSettings.DecryptedPassword, StaticSettings.PrimaryDC);
 
                     // Authenticate the user
-                    string[] groups = ldap.Authenticate(username, password);
-                    if (groups == null)
+                    UsersObject userObject = ldap.Authenticate(username, password);
+                    if (userObject == null)
                     {
                         // Audit the login
                         AuditLogin(username, ipAddress, false);
 
                         ThrowEvent(AlertID.LOGIN_FAILED, username + " failed to login.");
-                        return false;
+                        return null;
                     }
                     else
                     {
@@ -59,33 +63,32 @@ namespace CloudPanel.Modules.Common.ViewModel
                         // User could be null if it is a domain admin which won't be in the database.
                         if (user != null)
                         {
-                            companyCode = user.CompanyCode;
-                            resellerCode = GetResellerCode(user.CompanyCode);
-                            displayName = user.DisplayName;
+                            userObject.CompanyCode = user.CompanyCode;
+                            userObject.ResellerCode = GetResellerCode(user.CompanyCode);
 
                             if (user.IsCompanyAdmin != null && (bool)user.IsCompanyAdmin)
                             {
-                                IsCompanyAdmin = true;
+                                userObject.IsCompanyAdmin = true;
                             }
 
                             if (user.IsResellerAdmin != null && (bool)user.IsResellerAdmin)
                             {
-                                IsResellerAdmin = true;
+                                userObject.IsResellerAdmin = true;
                             }
                         }
 
                         // Now check if they are a super admin
                         foreach (string g in cpGroups)
                         {
-                            var isFound = groups.Where(a => a.ToLower().StartsWith("cn=" + g)).Count();
-                            if (isFound >0)
+                            var isFound = userObject.Groups.Where(a => a.ToLower().StartsWith("cn=" + g)).Count();
+                            if (isFound > 0)
                             {
-                                IsSuperAdmin = true;
+                                userObject.IsSuperAdmin = true;
                                 break;
                             }
                         }
 
-                        return true;
+                        return userObject;
                     }
                 }
             }
@@ -93,7 +96,7 @@ namespace CloudPanel.Modules.Common.ViewModel
             {
                 this.logger.Error("Error logging in user " + username, ex);
                 ThrowEvent(AlertID.FAILED, ex.Message);
-                return false;
+                return null;
             }
             finally
             {

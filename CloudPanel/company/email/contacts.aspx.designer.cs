@@ -40,22 +40,13 @@ namespace CloudPanel.company.email {
         protected global::System.Web.UI.WebControls.Button btnAddContact;
         
         /// <summary>
-        /// lnkEdit control.
+        /// repeaterContactList control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkEdit;
-        
-        /// <summary>
-        /// lnkDelete control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.LinkButton lnkDelete;
+        protected global::System.Web.UI.WebControls.Repeater repeaterContactList;
         
         /// <summary>
         /// panelEditContact control.

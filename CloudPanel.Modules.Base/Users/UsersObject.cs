@@ -11,6 +11,8 @@ namespace CloudPanel.Modules.Base.Users
 
         public string CompanyCode { get; set; }
 
+        public string ResellerCode { get; set; }
+
         public string sAMAccountName { get; set; }
 
         public string UserPrincipalName { get; set; }
@@ -25,29 +27,69 @@ namespace CloudPanel.Modules.Base.Users
 
         public string Lastname { get; set; }
 
-        public string PrimarySmtpAddress { get; set; }
-
         public string Department { get; set; }
 
         public string Password { get; set; }
 
-        public bool IsResellerAdmin { get; set; }
-
-        public bool IsCompanyAdmin { get; set; }
-
-        public int MailboxPlan { get; set; }
-
         public int LyncPlan { get; set; }
+
+        public DateTime? Created { get; set; }
+
+        public bool PasswordNeverExpires { get; set; }
+
+        public List<string> Groups { get; set; }
+
+        #region Graphics
+
+        public byte[] UserPhoto { get; set; }
+
+        #endregion
+
+        #region Exchange
 
         public int AdditionalMB { get; set; }
 
         public int ActiveSyncPlan { get; set; }
 
-        public DateTime Created { get; set; }
+        public int MailboxPlan { get; set; }
 
-        public bool PasswordNeverExpires { get; set; }
+        public string PrimarySmtpAddress { get; set; }
+
+        public string ForwardingTo { get; set; }
+
+        public string CurrentMailboxDatabase { get; set; }
+
+        public string LitigationHoldComment { get; set; }
+
+        public string LitigationHoldUrl { get; set; }
+
+        public string ThrottlingPolicy { get; set; }
+
+        public string ExchangeAlias { get; set; }
+
+        public List<string> EmailAliases { get; set; }
+
+        public List<string> FullAccessUsers { get; set; }
+
+        public List<string> SendAsUsers { get; set; }
+
+        public bool DeliverToMailboxAndForward { get; set; }
+
+        public bool LitigationHoldEnabled { get; set; }
+
+        public bool HasExchangePicture { get; set; }
+
+        public bool MailboxHiddenFromGAL { get; set; }
+
+        #endregion
 
         #region Permissions
+
+        public bool IsSuperAdmin { get; set; }
+
+        public bool IsResellerAdmin { get; set; }
+
+        public bool IsCompanyAdmin { get; set; }
 
         public bool EnableExchangePerm { get; set; }
 

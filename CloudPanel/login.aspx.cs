@@ -6,6 +6,7 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using CloudPanel.Modules.Common.ViewModel;
 using System.Web.Security;
+using CloudPanel.Modules.Base.Users;
 
 namespace CloudPanel
 {
@@ -21,17 +22,14 @@ namespace CloudPanel
             LoginViewModel login = new LoginViewModel();
             login.ViewModelEvent += login_ViewModelEvent;
 
-            bool isCompanyAdmin = false, isResellerAdmin = false, isSuperAdmin = false;
-            string displayName = "", companyCode = "", resellerCode = "";
-
             string ip = HttpContext.Current.Request.ServerVariables["HTTP_X_FORWARDED_FOR"];
             if (string.IsNullOrEmpty(ip))
                 ip = HttpContext.Current.Request.ServerVariables["REMOTE_ADDR"];
             else
                 ip = ip.Split(',')[0];
 
-            bool isValid = login.Authenticate(txtUsername.Text, txtPassword.Text, ip, Request.IsLocal, ref displayName, ref isSuperAdmin, ref isResellerAdmin, ref isCompanyAdmin, ref companyCode, ref resellerCode);
-            if (isValid)
+            UsersObject user = login.Authenticate(txtUsername.Text, txtPassword.Text, ip, Request.IsLocal);
+            if (user != null)
             {
                 // User is authenticated
                 FormsAuthenticationTicket ticket = new FormsAuthenticationTicket(1, txtUsername.Text, DateTime.Now, DateTime.Now.AddHours(8), true, "");
@@ -42,29 +40,29 @@ namespace CloudPanel
                 cookie.Path = FormsAuthentication.FormsCookiePath;
                 Response.Cookies.Add(cookie);
 
-                if (isSuperAdmin)
+                if (user.IsSuperAdmin)
                     WebSessionHandler.IsSuperAdmin = true;
 
-                if (isResellerAdmin)
+                if (user.IsResellerAdmin)
                 {
                     WebSessionHandler.IsResellerAdmin = true;
-                    WebSessionHandler.SelectedResellerCode = resellerCode;
+                    WebSessionHandler.SelectedResellerCode = user.ResellerCode;
                 }
 
-                if (isCompanyAdmin)
+                if (user.IsCompanyAdmin)
                 {
                     WebSessionHandler.IsCompanyAdmin = true;
-                    WebSessionHandler.SelectedResellerCode = resellerCode;
-                    WebSessionHandler.SelectedCompanyCode = companyCode;
+                    WebSessionHandler.SelectedResellerCode = user.ResellerCode;
+                    WebSessionHandler.SelectedCompanyCode = user.CompanyCode;
                 }
 
-                if (!string.IsNullOrEmpty(displayName))
-                    WebSessionHandler.DisplayName = displayName;
+                if (!string.IsNullOrEmpty(user.DisplayName))
+                    WebSessionHandler.DisplayName = user.DisplayName;
                 else
                     WebSessionHandler.DisplayName = txtUsername.Text;
 
                 // Redirect to dashbaord
-                Response.Redirect("dashboard.aspx", false);
+                Response.Redirect("~/dashboard.aspx", false);
             }
         }
 

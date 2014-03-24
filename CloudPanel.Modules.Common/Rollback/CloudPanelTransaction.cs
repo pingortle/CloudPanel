@@ -3,6 +3,7 @@ using CloudPanel.Modules.ActiveDirectory.OrganizationalUnits;
 using CloudPanel.Modules.ActiveDirectory.Users;
 using CloudPanel.Modules.Common.Database;
 using CloudPanel.Modules.Common.Settings;
+using CloudPanel.Modules.Exchange;
 using log4net;
 using System;
 using System.Collections.Generic;
@@ -69,6 +70,82 @@ namespace CloudPanel.Modules.Common.Rollback
                 });
         }
 
+        public void NewDomain(string companyOU, string domainName)
+        {
+            Events.Add(new CloudPanelEvent()
+                {
+                    EventType = CloudPanelEventType.Add_Domain,
+                    DomainName = domainName
+                });
+        }
+
+        #endregion
+
+        #region Exchange
+
+        public void NewExchangeDomain(string domainName)
+        {
+            Events.Add(new CloudPanelEvent()
+                {
+                    EventType = CloudPanelEventType.Create_AcceptedDomain,
+                    DomainName = domainName
+                });
+        }
+
+        public void NewExchangeAddressList(string name)
+        {
+            Events.Add(new CloudPanelEvent()
+            {
+                EventType = CloudPanelEventType.Create_ExchangeAddressList,
+                Name = name
+            });
+        }
+
+        public void NewExchangeGAL(string name)
+        {
+            Events.Add(new CloudPanelEvent()
+            {
+                EventType = CloudPanelEventType.Create_GlobalAddressList,
+                Name = name
+            });
+        }
+
+        public void NewExchangeOAB(string name)
+        {
+            Events.Add(new CloudPanelEvent()
+            {
+                EventType = CloudPanelEventType.Create_OfflineAddressBook,
+                Name = name
+            });
+        }
+
+        public void NewExchangeABP(string name)
+        {
+            Events.Add(new CloudPanelEvent()
+            {
+                EventType = CloudPanelEventType.Create_AddressBookPolicy,
+                Name = name
+            });
+        }
+
+        public void NewExchangeGroup(string name)
+        {
+            Events.Add(new CloudPanelEvent()
+            {
+                EventType = CloudPanelEventType.Create_DistributionGroup,
+                Name = name
+            });
+        }
+
+        public void NewContact(string distinguishedName)
+        {
+            Events.Add(new CloudPanelEvent()
+                {
+                    EventType = CloudPanelEventType.Create_Contact,
+                    DistinguishedName = distinguishedName
+                });
+        }
+
         #endregion
 
         #region RollBack
@@ -97,6 +174,34 @@ namespace CloudPanel.Modules.Common.Rollback
                     case CloudPanelEventType.Create_NewUser:
                         // Delete the user
                         Delete_UserFromAD(e.UserPrincipalName);
+                        break;
+                    case CloudPanelEventType.Create_AddressBookPolicy:
+                        // Delete the address book policy from Exchange
+                        Delete_AddressBookPolicy(e.Name);
+                        break;
+                    case CloudPanelEventType.Create_ExchangeAddressList:
+                        // Delete the address list from Exchange
+                        Delete_AddressList(e.Name);
+                        break;
+                    case CloudPanelEventType.Create_OfflineAddressBook:
+                        // Delete offline address book from Exchange
+                        Delete_OfflineAddressBook(e.Name);
+                        break;
+                    case CloudPanelEventType.Create_GlobalAddressList:
+                        // Delete global address list from Exchange
+                        Delete_GlobalAddressList(e.Name);
+                        break;
+                    case CloudPanelEventType.Create_DistributionGroup:
+                        // Delete distribution group from Exchange
+                        Delete_DistributionGroup(e.Name);
+                        break;
+                    case CloudPanelEventType.Create_AcceptedDomain:
+                        // Delete the accepted domain
+                        Delete_AcceptedDomain(e.DomainName);
+                        break;
+                    case CloudPanelEventType.Create_Contact:
+                        // Delete the Exchange contact
+                        Delete_Contact(e.DistinguishedName);
                         break;
                     default:
                         break;
@@ -193,6 +298,193 @@ namespace CloudPanel.Modules.Common.Rollback
             {
                 if (user != null)
                     user.Dispose();
+            }
+        }
+
+        private void Delete_Domain(string distinguishedName, string domainName)
+        {
+            ADOrganizationalUnit org = null;
+
+            try
+            {
+                this.logger.Warn("Rolling back action... Deleting domain from " + distinguishedName);
+
+                org = new ADOrganizationalUnit(StaticSettings.Username, StaticSettings.DecryptedPassword, StaticSettings.PrimaryDC);
+                org.RemoveDomain(distinguishedName, domainName);
+
+                this.logger.Warn("Successfully removed domain " + domainName + " from " + distinguishedName + " and all child OU's");
+            }
+            catch (Exception ex)
+            {
+                this.logger.Error("Failed to roll back action... Deleting domain from " + distinguishedName, ex);
+            }
+        }
+
+        private void Delete_AcceptedDomain(string domainName)
+        {
+            ExchangePowershell powershell = null;
+
+            try
+            {
+                this.logger.Warn("Rolling back action... Deleting accepted domain " + domainName);
+
+                powershell = new ExchangePowershell(StaticSettings.ExchangeURI, StaticSettings.Username, StaticSettings.DecryptedPassword, StaticSettings.ExchangeUseKerberos, StaticSettings.PrimaryDC);
+                powershell.DeleteAddressList(domainName);
+
+                this.logger.Warn("Successfully removed accepted domain " + domainName);
+            }
+            catch (Exception ex)
+            {
+                this.logger.Error("Failed to roll back action... Deleting accepted domain " + domainName, ex);
+            }
+            finally
+            {
+                if (powershell != null)
+                    powershell.Dispose();
+            }
+        }
+
+        private void Delete_AddressList(string name)
+        {
+            ExchangePowershell powershell = null;
+
+            try
+            {
+                this.logger.Warn("Rolling back action... Deleting address list " + name);
+
+                powershell = new ExchangePowershell(StaticSettings.ExchangeURI, StaticSettings.Username, StaticSettings.DecryptedPassword, StaticSettings.ExchangeUseKerberos, StaticSettings.PrimaryDC);
+                powershell.DeleteAddressList(name);
+
+                this.logger.Warn("Successfully removed address list " + name);
+            }
+            catch (Exception ex)
+            {
+                this.logger.Error("Failed to roll back action... Deleting address list " + name, ex);
+            }
+            finally
+            {
+                if (powershell != null)
+                    powershell.Dispose();
+            }
+        }
+
+        private void Delete_GlobalAddressList(string name)
+        {
+            ExchangePowershell powershell = null;
+
+            try
+            {
+                this.logger.Warn("Rolling back action... Deleting address list " + name);
+
+                powershell = new ExchangePowershell(StaticSettings.ExchangeURI, StaticSettings.Username, StaticSettings.DecryptedPassword, StaticSettings.ExchangeUseKerberos, StaticSettings.PrimaryDC);
+                powershell.DeleteGlobalAddressList(name);
+
+                this.logger.Warn("Successfully removed address list " + name);
+            }
+            catch (Exception ex)
+            {
+                this.logger.Error("Failed to roll back action... Deleting address list " + name, ex);
+            }
+            finally
+            {
+                if (powershell != null)
+                    powershell.Dispose();
+            }
+        }
+
+        private void Delete_OfflineAddressBook(string name)
+        {
+            ExchangePowershell powershell = null;
+
+            try
+            {
+                this.logger.Warn("Rolling back action... Deleting address list " + name);
+
+                powershell = new ExchangePowershell(StaticSettings.ExchangeURI, StaticSettings.Username, StaticSettings.DecryptedPassword, StaticSettings.ExchangeUseKerberos, StaticSettings.PrimaryDC);
+                powershell.DeleteOfflineAddressBook(name);
+
+                this.logger.Warn("Successfully removed address list " + name);
+            }
+            catch (Exception ex)
+            {
+                this.logger.Error("Failed to roll back action... Deleting address list " + name, ex);
+            }
+            finally
+            {
+                if (powershell != null)
+                    powershell.Dispose();
+            }
+        }
+
+        private void Delete_AddressBookPolicy(string name)
+        {
+            ExchangePowershell powershell = null;
+
+            try
+            {
+                this.logger.Warn("Rolling back action... Deleting address list " + name);
+
+                powershell = new ExchangePowershell(StaticSettings.ExchangeURI, StaticSettings.Username, StaticSettings.DecryptedPassword, StaticSettings.ExchangeUseKerberos, StaticSettings.PrimaryDC);
+                powershell.DeleteAddressBookPolicy(name);
+
+                this.logger.Warn("Successfully removed address list " + name);
+            }
+            catch (Exception ex)
+            {
+                this.logger.Error("Failed to roll back action... Deleting address list " + name, ex);
+            }
+            finally
+            {
+                if (powershell != null)
+                    powershell.Dispose();
+            }
+        }
+
+        private void Delete_DistributionGroup(string name)
+        {
+            ExchangePowershell powershell = null;
+
+            try
+            {
+                this.logger.Warn("Rolling back action... Deleting distribution group " + name);
+
+                powershell = new ExchangePowershell(StaticSettings.ExchangeURI, StaticSettings.Username, StaticSettings.DecryptedPassword, StaticSettings.ExchangeUseKerberos, StaticSettings.PrimaryDC);
+                powershell.DeleteDistributionGroup(name);
+
+                this.logger.Warn("Successfully removed distribution group " + name);
+            }
+            catch (Exception ex)
+            {
+                this.logger.Error("Failed to roll back action... Deleting distribution group " + name, ex);
+            }
+            finally
+            {
+                if (powershell != null)
+                    powershell.Dispose();
+            }
+        }
+
+        private void Delete_Contact(string distinguishedName)
+        {
+            ExchangePowershell powershell = null;
+
+            try
+            {
+                this.logger.Warn("Rolling back action... Deleting Exchange contact " + distinguishedName);
+
+                powershell = new ExchangePowershell(StaticSettings.ExchangeURI, StaticSettings.Username, StaticSettings.DecryptedPassword, StaticSettings.ExchangeUseKerberos, StaticSettings.PrimaryDC);
+                powershell.DeleteContact(distinguishedName);
+
+                this.logger.Warn("Successfully removed Exchange contact " + distinguishedName);
+            }
+            catch (Exception ex)
+            {
+                this.logger.Error("Failed to roll back action... Deleting Exchange contact " + distinguishedName, ex);
+            }
+            finally
+            {
+                if (powershell != null)
+                    powershell.Dispose();
             }
         }
 

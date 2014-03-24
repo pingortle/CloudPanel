@@ -65,5 +65,14 @@ namespace CloudPanel.Modules.Common.Database
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DeleteUser", userPrincipalNameParameter);
         }
+    
+        public virtual int DisableExchange(string companyCode)
+        {
+            var companyCodeParameter = companyCode != null ?
+                new ObjectParameter("CompanyCode", companyCode) :
+                new ObjectParameter("CompanyCode", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DisableExchange", companyCodeParameter);
+        }
     }
 }

@@ -52,7 +52,7 @@
                                 <li><i class="fa fa-arrow-circle-o-right mr5"></i>and much more...</li>
                             </ul>
                             <div class="mb20"></div>
-                            <strong>Not a member? <a href="signup.html">Sign Up</a></strong>
+                            <strong>Not a member? <a href="#">Sign Up</a></strong>
                         </div>
                         <!-- signin0-info -->
 
@@ -92,6 +92,17 @@
         <script src="js/modernizr.min.js"></script>
         <script src="js/retina.min.js"></script>
         <script src="js/custom.js"></script>
+        <script type="text/javascript">
+            var $buoop = {};
+            $buoop.ol = window.onload;
+            window.onload = function () {
+                try { if ($buoop.ol) $buoop.ol(); } catch (e) { }
+                var e = document.createElement("script");
+                e.setAttribute("type", "text/javascript");
+                e.setAttribute("src", "//browser-update.org/update.js");
+                document.body.appendChild(e);
+            }
+        </script>
     </form>
 </body>
 </html>

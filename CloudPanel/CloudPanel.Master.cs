@@ -25,6 +25,8 @@ namespace CloudPanel.Template
                     Response.Redirect("~/login.aspx", true);
 
                 SetSessionTimeout();
+
+                imgLoggedInUser.ImageUrl = string.Format("~/company/services/UserPhotoHandler.ashx?id={0}", WebSessionHandler.Username);
             }
         }
 
@@ -46,7 +48,8 @@ namespace CloudPanel.Template
         /// <param name="e"></param>
         protected void lnkLockScreen_Click(object sender, EventArgs e)
         {
-
+            string redirectUrl = string.Format("~/security/locked.aspx?username={0}&displayname={1}", WebSessionHandler.Username, WebSessionHandler.DisplayName);
+            Response.Redirect(redirectUrl);
         }
 
         #endregion 

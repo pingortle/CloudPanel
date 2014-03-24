@@ -167,6 +167,9 @@
     <Compile Include="ViewModel\CompanyViewModel.cs" />
     <Compile Include="ViewModel\DashboardViewModel.cs" />
     <Compile Include="ViewModel\DomainsViewModel.cs" />
+    <Compile Include="ViewModel\ExchangeContactViewModel.cs" />
+    <Compile Include="ViewModel\ExchangeDisableViewModel.cs" />
+    <Compile Include="ViewModel\ExchangeEnableViewModel.cs" />
     <Compile Include="ViewModel\IViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\PlanCompanyViewModel.cs" />
@@ -206,6 +209,10 @@
     <ProjectReference Include="..\CloudPanel.Modules.Base\CloudPanel.Modules.Base.csproj">
       <Project>{8b47db51-6f8e-42a3-b7e1-6c92c0e3628b}</Project>
       <Name>CloudPanel.Modules.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPanel.Modules.Exchange\CloudPanel.Modules.Exchange.csproj">
+      <Project>{28a5a759-eb06-4a47-b466-dd382b75e917}</Project>
+      <Name>CloudPanel.Modules.Exchange</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
