@@ -194,24 +194,27 @@ namespace CloudPanel
             dashboard.ViewModelEvent += dashboard_ViewModelEvent;
 
             OverallStats overall = dashboard.GetOtherStatistics(ConfigurationManager.ConnectionStrings["CPDatabase"].ConnectionString);
-            lbTotalUsers.Text = overall.TotalUsers.ToString();
-            lbTotalResellers.Text = overall.TotalResellers.ToString();
-            lbTotalCompanies.Text = overall.TotalCompanies.ToString();
-            lbTotalDomains.Text = overall.TotalDomains.ToString();
-            lbTotalAcceptedDomains.Text = overall.TotalAcceptedDomains.ToString();
-            lbTotalAllocatedMailboxSpace.Text = overall.TotalAllocatedEmailSpace;
+            if (overall != null)
+            {
+                lbTotalUsers.Text = overall.TotalUsers.ToString();
+                lbTotalResellers.Text = overall.TotalResellers.ToString();
+                lbTotalCompanies.Text = overall.TotalCompanies.ToString();
+                lbTotalDomains.Text = overall.TotalDomains.ToString();
+                lbTotalAcceptedDomains.Text = overall.TotalAcceptedDomains.ToString();
+                lbTotalAllocatedMailboxSpace.Text = overall.TotalAllocatedEmailSpace;
 
-            // Set mailbox progress bar
-            lbTotalMailboxes.Text = overall.TotalMailboxes.ToString();
-            progBarMailboxes.Style.Add("width", string.Format("{0}%", (int)Math.Round((double)(100 * overall.TotalMailboxes) / overall.TotalUsers)));
+                // Set mailbox progress bar
+                lbTotalMailboxes.Text = overall.TotalMailboxes.ToString();
+                progBarMailboxes.Style.Add("width", string.Format("{0}%", (int)Math.Round((double)(100 * overall.TotalMailboxes) / overall.TotalUsers)));
 
-            // Set citrix progress bar
-            lbTotalCitrixUsers.Text = overall.TotalCitrixUsers.ToString();
-            progBarCitrix.Style.Add("width", string.Format("{0}%", (int)Math.Round((double)(100 * overall.TotalCitrixUsers) / overall.TotalUsers)));
+                // Set citrix progress bar
+                lbTotalCitrixUsers.Text = overall.TotalCitrixUsers.ToString();
+                progBarCitrix.Style.Add("width", string.Format("{0}%", (int)Math.Round((double)(100 * overall.TotalCitrixUsers) / overall.TotalUsers)));
 
-            // Set lync progress bar
-            lbTotalLyncUsers.Text = overall.TotalLyncUsers.ToString();
-            progBarLync.Style.Add("width", string.Format("{0}%", (int)Math.Round((double)(100 * overall.TotalLyncUsers) / overall.TotalUsers)));
+                // Set lync progress bar
+                lbTotalLyncUsers.Text = overall.TotalLyncUsers.ToString();
+                progBarLync.Style.Add("width", string.Format("{0}%", (int)Math.Round((double)(100 * overall.TotalLyncUsers) / overall.TotalUsers)));
+            }
         }
 
         private void GetRecentAudits()

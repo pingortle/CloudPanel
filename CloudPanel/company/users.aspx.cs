@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Web;
+using System.Web.Services;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
@@ -28,7 +29,14 @@ namespace CloudPanel.company
             {
                 emailAliases = new List<MailAliasObject>();
 
-                GetUsers();
+                // Check if we have a session of search result to load a particular user
+                if (Session["CPSearchResultUser"] != null)
+                {
+                    EditUser(Session["CPSearchResultUser"].ToString());
+                    Session["CPSearchResultUser"] = null;
+                }
+                else
+                    GetUsers();
             }
             else
             {
@@ -169,6 +177,9 @@ namespace CloudPanel.company
 
                 // Get the user photo
                 imgUserPhoto.ImageUrl = string.Format("services/UserPhotoHandler.ashx?id={0}", user.UserPrincipalName);
+
+                // Set view state
+                ViewState["CPCurrentEditUser"] = user;
             }
 
             //                          //
@@ -242,6 +253,7 @@ namespace CloudPanel.company
                                 sendAsItem.Selected = true;
                         }
 
+                        ViewState["CPCurrentEditMailbox"] = mailboxUser;
                     }
                 }
             }
@@ -426,6 +438,21 @@ namespace CloudPanel.company
             }
         }
 
+        protected void btnEditSave_Click(object sender, EventArgs e)
+        {
+            if (ViewState["CPCurrentEditUser"] != null)
+            {
+                UsersObject user = ViewState["CPCurrentEditUser"] as UsersObject;
+
+                // Lets check if any of the user fields were updated
+                if (user.Firstname != txtFirstName.Text || user.Middlename != txtMiddleName.Text || user.Lastname != txtLastname.Text || user.DisplayName != txtDisplayName.Text
+                    || user.Department != txtDepartment.Text)
+                {
+                    // Found mismatch fields. Update
+                }
+            }
+        }
+
         #endregion
 
         #region Other
@@ -440,8 +467,14 @@ namespace CloudPanel.company
 
                 EditUser(e.CommandArgument.ToString());
             }
+            else if (e.CommandName == "ResetPassword")
+            {
+
+            }
             else if (e.CommandName == "Delete")
+            {
                 DeleteUser(e.CommandArgument.ToString());
+            }
         }
 
         #endregion
@@ -489,5 +522,10 @@ namespace CloudPanel.company
         }
 
         #endregion
+
+        protected void Button1_Click(object sender, EventArgs e)
+        {
+            alertmessage.SetMessage(AlertID.WARNING, hfResetPwdHiddenField.Value);
+        }
     }
 }

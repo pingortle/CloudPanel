@@ -117,7 +117,8 @@
                     <a class="menutoggle"><i class="fa fa-bars"></i></a>
 
                     <div class="searchform">
-                        <input type="text" class="form-control" name="keyword" placeholder="Search here..." />
+                        <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" placeholder="Search here..." onkeypress="return EnterEvent(event)"></asp:TextBox>
+                        <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click" style="display: none" />
                     </div>
 
                     <div class="header-right">
@@ -171,6 +172,12 @@
         <script src='<%= this.ResolveClientUrl("~/js/chosen.jquery.min.js") %>'></script>
         <script src='<%= this.ResolveClientUrl("~/js/jquery.gritter.min.js") %>'></script>
         <script type="text/javascript">
+
+            function EnterEvent(e) {
+                if (e.keyCode == 13) {
+                    __doPostBack('<%= btnSearch.UniqueID %>', "");
+                }
+            }
 
             function OnLoadTimeout()
             {

@@ -287,7 +287,11 @@ namespace CloudPanel.Modules.Base.Companies
             else
                 stripped = companyName.Where(c => char.IsLetter(c)).ToArray();
 
-            return new string(stripped); // This should contain only letters, numbers, and whitespaces if not using company code generator 
+            // This should contain only letters, numbers, and whitespaces if not using company code generator 
+            if (useCompanyName)
+                return new string(stripped);
+            else
+                return new string(stripped).Substring(0, 3);
         }
 
         #endregion

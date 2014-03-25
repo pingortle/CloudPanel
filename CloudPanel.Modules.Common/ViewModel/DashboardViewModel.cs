@@ -263,7 +263,7 @@ namespace CloudPanel.Modules.Common.ViewModel
             {
                 database = new CPDatabase();
 
-                OverallStats stats = new OverallStats();
+                OverallStats stats = null;
 
                 // Get all users
                 var users = from u in database.Users
@@ -272,6 +272,7 @@ namespace CloudPanel.Modules.Common.ViewModel
                 // Don't continue we don't find any users
                 if (users != null)
                 {
+                    stats = new OverallStats();
                     stats.TotalUsers = users.Count();
                     stats.TotalMailboxes = (from u in users where u.MailboxPlan > 0 select u.UserPrincipalName).Count();
                     stats.TotalLyncUsers = (from u in users where u.LyncPlan > 0 select u.UserPrincipalName).Count();

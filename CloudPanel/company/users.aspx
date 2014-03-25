@@ -57,6 +57,9 @@
                                                 </button>
                                                 <ul class="dropdown-menu" role="menu">
                                                     <li>
+                                                        <a href="#" data-toggle="modal" data-target=".resetpwd-modal" onclick="SetResetPwd('<%#Eval("UserPrincipalName") %>')">Reset Password</a>
+                                                    </li>
+                                                    <li>
                                                         <asp:LinkButton ID="lnkDelete" runat="server" CommandName="Delete" CommandArgument='<%# Eval("UserPrincipalName") %>'><%= Resources.LocalizedText.Users_Delete %></asp:LinkButton>
                                                     </li>
                                                 </ul>
@@ -72,6 +75,24 @@
                 <!-- table-responsive -->
             </div>
             <!-- col-md-6 -->
+
+            <div class="modal fade resetpwd-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
+                <div class="modal-dialog modal-sm">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
+                            <h4 class="modal-title">Small Modal</h4>
+                        </div>
+                        <div class="modal-body">
+                            <asp:HiddenField ID="hfResetPwdHiddenField" runat="server" />
+                            <asp:Label ID="Label5" runat="server" Text="Label"></asp:Label>
+                            <br />
+                            <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
         </asp:Panel>
 
         <asp:Panel ID="panelCreateUser" runat="server" Visible="false">
@@ -308,6 +329,9 @@
                             <div class="form-horizontal">
                                 <div class="panel panel-default">
                                     <div class="panel-body">
+
+                                        <p class="lead">General</p>
+
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Users_FirstName %><span class="asterisk">*</span></label>
                                             <div class="col-sm-4">
@@ -339,6 +363,11 @@
                                                 <asp:TextBox ID="txtEditDepartment" runat="server" CssClass="form-control"></asp:TextBox>
                                             </div>
                                         </div>
+
+                                        <hr />
+                                        <p class="lead">Email Aliases</p>
+
+                                         
                                     </div>
                                 </div>
                             </div>
@@ -556,7 +585,7 @@
 
             <div class="panel-footer" style="text-align: right">
                 <asp:Button ID="btnEditCancel" runat="server" Text="<%$ Resources:LocalizedText, Users_Cancel %>" CssClass="btn btn-default" OnClick="btnCancel_Click" />
-                <asp:Button ID="btnEditSave" runat="server" Text="<%$ Resources:LocalizedText, Users_Submit %>" CssClass="btn btn-primary" />
+                <asp:Button ID="btnEditSave" runat="server" Text="<%$ Resources:LocalizedText, Users_Submit %>" CssClass="btn btn-primary" OnClick="btnEditSave_Click" />
             </div>
             <!-- panel-footer -->
 
@@ -636,6 +665,12 @@
 
             $("#<%= lbEditMailboxSizeInMB.ClientID %>").text( (minRange / 1024).toString() + "GB");
             $("#EditPlanDescription").text(selected);
+        }
+
+        function SetResetPwd(upn)
+        {
+            $("#<%=hfResetPwdHiddenField.ClientID %>").val(upn);
+            $("#<%= Label5.ClientID %>").html(upn);
         }
 
     </script>

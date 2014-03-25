@@ -304,7 +304,7 @@ namespace Resources {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Companies_Domains.
+        ///   Looks up a localized string similar to Domains.
         /// </summary>
         internal static string Companies_Domains {
             get {
