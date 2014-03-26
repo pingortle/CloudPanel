@@ -428,6 +428,56 @@ namespace CloudPanel.Modules.ActiveDirectory.Users
             }
         }
 
+        /// <summary>
+        /// Resets the password for the user
+        /// </summary>
+        /// <param name="userPrincipalName"></param>
+        /// <param name="newPassword"></param>
+        public void ResetPassword(string userPrincipalName, string newPassword)
+        {
+            PrincipalContext pc = null;
+            UserPrincipal up = null;
+
+            try
+            {
+                pc = new PrincipalContext(ContextType.Domain, this.domainController, this.username, this.password);
+
+                logger.Debug("Looking to see if user already exists to reset the password: " + userPrincipalName);
+
+                up = UserPrincipal.FindByIdentity(pc, IdentityType.UserPrincipalName, userPrincipalName);
+                if (up != null)
+                {
+                    up.SetPassword(newPassword);
+                    up.Save();
+
+                    logger.Info("Successfully changed password for " + userPrincipalName);
+                }
+            }
+            catch (PasswordException ex)
+            {
+                this.logger.Error("Error changing password for " + userPrincipalName, ex);
+                throw;
+            }
+            catch (Exception ex)
+            {
+                this.logger.Error("Error changing password for " + userPrincipalName, ex);
+                throw;
+            }
+            finally
+            {
+                if (up != null)
+                    up.Dispose();
+
+                if (pc != null)
+                    pc.Dispose();
+            }
+        }
+
+        /// <summary>
+        /// Gets the photo for the user from the thumbnailPhoto attribute in Active Directory
+        /// </summary>
+        /// <param name="userPrincipalName"></param>
+        /// <returns></returns>
         public byte[] GetPhoto(string userPrincipalName)
         {
             DirectoryEntry de = null;

@@ -489,5 +489,36 @@ namespace CloudPanel.Modules.Common.ViewModel
                     database.Dispose();
             }
         }
+
+        public void ResetPassword(string userPrincipalName, string newPassword, string companyCode)
+        {
+            ADUser user = null;
+            CPDatabase database = null;
+
+            try
+            {
+                database = new CPDatabase();
+
+                var sqlUser = (from u in database.Users
+                            where u.UserPrincipalName == userPrincipalName
+                            select u).First();
+
+                if (sqlUser.CompanyCode.Equals(companyCode, StringComparison.CurrentCultureIgnoreCase))
+                {
+                    user = new ADUser(StaticSettings.Username, StaticSettings.DecryptedPassword, StaticSettings.PrimaryDC);
+                    user.ResetPassword(userPrincipalName, newPassword);
+                }
+            }
+            catch (Exception ex)
+            {
+                this.logger.Error("Error resetting password for " + userPrincipalName, ex);
+                ThrowEvent(AlertID.FAILED, ex.Message);
+            }
+            finally
+            {
+                if (user != null)
+                    user.Dispose();
+            }
+        }
     }
 }

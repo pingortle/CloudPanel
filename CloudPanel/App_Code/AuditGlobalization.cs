@@ -47,6 +47,9 @@ namespace CloudPanel
                         case Modules.Base.Enumerations.ActionID.UpdateReseller:
                             a.ActionIDGlobalization = Resources.LocalizedText.Audit_UpdateReseller;
                             break;
+                        case Modules.Base.Enumerations.ActionID.ResetPassword:
+                            a.ActionIDGlobalization = Resources.LocalizedText.Audit_ResetPassword;
+                            break;
                         default:
                             break;
                     }

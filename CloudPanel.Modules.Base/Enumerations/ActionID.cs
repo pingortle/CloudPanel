@@ -28,6 +28,7 @@ namespace CloudPanel.Modules.Base.Enumerations
         SaveSettings = 19,
         UpdateCompany = 20,
         UpdateReseller = 21,
-        UpdateDomain = 22
+        UpdateDomain = 22,
+        ResetPassword = 23
     }
 }

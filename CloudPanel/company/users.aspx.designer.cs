@@ -58,6 +58,24 @@ namespace CloudPanel.company {
         protected global::System.Web.UI.WebControls.Repeater repeaterUsers;
         
         /// <summary>
+        /// lbResetPasswordUPN control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbResetPasswordUPN;
+        
+        /// <summary>
+        /// txtResetPwd1 control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtResetPwd1;
+        
+        /// <summary>
         /// hfResetPwdHiddenField control.
         /// </summary>
         /// <remarks>
@@ -67,22 +85,22 @@ namespace CloudPanel.company {
         protected global::System.Web.UI.WebControls.HiddenField hfResetPwdHiddenField;
         
         /// <summary>
-        /// Label5 control.
+        /// txtResetPwd2 control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label Label5;
+        protected global::System.Web.UI.WebControls.TextBox txtResetPwd2;
         
         /// <summary>
-        /// Button1 control.
+        /// btnResetPwd control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button Button1;
+        protected global::System.Web.UI.WebControls.Button btnResetPwd;
         
         /// <summary>
         /// panelCreateUser control.
@@ -380,6 +398,87 @@ namespace CloudPanel.company {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtEditDepartment;
+        
+        /// <summary>
+        /// cbEditEnableUser control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbEditEnableUser;
+        
+        /// <summary>
+        /// cbEditIsResellerAdmin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbEditIsResellerAdmin;
+        
+        /// <summary>
+        /// cbEditIsCompanyAdmin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbEditIsCompanyAdmin;
+        
+        /// <summary>
+        /// cbEditEnableExchange control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbEditEnableExchange;
+        
+        /// <summary>
+        /// cbEditAddDomain control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbEditAddDomain;
+        
+        /// <summary>
+        /// cbEditEnableAcceptedDomain control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbEditEnableAcceptedDomain;
+        
+        /// <summary>
+        /// cbEditDisableExchange control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbEditDisableExchange;
+        
+        /// <summary>
+        /// cbEditDeleteDomain control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbEditDeleteDomain;
+        
+        /// <summary>
+        /// cbEditDisableAcceptedDomain control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbEditDisableAcceptedDomain;
         
         /// <summary>
         /// txtEditMailboxEmail control.

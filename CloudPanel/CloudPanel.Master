@@ -117,7 +117,7 @@
                     <a class="menutoggle"><i class="fa fa-bars"></i></a>
 
                     <div class="searchform">
-                        <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" placeholder="Search here..." onkeypress="return EnterEvent(event)"></asp:TextBox>
+                        <asp:TextBox ID="txtSearch" runat="server" CssClass="form-control" placeholder="Search here..." onkeypress="return EnterEvent(event)" autocomplete="no"></asp:TextBox>
                         <asp:Button ID="btnSearch" runat="server" Text="Search" OnClick="btnSearch_Click" style="display: none" />
                     </div>
 

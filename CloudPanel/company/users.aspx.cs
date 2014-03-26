@@ -19,7 +19,7 @@ namespace CloudPanel.company
 {
     public partial class users : System.Web.UI.Page
     {
-        protected bool _isExchangeEnabled = true;
+        protected bool _isExchangeEnabled = false;
 
         private List<MailAliasObject> emailAliases;
 
@@ -175,6 +175,16 @@ namespace CloudPanel.company
                 txtEditDisplayName.Text = user.DisplayName;
                 txtEditDepartment.Text = user.Department;
 
+                cbEditIsCompanyAdmin.Checked = user.IsCompanyAdmin;
+                cbEditIsResellerAdmin.Checked = user.IsResellerAdmin;
+
+                cbEditAddDomain.Checked = user.AddDomainPerm;
+                cbEditDeleteDomain.Checked = user.DeleteDomainPerm;
+                cbEditDisableAcceptedDomain.Checked = user.DisableAcceptedDomainPerm;
+                cbEditDisableExchange.Checked = user.DisableExchangePerm;
+                cbEditEnableAcceptedDomain.Checked = user.EnableAcceptedDomainPerm;
+                cbEditEnableExchange.Checked = user.EnableExchangePerm;
+
                 // Get the user photo
                 imgUserPhoto.ImageUrl = string.Format("services/UserPhotoHandler.ashx?id={0}", user.UserPrincipalName);
 
@@ -185,7 +195,8 @@ namespace CloudPanel.company
             //                          //
             // GET MAILBOX INFORMATION  //
             //                          //
-            if (CompanyChecks.IsExchangeEnabled(WebSessionHandler.SelectedCompanyCode))
+            _isExchangeEnabled = CompanyChecks.IsExchangeEnabled(WebSessionHandler.SelectedCompanyCode);
+            if (_isExchangeEnabled)
             {
                 // Get list of accepted domains
                 GetDomains();
@@ -373,6 +384,8 @@ namespace CloudPanel.company
                 alertmessage.SetMessage(AlertID.WARNING, string.Format("{0}: {1}", Resources.LocalizedText.Users_UserAlreadyExist, message));
             else if (errorID == AlertID.USER_UNKNOWN)
                 alertmessage.SetMessage(AlertID.FAILED, string.Format("{0}: {1}", Resources.LocalizedText.Users_CouldNotFindUser, message));
+            else if (errorID == AlertID.PASSWORDS_DO_NOT_MATCH)
+                alertmessage.SetMessage(AlertID.WARNING, string.Format("{0}: {1}", Resources.LocalizedText.Users_PasswordsDoNotMatch, message));
             else
                 alertmessage.SetMessage(errorID, message);
         }
@@ -453,6 +466,23 @@ namespace CloudPanel.company
             }
         }
 
+        protected void btnResetPwd_Click(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(txtResetPwd1.Text) && !string.IsNullOrEmpty(txtResetPwd2.Text))
+            {
+                if (txtResetPwd1.Text != txtResetPwd2.Text)
+                    alertmessage.SetMessage(AlertID.WARNING, Resources.LocalizedText.Users_PasswordsDoNotMatch);
+                else
+                {
+                    UsersViewModel viewModel = new UsersViewModel();
+                    viewModel.ViewModelEvent += viewModel_ViewModelEvent;
+                    viewModel.ResetPassword(hfResetPwdHiddenField.Value, txtResetPwd2.Text, WebSessionHandler.SelectedCompanyCode);
+
+                    AuditGlobal.AddAudit(WebSessionHandler.SelectedCompanyCode, WebSessionHandler.Username, ActionID.ResetPassword, hfResetPwdHiddenField.Value);
+                }
+            }
+        }
+
         #endregion
 
         #region Other
@@ -522,10 +552,5 @@ namespace CloudPanel.company
         }
 
         #endregion
-
-        protected void Button1_Click(object sender, EventArgs e)
-        {
-            alertmessage.SetMessage(AlertID.WARNING, hfResetPwdHiddenField.Value);
-        }
     }
 }

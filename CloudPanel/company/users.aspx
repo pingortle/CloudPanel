@@ -76,22 +76,43 @@
             </div>
             <!-- col-md-6 -->
 
+            
             <div class="modal fade resetpwd-modal" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true" style="display: none;">
                 <div class="modal-dialog modal-sm">
                     <div class="modal-content">
                         <div class="modal-header">
                             <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                            <h4 class="modal-title">Small Modal</h4>
+                            <h4 class="modal-title">Reset Password</h4>
+                            <p><asp:Label ID="lbResetPasswordUPN" runat="server" Text=""></asp:Label></p>
                         </div>
                         <div class="modal-body">
-                            <asp:HiddenField ID="hfResetPwdHiddenField" runat="server" />
-                            <asp:Label ID="Label5" runat="server" Text="Label"></asp:Label>
-                            <br />
-                            <asp:Button ID="Button1" runat="server" Text="Button" OnClick="Button1_Click" />
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label class="control-label"><%= Resources.LocalizedText.Users_Password %></label>
+                                        <asp:TextBox ID="txtResetPwd1" runat="server" CssClass="form-control" TextMode="Password" autocomplete="off"></asp:TextBox>
+                                        <asp:HiddenField ID="hfResetPwdHiddenField" runat="server" />
+                                    </div>
+                                </div>
+                                <!-- col-sm-12 -->
+
+                            </div>
+                            <div class="row">
+                                <div class="col-sm-12">
+                                    <div class="form-group">
+                                        <label class="control-label"><%= Resources.LocalizedText.Users_RetypePassword %></label>
+                                        <asp:TextBox ID="txtResetPwd2" runat="server" CssClass="form-control" TextMode="Password" autocomplete="off"></asp:TextBox>
+                                    </div>
+                                </div>
+                                <!-- col-sm-12 -->
+                            </div>
+
+                            <asp:Button ID="btnResetPwd" runat="server" Text="Reset Password" CssClass="btn btn-primary btn-block mt10" OnClick="btnResetPwd_Click"/>
                         </div>
                     </div>
                 </div>
             </div>
+            <!-- RESET PASSWORD MODAL -->
 
         </asp:Panel>
 
@@ -365,8 +386,77 @@
                                         </div>
 
                                         <hr />
-                                        <p class="lead">Email Aliases</p>
+                                        <p class="lead">User Status</p>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">&nbsp;</label>
+                                            <div class="col-sm-4">
+                                                <div class="ckbox ckbox-primary">
+                                                    <asp:CheckBox ID="cbEditEnableUser" runat="server" />
+                                                    <label for='<%= cbEditEnableUser.ClientID %>'><%= Resources.LocalizedText.Users_EnableUser %></label>
+                                                </div>
+                                            </div>
+                                        </div>
 
+                                        <% if (CloudPanel.WebSessionHandler.IsSuperAdmin || CloudPanel.WebSessionHandler.IsResellerAdmin) {  %>
+                                        <hr />
+                                        <p class="lead">Permissions</p>
+                                        <% if (CloudPanel.WebSessionHandler.IsSuperAdmin)
+                                           { %>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">&nbsp;</label>
+                                            <div class="col-sm-4">
+                                                <div class="ckbox ckbox-primary">
+                                                    <asp:CheckBox ID="cbEditIsResellerAdmin" runat="server" />
+                                                    <label for='<%= cbEditIsResellerAdmin.ClientID %>'><%= Resources.LocalizedText.Users_IsResellerAdmin %></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <% } %>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">&nbsp;</label>
+                                            <div class="col-sm-2">
+                                                <div class="ckbox ckbox-primary">
+                                                    <asp:CheckBox ID="cbEditIsCompanyAdmin" runat="server" />
+                                                    <label for='<%= cbEditIsCompanyAdmin.ClientID %>'><%= Resources.LocalizedText.Users_IsCompanyAdmin %></label>
+                                                </div>
+                                            </div>
+                                            <div class="row" id="editCompanyAdminRights" style="visibility: hidden">
+                                                <div class="col-md-2">
+                                                    <div class="ckbox ckbox-success">
+                                                        <asp:CheckBox ID="cbEditEnableExchange" runat="server" />
+                                                        <label for='<%= cbEditEnableExchange.ClientID %>'><%= Resources.LocalizedText.Users_EnableExchange %></label>
+                                                    </div>
+
+                                                    <div class="ckbox ckbox-success">
+                                                        <asp:CheckBox ID="cbEditAddDomain" runat="server" />
+                                                        <label for='<%= cbEditAddDomain.ClientID %>'><%= Resources.LocalizedText.Users_AddDomain %></label>
+                                                    </div>
+
+                                                    <div class="ckbox ckbox-success">
+                                                        <asp:CheckBox ID="cbEditEnableAcceptedDomain" runat="server" />
+                                                        <label for='<%= cbEditEnableAcceptedDomain.ClientID %>'><%= Resources.LocalizedText.Users_EnableAcceptedDomains %></label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-md-2">
+                                                    <div class="ckbox ckbox-success">
+                                                        <asp:CheckBox ID="cbEditDisableExchange" runat="server" />
+                                                        <label for='<%= cbEditDisableExchange.ClientID %>'><%= Resources.LocalizedText.Users_DisableExchange %></label>
+                                                    </div>
+
+                                                    <div class="ckbox ckbox-success">
+                                                        <asp:CheckBox ID="cbEditDeleteDomain" runat="server" />
+                                                        <label for='<%= cbEditDeleteDomain.ClientID %>'><%= Resources.LocalizedText.Users_DeleteDomain %></label>
+                                                    </div>
+
+                                                    <div class="ckbox ckbox-success">
+                                                        <asp:CheckBox ID="cbEditDisableAcceptedDomain" runat="server" />
+                                                        <label for='<%= cbEditDisableAcceptedDomain.ClientID %>'><%= Resources.LocalizedText.Users_DisableAcceptedDomains %></label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <% } %>
                                          
                                     </div>
                                 </div>
@@ -613,6 +703,7 @@
             // Date Picker
             jQuery('#<%= txtEditMailboxLitigationHoldDuration.ClientID %>').datepicker();
 
+            // New User permissions DIV
             if ($("#<%= cbCompanyAdmin.ClientID %>").is(':checked'))
                 $("#companyAdminRights").css('visibility', 'visible');
             else
@@ -623,6 +714,20 @@
                     $("#companyAdminRights").css('visibility', 'visible');
                 } else {
                     $("#companyAdminRights").css('visibility', 'hidden');
+                }
+            });
+
+            // Edit user permissions DIV
+            if ($("#<%= cbEditIsCompanyAdmin.ClientID %>").is(':checked'))
+                $("#editCompanyAdminRights").css('visibility', 'visible');
+            else
+                $("#editCompanyAdminRights").css('visibility', 'hidden');
+
+            $("#<%= cbEditIsCompanyAdmin.ClientID %>").change(function () {
+                if (this.checked) {
+                    $("#editCompanyAdminRights").css('visibility', 'visible');
+                } else {
+                    $("#editCompanyAdminRights").css('visibility', 'hidden');
                 }
             });
 
@@ -670,7 +775,7 @@
         function SetResetPwd(upn)
         {
             $("#<%=hfResetPwdHiddenField.ClientID %>").val(upn);
-            $("#<%= Label5.ClientID %>").html(upn);
+            $("#<%= lbResetPasswordUPN.ClientID %>").html(upn);
         }
 
     </script>

@@ -849,4 +849,13 @@
   <data name="BruteForce_Failed" xml:space="preserve">
     <value>Unable to log you in because there has been too many invalid password attempts from your network</value>
   </data>
+  <data name="Audit_ResetPassword" xml:space="preserve">
+    <value>Reset password for</value>
+  </data>
+  <data name="Users_EnableUser" xml:space="preserve">
+    <value>Enable User</value>
+  </data>
+  <data name="Users_PasswordsDoNotMatch" xml:space="preserve">
+    <value>Passwords do not match. Please retype passwords</value>
+  </data>
 </root>

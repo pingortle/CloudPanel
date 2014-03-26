@@ -24,6 +24,7 @@ namespace CloudPanel.Modules.Base.Enumerations
         SUCCESS_UPDATE_COMPANY,
         PLAN_IN_USE,
         DOMAIN_ALREADY_EXISTS,
-        DOMAIN_IN_USE
+        DOMAIN_IN_USE,
+        PASSWORDS_DO_NOT_MATCH
     }
 }

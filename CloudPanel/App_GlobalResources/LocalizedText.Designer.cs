@@ -97,6 +97,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Reset password for.
+        /// </summary>
+        internal static string Audit_ResetPassword {
+            get {
+                return ResourceManager.GetString("Audit_ResetPassword", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Successfully saved CloudPanel settings to the database.
         /// </summary>
         internal static string Audit_SavedSettings {
@@ -2050,6 +2059,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enable User.
+        /// </summary>
+        internal static string Users_EnableUser {
+            get {
+                return ResourceManager.GetString("Users_EnableUser", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to First Name.
         /// </summary>
         internal static string Users_FirstName {
@@ -2181,6 +2199,15 @@ namespace Resources {
         internal static string Users_PasswordNeverExpires {
             get {
                 return ResourceManager.GetString("Users_PasswordNeverExpires", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Passwords do not match. Please retype passwords.
+        /// </summary>
+        internal static string Users_PasswordsDoNotMatch {
+            get {
+                return ResourceManager.GetString("Users_PasswordsDoNotMatch", resourceCulture);
             }
         }
         
