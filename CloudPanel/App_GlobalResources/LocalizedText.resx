@@ -858,4 +858,142 @@
   <data name="Users_PasswordsDoNotMatch" xml:space="preserve">
     <value>Passwords do not match. Please retype passwords</value>
   </data>
+  <data name="Buttons_Add" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="Overview_Citrix" xml:space="preserve">
+    <value>Citrix</value>
+  </data>
+  <data name="Overview_CompanyCode" xml:space="preserve">
+    <value>Company Code</value>
+  </data>
+  <data name="Overview_CompanyDetails" xml:space="preserve">
+    <value>Company Details</value>
+  </data>
+  <data name="Overview_CompanyLocation" xml:space="preserve">
+    <value>Company Location</value>
+  </data>
+  <data name="Overview_CompanyName" xml:space="preserve">
+    <value>Company Name</value>
+  </data>
+  <data name="Overview_ContactsName" xml:space="preserve">
+    <value>Contacts Name</value>
+  </data>
+  <data name="Overview_Created" xml:space="preserve">
+    <value>When Created</value>
+  </data>
+  <data name="Overview_CurrentPlan" xml:space="preserve">
+    <value>Current Plan</value>
+  </data>
+  <data name="Overview_Domains" xml:space="preserve">
+    <value>Domains</value>
+  </data>
+  <data name="Overview_Lync" xml:space="preserve">
+    <value>Lync</value>
+  </data>
+  <data name="Overview_Mailboxes" xml:space="preserve">
+    <value>Mailboxes</value>
+  </data>
+  <data name="Overview_PlanNotSetWarning" xml:space="preserve">
+    <value>A plan has not been set for this company. Please set a plan or contact customer support. Some features will fail to function correctly without a company plan set.</value>
+  </data>
+  <data name="Overview_ProductDetails" xml:space="preserve">
+    <value>Product Details</value>
+  </data>
+  <data name="Overview_RecentActions" xml:space="preserve">
+    <value>Recent Actions</value>
+  </data>
+  <data name="Overview_Telephone" xml:space="preserve">
+    <value>Telephone</value>
+  </data>
+  <data name="Overview_Users" xml:space="preserve">
+    <value>Users</value>
+  </data>
+  <data name="Users_ActiveSyncPlan" xml:space="preserve">
+    <value>Activesync Plan</value>
+  </data>
+  <data name="Users_Alias" xml:space="preserve">
+    <value>Alias</value>
+  </data>
+  <data name="Users_ArchiveDatabase" xml:space="preserve">
+    <value>Archive Database</value>
+  </data>
+  <data name="Users_ArchiveName" xml:space="preserve">
+    <value>Archive Name</value>
+  </data>
+  <data name="Users_ArchivePlan" xml:space="preserve">
+    <value>Archive Plan</value>
+  </data>
+  <data name="Users_Archiving" xml:space="preserve">
+    <value>Archiving</value>
+  </data>
+  <data name="Users_Comments" xml:space="preserve">
+    <value>Comments</value>
+  </data>
+  <data name="Users_DeliverAndForward" xml:space="preserve">
+    <value>Deliver to Mailbox and Forward</value>
+  </data>
+  <data name="Users_Description" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="Users_DescriptionURL" xml:space="preserve">
+    <value>Description URL</value>
+  </data>
+  <data name="Users_Duration" xml:space="preserve">
+    <value>Duration</value>
+  </data>
+  <data name="Users_EmailAliases" xml:space="preserve">
+    <value>Email Aliases</value>
+  </data>
+  <data name="Users_EnableArchiving" xml:space="preserve">
+    <value>Enable Archiving</value>
+  </data>
+  <data name="Users_EnableLitigationHold" xml:space="preserve">
+    <value>Enable Litigation Hold</value>
+  </data>
+  <data name="Users_Forwarding" xml:space="preserve">
+    <value>Forwarding</value>
+  </data>
+  <data name="Users_ForwardTo" xml:space="preserve">
+    <value>Forward To</value>
+  </data>
+  <data name="Users_FullAccess" xml:space="preserve">
+    <value>Full Access</value>
+  </data>
+  <data name="Users_General" xml:space="preserve">
+    <value>General</value>
+  </data>
+  <data name="Users_IsDisabled" xml:space="preserve">
+    <value>User is Disabled</value>
+  </data>
+  <data name="Users_LitigationHold" xml:space="preserve">
+    <value>Litigation Hold</value>
+  </data>
+  <data name="Users_MailboxPermissions" xml:space="preserve">
+    <value>Mailbox Permissions</value>
+  </data>
+  <data name="Users_MailboxSettings" xml:space="preserve">
+    <value>Mailbox Settings</value>
+  </data>
+  <data name="Users_Permissions" xml:space="preserve">
+    <value>Permissions</value>
+  </data>
+  <data name="Users_ResetPassword" xml:space="preserve">
+    <value>Reset Password</value>
+  </data>
+  <data name="Users_SendAs" xml:space="preserve">
+    <value>Send As</value>
+  </data>
+  <data name="Users_SendOnBehalf" xml:space="preserve">
+    <value>Send on Behalf</value>
+  </data>
+  <data name="Users_User" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="Users_UserStatus" xml:space="preserve">
+    <value>User Status</value>
+  </data>
+  <data name="Users_ViewStateNull" xml:space="preserve">
+    <value>Could not update user because the viewstate was null. Please contact support</value>
+  </data>
 </root>

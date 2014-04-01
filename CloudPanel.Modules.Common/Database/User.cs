@@ -34,5 +34,7 @@ namespace CloudPanel.Modules.Common.Database
         public Nullable<System.DateTime> Created { get; set; }
         public Nullable<int> AdditionalMB { get; set; }
         public Nullable<int> ActiveSyncPlan { get; set; }
+        public Nullable<bool> IsEnabled { get; set; }
+        public Nullable<int> ExchArchivePlan { get; set; }
     }
 }

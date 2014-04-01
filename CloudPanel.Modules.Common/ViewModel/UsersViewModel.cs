@@ -78,6 +78,7 @@ namespace CloudPanel.Modules.Common.ViewModel
                                       UserPrincipalName = u.UserPrincipalName,
                                       DisplayName = u.DisplayName,
                                       Department = u.Department,
+                                      IsEnabled = u.IsEnabled == null ? true : (bool)u.IsEnabled,
                                       IsResellerAdmin = u.IsResellerAdmin == null ? false : (bool)u.IsResellerAdmin,
                                       IsCompanyAdmin = u.IsCompanyAdmin == null ? false : (bool)u.IsCompanyAdmin,
                                       MailboxPlan = u.MailboxPlan == null ? 0 : (int)u.MailboxPlan,
@@ -128,6 +129,7 @@ namespace CloudPanel.Modules.Common.ViewModel
                                     Department = u.Department,
                                     DistinguishedName = u.DistinguishedName,
                                     Created = u.Created,
+                                    IsEnabled = u.IsEnabled == null ? true : (bool)u.IsEnabled,
                                     IsCompanyAdmin = u.IsCompanyAdmin == null ? false : (bool)u.IsCompanyAdmin,
                                     IsResellerAdmin = u.IsResellerAdmin == null ? false : (bool)u.IsResellerAdmin,
                                     MailboxPlan = u.MailboxPlan == null ? 0 : (int)u.MailboxPlan,
@@ -223,6 +225,54 @@ namespace CloudPanel.Modules.Common.ViewModel
             }
         }
 
+        public MailboxPlanObject GetMailboxPlan(int planID)
+        {
+            CPDatabase database = null;
+
+            try
+            {
+                database = new CPDatabase();
+
+                var foundPlan = (from p in database.Plans_ExchangeMailbox
+                                  where p.MailboxPlanID == planID
+                                  orderby p.MailboxPlanName
+                                  select new MailboxPlanObject()
+                                  {
+                                      MailboxPlanID = p.MailboxPlanID,
+                                      MailboxPlanName = p.MailboxPlanName,
+                                      MailboxPlanDescription = p.MailboxPlanDesc,
+                                      CompanyCode = p.CompanyCode,
+                                      Cost = string.IsNullOrEmpty(p.Cost) ? "0.00" : p.Cost,
+                                      Price = string.IsNullOrEmpty(p.Price) ? "0.00" : p.Price,
+                                      AdditionalGBPrice = string.IsNullOrEmpty(p.AdditionalGBPrice) ? "0.00" : p.AdditionalGBPrice,
+                                      MailboxSizeInMB = p.MailboxSizeMB,
+                                      MaxMailboxSizeInMB = p.MaxMailboxSizeMB == null ? p.MailboxSizeMB : (int)p.MaxMailboxSizeMB,
+                                      MaxSendInKB = p.MaxSendKB,
+                                      MaxReceiveInKB = p.MaxReceiveKB,
+                                      MaxRecipients = p.MaxRecipients,
+                                      EnablePOP3 = p.EnablePOP3,
+                                      EnableIMAP = p.EnableIMAP,
+                                      EnableOWA = p.EnableOWA,
+                                      EnableAS = p.EnableAS,
+                                      EnableECP = p.EnableECP,
+                                      MaxKeepDeletedItemsInDays = p.MaxKeepDeletedItems
+                                  }).First();
+
+                return foundPlan;
+            }
+            catch (Exception ex)
+            {
+                this.logger.Error("Error trying to retrieve mailbox plan " + planID.ToString(), ex);
+                ThrowEvent(AlertID.FAILED, ex.Message);
+                return null;
+            }
+            finally
+            {
+                if (database != null)
+                    database.Dispose();
+            }
+        }
+
         public byte[] GetPhoto(string userPrincipalName)
         {
             ADUser user = null;
@@ -245,6 +295,124 @@ namespace CloudPanel.Modules.Common.ViewModel
                     user.Dispose();
             }
         }
+
+
+        #region Exchange
+
+        public void CreateMailbox(UsersObject user)
+        {
+            CPDatabase database = null;
+            ExchangePowershell powershell = null;
+
+            CloudPanelTransaction transaction = new CloudPanelTransaction();
+            try
+            {
+                database = new CPDatabase();
+
+                // Get the user from the database
+                var foundUser = (from u in database.Users
+                                 where u.UserPrincipalName == user.UserPrincipalName
+                                 select u).FirstOrDefault();
+
+                powershell = new ExchangePowershell(StaticSettings.ExchangeURI, StaticSettings.Username, StaticSettings.DecryptedPassword, StaticSettings.ExchangeUseKerberos, StaticSettings.PrimaryDC);
+                
+                // Get the selected mailbox plan
+                MailboxPlanObject mailboxPlan = GetMailboxPlan(user.MailboxPlan);
+
+                // Create new mailbox and register transaction
+                powershell.NewMailbox(user);
+                transaction.NewMailbox(user.UserPrincipalName);
+
+                // Update the mailbox values
+                powershell.UpdateMailbox(user, mailboxPlan);
+                powershell.UpdateCASMailbox(user, mailboxPlan);
+
+                // Set litigation hold settings if enabled for litigation hold
+                if (user.LitigationHoldEnabled)
+                    powershell.NewLitigationHold(user.UserPrincipalName, user.LitigationHoldComment, user.LitigationHoldUrl, user.LitigationHoldDuration);
+
+                // Set archive settings if enabled for archiving
+                if (user.ArchivingEnabled && user.ArchivePlan > 0)
+                {
+                    powershell.NewArchiveMailbox(user);
+                    // Set quota on archive
+                }
+
+                foundUser.Email = user.PrimarySmtpAddress;
+                foundUser.MailboxPlan = user.MailboxPlan;
+                foundUser.AdditionalMB = user.SetMailboxSizeInMB - mailboxPlan.MailboxSizeInMB;
+                foundUser.ExchArchivePlan = user.ArchivePlan;
+                database.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                this.logger.Error("Error creating mailbox for " + user.UserPrincipalName, ex);
+                ThrowEvent(AlertID.FAILED, ex.Message);
+
+                transaction.RollBack();
+            }
+            finally
+            {
+                if (powershell != null)
+                    powershell.Dispose();
+
+                if (database != null)
+                    database.Dispose();
+            }
+        }
+
+        public void DisableMailbox(string userPrincipalName)
+        {
+            CPDatabase database = null;
+            ExchangePowershell powershell = null;
+
+            try
+            {
+                database = new CPDatabase();
+
+                // Get the user from the database
+                var foundUser = (from u in database.Users
+                                 where u.UserPrincipalName == userPrincipalName
+                                 select u).FirstOrDefault();
+
+                if (foundUser == null)
+                    ThrowEvent(AlertID.USER_UNKNOWN, userPrincipalName);
+                else
+                {
+                    this.logger.Debug("Found user " + foundUser.UserPrincipalName + " in the database. Continuing...");
+
+                    if (foundUser.MailboxPlan < 1)
+                        this.logger.Debug("User " + foundUser.UserPrincipalName + " does not have a mailbox. Skipping...");
+                    else
+                    {
+                        powershell = new ExchangePowershell(StaticSettings.ExchangeURI, StaticSettings.Username, StaticSettings.DecryptedPassword, StaticSettings.ExchangeUseKerberos, StaticSettings.PrimaryDC);
+                        powershell.DeleteMailbox(foundUser.UserPrincipalName);
+
+                        int r = database.DisableMailbox(foundUser.UserPrincipalName);
+
+                        this.logger.Debug("Returned a total of " + r.ToString() + " records when calling DisableMailbox stored procedure for " + foundUser.UserPrincipalName);
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                this.logger.Debug("Error deleting mailbox for " + userPrincipalName, ex);
+                ThrowEvent(AlertID.FAILED, ex.Message);
+            }
+            finally
+            {
+                if (powershell != null)
+                    powershell.Dispose();
+
+                if (database != null)
+                    database.Dispose();
+            }
+        }
+
+        #endregion
+
+
+        #region User Section
 
         public void CreateUser(UsersObject newUser)
         {
@@ -490,6 +658,10 @@ namespace CloudPanel.Modules.Common.ViewModel
             }
         }
 
+        #endregion
+
+        #region Users List Section
+
         public void ResetPassword(string userPrincipalName, string newPassword, string companyCode)
         {
             ADUser user = null;
@@ -500,8 +672,8 @@ namespace CloudPanel.Modules.Common.ViewModel
                 database = new CPDatabase();
 
                 var sqlUser = (from u in database.Users
-                            where u.UserPrincipalName == userPrincipalName
-                            select u).First();
+                               where u.UserPrincipalName == userPrincipalName
+                               select u).First();
 
                 if (sqlUser.CompanyCode.Equals(companyCode, StringComparison.CurrentCultureIgnoreCase))
                 {
@@ -520,5 +692,7 @@ namespace CloudPanel.Modules.Common.ViewModel
                     user.Dispose();
             }
         }
+
+        #endregion
     }
 }

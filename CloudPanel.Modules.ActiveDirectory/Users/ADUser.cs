@@ -226,6 +226,7 @@ namespace CloudPanel.Modules.ActiveDirectory.Users
                     returnUser.Lastname = up.Surname;
                     returnUser.DisplayName = up.DisplayName;
                     returnUser.Department = up.Department;
+                    returnUser.IsEnabled = up.Enabled == null ? true : (bool)up.Enabled;
 
                     return returnUser;
                 }
@@ -345,6 +346,7 @@ namespace CloudPanel.Modules.ActiveDirectory.Users
                 {
                     up.GivenName = user.Firstname;
                     up.DisplayName = user.DisplayName;
+                    up.Enabled = user.IsEnabled;
 
                     if (!string.IsNullOrEmpty(user.Middlename))
                         up.MiddleName = user.Middlename;
@@ -361,17 +363,11 @@ namespace CloudPanel.Modules.ActiveDirectory.Users
                     else
                         up.Department = null;
 
-                    up.PasswordNeverExpires = user.PasswordNeverExpires;
-
                     if (isUsingDisplayNameAsNameAttribute)
                         up.Name = user.DisplayName;
 
                     // Save changes
                     up.Save();
-
-                    // Check if we need to update password
-                    if (!string.IsNullOrEmpty(user.Password))
-                        up.SetPassword(user.Password);
                 }
             }
             catch (Exception ex)

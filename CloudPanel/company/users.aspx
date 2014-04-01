@@ -1,18 +1,17 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/CloudPanel.Master" AutoEventWireup="true" CodeBehind="users.aspx.cs" Inherits="CloudPanel.company.users" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/CloudPanel.Master" AutoEventWireup="true" CodeBehind="users.aspx.cs" Inherits="CloudPanel.company.users" EnableEventValidation="false"%>
 <%@ Register Src="~/cpcontrols/alertmessage.ascx" TagPrefix="uc1" TagName="alertmessage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMainPanel" runat="server">
-    <ajaxToolkit:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server"></ajaxToolkit:ToolkitScriptManager>
 
     <div class="pageheader">
         <h2><i class="fa fa-users"></i>Users</h2>
     </div>
 
     <div class="contentpanel">
-
+        <ajaxToolkit:ToolkitScriptManager ID="ToolkitScriptManager1" runat="server"></ajaxToolkit:ToolkitScriptManager>
         <uc1:alertmessage runat="server" ID="alertmessage" />
 
         <asp:Panel ID="panelUserList" runat="server" CssClass="row">
@@ -43,6 +42,7 @@
                                         <td><%# Eval("sAMAccountName") %></td>
                                         <td><%# Eval("Department") %></td>
                                         <td>
+                                            <asp:Label ID="Label5" runat="server" Text="" CssClass="fa fa-warning tooltips" data-placement="top" data-toggle="tooltip" title='<%$ Resources:LocalizedText, Users_IsDisabled %>' Visible='<%# !(bool)Eval("IsEnabled") %>'></asp:Label>
                                             <asp:Label ID="Label1" runat="server" Text="" CssClass="fa fa-comment-o tooltips" data-placement="top" data-toggle="tooltip" title='<%$ Resources:LocalizedText, Users_IsLyncEnabled %>' Visible='<%# (int)Eval("LyncPlan") > 0 ? true : false %>'></asp:Label>
                                             <asp:Label ID="Label2" runat="server" Text="" CssClass="fa fa-envelope-o tooltips" data-placement="top" data-toggle="tooltip" title='<%$ Resources:LocalizedText, Users_IsEmailEnabled %>' Visible='<%# (int)Eval("MailboxPlan") > 0 ? true : false %>'></asp:Label>
                                             <asp:Label ID="Label3" runat="server" Text="" CssClass="fa fa-suitcase tooltips" data-placement="top" data-toggle="tooltip" title='<%$ Resources:LocalizedText, Users_ResellerAdmin %>' Visible='<%# (bool)Eval("IsResellerAdmin") %>'></asp:Label>
@@ -82,7 +82,7 @@
                     <div class="modal-content">
                         <div class="modal-header">
                             <button aria-hidden="true" data-dismiss="modal" class="close" type="button">×</button>
-                            <h4 class="modal-title">Reset Password</h4>
+                            <h4 class="modal-title"><%= Resources.LocalizedText.Users_ResetPassword %></h4>
                             <p><asp:Label ID="lbResetPasswordUPN" runat="server" Text=""></asp:Label></p>
                         </div>
                         <div class="modal-body">
@@ -107,7 +107,7 @@
                                 <!-- col-sm-12 -->
                             </div>
 
-                            <asp:Button ID="btnResetPwd" runat="server" Text="Reset Password" CssClass="btn btn-primary btn-block mt10" OnClick="btnResetPwd_Click"/>
+                            <asp:Button ID="btnResetPwd" runat="server" Text='<%$ Resources:LocalizedText, Users_ResetPassword %>' CssClass="btn btn-primary btn-block mt10" OnClick="btnResetPwd_Click"/>
                         </div>
                     </div>
                 </div>
@@ -124,7 +124,7 @@
                     <div class="form-horizontal">
                         <div class="panel panel-default">
                             <div class="panel-heading">
-                                <h4 class="panel-title">User Information</h4>
+                                <h4 class="panel-title"><%= Resources.LocalizedText.Users_UserInformation %></h4>
                             </div>
 
                             <div class="panel-body">
@@ -328,16 +328,16 @@
             <div class="row">
                 <div class="col-md-12">
                     <ul class="nav nav-tabs">
-                        <li class="active"><a href="#User" data-toggle="tab"><strong>User</strong></a></li>
+                        <li class="active"><a href="#User" data-toggle="tab"><strong><%= Resources.LocalizedText.Users_User %></strong></a></li>
                         <% if (_isExchangeEnabled != null && _isExchangeEnabled)
                            { %>
                         <li class="dropdown">
-                            <a href="#" data-toggle="dropdown" class="dropdown-toggle">Mailbox Settings<span class="caret"></span>
+                            <a href="#" data-toggle="dropdown" class="dropdown-toggle"><%= Resources.LocalizedText.Users_MailboxSettings %><span class="caret"></span>
                             </a>
                             <ul role="menu" class="dropdown-menu pull-left">
-                                <li><a href="#Mailbox" data-toggle="tab">Mailbox Settings</a></li>
-                                <li><a href="#Archiving" data-toggle="tab">Archiving</a></li>
-                                <li><a href="#LitigationHold" data-toggle="tab">Litigation Hold</a></li>
+                                <li><a href="#Mailbox" data-toggle="tab"><%= Resources.LocalizedText.Users_MailboxSettings %></a></li>
+                                <li><a href="#Archiving" data-toggle="tab"><%= Resources.LocalizedText.Users_Archiving %></a></li>
+                                <li><a href="#LitigationHold" data-toggle="tab"><%= Resources.LocalizedText.Users_LitigationHold %></a></li>
                             </ul>
                         </li>
                         <% } %>
@@ -351,7 +351,7 @@
                                 <div class="panel panel-default">
                                     <div class="panel-body">
 
-                                        <p class="lead">General</p>
+                                        <p class="lead"><%= Resources.LocalizedText.Users_General %></p>
 
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Users_FirstName %><span class="asterisk">*</span></label>
@@ -386,7 +386,7 @@
                                         </div>
 
                                         <hr />
-                                        <p class="lead">User Status</p>
+                                        <p class="lead"><%= Resources.LocalizedText.Users_UserStatus %></p>
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">&nbsp;</label>
                                             <div class="col-sm-4">
@@ -399,8 +399,8 @@
 
                                         <% if (CloudPanel.WebSessionHandler.IsSuperAdmin || CloudPanel.WebSessionHandler.IsResellerAdmin) {  %>
                                         <hr />
-                                        <p class="lead">Permissions</p>
-                                        <% if (CloudPanel.WebSessionHandler.IsSuperAdmin)
+                                        <p class="lead"><%= Resources.LocalizedText.Users_Permissions %></p>
+                                        <% if (CloudPanel.WebSessionHandler.IsSuperAdmin || CloudPanel.WebSessionHandler.IsResellerAdmin)
                                            { %>
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">&nbsp;</label>
@@ -465,15 +465,25 @@
 
                         <!-- Mailbox -->
                         <% if (_isExchangeEnabled != null && _isExchangeEnabled) { %>
+
                         <div class="tab-pane" id="Mailbox">
                             <div class="form-horizontal">
                                 <div class="panel panel-default">
                                     <div class="panel-body">
 
-                                        <p class="lead">General</p>
+                                        <p class="lead"><%= Resources.LocalizedText.Users_General %></p>
 
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">Email</label>
+                                            <label class="col-sm-2 control-label">&nbsp;</label>
+                                            <div class="col-sm-4">
+                                                <div class="ckbox ckbox-primary">
+                                                    <asp:CheckBox ID="cbEditIsMailboxEnabled" runat="server" />
+                                                    <label for='<%= cbEditIsMailboxEnabled.ClientID %>'><%= Resources.LocalizedText.Users_EnableMailbox %></label>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Users_Email %></label>
                                             <div class="col-sm-4">
                                                 <asp:TextBox ID="txtEditMailboxEmail" runat="server" CssClass="form-control"></asp:TextBox>
                                             </div>
@@ -483,24 +493,24 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">ActiveSync Plan</label>
+                                            <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Users_ActiveSyncPlan %></label>
                                             <div class="col-sm-4">
                                                 <asp:DropDownList ID="ddlEditMailboxASPlan" runat="server" CssClass="form-control chosen-select">
                                                 </asp:DropDownList>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">Mailbox Plan</label>
+                                            <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Users_MailboxPlan %></label>
                                             <div class="col-sm-4">
                                                 <asp:DropDownList ID="ddlEditMailboxPlan" runat="server" CssClass="form-control chosen-select" DataTextField="MailboxPlanName" DataValueField="MailboxPlanID">
                                                 </asp:DropDownList>
 
-                                                Plan Description: <span id="EditPlanDescription"></span>
+                                                <%= Resources.LocalizedText.Users_Description %>: <span id="EditPlanDescription"></span>
                                                 <br />
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">Mailbox Size </label>
+                                            <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Users_MailboxSize %> </label>
                                             <div class="col-sm-4">
                                                 <div id="edit-mailbox-size-slider"></div>
                                                 <asp:HiddenField ID="hfEditSelectedMailboxSize" runat="server" />
@@ -511,20 +521,7 @@
                                         </div>
                                         
                                         <hr />
-                                        <p class="lead">Email Aliases</p>
-
-                                        <div class="form-group">
-                                            <label class="col-sm-2 control-label">&nbsp;</label>
-                                            <div class="col-sm-2">
-                                                <asp:TextBox ID="txtEditAddEmailAlias" runat="server" CssClass="form-control"></asp:TextBox>
-                                            </div>
-                                            <div class="col-sm-2">
-                                                <asp:DropDownList ID="ddlEditAddEmailAliasDomain" runat="server"  DataTextField="DomainName" DataValueField="DomainID" CssClass="form-control chosen-select"></asp:DropDownList> 
-                                            </div>
-                                            <div class="col-sm-2">
-                                                <asp:Button ID="btnEditInsertEmailAlias" runat="server" Text="Add" CssClass="btn btn-info" OnClick="btnEditInsertEmailAlias_Click" />
-                                            </div>
-                                        </div>
+                                        <p class="lead"><%= Resources.LocalizedText.Users_EmailAliases %></p>
                                         <div class="form-group">
                                             <label class="col-sm-2 control-label">&nbsp;</label>
                                             <div class="col-sm-8">
@@ -533,7 +530,7 @@
                                                         <asp:GridView ID="gridEmailAliases" runat="server" OnPreRender="gridEmailAliases_PreRender" CssClass="table table-bordered table-striped"
                                                             OnRowCommand="gridEmailAliases_RowCommand" AutoGenerateColumns="false" OnRowDeleting="gridEmailAliases_RowDeleting">
                                                             <Columns>
-                                                                <asp:BoundField HeaderText="Alias" DataField="Email" />
+                                                                <asp:BoundField HeaderText='<%$ Resources:LocalizedText, Users_Alias %>' DataField="Email" />
                                                                 <asp:CommandField DeleteImageUrl="~/images/minus@2x.png" ButtonType="Image" ShowDeleteButton="true" HeaderStyle-Width="32px" />
                                                             </Columns>
                                                         </asp:GridView>
@@ -546,11 +543,23 @@
                                                 </asp:UpdatePanel>
                                             </div>
                                         </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label">&nbsp;</label>
+                                            <div class="col-sm-2">
+                                                <asp:TextBox ID="txtEditAddEmailAlias" runat="server" CssClass="form-control"></asp:TextBox>
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <asp:DropDownList ID="ddlEditAddEmailAliasDomain" runat="server"  DataTextField="DomainName" DataValueField="DomainID" CssClass="form-control chosen-select"></asp:DropDownList> 
+                                            </div>
+                                            <div class="col-sm-2">
+                                                <asp:Button ID="btnEditInsertEmailAlias" runat="server" Text='<%$ Resources:LocalizedText, Buttons_Add %>' CssClass="btn btn-info" OnClick="btnEditInsertEmailAlias_Click" />
+                                            </div>
+                                        </div>
 
                                         <hr />
-                                        <p class="lead">Forwarding</p>
+                                        <p class="lead"><%= Resources.LocalizedText.Users_Forwarding %></p>
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">Forward To</label>
+                                            <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Users_ForwardTo %></label>
                                             <div class="col-sm-4">
                                                 <asp:DropDownList ID="ddlEditMailboxForwardTo" runat="server" CssClass="form-control chosen-select">
                                                 </asp:DropDownList>
@@ -561,25 +570,32 @@
                                             <div class="col-sm-4">
                                                 <div class="ckbox ckbox-primary">
                                                     <asp:CheckBox ID="cbEditMailboxForwardBoth" runat="server" />
-                                                    <label for='<%= cbEditMailboxForwardBoth.ClientID %>'>Deliver to Mailbox and Forward</label>
+                                                    <label for='<%= cbEditMailboxForwardBoth.ClientID %>'><%= Resources.LocalizedText.Users_DeliverAndForward %></label>
                                                 </div>
                                             </div>
                                         </div>
 
                                         <hr />
-                                        <p class="lead">Mailbox Permissions</p>
+                                        <p class="lead"><%= Resources.LocalizedText.Users_MailboxPermissions %></p>
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">Full Access</label>
+                                            <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Users_FullAccess %></label>
                                             <div class="col-sm-10">
                                                 <asp:ListBox ID="ddlEditMailboxFullAccess" runat="server" CssClass="chosen-select" multiple DataTextField="DisplayName" DataValueField="sAMAccountName" Autocomplete="off" SelectionMode="Multiple"></asp:ListBox>
                                                 <asp:HiddenField ID="hfEditMailboxFullAccessOriginal" runat="server" />
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">Send As</label>
+                                            <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Users_SendAs %></label>
                                             <div class="col-sm-10">
                                                 <asp:ListBox ID="ddlEditMailboxSendAs" runat="server" CssClass="chosen-select" multiple DataTextField="DisplayName" DataValueField="sAMAccountName" Autocomplete="off" SelectionMode="Multiple"></asp:ListBox>
                                                 <asp:HiddenField ID="hfEditMailboxSendAsOriginal" runat="server" />
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Users_SendOnBehalf %></label>
+                                            <div class="col-sm-10">
+                                                <asp:ListBox ID="ddlEditMailboxSendOnBehalf" runat="server" CssClass="chosen-select" multiple DataTextField="DisplayName" DataValueField="sAMAccountName" Autocomplete="off" SelectionMode="Multiple"></asp:ListBox>
+                                                <asp:HiddenField ID="hfEditMailboxSendOnBehalfOriginal" runat="server" />
                                             </div>
                                         </div>
                                     </div>
@@ -596,25 +612,25 @@
                                             <div class="col-sm-4">
                                                 <div class="ckbox ckbox-primary">
                                                     <asp:CheckBox ID="cbEditMailboxEnableArchiving" runat="server" />
-                                                    <label for='<%= cbEditMailboxEnableArchiving.ClientID %>'>Enable Archiving</label>
+                                                    <label for='<%= cbEditMailboxEnableArchiving.ClientID %>'><%= Resources.LocalizedText.Users_EnableArchiving %></label>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">Archive Name</label>
+                                            <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Users_ArchiveName %></label>
                                             <div class="col-sm-4">
                                                 <asp:TextBox ID="txtEditMailboxArchiveName" runat="server" CssClass="form-control"></asp:TextBox>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">Archive Plan</label>
+                                            <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Users_ArchivePlan %></label>
                                             <div class="col-sm-4">
                                                 <asp:DropDownList ID="ddlEditMailboxArchivePlan" runat="server" CssClass="form-control chosen-select">
                                                 </asp:DropDownList>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">Archive Database</label>
+                                            <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Users_ArchiveDatabase %></label>
                                             <div class="col-sm-4">
                                                 <asp:DropDownList ID="ddlEditMailboxArchiveDatabase" runat="server" CssClass="form-control chosen-select">
                                                 </asp:DropDownList>
@@ -634,12 +650,12 @@
                                             <div class="col-sm-4">
                                                 <div class="ckbox ckbox-primary">
                                                     <asp:CheckBox ID="cbEditMailboxEnableLitigationHold" runat="server" />
-                                                    <label for='<%= cbEditMailboxEnableLitigationHold.ClientID %>'>Enable Litigation Hold</label>
+                                                    <label for='<%= cbEditMailboxEnableLitigationHold.ClientID %>'><%= Resources.LocalizedText.Users_EnableLitigationHold %></label>
                                                 </div>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">Duration</label>
+                                            <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Users_Duration %></label>
                                             <div class="col-sm-4">
                                                 <div class="input-group">
                                                     <asp:TextBox ID="txtEditMailboxLitigationHoldDuration" runat="server" CssClass="form-control" placeholder="mm/dd/yyyy"></asp:TextBox>
@@ -648,13 +664,13 @@
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">Description URL</label>
+                                            <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Users_DescriptionURL %></label>
                                             <div class="col-sm-4">
                                                 <asp:TextBox ID="txtEditMailboxLitigationHoldURL" runat="server" CssClass="form-control"></asp:TextBox>
                                             </div>
                                         </div>
                                         <div class="form-group">
-                                            <label class="col-sm-2 control-label">Comments</label>
+                                            <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Users_Comments %></label>
                                             <div class="col-sm-4">
                                                 <asp:TextBox ID="txtEditMailboxLitigationHoldComments" runat="server" CssClass="form-control" TextMode="MultiLine"></asp:TextBox>
                                             </div>
@@ -694,6 +710,7 @@
     <script type="text/javascript">
 
         var selected = "";
+        var currentSize = "<%= _currentMailboxSize %>";
 
         jQuery(document).ready(function () {
 
@@ -750,25 +767,26 @@
             var minRange = parseInt(min);
             var maxRange = parseInt(max);
 
+            if (currentSize == null || currentSize <= 0)
+                currentSize = minRange;
+
             // Store original value in hidden field for post back
-            $("#<%= hfEditSelectedMailboxSize.ClientID %>").val(minRange);
+            $("#<%= hfEditSelectedMailboxSize.ClientID %>").val(currentSize);
 
             jQuery('#edit-mailbox-size-slider').slider({
                 range: 'max',
                 min: minRange,
                 max: maxRange,
-                value: minRange,
+                value: currentSize,
                 step: 256,
                 slide: function (event, ui) {
                     $("#<%= lbEditMailboxSizeInMB.ClientID %>").text(ui.value / 1024 + "GB");
                     
                     $("#<%= hfEditSelectedMailboxSize.ClientID %>").val(ui.value);
                 }
-
-
             });
 
-            $("#<%= lbEditMailboxSizeInMB.ClientID %>").text( (minRange / 1024).toString() + "GB");
+            $("#<%= lbEditMailboxSizeInMB.ClientID %>").text( (currentSize / 1024).toString() + "GB");
             $("#EditPlanDescription").text(selected);
         }
 

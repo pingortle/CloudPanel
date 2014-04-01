@@ -20,6 +20,7 @@ namespace CloudPanel.Modules.Common.Rollback
         Create_AddressBookPolicy,
         Create_SecurityDistributionGroup,
         Create_AcceptedDomain,
-        Create_Contact
+        Create_Contact,
+        Create_Mailbox
     }
 }

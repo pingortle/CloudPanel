@@ -481,6 +481,15 @@ namespace CloudPanel.company {
         protected global::System.Web.UI.WebControls.CheckBox cbEditDisableAcceptedDomain;
         
         /// <summary>
+        /// cbEditIsMailboxEnabled control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.CheckBox cbEditIsMailboxEnabled;
+        
+        /// <summary>
         /// txtEditMailboxEmail control.
         /// </summary>
         /// <remarks>
@@ -535,33 +544,6 @@ namespace CloudPanel.company {
         protected global::System.Web.UI.WebControls.Label lbEditMailboxSizeInMB;
         
         /// <summary>
-        /// txtEditAddEmailAlias control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtEditAddEmailAlias;
-        
-        /// <summary>
-        /// ddlEditAddEmailAliasDomain control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEditAddEmailAliasDomain;
-        
-        /// <summary>
-        /// btnEditInsertEmailAlias control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnEditInsertEmailAlias;
-        
-        /// <summary>
         /// updatePanelEmailAlias control.
         /// </summary>
         /// <remarks>
@@ -587,6 +569,33 @@ namespace CloudPanel.company {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbAddAliasError;
+        
+        /// <summary>
+        /// txtEditAddEmailAlias control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtEditAddEmailAlias;
+        
+        /// <summary>
+        /// ddlEditAddEmailAliasDomain control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlEditAddEmailAliasDomain;
+        
+        /// <summary>
+        /// btnEditInsertEmailAlias control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btnEditInsertEmailAlias;
         
         /// <summary>
         /// ddlEditMailboxForwardTo control.
@@ -641,6 +650,24 @@ namespace CloudPanel.company {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.HiddenField hfEditMailboxSendAsOriginal;
+        
+        /// <summary>
+        /// ddlEditMailboxSendOnBehalf control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.ListBox ddlEditMailboxSendOnBehalf;
+        
+        /// <summary>
+        /// hfEditMailboxSendOnBehalfOriginal control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.HiddenField hfEditMailboxSendOnBehalfOriginal;
         
         /// <summary>
         /// cbEditMailboxEnableArchiving control.

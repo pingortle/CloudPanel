@@ -94,7 +94,6 @@
                                     <li><asp:HyperLink ID="hlDisableEmail" runat="server" NavigateUrl="~/company/email/disable.aspx"><i class="fa fa-caret-right"></i><%= Resources.LocalizedText.Master_DisableEmail %></asp:HyperLink></li>
                                     <li><asp:HyperLink ID="hlContacts" runat="server" NavigateUrl="~/company/email/contacts.aspx"><i class="fa fa-caret-right"></i><%= Resources.LocalizedText.Master_Contacts %></asp:HyperLink></li>
                                     <li><asp:HyperLink ID="hlDistributionGroups" runat="server" NavigateUrl="~/company/email/groups.aspx"><i class="fa fa-caret-right"></i><%= Resources.LocalizedText.Master_DistributionGroups %></asp:HyperLink></li>
-                                    <li><asp:HyperLink ID="hlMailboxes" runat="server" NavigateUrl="~/company/email/mailboxes.aspx"><i class="fa fa-caret-right"></i><%= Resources.LocalizedText.Master_Mailboxes %></asp:HyperLink></li>
                                     <li><asp:HyperLink ID="hlResourceMailboxes" runat="server" NavigateUrl="~/company/email/resourcemailboxes.aspx"><i class="fa fa-caret-right"></i><%= Resources.LocalizedText.Master_ResourceMailboxes %></asp:HyperLink></li>
                                     <li><asp:HyperLink ID="hlPublicFolders" runat="server" NavigateUrl="~/company/email/publicfolders.aspx"><i class="fa fa-caret-right"></i><%= Resources.LocalizedText.Master_PublicFolders %></asp:HyperLink></li>
                                 <% } %>

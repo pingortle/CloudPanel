@@ -6,20 +6,22 @@ using CloudPanel.Modules.Base.Users;
 using CloudPanel.Modules.Common.GlobalActions;
 using CloudPanel.Modules.Common.Settings;
 using CloudPanel.Modules.Common.ViewModel;
+using log4net;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
+using System.Reflection;
 using System.Web;
-using System.Web.Services;
-using System.Web.UI;
 using System.Web.UI.WebControls;
 
 namespace CloudPanel.company
 {
     public partial class users : System.Web.UI.Page
     {
+        private readonly ILog logger = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+
         protected bool _isExchangeEnabled = false;
+        protected int _currentMailboxSize = 0;
 
         private List<MailAliasObject> emailAliases;
 
@@ -28,6 +30,7 @@ namespace CloudPanel.company
             if (!IsPostBack)
             {
                 emailAliases = new List<MailAliasObject>();
+                ViewState["CPEmailAliases"] = emailAliases;
 
                 // Check if we have a session of search result to load a particular user
                 if (Session["CPSearchResultUser"] != null)
@@ -153,128 +156,6 @@ namespace CloudPanel.company
             ddlEditMailboxForwardTo.Items.Add("Not Selected");
         }
 
-        private void EditUser(string userPrincipalName)
-        {
-            UsersViewModel viewModel = new UsersViewModel();
-            viewModel.ViewModelEvent += viewModel_ViewModelEvent;
-
-            //                      //
-            // GET USER INFORMATION //
-            //                      //
-            UsersObject user = viewModel.GetUser(userPrincipalName);
-            if (user != null)
-            {
-                lbProfileDisplayName.Text = user.DisplayName;
-                lbProfileUsername.Text = user.UserPrincipalName;
-                lbProfileSamAccountName.Text = user.sAMAccountName;
-
-                hfEditUserPrincipalName.Value = user.UserPrincipalName;
-                txtEditFirstName.Text = user.Firstname;
-                txtEditMiddleName.Text = user.Middlename;
-                txtEditLastname.Text = user.Lastname;
-                txtEditDisplayName.Text = user.DisplayName;
-                txtEditDepartment.Text = user.Department;
-
-                cbEditIsCompanyAdmin.Checked = user.IsCompanyAdmin;
-                cbEditIsResellerAdmin.Checked = user.IsResellerAdmin;
-
-                cbEditAddDomain.Checked = user.AddDomainPerm;
-                cbEditDeleteDomain.Checked = user.DeleteDomainPerm;
-                cbEditDisableAcceptedDomain.Checked = user.DisableAcceptedDomainPerm;
-                cbEditDisableExchange.Checked = user.DisableExchangePerm;
-                cbEditEnableAcceptedDomain.Checked = user.EnableAcceptedDomainPerm;
-                cbEditEnableExchange.Checked = user.EnableExchangePerm;
-
-                // Get the user photo
-                imgUserPhoto.ImageUrl = string.Format("services/UserPhotoHandler.ashx?id={0}", user.UserPrincipalName);
-
-                // Set view state
-                ViewState["CPCurrentEditUser"] = user;
-            }
-
-            //                          //
-            // GET MAILBOX INFORMATION  //
-            //                          //
-            _isExchangeEnabled = CompanyChecks.IsExchangeEnabled(WebSessionHandler.SelectedCompanyCode);
-            if (_isExchangeEnabled)
-            {
-                // Get list of accepted domains
-                GetDomains();
-
-                // Get list of mailbox plans
-                GetMailboxPlans();
-
-                // Get users that can be granted full access and send as permissions
-                GetUsersForPermissions();
-
-                // Get mailbox information
-                if (user != null)
-                {
-                    if (user.MailboxPlan > 0)
-                    {
-                        ListItem item = ddlEditMailboxPlan.Items.FindByValue(user.MailboxPlan.ToString());
-                        if (item != null)
-                            ddlEditMailboxPlan.SelectedValue = item.Value;
-                    }
-
-                    UsersObject mailboxUser = viewModel.GetUserMailbox(userPrincipalName);
-                    if (mailboxUser != null)
-                    {
-                        string[] primaryEmailAddress = mailboxUser.PrimarySmtpAddress.Split('@');
-
-                        // Populate email information
-                        txtEditMailboxEmail.Text = primaryEmailAddress[0];
-                        ListItem item = ddlEditMailboxDomain.Items.FindByText(primaryEmailAddress[1]);
-                        if (item != null)
-                            ddlEditMailboxDomain.SelectedValue = item.Value;
-
-                        // Populate email aliases
-                        emailAliases = new List<MailAliasObject>();
-                        foreach (string s in mailboxUser.EmailAliases)
-                        {
-                            emailAliases.Add(new MailAliasObject() { Email = s });
-                        }
-                        ViewState["CPEmailAliases"] = emailAliases;
-                        gridEmailAliases.DataSource = emailAliases;
-                        gridEmailAliases.DataBind();
-
-                        // Populate forwarding
-                        if (!string.IsNullOrEmpty(mailboxUser.ForwardingTo))
-                        {
-                            ListItem fItem = ddlEditMailboxForwardTo.Items.FindByValue(mailboxUser.ForwardingTo);
-                            if (fItem != null)
-                                ddlEditMailboxForwardTo.SelectedValue = fItem.Value;
-                            else
-                                ddlEditMailboxForwardTo.SelectedIndex = -1;
-                        }
-                        cbEditMailboxForwardBoth.Checked = mailboxUser.DeliverToMailboxAndForward;
-
-                        // Populate permissions
-                        foreach (string fullAccess in mailboxUser.FullAccessUsers)
-                        {
-                            ListItem fullItem = ddlEditMailboxFullAccess.Items.FindByValue(fullAccess);
-                            if (fullItem != null)
-                                fullItem.Selected = true;
-                        }
-
-                        foreach (string sendAs in mailboxUser.SendAsUsers)
-                        {
-                            ListItem sendAsItem = ddlEditMailboxSendAs.Items.FindByValue(sendAs);
-                            if (sendAsItem != null)
-                                sendAsItem.Selected = true;
-                        }
-
-                        ViewState["CPCurrentEditMailbox"] = mailboxUser;
-                    }
-                }
-            }
-
-            // Change panels
-            panelCreateUser.Visible = false;
-            panelUserList.Visible = false;
-            panelEditUser.Visible = true;
-        }
-
         private void CheckUserRights()
         {
             if (WebSessionHandler.IsSuperAdmin || WebSessionHandler.IsResellerAdmin)
@@ -321,46 +202,6 @@ namespace CloudPanel.company
             GetUsers();
         }
 
-        private void UpdateUser()
-        {
-            UsersObject existingUser = new UsersObject();
-            existingUser.CompanyCode = WebSessionHandler.SelectedCompanyCode;
-            existingUser.Firstname = txtFirstName.Text;
-            existingUser.Middlename = txtMiddleName.Text;
-            existingUser.Lastname = txtLastname.Text;
-            existingUser.DisplayName = txtDisplayName.Text;
-            existingUser.Department = txtDepartment.Text;
-            existingUser.UserPrincipalName = hfEditUserPrincipalName.Value;
-            existingUser.PasswordNeverExpires = cbPasswordNeverExpires.Checked;
-            existingUser.IsCompanyAdmin = cbCompanyAdmin.Checked;
-            existingUser.IsResellerAdmin = cbResellerAdmin.Checked;
-
-            if (existingUser.IsCompanyAdmin)
-            {
-                existingUser.EnableExchangePerm = cbEnableExchange.Checked;
-                existingUser.DisableExchangePerm = cbDisableExchange.Checked;
-                existingUser.AddDomainPerm = cbAddDomain.Checked;
-                existingUser.DeleteDomainPerm = cbDeleteDomain.Checked;
-                existingUser.EnableAcceptedDomainPerm = cbEnableAcceptedDomain.Checked;
-                existingUser.DisableAcceptedDomainPerm = cbDisableAcceptedDomain.Checked;
-            }
-
-            if (!string.IsNullOrEmpty(txtPassword1.Text))
-                existingUser.Password = txtPassword1.Text;
-
-            UsersViewModel viewModel = new UsersViewModel();
-            viewModel.ViewModelEvent += viewModel_ViewModelEvent;
-
-            // Create new user
-            viewModel.UpdateUser(existingUser, WebSessionHandler.IsSuperAdmin || WebSessionHandler.IsResellerAdmin);
-
-            // Audit
-            AuditGlobal.AddAudit(WebSessionHandler.SelectedCompanyCode, HttpContext.Current.User.Identity.Name, ActionID.UpdateUser, existingUser.UserPrincipalName, null);
-
-            // Refresh
-            GetUsers();
-        }
-
         private void DeleteUser(string userPrincipalName)
         {
             UsersViewModel viewModel = new UsersViewModel();
@@ -374,6 +215,178 @@ namespace CloudPanel.company
 
             // Refresh
             GetUsers();
+        }
+
+        private void EditUser(string userPrincipalName)
+        {
+            UsersViewModel viewModel = new UsersViewModel();
+            viewModel.ViewModelEvent += viewModel_ViewModelEvent;
+
+            //                      //
+            // GET USER INFORMATION //
+            //                      //
+            UsersObject user = viewModel.GetUser(userPrincipalName);
+            if (user != null)
+            {
+                lbProfileDisplayName.Text = user.DisplayName;
+                lbProfileUsername.Text = user.UserPrincipalName;
+                lbProfileSamAccountName.Text = user.sAMAccountName;
+
+                hfEditUserPrincipalName.Value = user.UserPrincipalName;
+                txtEditFirstName.Text = user.Firstname;
+                txtEditMiddleName.Text = user.Middlename;
+                txtEditLastname.Text = user.Lastname;
+                txtEditDisplayName.Text = user.DisplayName;
+                txtEditDepartment.Text = user.Department;
+
+                cbEditIsCompanyAdmin.Checked = user.IsCompanyAdmin;
+                cbEditIsResellerAdmin.Checked = user.IsResellerAdmin;
+                cbEditEnableUser.Checked = user.IsEnabled;
+
+                cbEditAddDomain.Checked = user.AddDomainPerm;
+                cbEditDeleteDomain.Checked = user.DeleteDomainPerm;
+                cbEditDisableAcceptedDomain.Checked = user.DisableAcceptedDomainPerm;
+                cbEditDisableExchange.Checked = user.DisableExchangePerm;
+                cbEditEnableAcceptedDomain.Checked = user.EnableAcceptedDomainPerm;
+                cbEditEnableExchange.Checked = user.EnableExchangePerm;
+
+                cbEditMailboxEnableArchiving.Checked = user.ArchivePlan > 0 ? true : false;
+
+                // Get the user photo
+                imgUserPhoto.ImageUrl = string.Format("services/UserPhotoHandler.ashx?id={0}", user.UserPrincipalName);
+
+                // Set view state
+                ViewState["CPCurrentEditUser"] = user;
+            }
+
+            //                          //
+            // GET MAILBOX INFORMATION  //
+            //                          //
+            _isExchangeEnabled = CompanyChecks.IsExchangeEnabled(WebSessionHandler.SelectedCompanyCode);
+            if (_isExchangeEnabled)
+            {
+                // Get list of accepted domains
+                GetDomains();
+
+                // Get list of mailbox plans
+                GetMailboxPlans();
+
+                // Get users that can be granted full access and send as permissions
+                GetUsersForPermissions();
+
+                // Get mailbox information
+                if (user != null)
+                {
+                    if (user.MailboxPlan > 0)
+                    {
+                        cbEditIsMailboxEnabled.Checked = true;
+
+                        MailboxPlanObject mailboxPlan = viewModel.GetMailboxPlan(user.MailboxPlan);
+                        _currentMailboxSize = mailboxPlan.MailboxSizeInMB + user.AdditionalMB;
+
+                        ListItem item = ddlEditMailboxPlan.Items.FindByValue(mailboxPlan.MailboxPlanID.ToString());
+                        if (item != null)
+                            ddlEditMailboxPlan.SelectedValue = item.Value;
+
+                        UsersObject mailboxUser = viewModel.GetUserMailbox(userPrincipalName);
+                        if (mailboxUser != null)
+                        {
+                            string[] primaryEmailAddress = mailboxUser.PrimarySmtpAddress.Split('@');
+
+                            // Populate email information
+                            txtEditMailboxEmail.Text = primaryEmailAddress[0];
+                            ListItem item2 = ddlEditMailboxDomain.Items.FindByText(primaryEmailAddress[1]);
+                            if (item2 != null)
+                                ddlEditMailboxDomain.SelectedValue = item2.Value;
+
+                            // Populate email aliases
+                            emailAliases = new List<MailAliasObject>();
+                            foreach (string s in mailboxUser.EmailAliases)
+                            {
+                                emailAliases.Add(new MailAliasObject() { Email = s });
+                            }
+                            ViewState["CPEmailAliases"] = emailAliases;
+                            gridEmailAliases.DataSource = emailAliases;
+                            gridEmailAliases.DataBind();
+
+                            // Populate forwarding
+                            if (!string.IsNullOrEmpty(mailboxUser.ForwardingTo))
+                            {
+                                ListItem fItem = ddlEditMailboxForwardTo.Items.FindByValue(mailboxUser.ForwardingTo);
+                                if (fItem != null)
+                                    ddlEditMailboxForwardTo.SelectedValue = fItem.Value;
+                                else
+                                    ddlEditMailboxForwardTo.SelectedIndex = -1;
+                            }
+                            cbEditMailboxForwardBoth.Checked = mailboxUser.DeliverToMailboxAndForward;
+
+                            // Populate permissions
+                            if (mailboxUser.FullAccessUsers != null)
+                            {
+                                foreach (string fullAccess in mailboxUser.FullAccessUsers)
+                                {
+                                    ListItem fullItem = ddlEditMailboxFullAccess.Items.FindByValue(fullAccess);
+                                    if (fullItem != null)
+                                        fullItem.Selected = true;
+                                }
+                            }
+
+                            if (mailboxUser.SendAsUsers != null)
+                            {
+                                foreach (string sendAs in mailboxUser.SendAsUsers)
+                                {
+                                    ListItem sendAsItem = ddlEditMailboxSendAs.Items.FindByValue(sendAs);
+                                    if (sendAsItem != null)
+                                        sendAsItem.Selected = true;
+                                }
+                            }
+
+                            if (mailboxUser.SendOnBehalf != null)
+                            {
+                                foreach (string sendOnBehalf in mailboxUser.SendOnBehalf)
+                                {
+                                    ListItem sendOnBehalfItem = ddlEditMailboxSendOnBehalf.Items.FindByValue(sendOnBehalf);
+                                    if (sendOnBehalfItem != null)
+                                        sendOnBehalfItem.Selected = true;
+                                }
+                            }
+
+                            // Populate litigation hold
+                            cbEditMailboxEnableLitigationHold.Checked = mailboxUser.LitigationHoldEnabled;
+                            txtEditMailboxLitigationHoldURL.Text = mailboxUser.LitigationHoldUrl;
+                            txtEditMailboxLitigationHoldComments.Text = mailboxUser.LitigationHoldComment;
+
+                            if (mailboxUser.LitigationHoldDuration > 0)
+                            {
+                                DateTime now = DateTime.Now.AddDays(mailboxUser.LitigationHoldDuration);
+                                txtEditMailboxLitigationHoldDuration.Text = now.ToShortDateString();
+                            }
+                            else
+                                txtEditMailboxLitigationHoldDuration.Text = string.Empty;
+
+                            // Populate archive
+                            if (user.ArchivePlan > 0)
+                            {
+                                txtEditMailboxArchiveName.Text = mailboxUser.ArchiveName;
+                            }
+                            else
+                                txtEditMailboxArchiveName.Text = string.Empty;
+                            
+
+                            ViewState["CPCurrentEditMailbox"] = mailboxUser;
+                        }
+                    }
+                    else
+                    {
+                        cbEditIsMailboxEnabled.Checked = false;
+                    }
+                }
+            }
+
+            // Change panels
+            panelCreateUser.Visible = false;
+            panelUserList.Visible = false;
+            panelEditUser.Visible = true;
         }
 
         #region Events
@@ -443,9 +456,6 @@ namespace CloudPanel.company
 
                     // Set the viewstate
                     ViewState["CPEmailAliases"] = emailAliases;
-
-                    // Rebind the grid view
-                    gridEmailAliases.DataSource = emailAliases;
                     gridEmailAliases.DataBind();
                 }
             }
@@ -453,17 +463,14 @@ namespace CloudPanel.company
 
         protected void btnEditSave_Click(object sender, EventArgs e)
         {
-            if (ViewState["CPCurrentEditUser"] != null)
-            {
-                UsersObject user = ViewState["CPCurrentEditUser"] as UsersObject;
+            // Check for changes values in the users section
+            UpdateUserSection();
 
-                // Lets check if any of the user fields were updated
-                if (user.Firstname != txtFirstName.Text || user.Middlename != txtMiddleName.Text || user.Lastname != txtLastname.Text || user.DisplayName != txtDisplayName.Text
-                    || user.Department != txtDepartment.Text)
-                {
-                    // Found mismatch fields. Update
-                }
-            }
+            // Check for changed values int he mailbox settings section
+            UpdateExchangeSection();
+
+            // Refresh to users section
+            GetUsers();
         }
 
         protected void btnResetPwd_Click(object sender, EventArgs e)
@@ -550,6 +557,235 @@ namespace CloudPanel.company
                 gridEmailAliases.HeaderRow.TableSection = TableRowSection.TableHeader;
             }
         }
+
+        #endregion
+
+        #region Update User Actions
+
+        internal void UpdateUserSection()
+        {
+            object userObject = ViewState["CPCurrentEditUser"];
+            if (userObject == null)
+                alertmessage.SetMessage(AlertID.FAILED, Resources.LocalizedText.Users_ViewStateNull);
+            else
+            {
+
+                UsersObject original = userObject as UsersObject;
+
+                bool valuesHaveBeenUpdated = false;
+
+                if (txtEditFirstName.Text != original.Firstname)
+                {
+                    valuesHaveBeenUpdated = true;
+                    this.logger.Debug(string.Format("{0}: Found new value. Old Value: {0}, New Value: {1}", original.UserPrincipalName, original.Firstname, txtEditFirstName.Text));
+                }
+
+                if (txtEditMiddleName.Text != original.Middlename)
+                {
+                    valuesHaveBeenUpdated = true;
+                    this.logger.Debug(string.Format("{0}: Found new value. Old Value: {0}, New Value: {1}", original.UserPrincipalName, original.Middlename, txtEditMiddleName.Text));
+                }
+
+                if (txtEditLastname.Text != original.Lastname)
+                {
+                    valuesHaveBeenUpdated = true;
+                    this.logger.Debug(string.Format("{0}: Found new value. Old Value: {0}, New Value: {1}", original.UserPrincipalName, original.Lastname, txtEditLastname.Text));
+                }
+
+                if (txtEditDisplayName.Text != original.DisplayName)
+                {
+                    valuesHaveBeenUpdated = true;
+                    this.logger.Debug(string.Format("{0}: Found new value. Old Value: {0}, New Value: {1}", original.UserPrincipalName, original.DisplayName, txtEditDisplayName.Text));
+                }
+
+                if (txtEditDepartment.Text != original.Department)
+                {
+                    valuesHaveBeenUpdated = true;
+                    this.logger.Debug(string.Format("{0}: Found new value. Old Value: {0}, New Value: {1}", original.UserPrincipalName, original.Department, txtEditDepartment.Text));
+                }
+
+                if (cbEditEnableUser.Checked != original.IsEnabled)
+                    valuesHaveBeenUpdated = true;
+
+                // Only update these if reseller or super admin
+                if (WebSessionHandler.IsSuperAdmin || WebSessionHandler.IsResellerAdmin)
+                {
+                    if (cbEditIsCompanyAdmin.Checked != original.IsCompanyAdmin)
+                        valuesHaveBeenUpdated = true;
+
+                    if (cbEditEnableExchange.Checked != original.EnableExchangePerm)
+                        valuesHaveBeenUpdated = true;
+
+                    if (cbEditDisableExchange.Checked != original.DisableExchangePerm)
+                        valuesHaveBeenUpdated = true;
+
+                    if (cbEditAddDomain.Checked != original.AddDomainPerm)
+                        valuesHaveBeenUpdated = true;
+
+                    if (cbEditDeleteDomain.Checked != original.DeleteDomainPerm)
+                        valuesHaveBeenUpdated = true;
+
+                    if (cbEditEnableAcceptedDomain.Checked != original.EnableAcceptedDomainPerm)
+                        valuesHaveBeenUpdated = true;
+
+                    if (cbEditDisableAcceptedDomain.Checked != original.DisableAcceptedDomainPerm)
+                        valuesHaveBeenUpdated = true;
+
+                    if (WebSessionHandler.IsSuperAdmin)
+                    {
+                        if (cbEditIsResellerAdmin.Checked != original.IsResellerAdmin)
+                            valuesHaveBeenUpdated = true;
+                    }
+                }
+
+                // Update user if values have changed
+                if (valuesHaveBeenUpdated)
+                {
+                    UsersObject updateUser = new UsersObject();
+                    updateUser.UserPrincipalName = hfEditUserPrincipalName.Value;
+                    updateUser.Firstname = txtEditFirstName.Text;
+                    updateUser.Middlename = txtEditMiddleName.Text;
+                    updateUser.Lastname = txtEditLastname.Text;
+                    updateUser.DisplayName = txtEditDisplayName.Text;
+                    updateUser.Department = txtEditDepartment.Text;
+                    updateUser.IsEnabled = cbEditEnableUser.Checked;
+                    updateUser.IsResellerAdmin = cbEditIsResellerAdmin.Checked;
+                    updateUser.IsCompanyAdmin = cbEditIsCompanyAdmin.Checked;
+                    updateUser.EnableExchangePerm = cbEditEnableExchange.Checked;
+                    updateUser.DisableExchangePerm = cbEditDisableExchange.Checked;
+                    updateUser.AddDomainPerm = cbEditAddDomain.Checked;
+                    updateUser.DeleteDomainPerm = cbEditDeleteDomain.Checked;
+                    updateUser.EnableAcceptedDomainPerm = cbEditEnableAcceptedDomain.Checked;
+                    updateUser.DisableAcceptedDomainPerm = cbEditDisableAcceptedDomain.Checked;
+
+                    UsersViewModel viewModel = new UsersViewModel();
+                    viewModel.ViewModelEvent += viewModel_ViewModelEvent;
+                    viewModel.UpdateUser(updateUser, WebSessionHandler.IsSuperAdmin || WebSessionHandler.IsResellerAdmin);
+                }
+            }
+        }
+
+        internal void UpdateExchangeSection()
+        {
+            object userObject = ViewState["CPCurrentEditUser"];
+            object mailboxObject = ViewState["CPCurrentEditMailbox"];
+            if (userObject == null)
+                alertmessage.SetMessage(AlertID.FAILED, Resources.LocalizedText.Users_ViewStateNull);
+            else
+            {
+                UsersViewModel viewModel = new UsersViewModel();
+                viewModel.ViewModelEvent += viewModel_ViewModelEvent;
+
+                UsersObject user = userObject as UsersObject;
+                if (!cbEditIsMailboxEnabled.Checked && user.MailboxPlan > 0)
+                {
+                    //
+                    // We are disabling the mailbox for this user
+                    //
+                    viewModel.DisableMailbox(user.UserPrincipalName);
+                }
+                else if (cbEditIsMailboxEnabled.Checked && user.MailboxPlan == 0)
+                {
+                    //
+                    // We are creating a new mailbox
+                    //
+                    this.logger.Debug("Attempting to create new mailbox for " + user.UserPrincipalName);
+
+                    user = new UsersObject();
+                    user.CompanyCode = WebSessionHandler.SelectedCompanyCode;
+                    user.UserPrincipalName = hfEditUserPrincipalName.Value;
+                    user.PrimarySmtpAddress = string.Format("{0}@{1}", txtEditMailboxEmail.Text.Replace(" ", string.Empty), ddlEditMailboxDomain.SelectedItem.Text);
+                    user.ActiveSyncPlan = ddlEditMailboxASPlan.SelectedIndex > 0 ? int.Parse(ddlEditMailboxASPlan.SelectedValue) : 0;
+                    user.MailboxPlan = int.Parse(ddlEditMailboxPlan.SelectedValue);
+                    user.SetMailboxSizeInMB = int.Parse(hfEditSelectedMailboxSize.Value);
+                    user.ForwardingTo = ddlEditMailboxForwardTo.SelectedIndex > 0 ? ddlEditMailboxForwardTo.SelectedValue : string.Empty;
+                    user.DeliverToMailboxAndForward = cbEditMailboxForwardBoth.Checked;
+
+                    this.logger.Debug("Validating email addresses for " + user.UserPrincipalName);
+                    user.EmailAliases = new List<string>();
+                    if (emailAliases != null)
+                    {
+                        foreach (MailAliasObject a in emailAliases)
+                        {
+                            if (!a.Email.Equals(user.PrimarySmtpAddress))
+                                user.EmailAliases.Add(a.Email);
+                        }
+                    }
+
+                    this.logger.Debug("Validating access permissions for " + user.UserPrincipalName);
+                    user.FullAccessUsers = new List<string>();
+                    foreach (int i in ddlEditMailboxFullAccess.GetSelectedIndices())
+                        user.FullAccessUsers.Add(ddlEditMailboxFullAccess.Items[i].Value);
+
+                    user.SendAsUsers = new List<string>();
+                    foreach (int i in ddlEditMailboxSendAs.GetSelectedIndices())
+                        user.SendAsUsers.Add(ddlEditMailboxSendAs.Items[i].Value);
+
+                    user.SendOnBehalf = new List<string>();
+                    foreach (int i in ddlEditMailboxSendOnBehalf.GetSelectedIndices())
+                        user.SendOnBehalf.Add(ddlEditMailboxSendOnBehalf.Items[i].Value);
+
+                    //
+                    // Archiving
+                    // 
+                    this.logger.Debug("Validating archiving settings for " + user.UserPrincipalName);
+                    if (cbEditMailboxEnableArchiving.Checked)
+                    {
+                        user.ArchivingEnabled = cbEditMailboxEnableArchiving.Checked;
+                        user.ArchiveName = txtEditMailboxArchiveName.Text.Trim();
+                        user.ArchivePlan = ddlEditMailboxArchivePlan.SelectedIndex > 0 ? int.Parse(ddlEditMailboxArchivePlan.SelectedValue) : 0;
+
+                        if (WebSessionHandler.IsSuperAdmin || WebSessionHandler.IsResellerAdmin)
+                            user.ArchiveDatabase = ddlEditMailboxArchiveDatabase.SelectedIndex > 0 ? ddlEditMailboxArchiveDatabase.SelectedItem.Value : string.Empty;
+                    }
+                    else
+                        user.ArchivingEnabled = false;
+
+                    //
+                    // Litigation Hold
+                    //
+                    this.logger.Debug("Validating litigation hold settings for " + user.UserPrincipalName);
+                    if (cbEditMailboxEnableLitigationHold.Checked)
+                    {
+                        user.LitigationHoldEnabled = cbEditMailboxEnableLitigationHold.Checked;
+                        user.LitigationHoldUrl = txtEditMailboxLitigationHoldURL.Text;
+                        user.LitigationHoldComment = txtEditMailboxLitigationHoldComments.Text;
+
+                        if (!string.IsNullOrEmpty(txtEditMailboxLitigationHoldDuration.Text))
+                        {
+                            DateTime now = DateTime.Now;
+                            DateTime end;
+
+                            DateTime.TryParse(txtEditMailboxLitigationHoldDuration.Text, out end);
+                            if (end != null)
+                            {
+                                TimeSpan duration = end - now;
+                                user.LitigationHoldDuration = duration.Days;
+                            }
+                            else
+                                user.LitigationHoldDuration = 0;
+                        }
+                        else
+                            user.LitigationHoldDuration = 0;
+                    }
+
+                    viewModel.CreateMailbox(user);
+                }
+                else
+                {
+                    //
+                    // We are updating an existing mailbox
+                    //
+                     
+                }
+            }
+        }
+
+        #endregion
+
+        #region Get actions
+
+
 
         #endregion
     }

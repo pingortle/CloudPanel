@@ -1,5 +1,6 @@
 ﻿using CloudPanel.Modules.Base.Auditing;
 using CloudPanel.Modules.Base.Companies;
+using CloudPanel.Modules.Base.Enumerations;
 using CloudPanel.Modules.Base.Plans;
 using CloudPanel.Modules.Base.Statistics;
 using CloudPanel.Modules.Common.ViewModel;
@@ -80,7 +81,10 @@ namespace CloudPanel.company
                 if (item != null)
                     ddlCurrentPlan.SelectedValue = item.Value;
                 else
+                {
+                    alertmessage.SetMessage(AlertID.WARNING, Resources.LocalizedText.Overview_PlanNotSetWarning);
                     ddlCurrentPlan.SelectedIndex = 0;
+                }
 
                 if (company.CompanyPlanObject != null)
                 {

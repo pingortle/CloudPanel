@@ -146,6 +146,15 @@ namespace CloudPanel.Modules.Common.Rollback
                 });
         }
 
+        public void NewMailbox(string userPrincipalName)
+        {
+            Events.Add(new CloudPanelEvent()
+                {
+                    EventType = CloudPanelEventType.Create_Mailbox,
+                    UserPrincipalName = userPrincipalName
+                });
+        }
+
         #endregion
 
         #region RollBack
@@ -202,6 +211,10 @@ namespace CloudPanel.Modules.Common.Rollback
                     case CloudPanelEventType.Create_Contact:
                         // Delete the Exchange contact
                         Delete_Contact(e.DistinguishedName);
+                        break;
+                    case CloudPanelEventType.Create_Mailbox:
+                        // Delete the Exchange mailbox
+                        Delete_Mailbox(e.UserPrincipalName);
                         break;
                     default:
                         break;
@@ -480,6 +493,30 @@ namespace CloudPanel.Modules.Common.Rollback
             catch (Exception ex)
             {
                 this.logger.Error("Failed to roll back action... Deleting Exchange contact " + distinguishedName, ex);
+            }
+            finally
+            {
+                if (powershell != null)
+                    powershell.Dispose();
+            }
+        }
+
+        private void Delete_Mailbox(string userPrincipalName)
+        {
+            ExchangePowershell powershell = null;
+
+            try
+            {
+                this.logger.Warn("Rolling back action... Deleting Exchange mailbox " + userPrincipalName);
+
+                powershell = new ExchangePowershell(StaticSettings.ExchangeURI, StaticSettings.Username, StaticSettings.DecryptedPassword, StaticSettings.ExchangeUseKerberos, StaticSettings.PrimaryDC);
+                powershell.DeleteMailbox(userPrincipalName);
+
+                this.logger.Warn("Successfully removed Exchange mailbox " + userPrincipalName);
+            }
+            catch (Exception ex)
+            {
+                this.logger.Error("Failed to roll back action... Deleting Exchange mailbox " + userPrincipalName, ex);
             }
             finally
             {

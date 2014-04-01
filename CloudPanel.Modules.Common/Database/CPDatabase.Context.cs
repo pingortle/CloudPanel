@@ -74,5 +74,14 @@ namespace CloudPanel.Modules.Common.Database
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DisableExchange", companyCodeParameter);
         }
+    
+        public virtual int DisableMailbox(string userPrincipalName)
+        {
+            var userPrincipalNameParameter = userPrincipalName != null ?
+                new ObjectParameter("UserPrincipalName", userPrincipalName) :
+                new ObjectParameter("UserPrincipalName", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DisableMailbox", userPrincipalNameParameter);
+        }
     }
 }

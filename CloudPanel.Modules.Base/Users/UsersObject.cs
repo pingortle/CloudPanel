@@ -40,6 +40,8 @@ namespace CloudPanel.Modules.Base.Users
 
         public bool PasswordNeverExpires { get; set; }
 
+        public bool IsEnabled { get; set; }
+
         public List<string> Groups { get; set; }
 
         #region Graphics
@@ -52,11 +54,23 @@ namespace CloudPanel.Modules.Base.Users
 
         public int AdditionalMB { get; set; }
 
+        public int SetMailboxSizeInMB { get; set; }
+
         public int ActiveSyncPlan { get; set; }
 
         public int MailboxPlan { get; set; }
 
+        public int ArchivePlan { get; set; }
+
+        public int LitigationHoldDuration { get; set; }
+
         public string PrimarySmtpAddress { get; set; }
+
+        public string ActiveSyncName { get; set; }
+
+        public string ArchiveName { get; set; }
+
+        public string ArchiveDatabase { get; set; }
 
         public string ForwardingTo { get; set; }
 
@@ -76,6 +90,8 @@ namespace CloudPanel.Modules.Base.Users
 
         public List<string> SendAsUsers { get; set; }
 
+        public List<string> SendOnBehalf { get; set; }
+
         public bool DeliverToMailboxAndForward { get; set; }
 
         public bool LitigationHoldEnabled { get; set; }
@@ -83,6 +99,8 @@ namespace CloudPanel.Modules.Base.Users
         public bool HasExchangePicture { get; set; }
 
         public bool MailboxHiddenFromGAL { get; set; }
+
+        public bool ArchivingEnabled { get; set; }
 
         #endregion
 

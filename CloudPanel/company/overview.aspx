@@ -22,46 +22,46 @@
                         <a href="#" class="minimize">&minus;</a>
                     </div>
                     <!-- panel-btns -->
-                    <h3 class="panel-title">Company Details</h3>
+                    <h3 class="panel-title"><%= Resources.LocalizedText.Overview_CompanyDetails %></h3>
                 </div>
                 <div class="panel-body">
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">Company Name</label>
+                        <label class="col-sm-3 control-label"><%= Resources.LocalizedText.Overview_CompanyName %></label>
                         <div class="col-sm-4">
                             <asp:Label ID="lbCompanyName" runat="server" Text="Compsys"></asp:Label>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">Company Code</label>
+                        <label class="col-sm-3 control-label"><%= Resources.LocalizedText.Overview_CompanyCode %></label>
                         <div class="col-sm-4">
                             <asp:Label ID="lbCompanyCode" runat="server" Text="COM"></asp:Label>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">Contacts Name</label>
+                        <label class="col-sm-3 control-label"><%= Resources.LocalizedText.Overview_ContactsName %></label>
                         <div class="col-sm-4">
-                            <asp:Label ID="lbContactsName" runat="server" Text="Jacob Dixon"></asp:Label>
+                            <asp:Label ID="lbContactsName" runat="server" Text=""></asp:Label>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">Telephone</label>
+                        <label class="col-sm-3 control-label"><%= Resources.LocalizedText.Overview_Telephone %></label>
                         <div class="col-sm-4">
-                            <asp:Label ID="lbTelephone" runat="server" Text="(501) 758-6818"></asp:Label>
+                            <asp:Label ID="lbTelephone" runat="server" Text=""></asp:Label>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">When Created</label>
+                        <label class="col-sm-3 control-label"><%= Resources.LocalizedText.Overview_Created %></label>
                         <div class="col-sm-4">
-                            <asp:Label ID="lbWhenCreated" runat="server" Text="1/2/2013"></asp:Label>
+                            <asp:Label ID="lbWhenCreated" runat="server" Text=""></asp:Label>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-3 control-label">Current Plan</label>
+                        <label class="col-sm-3 control-label"><%= Resources.LocalizedText.Overview_CurrentPlan %></label>
                         <div class="col-sm-4">
                             <asp:DropDownList ID="ddlCurrentPlan" runat="server" CssClass="form-control chosen-select" AutoPostBack="true" OnSelectedIndexChanged="ddlCurrentPlan_SelectedIndexChanged">
 
@@ -82,25 +82,25 @@
                         <a href="#" class="minimize">&minus;</a>
                     </div>
                     <!-- panel-btns -->
-                    <h3 class="panel-title">Product Details</h3>
+                    <h3 class="panel-title"><%= Resources.LocalizedText.Overview_ProductDetails %></h3>
                 </div>
                 <div class="panel-body">
 
-                    <span class="sublabel">Users
+                    <span class="sublabel"><%= Resources.LocalizedText.Overview_Users %>
                         <asp:Label ID="lbUsers" runat="server" Text="(0 / 1)"></asp:Label></span>
                     <div class="progress progress-sm">
                         <div style="width: 60%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-primary" runat="server" id="progBarUsers"></div>
                     </div>
                     <!-- progress -->
 
-                    <span class="sublabel">Domains
+                    <span class="sublabel"><%= Resources.LocalizedText.Overview_Domains %>
                         <asp:Label ID="lbDomains" runat="server" Text="(0 / 1)"></asp:Label></span>
                     <div class="progress progress-sm">
                         <div style="width: 50%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-success" runat="server" id="progBarDomains"></div>
                     </div>
                     <!-- progress -->
 
-                    <span class="sublabel">Mailboxes
+                    <span class="sublabel"><%= Resources.LocalizedText.Overview_Mailboxes %>
                         <asp:Label ID="lbTotalMailboxes" runat="server" Text="(0 / 1)"></asp:Label></span>
                     <div class="progress progress-sm">
                         <div style="width: 10%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-danger" runat="server" id="progBarMailboxes"></div>
@@ -108,7 +108,7 @@
                     <!-- progress -->
 
                     <% if (CloudPanel.Modules.Common.Settings.StaticSettings.CitrixEnabled) { %>
-                    <span class="sublabel">Citrix
+                    <span class="sublabel"><%= Resources.LocalizedText.Overview_Citrix %>
                         <asp:Label ID="lbTotalCitrixUsers" runat="server" Text="(0/ 1)"></asp:Label></span>
                     <div class="progress progress-sm">
                         <div style="width: 30%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-warning" runat="server" id="progBarCitrix"></div>
@@ -117,7 +117,7 @@
                     <% } %>
 
                     <% if (CloudPanel.Modules.Common.Settings.StaticSettings.LyncEnabled) { %>
-                    <span class="sublabel">Lync
+                    <span class="sublabel"><%= Resources.LocalizedText.Overview_Lync %>
                         <asp:Label ID="lbTotalLyncUsers" runat="server" Text="(0 / 1)"></asp:Label></span>
                     <div class="progress progress-sm">
                         <div style="width: 10%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-info" runat="server" id="progBarLync"></div>
@@ -141,7 +141,7 @@
                             <a href="#" class="minimize">&minus;</a>
                         </div>
                         <!-- panel-btns -->
-                        <h3 class="panel-title">Company Location</h3>
+                        <h3 class="panel-title"><%= Resources.LocalizedText.Overview_CompanyLocation %></h3>
                     </div>
                     <div class="panel-body">
                         <div id="gmap-marker" style="height: 300px"></div>
@@ -154,7 +154,7 @@
             <div class="col-sm-6">
                 <div class="panel panel-default panel-alt widget-messaging">
                     <div class="panel-heading">
-                        <h3 class="panel-title">Recent Actions</h3>
+                        <h3 class="panel-title"><%= Resources.LocalizedText.Overview_RecentActions %></h3>
                     </div>
                     <div class="panel-body">
                         <ul>

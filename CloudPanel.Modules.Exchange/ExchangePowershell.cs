@@ -1,4 +1,5 @@
 ﻿using CloudPanel.Modules.Base.Enumerations;
+using CloudPanel.Modules.Base.Plans;
 using CloudPanel.Modules.Base.Users;
 using log4net;
 using System;
@@ -271,39 +272,117 @@ namespace CloudPanel.Modules.Exchange
             }
         }
 
-        public string UpdateContact(string distinguishedName, string newDisplayName, bool isHidden)
+        public void NewMailbox(UsersObject user)
         {
             try
             {
-                this.logger.Debug("Updating contact "+ distinguishedName);
+                this.logger.Debug("Creating new mailbox for "+ user.UserPrincipalName);
 
                 PSCommand cmd = new PSCommand();
-                cmd.AddCommand("Set-MailContact");
-                cmd.AddParameter("Identity", distinguishedName);
-                cmd.AddParameter("DisplayName", newDisplayName);
-                cmd.AddParameter("HiddenFromAddressListsEnabled", isHidden);
+                cmd.AddCommand("Enable-Mailbox");
+                cmd.AddParameter("Identity", user.UserPrincipalName);
+                cmd.AddParameter("PrimarySmtpAddress", user.PrimarySmtpAddress);
+                cmd.AddParameter("AddressBookPolicy", user.CompanyCode + " ABP");
+
+                this.logger.Debug("Checking activesync policy for " + user.UserPrincipalName);
+                if (!string.IsNullOrEmpty(user.ActiveSyncName))
+                    cmd.AddParameter("ActiveSyncMailboxPolicy", user.ActiveSyncName);
+
+                this.logger.Debug("Checking if we are putting this new mailbox in a specific database " + user.UserPrincipalName);
+                if (!string.IsNullOrEmpty(user.CurrentMailboxDatabase))
+                    cmd.AddParameter("Database", user.CurrentMailboxDatabase);
+
+                cmd.AddParameter("Confirm", false);
                 cmd.AddParameter("DomainController", domainController);
                 powershell.Commands = cmd;
 
-                Collection<PSObject> obj = powershell.Invoke();
-                if (!powershell.HadErrors)
-                {
-                    // Get the distinguished name
-                    string newDistinguishedName = distinguishedName;
-                    foreach (PSObject o in obj)
-                    {
-                        if (o.Properties["DistinguishedName"] != null)
-                            newDistinguishedName = o.Properties["DistinguishedName"].Value.ToString();
-                    }
-
-                    return distinguishedName;
-                }
-                else
+                this.logger.Debug("Invoking powershell to create new mailbox for " + user.UserPrincipalName);
+                powershell.Invoke();
+                if (powershell.HadErrors)
                     throw powershell.Streams.Error[0].Exception;
             }
             catch (Exception ex)
             {
-                this.logger.Error("Failed to update Exchange contact " + distinguishedName, ex);
+                this.logger.Error("Failed to create new mailbox for " + user.UserPrincipalName, ex);
+                throw;
+            }
+        }
+
+        public void NewArchiveMailbox(UsersObject user)
+        {
+            try
+            {
+                this.logger.Debug("Creating new archive mailbox for " + user.UserPrincipalName);
+
+                if (user.ArchivingEnabled && user.ArchivePlan > 0)
+                {
+                    PSCommand cmd = new PSCommand();
+                    cmd.AddCommand("Enable-Mailbox");
+                    cmd.AddParameter("Identity", user.UserPrincipalName);
+                    cmd.AddParameter("Archive");
+
+                    if (!string.IsNullOrEmpty(user.ArchiveDatabase))
+                        cmd.AddParameter("ArchiveDatabase", user.ArchiveDatabase);
+
+                    if (!string.IsNullOrEmpty(user.ArchiveName))
+                        cmd.AddParameter("ArchiveName", user.ArchiveName);
+
+                    cmd.AddParameter("Confirm", false);
+                    cmd.AddParameter("DomainController", domainController);
+                    powershell.Commands = cmd;
+
+                    Collection<PSObject> obj = powershell.Invoke();
+                    if (powershell.HadErrors)
+                        throw powershell.Streams.Error[0].Exception;
+                }
+                else
+                    this.logger.Debug("Unable to create archive mailbox because the plan was not set for " + user.UserPrincipalName);
+            }
+            catch (Exception ex)
+            {
+                this.logger.Error("Failed to create new archive mailbox for " + user.UserPrincipalName, ex);
+                throw;
+            }
+        }
+
+        public void NewLitigationHold(string userPrincipalName, string comment, string url, int? days)
+        {
+            try
+            {
+                this.logger.Debug("Enabling litigation hold for " + userPrincipalName);
+
+                PSCommand cmd = new PSCommand();
+                cmd.AddCommand("Set-Mailbox");
+                cmd.AddParameter("Identity", userPrincipalName);
+                cmd.AddParameter("LitigationHoldEnabled", true);
+
+                if (!string.IsNullOrEmpty(comment))
+                    cmd.AddParameter("RetentionComment", comment);
+                else
+                    cmd.AddParameter("RetentionComment", null);
+
+                if (!string.IsNullOrEmpty(url))
+                    cmd.AddParameter("RetentionUrl", url);
+                else
+                    cmd.AddParameter("RetentionUrl", null);
+
+                if (days != null)
+                    cmd.AddParameter("LitigationHoldDuration", days);
+                else
+                    cmd.AddParameter("LitigationHoldDuration", null);
+
+                cmd.AddParameter("Confirm", false);
+                cmd.AddParameter("Force");
+                cmd.AddParameter("DomainController", domainController);
+                powershell.Commands = cmd;
+
+                Collection<PSObject> obj = powershell.Invoke();
+                if (powershell.HadErrors)
+                    throw powershell.Streams.Error[0].Exception;
+            }
+            catch (Exception ex)
+            {
+                this.logger.Error("Failed to enable litigation hold for " + userPrincipalName, ex);
                 throw;
             }
         }
@@ -311,6 +390,175 @@ namespace CloudPanel.Modules.Exchange
         #endregion
 
         #region Update Actions
+
+        public void UpdateMailbox(UsersObject user, MailboxPlanObject mailboxPlan)
+        {
+            try
+            {
+                this.logger.Debug("Updating mailbox for " + user.UserPrincipalName);
+
+                PSCommand cmd = new PSCommand();
+                cmd.AddCommand("Set-Mailbox");
+                cmd.AddParameter("Identity", user.UserPrincipalName);
+                cmd.AddParameter("CustomAttribute1", user.CompanyCode);
+                cmd.AddParameter("DeliverToMailboxAndForward", user.DeliverToMailboxAndForward);
+                cmd.AddParameter("HiddenFromAddressListsEnabled", user.MailboxHiddenFromGAL);
+                cmd.AddParameter("IssueWarningQuota", mailboxPlan.WarningSizeInMB(user.SetMailboxSizeInMB));
+                cmd.AddParameter("ProhibitSendQuota", user.SetMailboxSizeInMB + "MB");
+                cmd.AddParameter("ProhibitSendReceiveQuota", user.SetMailboxSizeInMB + "MB");
+                cmd.AddParameter("MaxReceiveSize", mailboxPlan.MaxReceiveInKB + "KB");
+                cmd.AddParameter("MaxSendSize", mailboxPlan.MaxSendInKB + "KB");
+                cmd.AddParameter("RecipientLimits", mailboxPlan.MaxRecipients);
+                cmd.AddParameter("RetainDeletedItemsFor", mailboxPlan.MaxKeepDeletedItemsInDays);
+                cmd.AddParameter("RetainDeletedItemsUntilBackup", true);
+                cmd.AddParameter("UseDatabaseQuotaDefaults", false);
+                cmd.AddParameter("OfflineAddressBook", user.CompanyCode + " OAL");
+
+                List<string> emailAddresses = new List<string>();
+                emailAddresses.Add("SMTP:" + user.PrimarySmtpAddress);
+                foreach (string e in user.EmailAliases)
+                {
+                    if (e.StartsWith("sip:", StringComparison.CurrentCultureIgnoreCase))
+                        emailAddresses.Add(e);
+                    else if (e.StartsWith("x500:", StringComparison.CurrentCultureIgnoreCase))
+                        emailAddresses.Add(e);
+                    else if (e.StartsWith("x400:", StringComparison.CurrentCultureIgnoreCase))
+                        emailAddresses.Add(e);
+                    else
+                        emailAddresses.Add("smtp:" + e);
+                }
+                cmd.AddParameter("EmailAddresses", emailAddresses.ToArray());
+
+                if (!string.IsNullOrEmpty(user.ForwardingTo))
+                    cmd.AddParameter("ForwardingAddress", user.ForwardingTo);
+
+                if (!string.IsNullOrEmpty(user.ThrottlingPolicy))
+                    cmd.AddParameter("ThrottlingPolicy", user.ThrottlingPolicy);
+
+
+                cmd.AddParameter("Confirm", false);
+                cmd.AddParameter("DomainController", domainController);
+                powershell.Commands = cmd;
+
+                Collection<PSObject> obj = powershell.Invoke();
+                if (powershell.HadErrors)
+                    throw powershell.Streams.Error[0].Exception;
+            }
+            catch (Exception ex)
+            {
+                this.logger.Error("Failed to update mailbox for " + user.UserPrincipalName, ex);
+                throw;
+            }
+        }
+
+        public void UpdateCASMailbox(UsersObject user, MailboxPlanObject mailboxPlan)
+        {
+            try
+            {
+                this.logger.Debug("Updating CAS mailbox for " + user.UserPrincipalName);
+
+                PSCommand cmd = new PSCommand();
+                cmd.AddCommand("Set-CASMailbox");
+                cmd.AddParameter("Identity", user.UserPrincipalName);
+                cmd.AddParameter("ActiveSyncEnabled", mailboxPlan.EnableAS);
+                cmd.AddParameter("ECPEnabled", mailboxPlan.EnableECP);
+                cmd.AddParameter("ImapEnabled", mailboxPlan.EnableIMAP);
+                cmd.AddParameter("MAPIEnabled", mailboxPlan.EnableMAPI);
+                cmd.AddParameter("OWAEnabled", mailboxPlan.EnableOWA);
+                cmd.AddParameter("PopEnabled", mailboxPlan.EnablePOP3);
+
+                // Email Addresses
+
+                if (!string.IsNullOrEmpty(user.ActiveSyncName))
+                    cmd.AddParameter("ActiveSyncMailboxPolicy", user.ActiveSyncName);
+                else
+                    cmd.AddParameter("ActiveSyncMailboxPolicy", null);
+
+
+                cmd.AddParameter("Confirm", false);
+                cmd.AddParameter("DomainController", domainController);
+                powershell.Commands = cmd;
+
+                Collection<PSObject> obj = powershell.Invoke();
+                if (powershell.HadErrors)
+                    throw powershell.Streams.Error[0].Exception;
+            }
+            catch (Exception ex)
+            {
+                this.logger.Error("Failed to set CAS mailbox for " + user.UserPrincipalName, ex);
+                throw;
+            }
+        }
+
+        public void UpdateLitigationHold(string userPrincipalName, string comment, string url, int? days)
+        {
+            try
+            {
+                this.logger.Debug("Updating litigation hold for " + userPrincipalName);
+
+                PSCommand cmd = new PSCommand();
+                cmd.AddCommand("Set-Mailbox");
+                cmd.AddParameter("Identity", userPrincipalName);
+
+                if (!string.IsNullOrEmpty(comment))
+                    cmd.AddParameter("RetentionComment", comment);
+                else
+                    cmd.AddParameter("RetentionComment", null);
+
+                if (!string.IsNullOrEmpty(url))
+                    cmd.AddParameter("RetentionUrl", url);
+                else
+                    cmd.AddParameter("RetentionUrl", null);
+
+                if (days != null)
+                    cmd.AddParameter("LitigationHoldDuration", days);
+                else
+                    cmd.AddParameter("LitigationHoldDuration", null);
+
+                cmd.AddParameter("Confirm", false);
+                cmd.AddParameter("DomainController", domainController);
+                powershell.Commands = cmd;
+
+                Collection<PSObject> obj = powershell.Invoke();
+                if (powershell.HadErrors)
+                    throw powershell.Streams.Error[0].Exception;
+            }
+            catch (Exception ex)
+            {
+                this.logger.Error("Failed to set litigation hold settings for " + userPrincipalName, ex);
+                throw;
+            }
+        }
+
+        public void UpdateArchiveMailbox(string userPrincipalName, string archiveName, ArchivePlanObject archivePlan)
+        {
+            try
+            {
+                this.logger.Debug("Updating archive mailbox for " + userPrincipalName);
+
+                PSCommand cmd = new PSCommand();
+                cmd.AddCommand("Set-Mailbox");
+                cmd.AddParameter("Identity", userPrincipalName);
+                cmd.AddParameter("ArchiveQuota", archivePlan.ArchiveQuotaInMB + "MB");
+                cmd.AddParameter("ArchiveWarningQuota", archivePlan.ArchiveWarningQuotaInMB + "MB");
+
+                if (!string.IsNullOrEmpty(archiveName))
+                    cmd.AddParameter("ArchiveName", archiveName);
+
+                cmd.AddParameter("Confirm", false);
+                cmd.AddParameter("DomainController", domainController);
+                powershell.Commands = cmd;
+
+                Collection<PSObject> obj = powershell.Invoke();
+                if (powershell.HadErrors)
+                    throw powershell.Streams.Error[0].Exception;
+            }
+            catch (Exception ex)
+            {
+                this.logger.Error("Failed to update archive mailbox for " + userPrincipalName, ex);
+                throw;
+            }
+        }
 
         public void UpdateDomain(string domainName, DomainType domainType)
         {
@@ -345,6 +593,43 @@ namespace CloudPanel.Modules.Exchange
             catch (Exception ex)
             {
                 this.logger.Error("Failed to update accepted domain " + domainName, ex);
+                throw;
+            }
+        }
+
+        public string UpdateContact(string distinguishedName, string newDisplayName, bool isHidden)
+        {
+            try
+            {
+                this.logger.Debug("Updating contact " + distinguishedName);
+
+                PSCommand cmd = new PSCommand();
+                cmd.AddCommand("Set-MailContact");
+                cmd.AddParameter("Identity", distinguishedName);
+                cmd.AddParameter("DisplayName", newDisplayName);
+                cmd.AddParameter("HiddenFromAddressListsEnabled", isHidden);
+                cmd.AddParameter("DomainController", domainController);
+                powershell.Commands = cmd;
+
+                Collection<PSObject> obj = powershell.Invoke();
+                if (!powershell.HadErrors)
+                {
+                    // Get the distinguished name
+                    string newDistinguishedName = distinguishedName;
+                    foreach (PSObject o in obj)
+                    {
+                        if (o.Properties["DistinguishedName"] != null)
+                            newDistinguishedName = o.Properties["DistinguishedName"].Value.ToString();
+                    }
+
+                    return distinguishedName;
+                }
+                else
+                    throw powershell.Streams.Error[0].Exception;
+            }
+            catch (Exception ex)
+            {
+                this.logger.Error("Failed to update Exchange contact " + distinguishedName, ex);
                 throw;
             }
         }
@@ -419,6 +704,16 @@ namespace CloudPanel.Modules.Exchange
                         if (ps.Members["LitigationHoldEnabled"].Value != null)
                             user.LitigationHoldEnabled = bool.Parse(ps.Members["LitigationHoldEnabled"].Value.ToString());
 
+                        if (ps.Members["LitigationHoldDuration"].Value != null)
+                        {
+                            string value = ps.Members["LitigationHoldDuration"].Value.ToString();
+                            if (!value.Equals("Unlimited", StringComparison.CurrentCultureIgnoreCase))
+                            {
+                                TimeSpan span = TimeSpan.Parse(value);
+                                user.LitigationHoldDuration = span.Days;
+                            }
+                        }
+
                         if (ps.Members["HiddenFromAddressListsEnabled"].Value != null)
                             user.MailboxHiddenFromGAL = bool.Parse(ps.Members["HiddenFromAddressListsEnabled"].Value.ToString());
 
@@ -449,6 +744,12 @@ namespace CloudPanel.Modules.Exchange
                         if (ps.Members["DistinguishedName"].Value != null)
                             user.DistinguishedName = ps.Members["DistinguishedName"].Value.ToString();
 
+                        if (ps.Members["ArchiveDatabase"].Value != null)
+                            user.ArchiveDatabase = ps.Members["ArchiveDatabase"].Value.ToString();
+
+                        if (ps.Members["ArchiveName"].Value != null)
+                            user.ArchiveName = ps.Members["ArchiveName"].Value.ToString();
+
                         if (exchangeVersion == 2013)
                             user.HasExchangePicture = bool.Parse(ps.Members["HasPicture"].Value.ToString());
 
@@ -475,11 +776,13 @@ namespace CloudPanel.Modules.Exchange
                     }
                 }
 
+                if (powershell.HadErrors)
+                    throw powershell.Streams.Error[0].Exception;
+
                 //                              //
                 // Get full access permissions  //
                 //                              //
                 this.logger.Debug("Getting full access permissions for " + identity);
-
                 user.FullAccessUsers = new List<string>();
 
                 cmd = new PSCommand();
@@ -521,11 +824,13 @@ namespace CloudPanel.Modules.Exchange
                     }
                 }
 
+                if (powershell.HadErrors)
+                    throw powershell.Streams.Error[0].Exception;
+
                 //                         //
                 // Get send-as permissions //
                 //                         //
                 this.logger.Debug("Getting send-as permissions for " + identity);
-
                 user.SendAsUsers = new List<string>();
 
                 cmd = new PSCommand();
@@ -572,6 +877,12 @@ namespace CloudPanel.Modules.Exchange
 
                 if (powershell.HadErrors)
                     throw powershell.Streams.Error[0].Exception;
+
+                //                         //
+                // Get send-as permissions //
+                //                         //
+                this.logger.Debug("Getting send on behalf permissions for " + identity);
+                user.SendOnBehalf = new List<string>();
 
                 return user;
             }
@@ -693,6 +1004,56 @@ namespace CloudPanel.Modules.Exchange
             catch (Exception ex)
             {
                 this.logger.Error("Failed to disable mailbox " + userPrincipalName, ex);
+                throw;
+            }
+        }
+
+        public void DeleteArchiveMailbox(string userPrincipalName)
+        {
+            try
+            {
+                this.logger.Debug("Disabling archive mailbox for " + userPrincipalName);
+
+                PSCommand cmd = new PSCommand();
+                cmd.AddCommand("Disable-Mailbox");
+                cmd.AddParameter("Identity", userPrincipalName);
+                cmd.AddParameter("Archive");
+                cmd.AddParameter("Confirm", false);
+                cmd.AddParameter("DomainController", domainController);
+                powershell.Commands = cmd;
+                powershell.Invoke();
+
+                if (powershell.HadErrors)
+                    throw powershell.Streams.Error[0].Exception;
+            }
+            catch (Exception ex)
+            {
+                this.logger.Error("Failed to disable archive mailbox " + userPrincipalName, ex);
+                throw;
+            }
+        }
+
+        public void DeleteLitigationHold(string userPrincipalName)
+        {
+            try
+            {
+                this.logger.Debug("Disabling litigation hold for " + userPrincipalName);
+
+                PSCommand cmd = new PSCommand();
+                cmd.AddCommand("Set-Mailbox");
+                cmd.AddParameter("Identity", userPrincipalName);
+                cmd.AddParameter("LitigationHoldEnabled", false);
+                cmd.AddParameter("Confirm", false);
+                cmd.AddParameter("DomainController", domainController);
+                powershell.Commands = cmd;
+                powershell.Invoke();
+
+                if (powershell.HadErrors)
+                    throw powershell.Streams.Error[0].Exception;
+            }
+            catch (Exception ex)
+            {
+                this.logger.Error("Failed to disable litigation hold for" + userPrincipalName, ex);
                 throw;
             }
         }

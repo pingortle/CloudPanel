@@ -47,5 +47,26 @@ namespace CloudPanel.Modules.Base.Plans
 
         public string CompanyCode { get; set; }
 
+        public int WarningSizeInMB(int mailboxSize)
+        {
+            decimal percentConverted = decimal.Divide(WarningSizeInPercent, 100);
+            decimal total = decimal.Multiply(mailboxSize, percentConverted);
+
+            return decimal.ToInt32(total);
+        }
+
+        private int _warningsizeinpercent;
+        public int WarningSizeInPercent
+        {
+            get
+            {
+                if (_warningsizeinpercent < 50)
+                    return 90;
+                else
+                    return _warningsizeinpercent;
+            }
+            set { _warningsizeinpercent = value; }
+        }
+
     }
 }

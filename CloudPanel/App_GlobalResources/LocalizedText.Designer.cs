@@ -151,6 +151,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Add.
+        /// </summary>
+        internal static string Buttons_Add {
+            get {
+                return ResourceManager.GetString("Buttons_Add", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         internal static string Buttons_Cancel {
@@ -1143,6 +1152,150 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Citrix.
         /// </summary>
+        internal static string Overview_Citrix {
+            get {
+                return ResourceManager.GetString("Overview_Citrix", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Company Code.
+        /// </summary>
+        internal static string Overview_CompanyCode {
+            get {
+                return ResourceManager.GetString("Overview_CompanyCode", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Company Details.
+        /// </summary>
+        internal static string Overview_CompanyDetails {
+            get {
+                return ResourceManager.GetString("Overview_CompanyDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Company Location.
+        /// </summary>
+        internal static string Overview_CompanyLocation {
+            get {
+                return ResourceManager.GetString("Overview_CompanyLocation", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Company Name.
+        /// </summary>
+        internal static string Overview_CompanyName {
+            get {
+                return ResourceManager.GetString("Overview_CompanyName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Contacts Name.
+        /// </summary>
+        internal static string Overview_ContactsName {
+            get {
+                return ResourceManager.GetString("Overview_ContactsName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to When Created.
+        /// </summary>
+        internal static string Overview_Created {
+            get {
+                return ResourceManager.GetString("Overview_Created", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Current Plan.
+        /// </summary>
+        internal static string Overview_CurrentPlan {
+            get {
+                return ResourceManager.GetString("Overview_CurrentPlan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Domains.
+        /// </summary>
+        internal static string Overview_Domains {
+            get {
+                return ResourceManager.GetString("Overview_Domains", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Lync.
+        /// </summary>
+        internal static string Overview_Lync {
+            get {
+                return ResourceManager.GetString("Overview_Lync", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mailboxes.
+        /// </summary>
+        internal static string Overview_Mailboxes {
+            get {
+                return ResourceManager.GetString("Overview_Mailboxes", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to A plan has not been set for this company. Please set a plan or contact customer support. Some features will fail to function correctly without a company plan set..
+        /// </summary>
+        internal static string Overview_PlanNotSetWarning {
+            get {
+                return ResourceManager.GetString("Overview_PlanNotSetWarning", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Product Details.
+        /// </summary>
+        internal static string Overview_ProductDetails {
+            get {
+                return ResourceManager.GetString("Overview_ProductDetails", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Recent Actions.
+        /// </summary>
+        internal static string Overview_RecentActions {
+            get {
+                return ResourceManager.GetString("Overview_RecentActions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Telephone.
+        /// </summary>
+        internal static string Overview_Telephone {
+            get {
+                return ResourceManager.GetString("Overview_Telephone", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Users.
+        /// </summary>
+        internal static string Overview_Users {
+            get {
+                return ResourceManager.GetString("Overview_Users", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Citrix.
+        /// </summary>
         internal static string PlanCompany_Citrix {
             get {
                 return ResourceManager.GetString("PlanCompany_Citrix", resourceCulture);
@@ -1897,6 +2050,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Activesync Plan.
+        /// </summary>
+        internal static string Users_ActiveSyncPlan {
+            get {
+                return ResourceManager.GetString("Users_ActiveSyncPlan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Add Domain.
         /// </summary>
         internal static string Users_AddDomain {
@@ -1915,6 +2077,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Alias.
+        /// </summary>
+        internal static string Users_Alias {
+            get {
+                return ResourceManager.GetString("Users_Alias", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Has API Access?.
         /// </summary>
         internal static string Users_APIAccess {
@@ -1924,11 +2095,56 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Archive Database.
+        /// </summary>
+        internal static string Users_ArchiveDatabase {
+            get {
+                return ResourceManager.GetString("Users_ArchiveDatabase", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Archive Name.
+        /// </summary>
+        internal static string Users_ArchiveName {
+            get {
+                return ResourceManager.GetString("Users_ArchiveName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Archive Plan.
+        /// </summary>
+        internal static string Users_ArchivePlan {
+            get {
+                return ResourceManager.GetString("Users_ArchivePlan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Archiving.
+        /// </summary>
+        internal static string Users_Archiving {
+            get {
+                return ResourceManager.GetString("Users_Archiving", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Cancel.
         /// </summary>
         internal static string Users_Cancel {
             get {
                 return ResourceManager.GetString("Users_Cancel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Comments.
+        /// </summary>
+        internal static string Users_Comments {
+            get {
+                return ResourceManager.GetString("Users_Comments", resourceCulture);
             }
         }
         
@@ -1969,11 +2185,38 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Deliver to Mailbox and Forward.
+        /// </summary>
+        internal static string Users_DeliverAndForward {
+            get {
+                return ResourceManager.GetString("Users_DeliverAndForward", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Department.
         /// </summary>
         internal static string Users_Department {
             get {
                 return ResourceManager.GetString("Users_Department", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        internal static string Users_Description {
+            get {
+                return ResourceManager.GetString("Users_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description URL.
+        /// </summary>
+        internal static string Users_DescriptionURL {
+            get {
+                return ResourceManager.GetString("Users_DescriptionURL", resourceCulture);
             }
         }
         
@@ -2014,6 +2257,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Duration.
+        /// </summary>
+        internal static string Users_Duration {
+            get {
+                return ResourceManager.GetString("Users_Duration", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to E-mail.
         /// </summary>
         internal static string Users_Email {
@@ -2032,6 +2284,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Email Aliases.
+        /// </summary>
+        internal static string Users_EmailAliases {
+            get {
+                return ResourceManager.GetString("Users_EmailAliases", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enable Accepted Domains.
         /// </summary>
         internal static string Users_EnableAcceptedDomains {
@@ -2041,11 +2302,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Enable Archiving.
+        /// </summary>
+        internal static string Users_EnableArchiving {
+            get {
+                return ResourceManager.GetString("Users_EnableArchiving", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Enable Exchange.
         /// </summary>
         internal static string Users_EnableExchange {
             get {
                 return ResourceManager.GetString("Users_EnableExchange", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable Litigation Hold.
+        /// </summary>
+        internal static string Users_EnableLitigationHold {
+            get {
+                return ResourceManager.GetString("Users_EnableLitigationHold", resourceCulture);
             }
         }
         
@@ -2077,11 +2356,56 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Forwarding.
+        /// </summary>
+        internal static string Users_Forwarding {
+            get {
+                return ResourceManager.GetString("Users_Forwarding", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Forward To.
+        /// </summary>
+        internal static string Users_ForwardTo {
+            get {
+                return ResourceManager.GetString("Users_ForwardTo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Full Access.
+        /// </summary>
+        internal static string Users_FullAccess {
+            get {
+                return ResourceManager.GetString("Users_FullAccess", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to General.
+        /// </summary>
+        internal static string Users_General {
+            get {
+                return ResourceManager.GetString("Users_General", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Is Company Admin?.
         /// </summary>
         internal static string Users_IsCompanyAdmin {
             get {
                 return ResourceManager.GetString("Users_IsCompanyAdmin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User is Disabled.
+        /// </summary>
+        internal static string Users_IsDisabled {
+            get {
+                return ResourceManager.GetString("Users_IsDisabled", resourceCulture);
             }
         }
         
@@ -2122,6 +2446,15 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Litigation Hold.
+        /// </summary>
+        internal static string Users_LitigationHold {
+            get {
+                return ResourceManager.GetString("Users_LitigationHold", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Login Details.
         /// </summary>
         internal static string Users_LoginDetails {
@@ -2140,11 +2473,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Mailbox Permissions.
+        /// </summary>
+        internal static string Users_MailboxPermissions {
+            get {
+                return ResourceManager.GetString("Users_MailboxPermissions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Mailbox Plan.
         /// </summary>
         internal static string Users_MailboxPlan {
             get {
                 return ResourceManager.GetString("Users_MailboxPlan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mailbox Settings.
+        /// </summary>
+        internal static string Users_MailboxSettings {
+            get {
+                return ResourceManager.GetString("Users_MailboxSettings", resourceCulture);
             }
         }
         
@@ -2212,11 +2563,29 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Permissions.
+        /// </summary>
+        internal static string Users_Permissions {
+            get {
+                return ResourceManager.GetString("Users_Permissions", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Is a Reseller Admin.
         /// </summary>
         internal static string Users_ResellerAdmin {
             get {
                 return ResourceManager.GetString("Users_ResellerAdmin", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Reset Password.
+        /// </summary>
+        internal static string Users_ResetPassword {
+            get {
+                return ResourceManager.GetString("Users_ResetPassword", resourceCulture);
             }
         }
         
@@ -2239,11 +2608,38 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Send As.
+        /// </summary>
+        internal static string Users_SendAs {
+            get {
+                return ResourceManager.GetString("Users_SendAs", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Send on Behalf.
+        /// </summary>
+        internal static string Users_SendOnBehalf {
+            get {
+                return ResourceManager.GetString("Users_SendOnBehalf", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Submit.
         /// </summary>
         internal static string Users_Submit {
             get {
                 return ResourceManager.GetString("Users_Submit", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User.
+        /// </summary>
+        internal static string Users_User {
+            get {
+                return ResourceManager.GetString("Users_User", resourceCulture);
             }
         }
         
@@ -2280,6 +2676,24 @@ namespace Resources {
         internal static string Users_UserRights {
             get {
                 return ResourceManager.GetString("Users_UserRights", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to User Status.
+        /// </summary>
+        internal static string Users_UserStatus {
+            get {
+                return ResourceManager.GetString("Users_UserStatus", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Could not update user because the viewstate was null. Please contact support.
+        /// </summary>
+        internal static string Users_ViewStateNull {
+            get {
+                return ResourceManager.GetString("Users_ViewStateNull", resourceCulture);
             }
         }
     }

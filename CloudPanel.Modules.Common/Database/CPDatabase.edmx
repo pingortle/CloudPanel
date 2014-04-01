@@ -452,6 +452,7 @@ warning 6002: The table/view 'CloudPanel.dbo.UserPlans' does not have a primary 
           <Property Name="Lastname" Type="nvarchar" MaxLength="50" />
           <Property Name="Email" Type="nvarchar" MaxLength="255" />
           <Property Name="Department" Type="nvarchar" MaxLength="255" />
+          <Property Name="IsEnabled" Type="bit" />
           <Property Name="IsResellerAdmin" Type="bit" />
           <Property Name="IsCompanyAdmin" Type="bit" />
           <Property Name="MailboxPlan" Type="int" />
@@ -460,12 +461,16 @@ warning 6002: The table/view 'CloudPanel.dbo.UserPlans' does not have a primary 
           <Property Name="Created" Type="datetime" />
           <Property Name="AdditionalMB" Type="int" />
           <Property Name="ActiveSyncPlan" Type="int" />
+          <Property Name="ExchArchivePlan" Type="int" />
         </EntityType>
         <Function Name="DeleteUser" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="UserPrincipalName" Type="nvarchar" Mode="In" />
         </Function>
         <Function Name="DisableExchange" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="CompanyCode" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="DisableMailbox" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="UserPrincipalName" Type="varchar" Mode="In" />
         </Function>
         <EntityContainer Name="CloudPanelModelStoreContainer">
           <EntitySet Name="ApiAccess" EntityType="Self.ApiAccess" Schema="dbo" store:Type="Tables" />
@@ -559,6 +564,9 @@ warning 6002: The table/view 'CloudPanel.dbo.UserPlans' does not have a primary 
           </FunctionImport>
           <FunctionImport Name="DisableExchange">
           <Parameter Name="CompanyCode" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="DisableMailbox">
+            <Parameter Name="UserPrincipalName" Mode="In" Type="String" />
           </FunctionImport>
         </EntityContainer>
         <EntityType Name="ApiAccess">
@@ -1010,6 +1018,8 @@ warning 6002: The table/view 'CloudPanel.dbo.UserPlans' does not have a primary 
           <Property Name="Created" Type="DateTime" Precision="3" />
           <Property Name="AdditionalMB" Type="Int32" />
           <Property Name="ActiveSyncPlan" Type="Int32" />
+          <Property Name="IsEnabled" Type="Boolean" />
+          <Property Name="ExchArchivePlan" Type="Int32" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1468,6 +1478,8 @@ warning 6002: The table/view 'CloudPanel.dbo.UserPlans' does not have a primary 
           <EntitySetMapping Name="Users">
             <EntityTypeMapping TypeName="CloudPanel.Modules.Common.Database.User">
               <MappingFragment StoreEntitySet="Users">
+                <ScalarProperty Name="ExchArchivePlan" ColumnName="ExchArchivePlan" />
+                <ScalarProperty Name="IsEnabled" ColumnName="IsEnabled" />
                 <ScalarProperty Name="ID" ColumnName="ID" />
                 <ScalarProperty Name="UserGuid" ColumnName="UserGuid" />
                 <ScalarProperty Name="CompanyCode" ColumnName="CompanyCode" />
@@ -1493,6 +1505,7 @@ warning 6002: The table/view 'CloudPanel.dbo.UserPlans' does not have a primary 
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="DeleteUser" FunctionName="CloudPanelModel.Store.DeleteUser" />
           <FunctionImportMapping FunctionImportName="DisableExchange" FunctionName="CloudPanelModel.Store.DisableExchange" />
+          <FunctionImportMapping FunctionImportName="DisableMailbox" FunctionName="CloudPanelModel.Store.DisableMailbox" />
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

@@ -52,6 +52,7 @@
     <Compile Include="Exchange\MailAliasObject.cs" />
     <Compile Include="Exchange\MailContactObject.cs" />
     <Compile Include="Exchange\RecipientFilters.cs" />
+    <Compile Include="Plans\ArchivePlanObject.cs" />
     <Compile Include="Plans\CompanyPlanObject.cs" />
     <Compile Include="Plans\MailboxPlanObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

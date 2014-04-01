@@ -28,7 +28,10 @@ namespace CloudPanel.Template
 
                 SetSessionTimeout();
 
-                imgLoggedInUser.ImageUrl = string.Format("~/company/services/UserPhotoHandler.ashx?id={0}", WebSessionHandler.Username);
+                if (!IsPostBack)
+                {
+                    imgLoggedInUser.ImageUrl = string.Format("~/company/services/UserPhotoHandler.ashx?id={0}", WebSessionHandler.Username);
+                }
             }
         }
 
