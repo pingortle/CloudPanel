@@ -46,7 +46,7 @@
                                                 </button>
                                                 <ul class="dropdown-menu" role="menu">
                                                     <li>
-                                                        <asp:LinkButton ID="lnkDelete" runat="server" CommandName="Delete" CommandArgument='<%# Eval("DistinguishedName") %>'><%= Resources.LocalizedText.ExchangeContact_Delete %></asp:LinkButton>
+                                                        <asp:LinkButton ID="lnkDelete" runat="server" CommandName="Delete" CommandArgument='<%# Eval("DistinguishedName") %>' OnClientClick="return DeleteConfirm();"><%= Resources.LocalizedText.ExchangeContact_Delete %></asp:LinkButton>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -116,4 +116,9 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="cphJavascript" runat="server">
+    <script type="text/javascript">
+        function DeleteConfirm() {
+            return confirm('<%= Resources.LocalizedText.Global_ConfirmDeletePlan %>');
+        }
+    </script>
 </asp:Content>

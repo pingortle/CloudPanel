@@ -6,7 +6,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMainPanel" runat="server">
     <div class="pageheader">
-        <h2><i class="fa fa-pencil-square"></i>Companies</h2>
+        <h2><i class="fa fa-pencil-square"></i><%= Resources.LocalizedText.PlanCompany_Title %></h2>
     </div>
 
     <div class="contentpanel">

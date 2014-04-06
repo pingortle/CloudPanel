@@ -60,7 +60,7 @@
                                                         <a href="#" data-toggle="modal" data-target=".resetpwd-modal" onclick="SetResetPwd('<%#Eval("UserPrincipalName") %>')">Reset Password</a>
                                                     </li>
                                                     <li>
-                                                        <asp:LinkButton ID="lnkDelete" runat="server" CommandName="Delete" CommandArgument='<%# Eval("UserPrincipalName") %>'><%= Resources.LocalizedText.Users_Delete %></asp:LinkButton>
+                                                        <asp:LinkButton ID="lnkDelete" runat="server" CommandName="Delete" CommandArgument='<%# Eval("UserPrincipalName") %>' OnClientClick="return DeleteConfirm();"><%= Resources.LocalizedText.Users_Delete %></asp:LinkButton>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -711,6 +711,10 @@
 
         var selected = "";
         var currentSize = "<%= _currentMailboxSize %>";
+
+        function DeleteConfirm() {
+            return confirm('<%= Resources.LocalizedText.Global_ConfirmDeletePlan %>');
+        }
 
         jQuery(document).ready(function () {
 

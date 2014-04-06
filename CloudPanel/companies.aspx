@@ -77,7 +77,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Companies_CompanyName %> <span class="asterisk">*</span></label>
                             <div class="col-sm-4">
-                                <asp:TextBox ID="txtName" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="txtName" runat="server" CssClass="form-control" required></asp:TextBox>
                                 <div class="ckbox ckbox-success">
                                     <asp:CheckBox ID="cbUseCompanyName" runat="server" />
                                     <label for='<%= cbUseCompanyName.ClientID %>'> <%= Resources.LocalizedText.Companies_UseUniqueID %></label>
@@ -422,12 +422,32 @@
 
 <asp:Content ID="Content3" ContentPlaceHolderID="cphJavascript" runat="server">
     <script src='<%= this.ResolveClientUrl("~/js/chosen.jquery.min.js") %>'></script>
+    <script src='<%= this.ResolveClientUrl("~/js/jquery.validate.min.js") %>'></script>
+    <script src='<%= this.ResolveClientUrl("~/js/jquery.validate.valDomain.js") %>'></script>
+
     <script type="text/javascript">
 
         jQuery(document).ready(function () {
 
             // Chosen Select
             jQuery(".chosen-select").chosen({ 'width': '100%', 'white-space': 'nowrap' });
+            
+            $("#<%= btnSubmit.ClientID %>").click(function() {
+                $("#form1").validate({
+                    rules: {
+                        <%= txtDomainName.UniqueID %>: { valDomain: true, required: true }
+                    },
+                    errorPlacement: function() { return false; },
+                    highlight: function (element, errorClass, validClass) {
+                        $(element).parents('.form-group').removeClass('has-success');
+                        $(element).parents('.form-group').addClass('has-error');
+                    },
+                    unhighlight: function (element, errorClass, validClass) {
+                        $(element).parents('.form-group').removeClass('has-error');
+                        $(element).parents('.form-group').addClass('has-success');
+                    }
+                });
+            });
 
         });
 

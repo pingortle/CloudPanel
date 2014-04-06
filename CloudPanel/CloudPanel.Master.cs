@@ -23,6 +23,8 @@ namespace CloudPanel.Template
             else
             {
                 // Check if user is authenticated
+#if DEBUG
+#else
                 if (!WebSessionHandler.IsLoggedIn)
                     Response.Redirect("~/login.aspx", true);
 
@@ -32,6 +34,7 @@ namespace CloudPanel.Template
                 {
                     imgLoggedInUser.ImageUrl = string.Format("~/company/services/UserPhotoHandler.ashx?id={0}", WebSessionHandler.Username);
                 }
+#endif
             }
         }
 

@@ -880,6 +880,33 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete this plan?.
+        /// </summary>
+        internal static string Global_ConfirmDeletePlan {
+            get {
+                return ResourceManager.GetString("Global_ConfirmDeletePlan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to The domain you have entered is invalid.
+        /// </summary>
+        internal static string Global_InvalidDomain {
+            get {
+                return ResourceManager.GetString("Global_InvalidDomain", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to delete the plan because it is currently in use.
+        /// </summary>
+        internal static string Global_PlanInUse {
+            get {
+                return ResourceManager.GetString("Global_PlanInUse", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Your IP address has been blocked because of too many failed login attempts. Please try again later..
         /// </summary>
         internal static string Login_BruteForceBlocked {
@@ -1438,11 +1465,326 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Company Plans.
+        /// </summary>
+        internal static string PlanCompany_Title {
+            get {
+                return ResourceManager.GetString("PlanCompany_Title", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Unable to find the plan you selected in the database. Please contact support..
         /// </summary>
         internal static string PlanCompany_UpdatePlanNotFound {
             get {
                 return ResourceManager.GetString("PlanCompany_UpdatePlanNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to If you want to associate this plan with a single company then select from this list. Otherwise leave it at the first option and all companies will have access to use this plan..
+        /// </summary>
+        internal static string PlanMailbox_CompanyCodeInfo {
+            get {
+                return ResourceManager.GetString("PlanMailbox_CompanyCodeInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Cost for Hoster.
+        /// </summary>
+        internal static string PlanMailbox_CostForHoster {
+            get {
+                return ResourceManager.GetString("PlanMailbox_CostForHoster", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Description.
+        /// </summary>
+        internal static string PlanMailbox_Description {
+            get {
+                return ResourceManager.GetString("PlanMailbox_Description", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Put a detailed description so when companies select this plan they can see exactly what all it includes.
+        /// </summary>
+        internal static string PlanMailbox_DescriptionInfo {
+            get {
+                return ResourceManager.GetString("PlanMailbox_DescriptionInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Display Name.
+        /// </summary>
+        internal static string PlanMailbox_DisplayName {
+            get {
+                return ResourceManager.GetString("PlanMailbox_DisplayName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to This is the display name that will be viewable to all companies that have access to this plan.
+        /// </summary>
+        internal static string PlanMailbox_DisplayNameInfo {
+            get {
+                return ResourceManager.GetString("PlanMailbox_DisplayNameInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable Activesync.
+        /// </summary>
+        internal static string PlanMailbox_EnableActivesync {
+            get {
+                return ResourceManager.GetString("PlanMailbox_EnableActivesync", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable ECP.
+        /// </summary>
+        internal static string PlanMailbox_EnableECP {
+            get {
+                return ResourceManager.GetString("PlanMailbox_EnableECP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable IMAP.
+        /// </summary>
+        internal static string PlanMailbox_EnableIMAP {
+            get {
+                return ResourceManager.GetString("PlanMailbox_EnableIMAP", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable Outlook.
+        /// </summary>
+        internal static string PlanMailbox_EnableOutlook {
+            get {
+                return ResourceManager.GetString("PlanMailbox_EnableOutlook", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable OWA.
+        /// </summary>
+        internal static string PlanMailbox_EnableOWA {
+            get {
+                return ResourceManager.GetString("PlanMailbox_EnableOWA", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Enable POP3.
+        /// </summary>
+        internal static string PlanMailbox_EnablePOP3 {
+            get {
+                return ResourceManager.GetString("PlanMailbox_EnablePOP3", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Features.
+        /// </summary>
+        internal static string PlanMailbox_Features {
+            get {
+                return ResourceManager.GetString("PlanMailbox_Features", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Keep Deleted Items.
+        /// </summary>
+        internal static string PlanMailbox_KeepDeletedItems {
+            get {
+                return ResourceManager.GetString("PlanMailbox_KeepDeletedItems", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Specifies the length of time to keep deleted items.
+        /// </summary>
+        internal static string PlanMailbox_KeepDeletedItemsInfo {
+            get {
+                return ResourceManager.GetString("PlanMailbox_KeepDeletedItemsInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Mailbox Size.
+        /// </summary>
+        internal static string PlanMailbox_MailboxSize {
+            get {
+                return ResourceManager.GetString("PlanMailbox_MailboxSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max Mailbox Size.
+        /// </summary>
+        internal static string PlanMailbox_MaxMailboxSize {
+            get {
+                return ResourceManager.GetString("PlanMailbox_MaxMailboxSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Specifies the maximum mailbox size at which the user associated can increase their mailbox to without changing mailbox plans in megabytes.
+        /// </summary>
+        internal static string PlanMailbox_MaxMailboxSizeInfo {
+            get {
+                return ResourceManager.GetString("PlanMailbox_MaxMailboxSizeInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max Receive Size.
+        /// </summary>
+        internal static string PlanMailbox_MaxReceiveSize {
+            get {
+                return ResourceManager.GetString("PlanMailbox_MaxReceiveSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Specifies the maximum size of messages that this mailbox can receive in kilobytes.
+        /// </summary>
+        internal static string PlanMailbox_MaxReceiveSizeInfo {
+            get {
+                return ResourceManager.GetString("PlanMailbox_MaxReceiveSizeInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max Recipients.
+        /// </summary>
+        internal static string PlanMailbox_MaxRecipients {
+            get {
+                return ResourceManager.GetString("PlanMailbox_MaxRecipients", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Specifies the maximum number of recipients per message to which this mailbox can send..
+        /// </summary>
+        internal static string PlanMailbox_MaxRecipientsInfo {
+            get {
+                return ResourceManager.GetString("PlanMailbox_MaxRecipientsInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Max Send Size.
+        /// </summary>
+        internal static string PlanMailbox_MaxSendSize {
+            get {
+                return ResourceManager.GetString("PlanMailbox_MaxSendSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Specifies the maximum size of messages that this mailbox can send in kilobytes.
+        /// </summary>
+        internal static string PlanMailbox_MaxSendSizeInfo {
+            get {
+                return ResourceManager.GetString("PlanMailbox_MaxSendSizeInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Specifies the mailbox size at which the user associated with this mailbox can no longer send or receive messages in megabytes.
+        /// </summary>
+        internal static string PlanMailbox_MinMailboxSizeInfo {
+            get {
+                return ResourceManager.GetString("PlanMailbox_MinMailboxSizeInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plan.
+        /// </summary>
+        internal static string PlanMailbox_Plan {
+            get {
+                return ResourceManager.GetString("PlanMailbox_Plan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Select a plan to view/update or leave it at the first option to create a new plan.
+        /// </summary>
+        internal static string PlanMailbox_PlanInfo {
+            get {
+                return ResourceManager.GetString("PlanMailbox_PlanInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Plan Settings.
+        /// </summary>
+        internal static string PlanMailbox_PlanSettings {
+            get {
+                return ResourceManager.GetString("PlanMailbox_PlanSettings", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Price for Company.
+        /// </summary>
+        internal static string PlanMailbox_PriceForCompany {
+            get {
+                return ResourceManager.GetString("PlanMailbox_PriceForCompany", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Price per extra GB.
+        /// </summary>
+        internal static string PlanMailbox_PricePerExtraGB {
+            get {
+                return ResourceManager.GetString("PlanMailbox_PricePerExtraGB", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pricing.
+        /// </summary>
+        internal static string PlanMailbox_Pricing {
+            get {
+                return ResourceManager.GetString("PlanMailbox_Pricing", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Specific Company.
+        /// </summary>
+        internal static string PlanMailbox_SpecificCompany {
+            get {
+                return ResourceManager.GetString("PlanMailbox_SpecificCompany", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Successfully saved mailbox plan.
+        /// </summary>
+        internal static string PlanMailbox_Success {
+            get {
+                return ResourceManager.GetString("PlanMailbox_Success", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Unable to find the mailbox plan in the database. Please contact support.
+        /// </summary>
+        internal static string PlanMailbox_UnableToFind {
+            get {
+                return ResourceManager.GetString("PlanMailbox_UnableToFind", resourceCulture);
             }
         }
         

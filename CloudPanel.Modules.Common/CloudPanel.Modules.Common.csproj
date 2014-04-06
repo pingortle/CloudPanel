@@ -173,6 +173,7 @@
     <Compile Include="ViewModel\IViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
     <Compile Include="ViewModel\PlanCompanyViewModel.cs" />
+    <Compile Include="ViewModel\PlanMailboxViewModel.cs" />
     <Compile Include="ViewModel\ResellerViewModel.cs" />
     <Compile Include="ViewModel\SearchViewModel.cs" />
     <Compile Include="ViewModel\SettingsViewModel.cs" />

@@ -48,7 +48,7 @@
                                         </button>
                                         <ul class="dropdown-menu" role="menu">
                                             <li>
-                                                <asp:LinkButton ID="lnkDelete" runat="server" CommandName="Delete" CommandArgument='<%# Eval("DomainName") %>'><%= Resources.LocalizedText.Buttons_Delete %></asp:LinkButton>
+                                                <asp:LinkButton ID="lnkDelete" runat="server" CommandName="Delete" CommandArgument='<%# Eval("DomainName") %>' OnClientClick="return DeleteConfirm();"><%= Resources.LocalizedText.Buttons_Delete %></asp:LinkButton>
                                             </li>
                                         </ul>
                                     </div>
@@ -81,7 +81,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Domains_DomainName %><span class="asterisk">*</span></label>
                             <div class="col-sm-4">
-                                <asp:TextBox ID="txtDomainName" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="txtDomainName" runat="server" CssClass="form-control" required></asp:TextBox>
                                 <asp:HiddenField ID="hfDomainID" runat="server" />
                             </div>
                         </div>
@@ -159,4 +159,32 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="cphJavascript" runat="server">
+    <script src='<%= this.ResolveClientUrl("~/js/jquery.validate.min.js") %>'></script>
+    <script src='<%= this.ResolveClientUrl("~/js/jquery.validate.valDomain.js") %>'></script>
+
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+            
+            $("#<%= btnSubmit.ClientID %>").click(function() {
+                $("#form1").validate({
+                    rules: {
+                        <%= txtDomainName.UniqueID %>: { valDomain: true, required: true }
+                    },
+                    errorPlacement: function() { return false; },
+                    highlight: function (element, errorClass, validClass) {
+                        $(element).parents('.form-group').removeClass('has-success');
+                        $(element).parents('.form-group').addClass('has-error');
+                    },
+                    unhighlight: function (element, errorClass, validClass) {
+                        $(element).parents('.form-group').removeClass('has-error');
+                        $(element).parents('.form-group').addClass('has-success');
+                    }
+                });
+            });
+        });
+
+        function DeleteConfirm() {
+            return confirm('<%= Resources.LocalizedText.Global_ConfirmDeletePlan %>');
+        }
+    </script>
 </asp:Content>

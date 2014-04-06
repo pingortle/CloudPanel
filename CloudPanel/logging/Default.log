@@ -1,1 +1,1265 @@
-﻿
+﻿2014-04-05 13:56:36,949 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 13:56:36,955 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 13:56:36,955 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 13:56:36,956 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 13:56:36,956 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 13:56:36,956 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 13:56:36,956 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 13:56:36,957 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 13:56:36,957 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 13:56:36,957 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 13:56:36,957 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 13:56:36,958 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 13:56:36,958 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 13:56:36,958 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 13:56:36,958 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 13:56:36,958 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 13:56:36,959 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 13:56:36,959 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 13:56:36,959 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 13:56:36,959 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 13:56:36,960 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 13:56:36,960 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 13:56:36,960 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 13:56:36,960 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 13:56:36,961 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 13:56:40,173 [13] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 13:56:40,179 [13] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 13:56:40,179 [13] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 13:56:40,179 [13] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 13:56:40,179 [13] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 13:56:40,180 [13] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 13:56:40,180 [13] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 13:56:40,180 [13] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 13:56:40,180 [13] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 13:56:40,181 [13] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 13:56:40,181 [13] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 13:56:40,181 [13] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 13:56:40,181 [13] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 13:56:40,182 [13] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 13:56:40,182 [13] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 13:56:40,182 [13] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 13:56:40,182 [13] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 13:56:40,183 [13] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 13:56:40,183 [13] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 13:56:40,183 [13] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 13:56:40,183 [13] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 13:56:40,183 [13] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 13:56:40,184 [13] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 13:56:40,184 [13] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 13:56:40,184 [13] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 14:03:32,816 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 14:03:32,822 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 14:03:32,823 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 14:03:32,823 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 14:03:32,823 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 14:03:32,823 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 14:03:32,824 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 14:03:32,824 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 14:03:32,824 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 14:03:32,824 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 14:03:32,825 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 14:03:32,825 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 14:03:32,825 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 14:03:32,825 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 14:03:32,826 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 14:03:32,826 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 14:03:32,826 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 14:03:32,826 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 14:03:32,826 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 14:03:32,827 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 14:03:32,827 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 14:03:32,827 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 14:03:32,827 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 14:03:32,828 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 14:03:32,828 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 14:10:23,444 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 14:10:23,450 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 14:10:23,451 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 14:10:23,451 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 14:10:23,451 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 14:10:23,451 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 14:10:23,451 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 14:10:23,452 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 14:10:23,452 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 14:10:23,452 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 14:10:23,452 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 14:10:23,453 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 14:10:23,453 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 14:10:23,453 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 14:10:23,453 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 14:10:23,454 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 14:10:23,454 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 14:10:23,454 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 14:10:23,454 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 14:10:23,454 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 14:10:23,455 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 14:10:23,455 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 14:10:23,455 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 14:10:23,456 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 14:10:23,456 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 14:15:23,455 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 14:15:23,461 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 14:15:23,461 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 14:15:23,461 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 14:15:23,461 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 14:15:23,462 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 14:15:23,462 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 14:15:23,462 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 14:15:23,462 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 14:15:23,462 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 14:15:23,463 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 14:15:23,463 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 14:15:23,463 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 14:15:23,463 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 14:15:23,463 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 14:15:23,464 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 14:15:23,464 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 14:15:23,464 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 14:15:23,464 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 14:15:23,465 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 14:15:23,465 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 14:15:23,465 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 14:15:23,465 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 14:15:23,466 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 14:15:23,466 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 14:26:32,879 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 14:26:32,885 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 14:26:32,885 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 14:26:32,885 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 14:26:32,886 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 14:26:32,886 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 14:26:32,886 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 14:26:32,886 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 14:26:32,886 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 14:26:32,887 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 14:26:32,887 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 14:26:32,887 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 14:26:32,887 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 14:26:32,888 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 14:26:32,888 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 14:26:32,888 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 14:26:32,888 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 14:26:32,889 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 14:26:32,889 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 14:26:32,889 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 14:26:32,889 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 14:26:32,890 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 14:26:32,890 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 14:26:32,890 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 14:26:32,890 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 14:40:22,205 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 14:40:22,211 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 14:40:22,211 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 14:40:22,211 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 14:40:22,212 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 14:40:22,212 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 14:40:22,212 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 14:40:22,212 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 14:40:22,213 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 14:40:22,213 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 14:40:22,213 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 14:40:22,213 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 14:40:22,213 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 14:40:22,213 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 14:40:22,213 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 14:40:22,213 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 14:40:22,214 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 14:40:22,214 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 14:40:22,214 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 14:40:22,214 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 14:40:22,214 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 14:40:22,215 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 14:40:22,215 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 14:40:22,215 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 14:40:22,215 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 14:46:50,516 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 14:46:50,522 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 14:46:50,523 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 14:46:50,523 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 14:46:50,523 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 14:46:50,523 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 14:46:50,524 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 14:46:50,524 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 14:46:50,524 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 14:46:50,524 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 14:46:50,525 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 14:46:50,525 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 14:46:50,525 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 14:46:50,526 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 14:46:50,526 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 14:46:50,526 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 14:46:50,526 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 14:46:50,527 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 14:46:50,527 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 14:46:50,527 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 14:46:50,527 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 14:46:50,527 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 14:46:50,528 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 14:46:50,528 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 14:46:50,528 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 14:48:37,246 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 14:48:37,252 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 14:48:37,253 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 14:48:37,253 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 14:48:37,253 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 14:48:37,254 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 14:48:37,254 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 14:48:37,254 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 14:48:37,254 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 14:48:37,254 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 14:48:37,255 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 14:48:37,255 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 14:48:37,255 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 14:48:37,255 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 14:48:37,256 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 14:48:37,256 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 14:48:37,256 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 14:48:37,256 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 14:48:37,257 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 14:48:37,257 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 14:48:37,257 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 14:48:37,257 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 14:48:37,258 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 14:48:37,258 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 14:48:37,258 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 15:03:08,174 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 15:03:08,179 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 15:03:08,179 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 15:03:08,179 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 15:03:08,180 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 15:03:08,180 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 15:03:08,180 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 15:03:08,181 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 15:03:08,181 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 15:03:08,181 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 15:03:08,181 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 15:03:08,182 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 15:03:08,182 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 15:03:08,182 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 15:03:08,182 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 15:03:08,183 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 15:03:08,183 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 15:03:08,183 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 15:03:08,183 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 15:03:08,184 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 15:03:08,184 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 15:03:08,184 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 15:03:08,184 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 15:03:08,185 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 15:03:08,185 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 15:13:40,556 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 15:13:40,562 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 15:13:40,562 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 15:13:40,562 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 15:13:40,563 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 15:13:40,563 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 15:13:40,563 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 15:13:40,563 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 15:13:40,564 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 15:13:40,564 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 15:13:40,564 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 15:13:40,564 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 15:13:40,565 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 15:13:40,565 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 15:13:40,565 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 15:13:40,565 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 15:13:40,566 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 15:13:40,566 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 15:13:40,566 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 15:13:40,566 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 15:13:40,567 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 15:13:40,567 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 15:13:40,567 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 15:13:40,567 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 15:13:40,567 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 15:18:10,174 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 15:18:10,181 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 15:18:10,181 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 15:18:10,181 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 15:18:10,182 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 15:18:10,182 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 15:18:10,182 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 15:18:10,183 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 15:18:10,183 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 15:18:10,183 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 15:18:10,184 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 15:18:10,184 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 15:18:10,184 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 15:18:10,184 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 15:18:10,185 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 15:18:10,185 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 15:18:10,185 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 15:18:10,186 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 15:18:10,186 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Currency Symbol: $
+2014-04-05 15:18:10,186 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 15:18:10,186 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 15:18:10,187 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 15:18:10,187 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 15:18:10,187 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 15:18:10,187 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 15:18:10,188 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 15:19:08,370 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 15:19:08,376 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 15:19:08,376 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 15:19:08,377 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 15:19:08,377 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 15:19:08,377 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 15:19:08,378 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 15:19:08,378 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 15:19:08,378 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 15:19:08,378 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 15:19:08,379 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 15:19:08,379 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 15:19:08,379 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 15:19:08,379 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 15:19:08,380 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 15:19:08,380 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 15:19:08,380 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 15:19:08,380 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 15:19:08,381 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Currency Symbol: $
+2014-04-05 15:19:08,381 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 15:19:08,381 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 15:19:08,381 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 15:19:08,382 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 15:19:08,382 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 15:19:08,382 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 15:19:08,382 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 15:33:28,039 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 15:33:28,045 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 15:33:28,045 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 15:33:28,046 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 15:33:28,046 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 15:33:28,046 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 15:33:28,046 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 15:33:28,047 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 15:33:28,047 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 15:33:28,047 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 15:33:28,047 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 15:33:28,048 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 15:33:28,048 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 15:33:28,048 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 15:33:28,048 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 15:33:28,049 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 15:33:28,049 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 15:33:28,049 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 15:33:28,049 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Currency Symbol: $
+2014-04-05 15:33:28,050 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 15:33:28,050 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 15:33:28,050 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 15:33:28,050 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 15:33:28,051 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 15:33:28,051 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 15:33:28,051 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 15:35:38,209 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 15:35:38,215 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 15:35:38,215 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 15:35:38,215 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 15:35:38,216 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 15:35:38,216 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 15:35:38,216 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 15:35:38,216 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 15:35:38,217 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 15:35:38,217 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 15:35:38,217 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 15:35:38,217 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 15:35:38,218 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 15:35:38,218 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 15:35:38,218 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 15:35:38,218 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 15:35:38,219 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 15:35:38,219 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 15:35:38,219 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Currency Symbol: $
+2014-04-05 15:35:38,219 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 15:35:38,220 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 15:35:38,220 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 15:35:38,220 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 15:35:38,220 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 15:35:38,220 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 15:35:38,220 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 15:38:21,877 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 15:38:21,883 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 15:38:21,884 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 15:38:21,884 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 15:38:21,884 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 15:38:21,884 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 15:38:21,885 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 15:38:21,885 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 15:38:21,885 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 15:38:21,886 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 15:38:21,886 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 15:38:21,886 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 15:38:21,887 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 15:38:21,887 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 15:38:21,887 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 15:38:21,888 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 15:38:21,888 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 15:38:21,888 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 15:38:21,888 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Currency Symbol: $
+2014-04-05 15:38:21,888 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 15:38:21,888 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 15:38:21,888 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 15:38:21,888 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 15:38:21,889 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 15:38:21,889 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 15:38:21,889 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 15:43:25,029 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 15:43:25,035 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 15:43:25,035 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 15:43:25,035 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 15:43:25,035 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 15:43:25,036 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 15:43:25,036 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 15:43:25,036 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 15:43:25,036 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 15:43:25,037 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 15:43:25,037 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 15:43:25,037 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 15:43:25,037 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 15:43:25,038 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 15:43:25,038 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 15:43:25,038 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 15:43:25,038 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 15:43:25,038 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 15:43:25,039 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Currency Symbol: $
+2014-04-05 15:43:25,039 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 15:43:25,039 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 15:43:25,039 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 15:43:25,040 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 15:43:25,040 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 15:43:25,040 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 15:43:25,040 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 15:47:30,772 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 15:47:30,777 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 15:47:30,778 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 15:47:30,778 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 15:47:30,778 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 15:47:30,778 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 15:47:30,779 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 15:47:30,779 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 15:47:30,779 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 15:47:30,779 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 15:47:30,780 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 15:47:30,780 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 15:47:30,780 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 15:47:30,780 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 15:47:30,781 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 15:47:30,781 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 15:47:30,781 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 15:47:30,781 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 15:47:30,782 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Currency Symbol: $
+2014-04-05 15:47:30,782 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 15:47:30,782 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 15:47:30,782 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 15:47:30,783 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 15:47:30,783 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 15:47:30,783 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 15:47:30,783 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 15:52:32,117 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 15:52:32,122 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 15:52:32,122 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 15:52:32,123 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 15:52:32,123 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 15:52:32,123 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 15:52:32,123 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 15:52:32,123 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 15:52:32,124 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 15:52:32,124 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 15:52:32,124 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 15:52:32,124 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 15:52:32,125 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 15:52:32,125 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 15:52:32,125 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 15:52:32,125 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 15:52:32,126 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 15:52:32,126 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 15:52:32,126 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Currency Symbol: $
+2014-04-05 15:52:32,126 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 15:52:32,127 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 15:52:32,127 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 15:52:32,127 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 15:52:32,127 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 15:52:32,128 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 15:52:32,128 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 16:00:08,695 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 16:00:08,701 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 16:00:08,702 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 16:00:08,702 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 16:00:08,703 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 16:00:08,703 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 16:00:08,703 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 16:00:08,703 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 16:00:08,704 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 16:00:08,704 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 16:00:08,704 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 16:00:08,704 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 16:00:08,705 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 16:00:08,705 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 16:00:08,705 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 16:00:08,705 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 16:00:08,706 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 16:00:08,706 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 16:00:08,706 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Currency Symbol: $
+2014-04-05 16:00:08,706 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 16:00:08,707 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 16:00:08,707 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 16:00:08,707 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 16:00:08,707 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 16:00:08,708 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 16:00:08,708 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 16:00:13,676 [5] ERROR CloudPanel.Modules.Common.ViewModel.PlanMailboxViewModel Error retrieving mailbox plans
+System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   at System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.<GetElementFunction>b__0[TResult](IEnumerable`1 sequence)
+   at System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.ExecuteSingle[TResult](IEnumerable`1 query, Expression queryRoot)
+   at System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.System.Linq.IQueryProvider.Execute[TResult](Expression expression)
+   at System.Data.Entity.Internal.Linq.DbQueryProvider.Execute[TResult](Expression expression)
+   at System.Linq.Queryable.First[TSource](IQueryable`1 source)
+   at CloudPanel.Modules.Common.ViewModel.PlanMailboxViewModel.GetPlan(Int32 planID) in c:\Users\Jacob\Source\Repos\CloudPanel\CloudPanel.Modules.Common\ViewModel\PlanMailboxViewModel.cs:line 72
+2014-04-05 16:01:23,629 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 16:01:23,635 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 16:01:23,635 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 16:01:23,635 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 16:01:23,636 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 16:01:23,636 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 16:01:23,636 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 16:01:23,637 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 16:01:23,637 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 16:01:23,637 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 16:01:23,637 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 16:01:23,638 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 16:01:23,638 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 16:01:23,638 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 16:01:23,638 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 16:01:23,638 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 16:01:23,639 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 16:01:23,639 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 16:01:23,639 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Currency Symbol: $
+2014-04-05 16:01:23,639 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 16:01:23,640 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 16:01:23,640 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 16:01:23,640 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 16:01:23,640 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 16:01:23,640 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 16:01:23,641 [44] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 16:02:24,345 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 16:02:24,351 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 16:02:24,351 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 16:02:24,351 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 16:02:24,351 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 16:02:24,352 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 16:02:24,352 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 16:02:24,352 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 16:02:24,352 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 16:02:24,353 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 16:02:24,353 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 16:02:24,353 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 16:02:24,354 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 16:02:24,354 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 16:02:24,354 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 16:02:24,354 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 16:02:24,355 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 16:02:24,355 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 16:02:24,355 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Currency Symbol: $
+2014-04-05 16:02:24,355 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 16:02:24,356 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 16:02:24,356 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 16:02:24,356 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 16:02:24,356 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 16:02:24,356 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 16:02:24,357 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 16:02:35,923 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 16:02:35,929 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 16:02:35,929 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 16:02:35,930 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 16:02:35,930 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 16:02:35,930 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 16:02:35,930 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 16:02:35,931 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 16:02:35,931 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 16:02:35,931 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 16:02:35,931 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 16:02:35,932 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 16:02:35,932 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 16:02:35,932 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 16:02:35,933 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 16:02:35,933 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 16:02:35,933 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 16:02:35,933 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 16:02:35,934 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Currency Symbol: $
+2014-04-05 16:02:35,934 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 16:02:35,934 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 16:02:35,934 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 16:02:35,935 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 16:02:35,935 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 16:02:35,935 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 16:02:35,935 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 16:03:40,603 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 16:03:40,608 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 16:03:40,608 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 16:03:40,608 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 16:03:40,609 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 16:03:40,609 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 16:03:40,609 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 16:03:40,609 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 16:03:40,609 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 16:03:40,610 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 16:03:40,610 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 16:03:40,610 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 16:03:40,610 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 16:03:40,611 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 16:03:40,611 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 16:03:40,611 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 16:03:40,611 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 16:03:40,611 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 16:03:40,612 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Currency Symbol: $
+2014-04-05 16:03:40,612 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 16:03:40,612 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 16:03:40,612 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 16:03:40,613 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 16:03:40,613 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 16:03:40,613 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 16:03:40,613 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 16:04:08,592 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 16:04:08,598 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 16:04:08,598 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 16:04:08,598 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 16:04:08,599 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 16:04:08,599 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 16:04:08,599 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 16:04:08,600 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 16:04:08,600 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 16:04:08,600 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 16:04:08,600 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 16:04:08,601 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 16:04:08,601 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 16:04:08,601 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 16:04:08,601 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 16:04:08,601 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 16:04:08,602 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 16:04:08,602 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 16:04:08,602 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Currency Symbol: $
+2014-04-05 16:04:08,602 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 16:04:08,603 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 16:04:08,603 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 16:04:08,603 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 16:04:08,603 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 16:04:08,604 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 16:04:08,604 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 16:52:09,767 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 16:52:09,773 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 16:52:09,773 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 16:52:09,773 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 16:52:09,774 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 16:52:09,774 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 16:52:09,774 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 16:52:09,775 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 16:52:09,775 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 16:52:09,775 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 16:52:09,775 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 16:52:09,776 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 16:52:09,776 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 16:52:09,776 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 16:52:09,776 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 16:52:09,777 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 16:52:09,777 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 16:52:09,777 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 16:52:09,778 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Currency Symbol: $
+2014-04-05 16:52:09,778 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 16:52:09,778 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 16:52:09,778 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 16:52:09,779 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 16:52:09,779 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 16:52:09,779 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 16:52:09,779 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 16:53:42,223 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 16:53:42,229 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 16:53:42,229 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 16:53:42,229 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 16:53:42,230 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 16:53:42,230 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 16:53:42,230 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 16:53:42,230 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 16:53:42,231 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 16:53:42,231 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 16:53:42,231 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 16:53:42,231 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 16:53:42,232 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 16:53:42,232 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 16:53:42,232 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 16:53:42,232 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 16:53:42,233 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 16:53:42,233 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 16:53:42,233 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Currency Symbol: $
+2014-04-05 16:53:42,233 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 16:53:42,233 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 16:53:42,234 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 16:53:42,234 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 16:53:42,234 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 16:53:42,234 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 16:53:42,235 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 16:55:06,381 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 16:55:06,387 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 16:55:06,387 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 16:55:06,388 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 16:55:06,388 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 16:55:06,388 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 16:55:06,388 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 16:55:06,389 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 16:55:06,389 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 16:55:06,389 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 16:55:06,389 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 16:55:06,390 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 16:55:06,390 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 16:55:06,390 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 16:55:06,390 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 16:55:06,391 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 16:55:06,391 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 16:55:06,391 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 16:55:06,391 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Currency Symbol: $
+2014-04-05 16:55:06,392 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 16:55:06,392 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 16:55:06,392 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 16:55:06,393 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 16:55:06,393 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 16:55:06,393 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 16:55:06,393 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 16:57:57,695 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 16:57:57,701 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 16:57:57,701 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 16:57:57,701 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 16:57:57,702 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 16:57:57,702 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 16:57:57,703 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 16:57:57,703 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 16:57:57,703 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 16:57:57,703 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 16:57:57,703 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 16:57:57,703 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 16:57:57,703 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 16:57:57,704 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 16:57:57,704 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 16:57:57,704 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 16:57:57,705 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 16:57:57,705 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 16:57:57,705 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Currency Symbol: $
+2014-04-05 16:57:57,706 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 16:57:57,706 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 16:57:57,706 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 16:57:57,706 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 16:57:57,707 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 16:57:57,707 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 16:57:57,707 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 17:03:32,517 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 17:03:32,523 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 17:03:32,523 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 17:03:32,524 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 17:03:32,524 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 17:03:32,524 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 17:03:32,524 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 17:03:32,525 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 17:03:32,525 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 17:03:32,525 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 17:03:32,525 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 17:03:32,526 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 17:03:32,526 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 17:03:32,526 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 17:03:32,526 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 17:03:32,527 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 17:03:32,527 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 17:03:32,527 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 17:03:32,527 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Currency Symbol: $
+2014-04-05 17:03:32,528 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 17:03:32,528 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 17:03:32,528 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 17:03:32,528 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 17:03:32,529 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 17:03:32,529 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 17:03:32,529 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 17:04:24,619 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 17:04:24,624 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 17:04:24,625 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 17:04:24,625 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 17:04:24,625 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 17:04:24,626 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 17:04:24,626 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 17:04:24,626 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 17:04:24,626 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 17:04:24,626 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 17:04:24,627 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 17:04:24,627 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 17:04:24,627 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 17:04:24,628 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 17:04:24,628 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 17:04:24,628 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 17:04:24,628 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 17:04:24,629 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 17:04:24,629 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Currency Symbol: $
+2014-04-05 17:04:24,629 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 17:04:24,629 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 17:04:24,630 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 17:04:24,630 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 17:04:24,630 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 17:04:24,630 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 17:04:24,630 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 17:18:03,493 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 17:18:03,498 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 17:18:03,499 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 17:18:03,499 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 17:18:03,499 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 17:18:03,500 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 17:18:03,500 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 17:18:03,500 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 17:18:03,501 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 17:18:03,501 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 17:18:03,501 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 17:18:03,501 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 17:18:03,502 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 17:18:03,502 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 17:18:03,502 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 17:18:03,503 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 17:18:03,503 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 17:18:03,503 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 17:18:03,503 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Currency Symbol: $
+2014-04-05 17:18:03,504 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 17:18:03,504 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 17:18:03,504 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 17:18:03,504 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 17:18:03,504 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 17:18:03,505 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 17:18:03,505 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 17:23:03,134 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 17:23:03,136 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 17:23:03,137 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 17:23:03,137 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 17:23:03,137 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 17:23:03,137 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 17:23:03,137 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 17:23:03,138 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 17:23:03,138 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 17:23:03,138 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 17:23:03,138 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 17:23:03,138 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 17:23:03,138 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 17:23:03,138 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 17:23:03,139 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 17:23:03,139 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 17:23:03,139 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 17:23:03,139 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 17:23:03,139 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Currency Symbol: $
+2014-04-05 17:23:03,139 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 17:23:03,139 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 17:23:03,139 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 17:23:03,140 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 17:23:03,140 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 17:23:03,140 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 17:23:03,140 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 17:23:29,983 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 17:23:29,988 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 17:23:29,988 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 17:23:29,988 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 17:23:29,989 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 17:23:29,989 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 17:23:29,989 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 17:23:29,989 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 17:23:29,989 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 17:23:29,990 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 17:23:29,990 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 17:23:29,990 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 17:23:29,990 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 17:23:29,991 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 17:23:29,991 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 17:23:29,991 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 17:23:29,991 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 17:23:29,991 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 17:23:29,991 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Currency Symbol: $
+2014-04-05 17:23:29,992 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 17:23:29,992 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 17:23:29,992 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 17:23:29,992 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 17:23:29,993 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 17:23:29,993 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 17:23:29,993 [45] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 17:25:08,352 [26] ERROR CloudPanel.Modules.Common.ViewModel.DomainsViewModel Failed to add domain test.com to company 
+System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   at System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.<GetElementFunction>b__0[TResult](IEnumerable`1 sequence)
+   at System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.ExecuteSingle[TResult](IEnumerable`1 query, Expression queryRoot)
+   at System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.System.Linq.IQueryProvider.Execute[TResult](Expression expression)
+   at System.Data.Entity.Internal.Linq.DbQueryProvider.Execute[TResult](Expression expression)
+   at System.Linq.Queryable.First[TSource](IQueryable`1 source)
+   at CloudPanel.Modules.Common.ViewModel.DomainsViewModel.AddDomain(String domainName, String companyCode, Boolean isDefault, Boolean isExchangeEnabled, DomainType domainType) in c:\Users\Jacob\Source\Repos\CloudPanel\CloudPanel.Modules.Common\ViewModel\DomainsViewModel.cs:line 107
+2014-04-05 17:25:21,498 [47] ERROR CloudPanel.Modules.Common.ViewModel.DomainsViewModel Failed to add domain asdfsdaf.LAKJSDLFKJASDF to company 
+System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   at System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.<GetElementFunction>b__0[TResult](IEnumerable`1 sequence)
+   at System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.ExecuteSingle[TResult](IEnumerable`1 query, Expression queryRoot)
+   at System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.System.Linq.IQueryProvider.Execute[TResult](Expression expression)
+   at System.Data.Entity.Internal.Linq.DbQueryProvider.Execute[TResult](Expression expression)
+   at System.Linq.Queryable.First[TSource](IQueryable`1 source)
+   at CloudPanel.Modules.Common.ViewModel.DomainsViewModel.AddDomain(String domainName, String companyCode, Boolean isDefault, Boolean isExchangeEnabled, DomainType domainType) in c:\Users\Jacob\Source\Repos\CloudPanel\CloudPanel.Modules.Common\ViewModel\DomainsViewModel.cs:line 107
+2014-04-05 17:32:02,621 [47] ERROR CloudPanel.Modules.Common.ViewModel.DomainsViewModel Failed to add domain asdf to company 
+System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   at System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.<GetElementFunction>b__0[TResult](IEnumerable`1 sequence)
+   at System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.ExecuteSingle[TResult](IEnumerable`1 query, Expression queryRoot)
+   at System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.System.Linq.IQueryProvider.Execute[TResult](Expression expression)
+   at System.Data.Entity.Internal.Linq.DbQueryProvider.Execute[TResult](Expression expression)
+   at System.Linq.Queryable.First[TSource](IQueryable`1 source)
+   at CloudPanel.Modules.Common.ViewModel.DomainsViewModel.AddDomain(String domainName, String companyCode, Boolean isDefault, Boolean isExchangeEnabled, DomainType domainType) in c:\Users\Jacob\Source\Repos\CloudPanel\CloudPanel.Modules.Common\ViewModel\DomainsViewModel.cs:line 107
+2014-04-05 17:32:18,396 [28] ERROR CloudPanel.Modules.Common.ViewModel.DomainsViewModel Failed to add domain asdf to company 
+System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   at System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.<GetElementFunction>b__0[TResult](IEnumerable`1 sequence)
+   at System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.ExecuteSingle[TResult](IEnumerable`1 query, Expression queryRoot)
+   at System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.System.Linq.IQueryProvider.Execute[TResult](Expression expression)
+   at System.Data.Entity.Internal.Linq.DbQueryProvider.Execute[TResult](Expression expression)
+   at System.Linq.Queryable.First[TSource](IQueryable`1 source)
+   at CloudPanel.Modules.Common.ViewModel.DomainsViewModel.AddDomain(String domainName, String companyCode, Boolean isDefault, Boolean isExchangeEnabled, DomainType domainType) in c:\Users\Jacob\Source\Repos\CloudPanel\CloudPanel.Modules.Common\ViewModel\DomainsViewModel.cs:line 107
+2014-04-05 17:38:03,517 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 17:38:03,523 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 17:38:03,523 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 17:38:03,523 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 17:38:03,524 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 17:38:03,524 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 17:38:03,524 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 17:38:03,524 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 17:38:03,525 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 17:38:03,525 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 17:38:03,525 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 17:38:03,525 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 17:38:03,526 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 17:38:03,526 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 17:38:03,526 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 17:38:03,526 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 17:38:03,526 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 17:38:03,527 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 17:38:03,527 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Currency Symbol: $
+2014-04-05 17:38:03,527 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 17:38:03,527 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 17:38:03,528 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 17:38:03,528 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 17:38:03,528 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 17:38:03,529 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 17:38:03,529 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 17:42:20,181 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 17:42:20,183 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 17:42:20,183 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 17:42:20,183 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 17:42:20,183 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 17:42:20,184 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 17:42:20,184 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 17:42:20,184 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 17:42:20,184 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 17:42:20,184 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 17:42:20,184 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 17:42:20,184 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 17:42:20,185 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 17:42:20,185 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 17:42:20,185 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 17:42:20,185 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 17:42:20,185 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 17:42:20,185 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 17:42:20,186 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Currency Symbol: $
+2014-04-05 17:42:20,186 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 17:42:20,186 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 17:42:20,186 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 17:42:20,186 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 17:42:20,186 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 17:42:20,187 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 17:42:20,187 [1] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 17:47:20,128 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 17:47:20,130 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 17:47:20,130 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 17:47:20,130 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 17:47:20,130 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 17:47:20,130 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 17:47:20,131 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 17:47:20,131 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 17:47:20,131 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 17:47:20,131 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 17:47:20,131 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 17:47:20,131 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 17:47:20,132 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 17:47:20,132 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 17:47:20,132 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 17:47:20,132 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 17:47:20,132 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 17:47:20,132 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 17:47:20,133 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Currency Symbol: $
+2014-04-05 17:47:20,133 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 17:47:20,133 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 17:47:20,133 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 17:47:20,133 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 17:47:20,133 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 17:47:20,134 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 17:47:20,134 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 17:51:18,584 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 17:51:18,590 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 17:51:18,590 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 17:51:18,590 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 17:51:18,591 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 17:51:18,591 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 17:51:18,592 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 17:51:18,592 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 17:51:18,592 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 17:51:18,592 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 17:51:18,593 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 17:51:18,593 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 17:51:18,593 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 17:51:18,593 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 17:51:18,594 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 17:51:18,594 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 17:51:18,594 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 17:51:18,595 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 17:51:18,595 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Currency Symbol: $
+2014-04-05 17:51:18,595 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 17:51:18,595 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 17:51:18,596 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 17:51:18,596 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 17:51:18,596 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 17:51:18,596 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 17:51:18,597 [25] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 17:55:21,442 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 17:55:21,448 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 17:55:21,449 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 17:55:21,449 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 17:55:21,449 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 17:55:21,449 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 17:55:21,449 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 17:55:21,450 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 17:55:21,450 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 17:55:21,450 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 17:55:21,450 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 17:55:21,451 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 17:55:21,451 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 17:55:21,451 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 17:55:21,451 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 17:55:21,452 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 17:55:21,452 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 17:55:21,452 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 17:55:21,452 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Currency Symbol: $
+2014-04-05 17:55:21,452 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 17:55:21,453 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 17:55:21,453 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 17:55:21,453 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 17:55:21,453 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 17:55:21,453 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 17:55:21,453 [53] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 17:56:43,999 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 17:56:44,005 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 17:56:44,005 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 17:56:44,006 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 17:56:44,006 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 17:56:44,006 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 17:56:44,006 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 17:56:44,006 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 17:56:44,006 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 17:56:44,006 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 17:56:44,006 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 17:56:44,007 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 17:56:44,007 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 17:56:44,007 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 17:56:44,007 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 17:56:44,008 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 17:56:44,008 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 17:56:44,008 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 17:56:44,008 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Currency Symbol: $
+2014-04-05 17:56:44,009 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 17:56:44,009 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 17:56:44,009 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 17:56:44,010 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 17:56:44,010 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 17:56:44,010 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 17:56:44,010 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 18:06:27,061 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 18:06:27,068 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 18:06:27,068 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 18:06:27,069 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 18:06:27,069 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 18:06:27,069 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 18:06:27,070 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 18:06:27,070 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 18:06:27,070 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 18:06:27,070 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 18:06:27,071 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 18:06:27,071 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 18:06:27,071 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 18:06:27,071 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 18:06:27,072 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 18:06:27,072 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 18:06:27,072 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 18:06:27,072 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 18:06:27,073 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Currency Symbol: $
+2014-04-05 18:06:27,073 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 18:06:27,073 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 18:06:27,074 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 18:06:27,074 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 18:06:27,074 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 18:06:27,074 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 18:06:27,075 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 18:19:40,145 [48] ERROR CloudPanel.Modules.Common.ViewModel.DomainsViewModel Failed to add domain dsf.blah234 to company 
+System.InvalidOperationException: Sequence contains no elements
+   at System.Linq.Enumerable.First[TSource](IEnumerable`1 source)
+   at System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.<GetElementFunction>b__0[TResult](IEnumerable`1 sequence)
+   at System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.ExecuteSingle[TResult](IEnumerable`1 query, Expression queryRoot)
+   at System.Data.Entity.Core.Objects.ELinq.ObjectQueryProvider.System.Linq.IQueryProvider.Execute[TResult](Expression expression)
+   at System.Data.Entity.Internal.Linq.DbQueryProvider.Execute[TResult](Expression expression)
+   at System.Linq.Queryable.First[TSource](IQueryable`1 source)
+   at CloudPanel.Modules.Common.ViewModel.DomainsViewModel.AddDomain(String domainName, String companyCode, Boolean isDefault, Boolean isExchangeEnabled, DomainType domainType) in c:\Users\Jacob\Source\Repos\CloudPanel\CloudPanel.Modules.Common\ViewModel\DomainsViewModel.cs:line 107
+2014-04-05 18:26:40,839 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 18:26:40,846 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 18:26:40,847 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 18:26:40,847 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 18:26:40,847 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 18:26:40,848 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 18:26:40,848 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 18:26:40,848 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 18:26:40,848 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 18:26:40,849 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 18:26:40,849 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 18:26:40,849 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 18:26:40,850 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 18:26:40,850 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 18:26:40,850 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 18:26:40,850 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 18:26:40,850 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 18:26:40,850 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 18:26:40,850 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Currency Symbol: $
+2014-04-05 18:26:40,850 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 18:26:40,851 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 18:26:40,851 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 18:26:40,851 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 18:26:40,851 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 18:26:40,852 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 18:26:40,852 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 18:32:49,189 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 18:32:49,195 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 18:32:49,195 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 18:32:49,196 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 18:32:49,196 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 18:32:49,196 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 18:32:49,196 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 18:32:49,197 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 18:32:49,197 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 18:32:49,197 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 18:32:49,198 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 18:32:49,198 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 18:32:49,198 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 18:32:49,198 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 18:32:49,198 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 18:32:49,199 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 18:32:49,199 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 18:32:49,199 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 18:32:49,199 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Currency Symbol: $
+2014-04-05 18:32:49,200 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 18:32:49,200 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 18:32:49,200 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 18:32:49,200 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 18:32:49,201 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 18:32:49,201 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 18:32:49,201 [61] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 18:46:00,608 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 18:46:00,614 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 18:46:00,614 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 18:46:00,615 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 18:46:00,615 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 18:46:00,615 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 18:46:00,615 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 18:46:00,616 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 18:46:00,616 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 18:46:00,616 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 18:46:00,616 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 18:46:00,617 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 18:46:00,617 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 18:46:00,617 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 18:46:00,617 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 18:46:00,618 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 18:46:00,618 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 18:46:00,618 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 18:46:00,618 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Currency Symbol: $
+2014-04-05 18:46:00,619 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 18:46:00,619 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 18:46:00,619 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 18:46:00,619 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 18:46:00,620 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 18:46:00,620 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 18:46:00,620 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 18:51:48,732 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 18:51:48,738 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 18:51:48,739 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 18:51:48,739 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 18:51:48,739 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 18:51:48,740 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 18:51:48,740 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 18:51:48,740 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 18:51:48,740 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 18:51:48,741 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 18:51:48,741 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 18:51:48,741 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 18:51:48,741 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 18:51:48,742 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 18:51:48,742 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 18:51:48,742 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 18:51:48,743 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 18:51:48,743 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 18:51:48,743 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Currency Symbol: $
+2014-04-05 18:51:48,743 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 18:51:48,743 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 18:51:48,744 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 18:51:48,744 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 18:51:48,744 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 18:51:48,744 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 18:51:48,745 [23] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 18:54:25,541 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 18:54:25,547 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 18:54:25,547 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 18:54:25,547 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 18:54:25,547 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 18:54:25,548 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 18:54:25,548 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 18:54:25,548 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 18:54:25,549 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 18:54:25,549 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 18:54:25,549 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 18:54:25,549 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 18:54:25,550 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 18:54:25,550 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 18:54:25,550 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 18:54:25,550 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 18:54:25,551 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 18:54:25,551 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 18:54:25,551 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Currency Symbol: $
+2014-04-05 18:54:25,552 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 18:54:25,552 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 18:54:25,552 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 18:54:25,552 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 18:54:25,553 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 18:54:25,553 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 18:54:25,553 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30
+2014-04-05 18:55:44,928 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Security Key: rI1aosWPff9S5EsY+hj6Pjq0my6DcYWCscivVBr4vA0=
+2014-04-05 18:55:44,934 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosting OU: OU=Hosting,DC=lab,DC=local
+2014-04-05 18:55:44,934 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Domain Controller: DC.lab.local
+2014-04-05 18:55:44,935 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Username: LAB\Administrator
+2014-04-05 18:55:44,935 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Users OU: Users
+2014-04-05 18:55:44,935 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Super Admins: Domain Admins
+2014-04-05 18:55:44,936 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Billing Admins: Domain Admins
+2014-04-05 18:55:44,936 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Server: exch2013.lab.local
+2014-04-05 18:55:44,936 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Public Folder Server: exch2013.lab.local
+2014-04-05 18:55:44,937 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Version: 2013
+2014-04-05 18:55:44,937 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange SSL Enabled: True
+2014-04-05 18:55:44,938 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Connection Type: Basic
+2014-04-05 18:55:44,938 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Databases: 
+2014-04-05 18:55:44,938 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Public Folders Enabled: True
+2014-04-05 18:55:44,938 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Citrix Enabled: True
+2014-04-05 18:55:44,939 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Lync Enabled: False
+2014-04-05 18:55:44,939 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Exchange Enabled: True
+2014-04-05 18:55:44,939 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Hosters Name: LAB Environment
+2014-04-05 18:55:44,939 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Currency Symbol: $
+2014-04-05 18:55:44,940 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Resellers Enabled: True
+2014-04-05 18:55:44,940 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Allow Custom Name Attribute: False
+2014-04-05 18:55:44,940 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Corner Logo: 
+2014-04-05 18:55:44,941 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings Login Logo: 
+2014-04-05 18:55:44,941 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Enabled: True
+2014-04-05 18:55:44,941 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Failed Count: 3
+2014-04-05 18:55:44,941 [52] DEBUG CloudPanel.Modules.Common.Settings.StaticSettings IP Blocking Locked Out In Minutes: 30

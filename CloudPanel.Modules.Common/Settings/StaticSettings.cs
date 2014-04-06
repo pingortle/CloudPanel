@@ -56,6 +56,8 @@ namespace CloudPanel.Modules.Common.Settings
 
         public static string SecurityKey { get; set; }
 
+        public static string CurrencySymbol { get; set; }
+
         public static string ExchangeDatabases { get; set; }
 
         public static string ExchangeURI
@@ -179,6 +181,9 @@ namespace CloudPanel.Modules.Common.Settings
                     HostersName = settings.CompanysName;
                     logger.Debug("Hosters Name: " + HostersName);
 
+                    CurrencySymbol = settings.CurrencySymbol;
+                    logger.Debug("Currency Symbol: " + CurrencySymbol);
+
                     bool isResellersEnabled = false;
                     bool.TryParse(settings.ResellersEnabled.ToString(), out isResellersEnabled);
                     ResellersEnabled = isResellersEnabled;
@@ -298,6 +303,7 @@ namespace CloudPanel.Modules.Common.Settings
                     newSettings.IPBlockingEnabled = IPBlockingEnabled;
                     newSettings.IPBlockingFailedCount = IPBlockingFailedCount;
                     newSettings.IPBlockingLockedMinutes = IPBlockingLockedInMinutes;
+                    newSettings.CurrencySymbol = CurrencySymbol;
 
                     #endregion
 
@@ -361,6 +367,7 @@ namespace CloudPanel.Modules.Common.Settings
                     newSettings.IPBlockingEnabled = IPBlockingEnabled;
                     newSettings.IPBlockingFailedCount = IPBlockingFailedCount;
                     newSettings.IPBlockingLockedMinutes = IPBlockingLockedInMinutes;
+                    newSettings.CurrencySymbol = CurrencySymbol;
 
                     #endregion
 
