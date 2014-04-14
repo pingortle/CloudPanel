@@ -1,4 +1,13 @@
 jQuery(document).ready(function(){
+	
+	function showTooltip(x, y, contents) {
+		jQuery('<div id="tooltip" class="tooltipflot">' + contents + '</div>').css( {
+		  position: 'absolute',
+		  display: 'none',
+		  top: y + 5,
+		  left: x + 5
+		}).appendTo("body").fadeIn(200);
+	 }
     
     var uploads = [[0, 2], [1, 6], [2,3], [3, 8], [4, 5], [5, 13], [6, 8]];
 	 var downloads = [[0, 5], [1, 4], [2,4], [3, 1], [4, 9], [5, 10], [6, 13]];

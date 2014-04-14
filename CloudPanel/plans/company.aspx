@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/CloudPanel.Master" AutoEventWireup="true" CodeBehind="company.aspx.cs" Inherits="CloudPanel.plans.company" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Default.Master" AutoEventWireup="true" CodeBehind="company.aspx.cs" Inherits="CloudPanel.plans.company" %>
 <%@ Register Src="~/cpcontrols/alertmessage.ascx" TagPrefix="uc1" TagName="alertmessage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -36,21 +36,21 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label"><%= Resources.LocalizedText.PlanCompany_DisplayName %><span class="asterisk">*</span></label>
                             <div class="col-sm-4">
-                                <asp:TextBox ID="txtDisplayName" runat="server" CssClass="form-control"></asp:TextBox>
+                                <asp:TextBox ID="txtDisplayName" runat="server" CssClass="form-control" required></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label"><%= Resources.LocalizedText.PlanCompany_MaxUsers %><span class="asterisk">*</span></label>
                             <div class="col-sm-4">
-                                <asp:TextBox ID="txtMaxUsers" runat="server" CssClass="form-control spinner-users"></asp:TextBox>
+                                <asp:TextBox ID="txtMaxUsers" runat="server" CssClass="form-control spinner-users" required></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label"><%= Resources.LocalizedText.PlanCompany_MaxDomains %><span class="asterisk">*</span></label>
                             <div class="col-sm-4">
-                                <asp:TextBox ID="txtMaxDomains" runat="server" CssClass="form-control spinner-greaterthanone"></asp:TextBox>
+                                <asp:TextBox ID="txtMaxDomains" runat="server" CssClass="form-control spinner-greaterthanone" required></asp:TextBox>
                             </div>
                         </div>
 
@@ -69,35 +69,35 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label"><%= Resources.LocalizedText.PlanCompany_MaxMailboxes %><span class="asterisk">*</span></label>
                             <div class="col-sm-4">
-                                <asp:TextBox ID="txtMaxMailboxes" runat="server" CssClass="form-control spinner-lessthanusers"></asp:TextBox>
+                                <asp:TextBox ID="txtMaxMailboxes" runat="server" CssClass="form-control spinner-lessthanusers" required></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label"><%= Resources.LocalizedText.PlanCompany_MaxContacts %><span class="asterisk">*</span></label>
                             <div class="col-sm-4">
-                                <asp:TextBox ID="txtMaxContacts" runat="server" CssClass="form-control spinner"></asp:TextBox>
+                                <asp:TextBox ID="txtMaxContacts" runat="server" CssClass="form-control spinner" required></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label"><%= Resources.LocalizedText.PlanCompany_MaxGroups %><span class="asterisk">*</span></label>
                             <div class="col-sm-4">
-                                <asp:TextBox ID="txtMaxGroups" runat="server" CssClass="form-control spinner"></asp:TextBox>
+                                <asp:TextBox ID="txtMaxGroups" runat="server" CssClass="form-control spinner" required></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label"><%= Resources.LocalizedText.PlanCompany_MaxResourceMailboxes %><span class="asterisk">*</span></label>
                             <div class="col-sm-4">
-                                <asp:TextBox ID="txtMaxResourceMailboxes" runat="server" CssClass="form-control spinner"></asp:TextBox>
+                                <asp:TextBox ID="txtMaxResourceMailboxes" runat="server" CssClass="form-control spinner" required></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="col-sm-2 control-label"><%= Resources.LocalizedText.PlanCompany_MaxMailPublicFolders %><span class="asterisk">*</span></label>
                             <div class="col-sm-4">
-                                <asp:TextBox ID="txtMaxMailPublicFolders" runat="server" CssClass="form-control spinner"></asp:TextBox>
+                                <asp:TextBox ID="txtMaxMailPublicFolders" runat="server" CssClass="form-control spinner" required></asp:TextBox>
                             </div>
                         </div>
 
@@ -124,6 +124,8 @@
 <asp:Content ID="Content3" ContentPlaceHolderID="cphJavascript" runat="server">
     <script src='<%= this.ResolveClientUrl("~/js/chosen.jquery.min.js") %>'></script>
     <script src='<%= this.ResolveClientUrl("~/js/jquery-ui-1.10.3.min.js") %>'></script>
+    <script src='<%= this.ResolveClientUrl("~/js/jquery.validate.min.js") %>'></script>
+
     <script type="text/javascript">
         var usersSpinner = null;
 
@@ -180,6 +182,20 @@
                             $(this).spinner('value', 0);
                     }
                 });
+
+            $("#<%= btnSave.ClientID %>").click(function() {
+                $("#form1").validate({
+                    errorPlacement: function() { return false; },
+                    highlight: function (element, errorClass, validClass) {
+                        $(element).parents('.form-group').removeClass('has-success');
+                        $(element).parents('.form-group').addClass('has-error');
+                    },
+                    unhighlight: function (element, errorClass, validClass) {
+                        $(element).parents('.form-group').removeClass('has-error');
+                        $(element).parents('.form-group').addClass('has-success');
+                    }
+                });
+            });
         });
 
     </script>

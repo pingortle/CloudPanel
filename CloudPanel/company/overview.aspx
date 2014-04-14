@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/CloudPanel.Master" AutoEventWireup="true" CodeBehind="overview.aspx.cs" Inherits="CloudPanel.company.overview" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Default.Master" AutoEventWireup="true" CodeBehind="overview.aspx.cs" Inherits="CloudPanel.company.overview" %>
 <%@ Register Src="~/cpcontrols/alertmessage.ascx" TagPrefix="uc1" TagName="alertmessage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -88,30 +88,30 @@
 
                     <span class="sublabel"><%= Resources.LocalizedText.Overview_Users %>
                         <asp:Label ID="lbUsers" runat="server" Text="(0 / 1)"></asp:Label></span>
-                    <div class="progress progress-sm">
-                        <div style="width: 60%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-primary" runat="server" id="progBarUsers"></div>
+                    <div class="progress progress-sm progress-striped active">
+                        <div class="progress-bar progress-bar-primary animate-progress-bar" data-percentage="0%" runat="server" id="progBarUsers"></div>
                     </div>
                     <!-- progress -->
 
                     <span class="sublabel"><%= Resources.LocalizedText.Overview_Domains %>
                         <asp:Label ID="lbDomains" runat="server" Text="(0 / 1)"></asp:Label></span>
-                    <div class="progress progress-sm">
-                        <div style="width: 50%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-success" runat="server" id="progBarDomains"></div>
+                    <div class="progress progress-sm progress-striped active">
+                        <div class="progress-bar progress-bar-success animate-progress-bar" data-percentage="0%"  runat="server" id="progBarDomains"></div>
                     </div>
                     <!-- progress -->
 
                     <span class="sublabel"><%= Resources.LocalizedText.Overview_Mailboxes %>
                         <asp:Label ID="lbTotalMailboxes" runat="server" Text="(0 / 1)"></asp:Label></span>
-                    <div class="progress progress-sm">
-                        <div style="width: 10%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-danger" runat="server" id="progBarMailboxes"></div>
+                    <div class="progress progress-sm progress-striped active">
+                        <div class="progress-bar progress-bar-danger animate-progress-bar"  data-percentage="0%" runat="server" id="progBarMailboxes"></div>
                     </div>
                     <!-- progress -->
 
                     <% if (CloudPanel.Modules.Common.Settings.StaticSettings.CitrixEnabled) { %>
                     <span class="sublabel"><%= Resources.LocalizedText.Overview_Citrix %>
                         <asp:Label ID="lbTotalCitrixUsers" runat="server" Text="(0/ 1)"></asp:Label></span>
-                    <div class="progress progress-sm">
-                        <div style="width: 30%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-warning" runat="server" id="progBarCitrix"></div>
+                    <div class="progress progress-sm progress-striped active">
+                        <div class="progress-bar progress-bar-warning animate-progress-bar"  data-percentage="0%" runat="server" id="progBarCitrix"></div>
                     </div>
                     <!-- progress -->
                     <% } %>
@@ -119,8 +119,8 @@
                     <% if (CloudPanel.Modules.Common.Settings.StaticSettings.LyncEnabled) { %>
                     <span class="sublabel"><%= Resources.LocalizedText.Overview_Lync %>
                         <asp:Label ID="lbTotalLyncUsers" runat="server" Text="(0 / 1)"></asp:Label></span>
-                    <div class="progress progress-sm">
-                        <div style="width: 10%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-info" runat="server" id="progBarLync"></div>
+                    <div class="progress progress-sm progress-striped active">
+                        <div class="progress-bar progress-bar-info animate-progress-bar" data-percentage="0%" runat="server" id="progBarLync"></div>
                     </div>
                     <!-- progress -->
                     <% } %>
@@ -215,6 +215,13 @@
                 }
             });
 
+            $('.animate-progress-bar').each(function () {
+                $(this).css('width', $(this).attr("data-percentage"));
+            });
+
+            $('.animate-number').each(function () {
+                $(this).animateNumbers($(this).attr("data-value"), true, parseInt($(this).attr("data-animation-duration")));
+            });
         });
 
     </script>

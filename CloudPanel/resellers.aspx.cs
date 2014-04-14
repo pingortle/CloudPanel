@@ -1,5 +1,6 @@
 ﻿using CloudPanel.Modules.Base.Companies;
 using CloudPanel.Modules.Base.Enumerations;
+using CloudPanel.Modules.Common.Database;
 using CloudPanel.Modules.Common.GlobalActions;
 using CloudPanel.Modules.Common.Settings;
 using CloudPanel.Modules.Common.ViewModel;
@@ -14,8 +15,12 @@ namespace CloudPanel
 {
     public partial class resellers : System.Web.UI.Page
     {
+        ResellerViewModel resellerModel = new ResellerViewModel();
+
         protected void Page_Load(object sender, EventArgs e)
         {
+            resellerModel.ViewModelEvent += resellerModel_ViewModelEvent;
+
             if (!IsPostBack)
             {
                 // Get a list of resellers
@@ -28,9 +33,6 @@ namespace CloudPanel
         /// </summary>
         private void PopulateResellers()
         {
-            ResellerViewModel resellerModel = new ResellerViewModel();
-            resellerModel.ViewModelEvent += resellerModel_ViewModelEvent;
-
             List<ResellerObject> foundResellers = resellerModel.GetResellers();
             if (foundResellers != null)
             {
@@ -49,9 +51,6 @@ namespace CloudPanel
         /// <param name="companyCode"></param>
         private void PopulateReseller(string companyCode)
         {
-            ResellerViewModel resellerModel = new ResellerViewModel();
-            resellerModel.ViewModelEvent += resellerModel_ViewModelEvent;
-
             ResellerObject reseller = resellerModel.GetReseller(companyCode);
 
             hfResellerCode.Value = companyCode;
@@ -103,20 +102,58 @@ namespace CloudPanel
                 //
                 // Create new reseller
                 //
-                ResellerViewModel resellerModel = new ResellerViewModel();
-                resellerModel.ViewModelEvent += resellerModel_ViewModelEvent;
                 resellerModel.NewReseller(newReseller, StaticSettings.HostingOU);
             }
+
+            PopulateResellers();
+        }
+
+        /// <summary>
+        /// Updates an existing resellers information
+        /// </summary>
+        /// <param name="stringId"></param>
+        private void UpdateReseller(string companyCode)
+        {
+            ResellerObject reseller = new ResellerObject();
+            reseller.CompanyCode = companyCode;
+            reseller.CompanyName = txtName.Text;
+            reseller.AdminName = txtContactsName.Text;
+            reseller.AdminEmail = txtEmail.Text;
+            reseller.Telephone = txtTelephone.Text;
+            reseller.Street = txtStreetAddress.Text;
+            reseller.City = txtCity.Text;
+            reseller.State = txtState.Text;
+            reseller.ZipCode = txtZipCode.Text;
+
+            if (ddlCountry.SelectedIndex > 0)
+                reseller.Country = ddlCountry.SelectedValue;
+            else
+                reseller.Country = string.Empty;
+
+            // Validate
+            if (reseller.CompanyName.Length < 3)
+                alertmessage.SetMessage(Modules.Base.Enumerations.AlertID.WARNING, "The company name must be three characters or more");
+            else
+            {
+                //
+                // Update reseller
+                //
+                resellerModel.UpdateReseller(reseller);
+            }
+
+            PopulateResellers();
         }
 
         protected void resellersRepeater_ItemCommand(object source, RepeaterCommandEventArgs e)
         {
             if (e.CommandName == "Edit")
+            {
                 PopulateReseller(e.CommandArgument.ToString());
+            }
             else if (e.CommandName == "Select")
             {
                 WebSessionHandler.SelectedResellerCode = e.CommandArgument.ToString();
-                Response.Redirect("companies.aspx", false);
+                Server.Transfer("companies.aspx");
             }
         }
 
@@ -153,6 +190,8 @@ namespace CloudPanel
         {
             if (string.IsNullOrEmpty(hfResellerCode.Value))
                 AddNewReseller();
+            else
+                UpdateReseller(hfResellerCode.Value);
         }
 
         protected void btnAddReseller_Click(object sender, EventArgs e)

@@ -1,9 +1,10 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/CloudPanel.Master" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="CloudPanel.Dashboard" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Default.Master" AutoEventWireup="true" CodeBehind="Dashboard.aspx.cs" Inherits="CloudPanel.Dashboard" %>
 <%@ Register Src="~/cpcontrols/alertmessage.ascx" TagPrefix="uc1" TagName="alertmessage" %>
 
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
-        <script src='<%= this.ResolveClientUrl("~/js/Highcharts-3.0.1/js/highcharts.js") %>'></script>
+    <script src='<%= this.ResolveClientUrl("~/js/Highcharts-3.0.1/js/highcharts.js") %>'></script>
+    <link href="css/cloudpanel.css" rel="stylesheet" />
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMainPanel" runat="server">
@@ -14,122 +15,187 @@
     <div class="contentpanel">
         <uc1:alertmessage runat="server" ID="alertmessage" />
 
-        <div class="row">
-            <div class="col-sm-8 col-md-12">
-                <div class="panel panel-default">
-                    <div class="panel-body">
-
-                        <div class="row">
-                            <div class="col-sm-8">
-                                <h5 class="subtitle mb5"><%= Resources.LocalizedText.Dashboard_EnvironmentHistory %></h5>
-                                <p class="mb15"><%= Resources.LocalizedText.Dashboard_EnvironmentHistoryInfo %></p>
-                                <div  style="width: 100%; margin-bottom: 20px">
-                                    <asp:Literal ID="litAreaChart" runat="server"></asp:Literal>
+        <asp:Panel ID="dashboardSuperAdmin" runat="server">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="col-sm-3">
+                        <div class="tiles green added-margin m-b-20">
+                            <div class="tiles-body">
+                                <div class="tiles-title text-black">OVERVIEW </div>
+                                <div class="widget-stats">
+                                    <div class="wrapper transparent">
+                                        <span class="item-title"><%= Resources.LocalizedText.Dashboard_TotalResellers %></span>
+                                        <span id="spanResellers" class="item-count animate-number semi-bold" data-value="0" data-animation-duration="1000" runat="server"></span>
+                                    </div>
+                                </div>
+                                <div class="widget-stats">
+                                    <div class="wrapper transparent">
+                                        <span class="item-title"><%= Resources.LocalizedText.Dashboard_TotalCompanies %></span>
+                                        <span id="spanCompanies" class="item-count animate-number semi-bold" data-value="0" data-animation-duration="1000" runat="server"></span>
+                                    </div>
+                                </div>
+                                <div class="widget-stats">
+                                    <div class="wrapper last">
+                                        <span class="item-title"><%= Resources.LocalizedText.Dashboard_TotalUsers %></span>
+                                        <span id="spanUsers" class="item-count animate-number semi-bold" data-value="0" data-animation-duration="1000" runat="server"></span>
+                                    </div>
                                 </div>
                             </div>
-                            <!-- col-sm-8 -->
-                            <div class="col-sm-4">
-                                <h5 class="subtitle mb5"><%= Resources.LocalizedText.Dashboard_EnvironmentOverview %></h5>
-                                <p class="mb15"><%= Resources.LocalizedText.Dashboard_EnvironmentOverviewInfo %></p>
-
-                                <div class="tinystat mr20">
-                                    <div class="datainfo">
-                                        <span class="text-muted"><%= Resources.LocalizedText.Dashboard_TotalUsers %></span>
-                                        <h4><asp:Label ID="lbTotalUsers" runat="server" Text="0"></asp:Label></h4>
-                                    </div>
-                                </div>
-                                <!-- tinystat -->
-
-                                <div class="tinystat mr20">
-                                    <div class="datainfo">
-                                        <span class="text-muted"><%= Resources.LocalizedText.Dashboard_TotalResellers %></span>
-                                        <h4><asp:Label ID="lbTotalResellers" runat="server" Text="0"></asp:Label></h4>
-                                    </div>
-                                </div>
-                                <!-- tinystat -->
-
-                                <div class="tinystat mr20">
-                                    <div class="datainfo">
-                                        <span class="text-muted"><%= Resources.LocalizedText.Dashboard_TotalCompanies %></span>
-                                        <h4><asp:Label ID="lbTotalCompanies" runat="server" Text="0"></asp:Label></h4>
-                                    </div>
-                                </div>
-                                <!-- tinystat -->
-
-                                <br />
-                                <br />
-
-                                <span class="sublabel"><%= Resources.LocalizedText.Dashboard_Mailboxes %> <asp:Label ID="lbTotalMailboxes" runat="server" Text="(0)"></asp:Label></span>
-                                <div class="progress progress-sm">
-                                    <div style="width: 82%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-danger" runat="server" id="progBarMailboxes"></div>
-                                </div>
-                                <!-- progress -->
-
-                                <% if (CloudPanel.Modules.Common.Settings.StaticSettings.CitrixEnabled) { %>
-                                <span class="sublabel"><%= Resources.LocalizedText.Dashboard_CitrixUsers %> <asp:Label ID="lbTotalCitrixUsers" runat="server" Text="(0)"></asp:Label></span>
-                                <div class="progress progress-sm">
-                                    <div style="width: 63%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-warning" runat="server" id="progBarCitrix"></div>
-                                </div>
-                                <!-- progress -->
-                                <% } %>
-
-                                <% if (CloudPanel.Modules.Common.Settings.StaticSettings.LyncEnabled) { %>
-                                <span class="sublabel"><%= Resources.LocalizedText.Dashboard_LyncUsers %> <asp:Label ID="lbTotalLyncUsers" runat="server" Text="(0)"></asp:Label></span>
-                                <div class="progress progress-sm">
-                                    <div style="width: 63%" aria-valuemax="100" aria-valuemin="0" aria-valuenow="40" role="progressbar" class="progress-bar progress-bar-info" runat="server" id="progBarLync"></div>
-                                </div>
-                                <!-- progress -->
-                                <% } %>
-
-                                <div class="tinystat mr20">
-                                    <div class="datainfo">
-                                        <span class="text-muted"><%= Resources.LocalizedText.Dashboard_TotalDomains %></span>
-                                        <h4><asp:Label ID="lbTotalDomains" runat="server" Text="0"></asp:Label></h4>
-                                    </div>
-                                </div>
-                                <!-- tinystat -->
-
-                                <div class="tinystat mr20">
-                                    <div class="datainfo">
-                                        <span class="text-muted"><%= Resources.LocalizedText.Dashboard_TotalAcceptedDomains %></span>
-                                        <h4><asp:Label ID="lbTotalAcceptedDomains" runat="server" Text="0"></asp:Label></h4>
-                                    </div>
-                                </div>
-                                <!-- tinystat -->
-
-                                <div class="tinystat mr20">
-                                    <div class="datainfo">
-                                        <span class="text-muted"><%= Resources.LocalizedText.Dashboard_AllocatedEmailSpace %></span>
-                                        <h4><asp:Label ID="lbTotalAllocatedMailboxSpace" runat="server" Text="Unknown"></asp:Label></h4>
-                                    </div>
-                                </div>
-                                <!-- tinystat -->
-
-                            </div>
-                            <!-- col-sm-4 -->
-
                         </div>
-                        <!-- row -->
+                    </div>
 
-                        <br />
-                        <hr />
-                        <br />
-
-                        <div class="row">
-                            <div class="col-md-6 mb30">
-                                <h5 class="subtitle mb5"><%= Resources.LocalizedText.Dashboard_MailboxDatabaseSizeTitle %></h5>
-                                <p class="mb15"><%= Resources.LocalizedText.Dashboard_MailboxDatabaseSizeSubTitle %></p>
-                                <div id="barchart" style="width: 100%; height: 300px">
-                                    <asp:Literal ID="litBarChart" runat="server"></asp:Literal>
+                    <div class="col-sm-3">
+                        <div class="tiles red added-margin  m-b-20">
+                            <div class="tiles-body">
+                                <div class="tiles-title text-black">EXCHANGE </div>
+                                <div class="widget-stats">
+                                    <div class="wrapper transparent">
+                                        <span class="item-title"><%= Resources.LocalizedText.Dashboard_Mailboxes %></span>
+                                        <span id="spanMailboxes" class="item-count animate-number semi-bold" data-value="0" data-animation-duration="1000" runat="server"></span>
+                                    </div>
+                                </div>
+                                <div class="widget-stats">
+                                    <div class="wrapper transparent">
+                                        <span class="item-title"><%= Resources.LocalizedText.Dashboard_DistributionGroups %></span>
+                                        <span id="spanDistributionGroups" class="item-count animate-number semi-bold" data-value="0" data-animation-duration="1000" runat="server"></span>
+                                    </div>
+                                </div>
+                                <div class="widget-stats">
+                                    <div class="wrapper transparent">
+                                        <span class="item-title"><%= Resources.LocalizedText.Dashboard_Contacts %></span>
+                                        <span id="spanContacts" class="item-count animate-number semi-bold" data-value="0" data-animation-duration="1000" runat="server"></span>
+                                    </div>
                                 </div>
                             </div>
-                            <!-- col-md-6 -->
-                            <div class="col-sm-6 mb30">
-                                <h5 class="subtitle mb5"><%= Resources.LocalizedText.Dashboard_MostRecentActionsTitle %></h5>
-                                <p class="mb15"><%= Resources.LocalizedText.Dashboard_MostRecentActionsSubTitle %></p>
-                                <div class="panel panel-default panel-alt widget-messaging">
-                                    <div class="panel-body" style="overflow: auto; height: 300px">
-                                        <ul >
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="tiles blue added-margin  m-b-20">
+                            <div class="tiles-body">
+                                <div class="tiles-title text-black">CITRIX </div>
+                                <div class="widget-stats">
+                                    <div class="wrapper transparent">
+                                        <span class="item-title">Apps</span>
+                                        <span id="spanTotalApps" class="item-count animate-number semi-bold" data-value="0" data-animation-duration="1000" runat="server"></span>
+                                    </div>
+                                </div>
+                                <div class="widget-stats">
+                                    <div class="wrapper transparent">
+                                        <span class="item-title">Servers</span>
+                                        <span id="spanTotalServers" class="item-count animate-number semi-bold" data-value="0" data-animation-duration="1000" runat="server"></span>
+                                    </div>
+                                </div>
+                                <div class="widget-stats">
+                                    <div class="wrapper last">
+                                        <span class="item-title">Users</span>
+                                        <span id="spanTotalCitrixUsers" class="item-count animate-number semi-bold" data-value="0" data-animation-duration="1000" runat="server"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-3">
+                        <div class="tiles black added-margin  m-b-20">
+                            <div class="tiles-body">
+                                <div class="tiles-title text-black">TODAY </div>
+                                <div class="widget-stats">
+                                    <div class="wrapper transparent">
+                                        <span class="item-title">New Companies</span>
+                                        <span id="spanTodayNewCompanies" class="item-count animate-number semi-bold" data-value="0" data-animation-duration="1000" runat="server"></span>
+                                    </div>
+                                </div>
+                                <div class="widget-stats">
+                                    <div class="wrapper transparent">
+                                        <span class="item-title">New Users</span>
+                                        <span id="spanTodayNewUsers" class="item-count animate-number semi-bold" data-value="0" data-animation-duration="1000" runat="server"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <br />
+
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-sm-8">
+                                    <h5 class="subtitle mb5"><%= Resources.LocalizedText.Dashboard_EnvironmentHistory %></h5>
+                                    <p class="mb15"><%= Resources.LocalizedText.Dashboard_EnvironmentHistoryInfo %></p>
+                                    <div style="width: 100%; margin-bottom: 20px">
+                                        <asp:Literal ID="litAreaChart" runat="server"></asp:Literal>
+                                    </div>
+                                </div>
+                                <div class="col-sm-4">
+                                    <h5 class="subtitle mb5"><%= Resources.LocalizedText.Dashboard_EnvironmentOverview %></h5>
+                                    <p class="mb15"><%= Resources.LocalizedText.Dashboard_EnvironmentOverviewInfo %></p>
+
+                                    <span class="sublabel"><%= Resources.LocalizedText.Dashboard_Mailboxes %>
+                                        <asp:Label ID="lbTotalMailboxes" runat="server" Text="(0)"></asp:Label></span>
+                                    <div class="progress progress-sm progress-striped active">
+                                        <div class="progress-bar progress-bar-primary animate-progress-bar" data-percentage="0%" id="progBarMailboxes" runat="server"></div>
+                                    </div>
+                                    <!-- progress -->
+
+                                    <span class="sublabel">Spaces Used vs Allocated
+                                    <asp:Label ID="lbUsedVsAllocatedMailbox" runat="server" Text="(0)"></asp:Label></span>
+                                    <div class="progress progress-sm progress-striped active">
+                                        <div class="progress-bar progress-bar-success animate-progress-bar" data-percentage="0%" runat="server" id="progBarMailboxesUsedVsAllocated"></div>
+                                    </div>
+                                    <!-- progress -->
+
+                                    <asp:PlaceHolder ID="PlaceHolderCitrixProgressBar" runat="server" Visible="false">
+                                        <span class="sublabel"><%= Resources.LocalizedText.Dashboard_CitrixUsers %>
+                                            <asp:Label ID="lbTotalCitrixUsers" runat="server" Text="(0)"></asp:Label></span>
+                                        <div class="progress progress-sm progress-striped active">
+                                            <div class="progress-bar progress-bar-danger animate-progress-bar" data-percentage="0%" runat="server" id="progBarCitrix"></div>
+                                        </div>
+                                    </asp:PlaceHolder>
+                                    <!-- progress -->
+
+                                    <asp:PlaceHolder ID="PlaceHolderLyncProgressBar" runat="server" Visible="false">
+                                        <span class="sublabel"><%= Resources.LocalizedText.Dashboard_LyncUsers %>
+                                            <asp:Label ID="lbTotalLyncUsers" runat="server" Text="(0)"></asp:Label></span>
+                                        <div class="progress progress-sm progress-striped active">
+                                            <div class="progress-bar progress-bar-warning animate-progress-bar" data-percentage="0%" runat="server" id="progBarLync"></div>
+                                        </div>
+                                    </asp:PlaceHolder>
+                                    <!-- progress -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-sm-6 col-md-6" runat="server" id="divBarChart">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <h5 class="subtitle mb5"><%= Resources.LocalizedText.Dashboard_MailboxDatabaseSizeTitle %></h5>
+                            <p class="mb15"><%= Resources.LocalizedText.Dashboard_MailboxDatabaseSizeSubTitle %></p>
+                            <div id="barchart" style="width: 100%; height: 300px">
+                                <asp:Literal ID="litBarChart" runat="server"></asp:Literal>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- col-md-6 -->
+
+                <div class="col-sm-6 col-md-6">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <h5 class="subtitle mb5"><%= Resources.LocalizedText.Dashboard_MostRecentActionsTitle %></h5>
+                            <p class="mb15"><%= Resources.LocalizedText.Dashboard_MostRecentActionsSubTitle %></p>
+                            <div class="panel-alt widget-messaging">
+                                <div style="overflow: auto; height: 300px">
+                                    <ul>
                                         <asp:Repeater ID="repeaterAudits" runat="server">
                                             <ItemTemplate>
                                                 <li style="background-color: #fcfcfc">
@@ -139,28 +205,33 @@
                                                 </li>
                                             </ItemTemplate>
                                         </asp:Repeater>
-                                        </ul>
-                                    </div>
+                                    </ul>
                                 </div>
                             </div>
-                            <!-- col-md-6 -->
                         </div>
-                        <!-- row -->
-
                     </div>
-                    <!-- panel-body -->
                 </div>
-                <!-- panel -->
+                <!-- col-md-6 -->
+
             </div>
-            <!-- col-sm-12 -->
-        </div>
-        <!-- row -->
+        </asp:Panel>
+
+        <br />
 
     </div>
-    <!-- contentpanel -->
 </asp:Content>
 
 
 <asp:Content ID="Content3" ContentPlaceHolderID="cphJavascript" runat="server">
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.animate-progress-bar').each(function () {
+                $(this).css('width', $(this).attr("data-percentage"));
+            });
 
+            $('.animate-number').each(function () {
+                $(this).animateNumbers($(this).attr("data-value"), true, parseInt($(this).attr("data-animation-duration")));
+            });
+        });
+    </script>
 </asp:Content>

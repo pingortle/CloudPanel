@@ -12,7 +12,6 @@
     <description>DotNet.Highcharts offers Highcharts integration with ASP.NET applications. The package also include javascript files for Highcharts version 3.0.1</description>
     <releaseNotes>Tested and adapted to the latest version of Highcharts 3.0.1
 Added new chart types: Arearange, Areasplinerange, Columnrange, Gauge, Boxplot, Waterfall, Funnel and Bubble</releaseNotes>
-    <copyright />
     <language>en-US</language>
     <tags>Highcharts ASP.NET</tags>
   </metadata>

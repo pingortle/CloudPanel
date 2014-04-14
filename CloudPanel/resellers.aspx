@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/CloudPanel.Master" AutoEventWireup="true" CodeBehind="resellers.aspx.cs" Inherits="CloudPanel.resellers" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Default.Master" AutoEventWireup="true" CodeBehind="resellers.aspx.cs" Inherits="CloudPanel.resellers" %>
 <%@ Register Src="~/cpcontrols/alertmessage.ascx" TagPrefix="uc1" TagName="alertmessage" %>
 
 
@@ -77,7 +77,7 @@
 
                     <div class="panel-body">
                         <div class="form-group">
-                            <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Resellers_CompanyName %> <span class="asterisk">*</span></label>
+                            <label class="col-sm-2 control-label"><%= Resources.SharedResources.FORM_CompanyName %> <span class="asterisk">*</span></label>
                             <div class="col-sm-4">
                                 <asp:TextBox ID="txtName" runat="server" CssClass="form-control" required></asp:TextBox>
                                 <asp:HiddenField ID="hfResellerCode" runat="server" />

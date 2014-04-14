@@ -93,13 +93,13 @@ namespace CloudPanel.company
                     if (statistics != null)
                     {
                         lbUsers.Text = string.Format("({0} / {1})", statistics.TotalUsers, company.CompanyPlanObject.MaxUser);
-                        progBarUsers.Style.Add("width", string.Format("{0}%", (int)Math.Round((double)(100 * statistics.TotalUsers) / company.CompanyPlanObject.MaxUser)));
+                        progBarUsers.Attributes.Add("data-percentage", string.Format("{0}%", (int)Math.Round((double)(100 * statistics.TotalUsers) / company.CompanyPlanObject.MaxUser)));
 
                         lbDomains.Text = string.Format("({0} / {1})", statistics.TotalDomains, company.CompanyPlanObject.MaxDomains);
-                        progBarDomains.Style.Add("width", string.Format("{0}%", (int)Math.Round((double)(100 * statistics.TotalDomains) / company.CompanyPlanObject.MaxDomains)));
+                        progBarDomains.Attributes.Add("data-percentage", string.Format("{0}%", (int)Math.Round((double)(100 * statistics.TotalDomains) / company.CompanyPlanObject.MaxDomains)));
 
                         lbTotalMailboxes.Text = string.Format("({0} / {1})", statistics.TotalMailboxes, company.CompanyPlanObject.MaxExchangeMailboxes);
-                        progBarMailboxes.Style.Add("width", string.Format("{0}%", (int)Math.Round((double)(100 * statistics.TotalMailboxes) / company.CompanyPlanObject.MaxExchangeMailboxes)));
+                        progBarMailboxes.Attributes.Add("data-percentage", string.Format("{0}%", (int)Math.Round((double)(100 * statistics.TotalMailboxes) / company.CompanyPlanObject.MaxExchangeMailboxes)));
                     }
                 }
             }

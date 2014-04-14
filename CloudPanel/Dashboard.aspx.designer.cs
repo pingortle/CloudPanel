@@ -22,6 +22,114 @@ namespace CloudPanel {
         protected global::CloudPanel.cpcontrols.alertmessage alertmessage;
         
         /// <summary>
+        /// dashboardSuperAdmin control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel dashboardSuperAdmin;
+        
+        /// <summary>
+        /// spanResellers control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spanResellers;
+        
+        /// <summary>
+        /// spanCompanies control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spanCompanies;
+        
+        /// <summary>
+        /// spanUsers control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spanUsers;
+        
+        /// <summary>
+        /// spanMailboxes control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spanMailboxes;
+        
+        /// <summary>
+        /// spanDistributionGroups control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spanDistributionGroups;
+        
+        /// <summary>
+        /// spanContacts control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spanContacts;
+        
+        /// <summary>
+        /// spanTotalApps control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spanTotalApps;
+        
+        /// <summary>
+        /// spanTotalServers control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spanTotalServers;
+        
+        /// <summary>
+        /// spanTotalCitrixUsers control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spanTotalCitrixUsers;
+        
+        /// <summary>
+        /// spanTodayNewCompanies control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spanTodayNewCompanies;
+        
+        /// <summary>
+        /// spanTodayNewUsers control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl spanTodayNewUsers;
+        
+        /// <summary>
         /// litAreaChart control.
         /// </summary>
         /// <remarks>
@@ -29,33 +137,6 @@ namespace CloudPanel {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Literal litAreaChart;
-        
-        /// <summary>
-        /// lbTotalUsers control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbTotalUsers;
-        
-        /// <summary>
-        /// lbTotalResellers control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbTotalResellers;
-        
-        /// <summary>
-        /// lbTotalCompanies control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbTotalCompanies;
         
         /// <summary>
         /// lbTotalMailboxes control.
@@ -76,6 +157,33 @@ namespace CloudPanel {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl progBarMailboxes;
         
         /// <summary>
+        /// lbUsedVsAllocatedMailbox control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbUsedVsAllocatedMailbox;
+        
+        /// <summary>
+        /// progBarMailboxesUsedVsAllocated control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl progBarMailboxesUsedVsAllocated;
+        
+        /// <summary>
+        /// PlaceHolderCitrixProgressBar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolderCitrixProgressBar;
+        
+        /// <summary>
         /// lbTotalCitrixUsers control.
         /// </summary>
         /// <remarks>
@@ -92,6 +200,15 @@ namespace CloudPanel {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl progBarCitrix;
+        
+        /// <summary>
+        /// PlaceHolderLyncProgressBar control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder PlaceHolderLyncProgressBar;
         
         /// <summary>
         /// lbTotalLyncUsers control.
@@ -112,31 +229,13 @@ namespace CloudPanel {
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl progBarLync;
         
         /// <summary>
-        /// lbTotalDomains control.
+        /// divBarChart control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbTotalDomains;
-        
-        /// <summary>
-        /// lbTotalAcceptedDomains control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbTotalAcceptedDomains;
-        
-        /// <summary>
-        /// lbTotalAllocatedMailboxSpace control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbTotalAllocatedMailboxSpace;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl divBarChart;
         
         /// <summary>
         /// litBarChart control.

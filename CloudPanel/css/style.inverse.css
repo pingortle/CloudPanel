@@ -163,3 +163,21 @@ body {
   color: #1CAF9A;
 }
 
+/*** HORIZONTAL MENU ***/
+
+.headerbar .navhor-bracket > li > a {
+  color: #ccc;
+}
+
+.headerbar .logopanel {
+  border-right: 0;
+}
+
+.headerbar .navhor-bracket > li > a {
+  padding: 15px 15px 13px 15px;
+}
+
+.headerbar .navhor-bracket > li .dropdown-menu {
+  border-top: 0;
+}
+

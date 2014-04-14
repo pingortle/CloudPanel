@@ -1,0 +1,160 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Default.Master.cs" Inherits="CloudPanel.Default" %>
+
+<%@ Reference Control="~/cpcontrols/horizontal-menu.ascx" %>
+<%@ Reference Control="~/cpcontrols/vertical-menu.ascx" %>
+
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title></title>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <link rel="shortcut icon" href="~/images/favicon.png" type="image/png" runat="server" />
+
+    <link href="~/css/jquery.datatables.css" rel="stylesheet" runat="server" />
+    <link href="~/css/jquery.gritter.css" rel="stylesheet" runat="server" />
+
+    <asp:PlaceHolder ID="PlaceHolderJavascript" runat="server">
+    <script src='<%= this.ResolveClientUrl("~/js/jquery-1.10.2.min.js") %>'></script>
+    
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src='<%= this.ResolveClientUrl("~/js/html5shiv.js") %>'></script>
+      <script src='<%= this.ResolveClientUrl("~/js/respond.min.js") %>'></script>
+    <![endif]-->
+    </asp:PlaceHolder>
+
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body id="BodyTag" runat="server" class="">
+    <form id="form1" runat="server">
+
+            <div class="leftpanel">
+
+                <div class="logopanel">
+                    <h1><span>[</span> CloudPanel <span>]</span></h1>
+                </div>
+                <!-- logopanel -->
+
+                <div class="leftpanelinner">
+
+                    <!-- This is only visible to small devices -->
+                    <div class="visible-xs hidden-sm hidden-md hidden-lg">
+                        <div class="media userlogged">
+                            <div class="media-body">
+                            </div>
+                        </div>
+                    </div>
+
+                    <asp:PlaceHolder ID="PlaceHolderVerticalMenu" runat="server"></asp:PlaceHolder>
+
+                </div>
+                <!-- leftpanelinner -->
+            </div>
+            <!-- leftpanel -->
+
+            <div class="mainpanel">
+
+                <div class="headerbar">
+
+                    <div class="header-left">
+
+                        <div class="topnav">
+                            <a class="menutoggle"><i class="fa fa-bars"></i></a>
+
+                            <asp:PlaceHolder ID="PlaceHolderHorizontalNav" runat="server"></asp:PlaceHolder>
+
+                        </div>
+                    </div>
+
+                    <div class="header-right">
+                        <ul class="headermenu">
+                            <li>
+                                <asp:PlaceHolder ID="PlaceHolderSettingsButton" runat="server" Visible="false">
+                                <div class="btn-group">
+                                    <asp:HyperLink ID="hlSettings" runat="server" CssClass="btn btn-default dropdown-toggle tp-icon" NavigateUrl="~/settings.aspx">
+                                        <i class="glyphicon glyphicon-cog"></i>
+                                    </asp:HyperLink>
+                                </div>
+                                </asp:PlaceHolder>
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
+                                        <asp:Image ID="imgLoggedInUser" runat="server" ImageUrl="~/images/photos/unknown-user.png" />
+                                        <%= CloudPanel.WebSessionHandler.DisplayName %>
+                                        <span class="caret"></span>
+                                    </button>
+                                    <ul class="dropdown-menu dropdown-menu-usermenu pull-right">
+                                        <li><a href="profile.html"><i class="glyphicon glyphicon-user"></i>My Profile</a></li>
+                                        <li><a href="#"><i class="glyphicon glyphicon-cog"></i>Account Settings</a></li>
+                                        <li><asp:LinkButton ID="lnkLockScreen" runat="server" OnClick="lnkLockScreen_Click"><i class="fa fa-lock"></i>Lock Screen</asp:LinkButton></li>
+                                        <li><a href="signin.html"><i class="glyphicon glyphicon-log-out"></i>Log Out</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!-- header-right -->
+
+                </div>
+                <!-- headerbar -->
+
+                <asp:ContentPlaceHolder ID="cphMainPanel" runat="server">
+                </asp:ContentPlaceHolder>
+
+            </div>
+            <!-- mainpanel -->
+
+
+        <script src='<%= this.ResolveClientUrl("~/js/jquery-migrate-1.2.1.min.js") %>'></script>
+        <script src='<%= this.ResolveClientUrl("~/js/bootstrap.min.js") %>'></script>
+        <script src='<%= this.ResolveClientUrl("~/js/modernizr.min.js") %>'></script>
+        <script src='<%= this.ResolveClientUrl("~/js/toggles.min.js") %>'></script>
+        <script src='<%= this.ResolveClientUrl("~/js/retina.min.js") %>'></script>
+        <script src='<%= this.ResolveClientUrl("~/js/jquery.cookies.js") %>'></script>
+        <script src='<%= this.ResolveClientUrl("~/js/chosen.jquery.min.js") %>'></script>
+        <script src='<%= this.ResolveClientUrl("~/js/jquery.gritter.min.js") %>'></script>
+        <script src='<%= this.ResolveClientUrl("~/js/jquery.animateNumbers.js") %>'></script>
+        <script src='<%= this.ResolveClientUrl("~/js/custom.js") %>'></script>
+        <script src='<%= this.ResolveClientUrl("~/js/custom-cloudpanel.js") %>'></script>
+        <script type="text/javascript">
+                        
+            function OnLoadTimeout()
+            {
+                setTimeout('ShowTimeoutWarning()', <%= warningTimeoutInMilliseconds %>);
+                setTimeout('ExpireTimeout()', <%= expiredTimeoutInMilliseconds %>);
+            }
+
+            function ShowTimeoutWarning()
+            {
+                jQuery.gritter.add({
+                    title: 'Session Expiring',
+                    text: '.',
+                    sticky: false
+                });
+            }
+
+            function ExpireTimeout()
+            {
+                jQuery.gritter.add({
+                    title: 'Session Expired',
+                    text: 'Your session has expired and are being logged out',
+                    sticky: false,
+                    time: '15000',
+                    after_close: function(e, manual_close) {
+                        document.location.href = '<%= this.ResolveClientUrl("~/security/locked.aspx") %>?username=<%= HttpContext.Current.User.Identity.Name %>';
+                    }
+                });
+            }
+        </script>
+
+        <asp:ContentPlaceHolder ID="cphJavascript" runat="server"></asp:ContentPlaceHolder>
+
+    </form>
+</body>
+</html>

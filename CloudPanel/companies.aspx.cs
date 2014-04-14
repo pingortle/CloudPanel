@@ -74,7 +74,7 @@ namespace CloudPanel
                 panelCompanyList.Visible = false;
 
                 // Disable the domain textbox
-                txtDomainName.Text = string.Empty;
+                txtDomainName.Text = company.Domains[0];
                 txtDomainName.ReadOnly = true;
             }
         }

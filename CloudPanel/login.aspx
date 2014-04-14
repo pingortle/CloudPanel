@@ -12,8 +12,6 @@
     <meta name="author" content="" />
     <link rel="shortcut icon" href="images/favicon.png" type="image/png" />
 
-    <link href="css/style.default.css" rel="stylesheet" />
-
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>

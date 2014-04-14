@@ -32,6 +32,9 @@ namespace CloudPanel.company
                 emailAliases = new List<MailAliasObject>();
                 ViewState["CPEmailAliases"] = emailAliases;
 
+                // Populate all the static fields that maintain viewstate
+                PopulateStaticFields();
+
                 // Check if we have a session of search result to load a particular user
                 if (Session["CPSearchResultUser"] != null)
                 {
@@ -39,7 +42,7 @@ namespace CloudPanel.company
                     Session["CPSearchResultUser"] = null;
                 }
                 else
-                    GetUsers();
+                    PopulateUsersListView();
             }
             else
             {
@@ -52,49 +55,66 @@ namespace CloudPanel.company
             }
         }
 
-        private void GetDomains()
+        private void PopulateStaticFields()
         {
             UsersViewModel viewModel = new UsersViewModel();
             viewModel.ViewModelEvent += viewModel_ViewModelEvent;
 
             List<DomainsObject> foundDomains = viewModel.GetDomains(WebSessionHandler.SelectedCompanyCode);
-            if (foundDomains != null)
+            ddlLoginDomain.DataSource = foundDomains;
+            ddlLoginDomain.DataBind();
+            
+            // Don't populate Exchange information if the company isn't enabled for Exchange
+            if (CompanyChecks.IsExchangeEnabled(WebSessionHandler.SelectedCompanyCode))
             {
-                ddlLoginDomain.DataSource = foundDomains;
-                ddlLoginDomain.DataBind();
+                // Get list of users
+                List<UsersObject> users = viewModel.GetUsers(WebSessionHandler.SelectedCompanyCode);
 
-                // If Exchange is enabled then populate the accepted domains fields
-                if (StaticSettings.ExchangeEnabled && CompanyChecks.IsExchangeEnabled(WebSessionHandler.SelectedCompanyCode))
+                //
+                // User Permissions dropdown boxes
+                //
+                // Filter only users with sAMAccountName
+                List<UsersObject> permissionUsers = users.FindAll(x => !string.IsNullOrEmpty(x.sAMAccountName));
+
+                // Bind to list
+                ddlEditMailboxFullAccess.DataSource = permissionUsers;
+                ddlEditMailboxSendAs.DataSource = permissionUsers;
+                ddlEditMailboxSendOnBehalf.DataSource = permissionUsers;
+
+                ddlEditMailboxFullAccess.DataBind();
+                ddlEditMailboxSendAs.DataBind();
+                ddlEditMailboxSendOnBehalf.DataBind();
+
+                //
+                // Populate the forward to list
+                // 
+                ddlEditMailboxForwardTo.Items.Clear();
+                ddlEditMailboxForwardTo.Items.Add("Not Selected");
+
+                //
+                // Populate the accepted domain fields
+                //
+                var acceptedDomains = from a in foundDomains where a.IsAcceptedDomain select a;
+
+                // If we found accepted domains then we can show the email section
+                if (acceptedDomains != null && acceptedDomains.Count() > 0)
                 {
-                    var acceptedDomains = from a in foundDomains where a.IsAcceptedDomain select a;
+                    ddlEditMailboxDomain.DataSource = acceptedDomains;
+                    ddlEditMailboxDomain.DataBind();
 
-                    // If we found accepted domains then we can show the email section
-                    if (acceptedDomains != null && acceptedDomains.Count() > 0)
-                    {
-                        ddlEditMailboxDomain.DataSource = acceptedDomains;
-                        ddlEditMailboxDomain.DataBind();
-
-                        ddlEditAddEmailAliasDomain.DataSource = acceptedDomains;
-                        ddlEditAddEmailAliasDomain.DataBind();
-
-                        // Get email plans. This will show the Exchange panel if successful
-                        GetMailboxPlans();
-                    }
+                    ddlEditAddEmailAliasDomain.DataSource = acceptedDomains;
+                    ddlEditAddEmailAliasDomain.DataBind();
                 }
-            }
-            else
-            {
-                alertmessage.SetMessage(Modules.Base.Enumerations.AlertID.WARNING, Resources.LocalizedText.Users_Messages_NoDomainsFound);
-                btnEditSave.Enabled = false;
             }
         }
 
-        private void GetUsers()
+        private void PopulateUsersListView()
         {
             UsersViewModel viewModel = new UsersViewModel();
             viewModel.ViewModelEvent += viewModel_ViewModelEvent;
 
             List<UsersObject> users = viewModel.GetUsers(WebSessionHandler.SelectedCompanyCode);
+
             repeaterUsers.DataSource = users;
             repeaterUsers.DataBind();
 
@@ -103,31 +123,17 @@ namespace CloudPanel.company
             panelUserList.Visible = true;
         }
 
-        private void GetUsersForPermissions()
+        private void PopulateEditUserView()
         {
             UsersViewModel viewModel = new UsersViewModel();
             viewModel.ViewModelEvent += viewModel_ViewModelEvent;
 
-            List<UsersObject> users = viewModel.GetUsers(WebSessionHandler.SelectedCompanyCode);
-            
-            // Filter only users with sAMAccountName
-            users = users.FindAll(x => !string.IsNullOrEmpty(x.sAMAccountName));
-
-            // Bind to list
-            ddlEditMailboxFullAccess.DataSource = users;
-            ddlEditMailboxFullAccess.DataBind();
-
-            ddlEditMailboxSendAs.DataSource = users;
-            ddlEditMailboxSendAs.DataBind();
-        }
-
-        private void GetMailboxPlans()
-        {
+            // Don't populate Exchange information if the company isn't enabled for Exchange
             if (CompanyChecks.IsExchangeEnabled(WebSessionHandler.SelectedCompanyCode))
             {
-                UsersViewModel viewModel = new UsersViewModel();
-                viewModel.ViewModelEvent += viewModel_ViewModelEvent;
-
+                //
+                // Populate the mailbox plans
+                //
                 List<MailboxPlanObject> mailboxPlans = viewModel.GetMailboxPlans(WebSessionHandler.SelectedCompanyCode);
 
                 ddlEditMailboxPlan.Items.Clear();
@@ -148,20 +154,6 @@ namespace CloudPanel.company
                     }
                 }
             }
-        }
-
-        private void GetForwardToList()
-        {
-            ddlEditMailboxForwardTo.Items.Clear();
-            ddlEditMailboxForwardTo.Items.Add("Not Selected");
-        }
-
-        private void CheckUserRights()
-        {
-            if (WebSessionHandler.IsSuperAdmin || WebSessionHandler.IsResellerAdmin)
-                panelUserRights.Enabled = true;
-            else
-                panelUserRights.Enabled = false;
         }
 
         private void SaveNewUser()
@@ -199,7 +191,7 @@ namespace CloudPanel.company
             AuditGlobal.AddAudit(WebSessionHandler.SelectedCompanyCode, HttpContext.Current.User.Identity.Name, ActionID.CreateUser, newUser.UserPrincipalName, null);
 
             // Refresh
-            GetUsers();
+            PopulateUsersListView();
         }
 
         private void DeleteUser(string userPrincipalName)
@@ -214,7 +206,7 @@ namespace CloudPanel.company
             AuditGlobal.AddAudit(WebSessionHandler.SelectedCompanyCode, HttpContext.Current.User.Identity.Name, ActionID.DeleteUser, userPrincipalName);
 
             // Refresh
-            GetUsers();
+            PopulateUsersListView();
         }
 
         private void EditUser(string userPrincipalName)
@@ -266,13 +258,7 @@ namespace CloudPanel.company
             if (_isExchangeEnabled)
             {
                 // Get list of accepted domains
-                GetDomains();
-
-                // Get list of mailbox plans
-                GetMailboxPlans();
-
-                // Get users that can be granted full access and send as permissions
-                GetUsersForPermissions();
+                PopulateEditUserView();
 
                 // Get mailbox information
                 if (user != null)
@@ -409,12 +395,6 @@ namespace CloudPanel.company
 
         protected void btnAddUser_Click(object sender, EventArgs e)
         {
-            // Get Domains
-            GetDomains();
-
-            // Check if the user has rights to modify the user rights section
-            CheckUserRights();
-
             // Show the panels
             panelUserList.Visible = false;
             panelEditUser.Visible = false;
@@ -470,7 +450,7 @@ namespace CloudPanel.company
             UpdateExchangeSection();
 
             // Refresh to users section
-            GetUsers();
+            PopulateUsersListView();
         }
 
         protected void btnResetPwd_Click(object sender, EventArgs e)
@@ -734,9 +714,6 @@ namespace CloudPanel.company
                         user.ArchivingEnabled = cbEditMailboxEnableArchiving.Checked;
                         user.ArchiveName = txtEditMailboxArchiveName.Text.Trim();
                         user.ArchivePlan = ddlEditMailboxArchivePlan.SelectedIndex > 0 ? int.Parse(ddlEditMailboxArchivePlan.SelectedValue) : 0;
-
-                        if (WebSessionHandler.IsSuperAdmin || WebSessionHandler.IsResellerAdmin)
-                            user.ArchiveDatabase = ddlEditMailboxArchiveDatabase.SelectedIndex > 0 ? ddlEditMailboxArchiveDatabase.SelectedItem.Value : string.Empty;
                     }
                     else
                         user.ArchivingEnabled = false;

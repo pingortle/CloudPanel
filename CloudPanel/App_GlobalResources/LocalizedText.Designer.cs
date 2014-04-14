@@ -439,6 +439,24 @@ namespace Resources {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Contacts.
+        /// </summary>
+        internal static string Dashboard_Contacts {
+            get {
+                return ResourceManager.GetString("Dashboard_Contacts", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Groups.
+        /// </summary>
+        internal static string Dashboard_DistributionGroups {
+            get {
+                return ResourceManager.GetString("Dashboard_DistributionGroups", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Environment History.
         /// </summary>
         internal static string Dashboard_EnvironmentHistory {
@@ -876,6 +894,15 @@ namespace Resources {
         internal static string Formats_NumberGroupSeperator {
             get {
                 return ResourceManager.GetString("Formats_NumberGroupSeperator", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Are you sure you want to delete this?.
+        /// </summary>
+        internal static string Global_ConfirmDelete {
+            get {
+                return ResourceManager.GetString("Global_ConfirmDelete", resourceCulture);
             }
         }
         

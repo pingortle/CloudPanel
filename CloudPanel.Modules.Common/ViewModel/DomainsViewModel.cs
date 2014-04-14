@@ -181,7 +181,7 @@ namespace CloudPanel.Modules.Common.ViewModel
             }
         }
 
-        public void UpdateDomain(string domainName, string companyCode, bool isDefault, bool isExchangeEnabled, DomainType domainType)
+        public void  UpdateDomain(string domainName, string companyCode, bool isDefault, bool isExchangeEnabled, DomainType domainType)
         {
             CPDatabase database = null;
             ExchangePowershell powershell = null;

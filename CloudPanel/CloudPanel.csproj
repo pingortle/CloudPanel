@@ -48,16 +48,17 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\AjaxMin.5.8.5172.27710\lib\net40\AjaxMin.dll</HintPath>
     </Reference>
-    <Reference Include="DotNet.Highcharts">
+    <Reference Include="DotNet.Highcharts, Version=2.0.0.0, Culture=neutral, PublicKeyToken=88854f873df851bf, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\DotNet.Highcharts.2.0\lib\DotNet.Highcharts.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.6.0.2\lib\net40\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.6.0.2\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.0.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="HtmlAgilityPack">
       <HintPath>..\packages\HtmlAgilityPack.1.4.6\lib\Net40\HtmlAgilityPack.dll</HintPath>
@@ -88,7 +89,7 @@
     </Reference>
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Newtonsoft.Json.6.0.1\lib\net40\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.6.0.2\lib\net40\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data.Services.Client" />
@@ -114,6 +115,8 @@
     <Reference Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Themes\Default\Default.css" />
+    <Content Include="App_Themes\Inverse\Inverse.css" />
     <Content Include="companies.aspx" />
     <Content Include="company\ajax\resetpwd.aspx" />
     <Content Include="company\citrix\applications.aspx" />
@@ -126,6 +129,8 @@
     <Content Include="company\overview.aspx" />
     <Content Include="company\users.aspx" />
     <Content Include="cpcontrols\alertmessage.ascx" />
+    <Content Include="cpcontrols\vertical-menu.ascx" />
+    <Content Include="cpcontrols\horizontal-menu.ascx" />
     <Content Include="css\animate.delay.css" />
     <Content Include="css\animate.min.css" />
     <Content Include="css\bootstrap-fileupload.min.css" />
@@ -135,6 +140,11 @@
     <Content Include="css\bootstrap.css" />
     <Content Include="css\bootstrap.min.css" />
     <Content Include="css\chosen.css" />
+    <Content Include="css\cloudpanel.css" />
+    <Content Include="css\codemirror\codemirror.css" />
+    <Content Include="css\codemirror\index.html" />
+    <Content Include="css\codemirror\theme\ambiance.css" />
+    <Content Include="css\codemirror\theme\index.html" />
     <Content Include="css\colorpicker.css" />
     <Content Include="css\dropzone.css" />
     <Content Include="css\font-awesome.css" />
@@ -604,7 +614,16 @@
     <Content Include="js\ckeditor\skins\themepixels\images\lock.png" />
     <Content Include="js\ckeditor\skins\themepixels\images\refresh.png" />
     <Content Include="js\ckeditor\styles.js" />
+    <Content Include="js\codemirror\codemirror.js" />
+    <Content Include="js\codemirror\formatting.js" />
+    <Content Include="js\codemirror\index.html" />
+    <Content Include="js\codemirror\mode\index.html" />
+    <Content Include="js\codemirror\mode\javascript.js" />
+    <Content Include="js\codemirror\mode\php.js" />
+    <Content Include="js\codemirror\mode\python.js" />
+    <Content Include="js\codemirror\mode\xml.js" />
     <Content Include="js\colorpicker.js" />
+    <Content Include="js\custom-cloudpanel.js" />
     <Content Include="js\custom.js" />
     <Content Include="js\dashboard.js" />
     <Content Include="js\dropzone.min.js" />
@@ -624,6 +643,7 @@
     <Content Include="js\jquery-jvectormap-world-mill-en.js" />
     <Content Include="js\jquery-migrate-1.2.1.min.js" />
     <Content Include="js\jquery-ui-1.10.3.min.js" />
+    <Content Include="js\jquery.animateNumbers.js" />
     <Content Include="js\jquery.autogrow-textarea.js" />
     <Content Include="js\jquery.cookies.js" />
     <Content Include="js\jquery.datatables.min.js" />
@@ -634,6 +654,7 @@
     <Content Include="js\jquery.prettyPhoto.js" />
     <Content Include="js\jquery.sparkline.min.js" />
     <Content Include="js\jquery.tagsinput.min.js" />
+    <Content Include="js\jquery.ui.touch-punch.min.js" />
     <Content Include="js\jquery.validate.min.js" />
     <Content Include="js\jquery.validate.valDomain.js" />
     <Content Include="js\masonry.pkgd.min.js" />
@@ -645,6 +666,7 @@
     <Content Include="js\toggles.min.js" />
     <Content Include="js\wysihtml5-0.3.0.min.js" />
     <Content Include="login.aspx" />
+    <Content Include="notfound.aspx" />
     <Content Include="plans\company.aspx" />
     <Content Include="plans\mailbox.aspx" />
     <Content Include="resellers.aspx" />
@@ -668,14 +690,56 @@
     <Content Include="js\Highcharts-3.0.1\js\themes\gray.js" />
     <Content Include="js\Highcharts-3.0.1\js\themes\grid.js" />
     <Content Include="js\Highcharts-3.0.1\js\themes\skies.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\adapters\mootools-adapter.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\adapters\mootools-adapter.src.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\adapters\prototype-adapter.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\adapters\prototype-adapter.src.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\highcharts-more.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\highcharts.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\highcharts.src.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\modules\canvas-tools.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\modules\canvas-tools.src.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\modules\data.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\modules\data.src.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\modules\exporting.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\modules\exporting.src.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\modules\funnel.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\modules\funnel.src.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\themes\dark-blue.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\themes\dark-green.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\themes\gray.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\themes\grid.js" />
+    <Content Include="Scripts\Highcharts-3.0.1\js\themes\skies.js" />
     <Content Include="security\locked.aspx" />
     <Content Include="settings.aspx" />
     <Content Include="validation\domains2.txt" />
     <Content Include="validation\domains.txt" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Code\AuditGlobalization.cs" />
+    <Compile Include="App_GlobalResources\en-US\Menu.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Menu.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\en-US\Pages.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Pages.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\en-US\HelpTooltips.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HelpTooltips.resx</DependentUpon>
+    </Compile>
+    <Compile Include="App_GlobalResources\en-US\SharedResources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>SharedResources.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_GlobalResources\LocalizedText.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -768,12 +832,128 @@
     <Compile Include="cpcontrols\alertmessage.ascx.designer.cs">
       <DependentUpon>alertmessage.ascx</DependentUpon>
     </Compile>
+    <Compile Include="cpcontrols\vertical-menu.ascx.cs">
+      <DependentUpon>vertical-menu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="cpcontrols\vertical-menu.ascx.designer.cs">
+      <DependentUpon>vertical-menu.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="cpcontrols\horizontal-menu.ascx.cs">
+      <DependentUpon>horizontal-menu.ascx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="cpcontrols\horizontal-menu.ascx.designer.cs">
+      <DependentUpon>horizontal-menu.ascx</DependentUpon>
+    </Compile>
     <Compile Include="Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="Dashboard.aspx.designer.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="data\ApiAccess.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\Audit.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\AuditLogin.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\Company.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\CompanyStat.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\Contact.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\CPDatabase.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CPDatabase.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\CPDatabase.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\CPDatabase.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>CPDatabase.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="data\DistributionGroup.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\Domain.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\LogTable.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\Plans_Citrix.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\Plans_ExchangeActiveSync.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\Plans_ExchangeMailbox.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\Plans_Organization.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\Plans_TerminalServices.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\Price.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\PriceOverride.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\ResourceMailbox.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\Setting.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\Stats_CitrixCount.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\Stats_ExchCount.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\Stats_UserCount.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\SvcMailboxDatabaseSize.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\SvcMailboxSize.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\SvcQueue.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\SvcTask.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\User.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\UserPermission.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\UserPlan.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
+    </Compile>
+    <Compile Include="data\UserPlansCitrix.cs">
+      <DependentUpon>CPDatabase.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -784,6 +964,13 @@
     </Compile>
     <Compile Include="login.aspx.designer.cs">
       <DependentUpon>login.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="notfound.aspx.cs">
+      <DependentUpon>notfound.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="notfound.aspx.designer.cs">
+      <DependentUpon>notfound.aspx</DependentUpon>
     </Compile>
     <Compile Include="plans\company.aspx.cs">
       <DependentUpon>company.aspx</DependentUpon>
@@ -800,12 +987,12 @@
       <DependentUpon>mailbox.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="CloudPanel.Master.cs">
-      <DependentUpon>CloudPanel.Master</DependentUpon>
+    <Compile Include="Default.Master.cs">
+      <DependentUpon>Default.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="CloudPanel.Master.designer.cs">
-      <DependentUpon>CloudPanel.Master</DependentUpon>
+    <Compile Include="Default.Master.designer.cs">
+      <DependentUpon>Default.Master</DependentUpon>
     </Compile>
     <Compile Include="resellers.aspx.cs">
       <DependentUpon>resellers.aspx</DependentUpon>
@@ -821,7 +1008,7 @@
     <Compile Include="security\locked.aspx.designer.cs">
       <DependentUpon>locked.aspx</DependentUpon>
     </Compile>
-    <Compile Include="session\WebSessionHandler.cs" />
+    <Compile Include="Code\WebSessionHandler.cs" />
     <Compile Include="settings.aspx.cs">
       <DependentUpon>settings.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -931,10 +1118,28 @@
     <Content Include="js\ckeditor\samples\sample_posteddata.php" />
     <Content Include="js\ckeditor\skins\moono\readme.md" />
     <Content Include="js\ckeditor\skins\themepixels\readme.md" />
-    <Content Include="CloudPanel.Master" />
-    <Content Include="packages.config" />
+    <Content Include="Default.Master" />
     <Content Include="logging\Default.log" />
     <Content Include="company\services\UserPhotoHandler.ashx" />
+    <EntityDeploy Include="data\CPDatabase.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>CPDatabase.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="data\CPDatabase.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CPDatabase.edmx</DependentUpon>
+      <LastGenOutput>CPDatabase.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="data\CPDatabase.edmx.diagram">
+      <DependentUpon>CPDatabase.edmx</DependentUpon>
+    </Content>
+    <Content Include="data\CPDatabase.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>CPDatabase.edmx</DependentUpon>
+      <LastGenOutput>CPDatabase.cs</LastGenOutput>
+    </Content>
+    <Content Include="packages.config" />
+    <Content Include="js\codemirror\.DS_Store" />
     <None Include="Properties\PublishProfiles\CloudPanel HOME.pubxml" />
     <None Include="Properties\PublishProfiles\CloudPanel LAB.pubxml" />
     <None Include="Properties\PublishProfiles\LAB DC.pubxml" />
@@ -949,7 +1154,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="config\" />
+    <Content Include="App_GlobalResources\en-US\Pages.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Pages.designer.cs</LastGenOutput>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CloudPanel.Modules.Base\CloudPanel.Modules.Base.csproj">
@@ -965,6 +1173,27 @@
     <Content Include="App_GlobalResources\LocalizedText.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>LocalizedText.designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\en-US\HelpTooltips.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>HelpTooltips.Designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\en-US\SharedResources.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>SharedResources.Designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_GlobalResources\de-CH\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\en-US\Menu.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>Menu.Designer.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <PropertyGroup>

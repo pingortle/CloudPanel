@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/CloudPanel.Master" AutoEventWireup="true" CodeBehind="domains.aspx.cs" Inherits="CloudPanel.company.domains" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Default.Master" AutoEventWireup="true" CodeBehind="domains.aspx.cs" Inherits="CloudPanel.company.domains" %>
 <%@ Register Src="~/cpcontrols/alertmessage.ascx" TagPrefix="uc1" TagName="alertmessage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -81,7 +81,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Domains_DomainName %><span class="asterisk">*</span></label>
                             <div class="col-sm-4">
-                                <asp:TextBox ID="txtDomainName" runat="server" CssClass="form-control" required></asp:TextBox>
+                                <asp:TextBox ID="txtDomainName" runat="server" CssClass="form-control"></asp:TextBox>
                                 <asp:HiddenField ID="hfDomainID" runat="server" />
                             </div>
                         </div>
@@ -184,7 +184,7 @@
         });
 
         function DeleteConfirm() {
-            return confirm('<%= Resources.LocalizedText.Global_ConfirmDeletePlan %>');
+            return confirm('<%= Resources.LocalizedText.Global_ConfirmDelete %>');
         }
     </script>
 </asp:Content>

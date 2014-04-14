@@ -697,15 +697,6 @@ namespace CloudPanel.company {
         protected global::System.Web.UI.WebControls.DropDownList ddlEditMailboxArchivePlan;
         
         /// <summary>
-        /// ddlEditMailboxArchiveDatabase control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddlEditMailboxArchiveDatabase;
-        
-        /// <summary>
         /// cbEditMailboxEnableLitigationHold control.
         /// </summary>
         /// <remarks>

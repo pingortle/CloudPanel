@@ -5,6 +5,7 @@ using CloudPanel.Modules.Common.Settings;
 using CloudPanel.Modules.Common.ViewModel;
 using DotNet.Highcharts;
 using DotNet.Highcharts.Enums;
+using DotNet.Highcharts.Helpers;
 using DotNet.Highcharts.Options;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,8 @@ namespace CloudPanel
         {
             if (!IsPostBack)
             {
+                ProcessPlaceHolders();
+
                 // Get area chart
                 GetAreaChart();
 
@@ -35,6 +38,12 @@ namespace CloudPanel
                 // Get recent actions
                 GetRecentAudits();
             }
+        }
+
+        private void ProcessPlaceHolders()
+        {
+            PlaceHolderCitrixProgressBar.Visible = StaticSettings.CitrixEnabled;
+            PlaceHolderLyncProgressBar.Visible = StaticSettings.LyncEnabled;
         }
 
         private void GetAreaChart()
@@ -121,6 +130,20 @@ namespace CloudPanel
                 var databaseNames = from d in mdbData orderby d.Key select d.Key;
                 var databaseValues = from d in mdbData orderby d.Key select d.Value;
 
+                List<object> arrayValues = databaseValues.ToList();
+                List<DotNet.Highcharts.Options.Point> points = new List<DotNet.Highcharts.Options.Point>();
+                for (int i = 0; i< arrayValues.Count; i++)
+                {
+                    double theValue = 0;
+                    double.TryParse(arrayValues[i].ToString(), out theValue);
+
+                    points.Add(new DotNet.Highcharts.Options.Point()
+                        {
+                            Y = Number.GetNumber(theValue),
+                            Color = decimal.Parse(arrayValues[i].ToString()) > 500 ? System.Drawing.Color.Red : System.Drawing.Color.Blue
+                        });
+                }
+
                 Highcharts columnChart = new Highcharts("mdbBarChart")
                          .SetOptions(new DotNet.Highcharts.Helpers.GlobalOptions()
                          {
@@ -178,11 +201,21 @@ namespace CloudPanel
                          })
                          .SetSeries(new[]
                     {
-                        new Series { Name = "GB", Data = new DotNet.Highcharts.Helpers.Data(databaseValues.ToArray()) }
+                        new Series 
+                        { 
+                            Name = "GB", 
+                            Data = new DotNet.Highcharts.Helpers.Data(points.ToArray()) 
+                        }
                     }
                      );
 
                 litBarChart.Text = columnChart.ToHtmlString();
+
+                // Change the div
+                if (databaseNames.Count() > 8)
+                    divBarChart.Style.Value = "col-sm-12 col-md-12"; // If more than 8 database then make the graph full length of page
+                else
+                    divBarChart.Style.Value = "col-sm-6 col-md-6"; // Otherwise half length
             }
             else
                 litBarChart.Text = Resources.LocalizedText.Dashboard_ErrorPopulatingBarChart;
@@ -196,24 +229,36 @@ namespace CloudPanel
             OverallStats overall = dashboard.GetOtherStatistics(ConfigurationManager.ConnectionStrings["CPDatabase"].ConnectionString);
             if (overall != null)
             {
-                lbTotalUsers.Text = overall.TotalUsers.ToString();
-                lbTotalResellers.Text = overall.TotalResellers.ToString();
-                lbTotalCompanies.Text = overall.TotalCompanies.ToString();
-                lbTotalDomains.Text = overall.TotalDomains.ToString();
-                lbTotalAcceptedDomains.Text = overall.TotalAcceptedDomains.ToString();
-                lbTotalAllocatedMailboxSpace.Text = overall.TotalAllocatedEmailSpace;
+                spanUsers.Attributes.Add("data-value", overall.TotalUsers.ToString());
+                spanResellers.Attributes.Add("data-value", overall.TotalResellers.ToString());
+                spanCompanies.Attributes.Add("data-value", overall.TotalCompanies.ToString());
+
+                spanMailboxes.Attributes.Add("data-value", overall.TotalMailboxes.ToString());
+                spanDistributionGroups.Attributes.Add("data-value", overall.TotalDistributionGroups.ToString());
+                spanContacts.Attributes.Add("data-value", overall.TotalMailContacts.ToString());
+
+                spanTotalCitrixUsers.Attributes.Add("data-value", overall.TotalCitrixUsers.ToString());
+                spanTotalApps.Attributes.Add("data-value", overall.TotalCitrixApps.ToString());
+                spanTotalServers.Attributes.Add("data-value", overall.TotalCitrixServers.ToString());
+
+                spanTodayNewCompanies.Attributes.Add("data-value", overall.TodayCompanies.ToString());
+                spanTodayNewUsers.Attributes.Add("data-value", overall.TodayUsers.ToString());
+
+                // Set mailbox space allocated
+                lbUsedVsAllocatedMailbox.Text = string.Format("{0}{1} / {2}{3}", overall.TotalUsedEmailSpace.ToString("#.##"), overall.TotalUsedEmailSpaceSizeType, overall.TotalAllocatedEmailSpace.ToString("#.##"), overall.TotalAllocatedEmailSpaceSizeType);
+                progBarMailboxesUsedVsAllocated.Attributes.Add("data-percentage", string.Format("{0}%", (int)Math.Round((decimal)(100 * overall.TotalUsedEmailSpaceInKB) / overall.TotalAllocatedEmailSpaceInKB)));
 
                 // Set mailbox progress bar
                 lbTotalMailboxes.Text = overall.TotalMailboxes.ToString();
-                progBarMailboxes.Style.Add("width", string.Format("{0}%", (int)Math.Round((double)(100 * overall.TotalMailboxes) / overall.TotalUsers)));
+                progBarMailboxes.Attributes.Add("data-percentage", string.Format("{0}%", (int)Math.Round((double)(100 * overall.TotalMailboxes) / overall.TotalUsers)));
 
                 // Set citrix progress bar
                 lbTotalCitrixUsers.Text = overall.TotalCitrixUsers.ToString();
-                progBarCitrix.Style.Add("width", string.Format("{0}%", (int)Math.Round((double)(100 * overall.TotalCitrixUsers) / overall.TotalUsers)));
+                progBarCitrix.Attributes.Add("data-percentage", string.Format("{0}%", (int)Math.Round((double)(100 * overall.TotalCitrixUsers) / overall.TotalUsers)));
 
                 // Set lync progress bar
                 lbTotalLyncUsers.Text = overall.TotalLyncUsers.ToString();
-                progBarLync.Style.Add("width", string.Format("{0}%", (int)Math.Round((double)(100 * overall.TotalLyncUsers) / overall.TotalUsers)));
+                progBarLync.Attributes.Add("data-percentage", string.Format("{0}%", (int)Math.Round((double)(100 * overall.TotalLyncUsers) / overall.TotalUsers)));
             }
         }
 

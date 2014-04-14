@@ -36,7 +36,11 @@ namespace CloudPanel
 
         protected void Session_Start(object sender, EventArgs e)
         {
-
+#if DEBUG
+            WebSessionHandler.IsSuperAdmin = true;
+            WebSessionHandler.SelectedResellerCode = "KMI";
+            //WebSessionHandler.SelectedCompanyCode = "LAR";
+#endif
         }
 
         protected void Application_BeginRequest(object sender, EventArgs e)

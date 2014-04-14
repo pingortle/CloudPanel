@@ -214,5 +214,45 @@ namespace CloudPanel.Modules.Common.ViewModel
                     database.Dispose();
             }
         }
+
+        /// <summary>
+        /// Updates a reseller
+        /// </summary>
+        /// <param name="reseller"></param>
+        public void UpdateReseller(ResellerObject reseller)
+        {
+            CPDatabase database = null;
+
+            try
+            {
+                database = new CPDatabase();
+
+                var dbObj = (from r in database.Companies
+                            where r.CompanyCode == reseller.CompanyCode
+                            where r.IsReseller
+                            select r).First();
+
+                dbObj.CompanyName = reseller.CompanyName;
+                dbObj.AdminName = reseller.AdminName;
+                dbObj.AdminEmail = reseller.AdminEmail;
+                dbObj.PhoneNumber = reseller.Telephone;
+                dbObj.Street = reseller.Street;
+                dbObj.City = reseller.City;
+                dbObj.State = reseller.State;
+                dbObj.ZipCode = reseller.ZipCode;
+                dbObj.Country = reseller.Country;
+
+                database.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                ThrowEvent(AlertID.FAILED, ex.Message);
+            }
+            finally
+            {
+                if (database != null)
+                    database.Dispose();
+            }
+        }
     }
 }

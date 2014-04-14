@@ -7,6 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Data.Entity.Core.EntityClient;
+using System.Data.Entity.Core.Objects;
 using System.Data.SqlClient;
 using System.Globalization;
 using System.Linq;
@@ -211,23 +212,26 @@ namespace CloudPanel.Modules.Common.ViewModel
 	                                        DatabaseName,
 	                                        DatabaseSize,
 	                                        Retrieved
-	                                        FROM
+                                        FROM
 	                                        SvcMailboxDatabaseSizes
-                                       WHERE
-	                                        Retrieved IN (SELECT MAX(Retrieved) FROM SvcMailboxDatabaseSizes) AND Retrieved >= DATEADD(d, -30, getdate())", sql);
+                                        WHERE
+	                                        CONVERT(date, Retrieved) = (SELECT TOP 1 CONVERT(date, Retrieved) FROM SvcMailboxDatabaseSizes ORDER BY Retrieved DESC)
+                                        ORDER BY
+	                                        DatabaseName", sql);
 
                 sql.Open();
-
+                
                 SqlDataReader r = cmd.ExecuteReader();
                 if (r.HasRows)
                 {
                     while (r.Read())
                     {
                         string databaseSetSize = r["DatabaseSize"].ToString();
-
                         string formattedSize = string.Format(CultureInfo.InvariantCulture, "{0:0.00}", (decimal.Parse(databaseSetSize, CultureInfo.InvariantCulture) / 1024 / 1024));
 
-                        databaseSizes.Add(r["DatabaseName"].ToString(), formattedSize);
+                        string databaseName = string.Format("{0}<br/>[{1}]", r["DatabaseName"].ToString(), DateTime.Parse(r["Retrieved"].ToString()).ToShortDateString());
+
+                        databaseSizes.Add(databaseName, formattedSize);
                     }
                 }
 
@@ -274,6 +278,7 @@ namespace CloudPanel.Modules.Common.ViewModel
                 {
                     stats = new OverallStats();
                     stats.TotalUsers = users.Count();
+                    stats.TodayUsers = (from u in users where DbFunctions.TruncateTime(u.Created) == DbFunctions.TruncateTime(DateTime.Now) select u.UserPrincipalName).Count();
                     stats.TotalMailboxes = (from u in users where u.MailboxPlan > 0 select u.UserPrincipalName).Count();
                     stats.TotalLyncUsers = (from u in users where u.LyncPlan > 0 select u.UserPrincipalName).Count();
 
@@ -285,6 +290,7 @@ namespace CloudPanel.Modules.Common.ViewModel
                     {
                         stats.TotalResellers = (from r in companies where r.IsReseller select r.CompanyCode).Count();
                         stats.TotalCompanies = (from c in companies where !c.IsReseller select c.CompanyCode).Count();
+                        stats.TodayCompanies = (from c in companies where DbFunctions.TruncateTime(c.Created) == DbFunctions.TruncateTime(DateTime.Now) select c.CompanyCode).Count();
                     }
 
                     // Get all domains
@@ -297,16 +303,31 @@ namespace CloudPanel.Modules.Common.ViewModel
                         stats.TotalAcceptedDomains = (from a in domains where a.IsAcceptedDomain select a.Domain1).Count();
                     }
 
+                    // Get other Exchange stats
+                    stats.TotalDistributionGroups = (from d in database.DistributionGroups select d.ID).Count();
+                    stats.TotalMailContacts = (from c in database.Contacts select c.DistinguishedName).Count();
+
                     // Get Citrix users
                     var citrix = (from c in database.UserPlansCitrices
                                   select c.UserID).Distinct().Count();
+                    stats.TotalCitrixUsers = citrix;
 
-                    if (citrix != null)
-                        stats.TotalCitrixUsers = citrix;
+                    // Get Citrix data
+                    var citrixApps = from c in database.Plans_Citrix
+                                     select c;
+
+                    if (citrixApps != null)
+                    {
+                        stats.TotalCitrixApps = (from c in citrixApps where !c.IsServer select c).Count();
+                        stats.TotalCitrixServers = (from c in citrixApps where c.IsServer select c).Count();
+                    }
 
 
                     // Get total allocated space
-                    stats.TotalAllocatedEmailSpace = GetTotalAllocatedMailboxSize(entityConnectionString);
+                    GetTotalAllocatedMailboxSize(entityConnectionString, ref stats);
+
+                    // Get total used spaces
+                    GetTotalUsedMailboxSize(entityConnectionString, ref stats);
                 }
 
                 // Return data
@@ -324,7 +345,7 @@ namespace CloudPanel.Modules.Common.ViewModel
             }
         }
 
-        private string GetTotalAllocatedMailboxSize(string entityConnectionString)
+        private void GetTotalAllocatedMailboxSize(string entityConnectionString, ref OverallStats stats)
         {
             SqlConnection sql = null;
             SqlCommand cmd = null;
@@ -344,7 +365,6 @@ namespace CloudPanel.Modules.Common.ViewModel
 
                 // Keep track of total
                 decimal total = 0;
-                string endFormattedSize = total.ToString() + "MB";
 
                 // Read data
                 SqlDataReader r = cmd.ExecuteReader();
@@ -353,9 +373,9 @@ namespace CloudPanel.Modules.Common.ViewModel
                     while (r.Read())
                     {
                         if (r["TotalSize"] == DBNull.Value)
-                            total += decimal.Parse(r["MailboxPlanSize"].ToString(), CultureInfo.InvariantCulture);
+                            total = total + decimal.Parse(r["MailboxPlanSize"].ToString(), CultureInfo.InvariantCulture);
                         else
-                            total += decimal.Parse(r["TotalSize"].ToString(), CultureInfo.InvariantCulture);
+                            total = total + decimal.Parse(r["TotalSize"].ToString(), CultureInfo.InvariantCulture);
                     }
 
                     // Convert to GB, TB, etc
@@ -363,27 +383,112 @@ namespace CloudPanel.Modules.Common.ViewModel
                     {
                         if (total >= 1048576)
                         {
-                            endFormattedSize = ((total / 1024) / 1024).ToString("#.##") + "TB";
+                            stats.TotalAllocatedEmailSpace = (total / 1024) / 1024;
+                            stats.TotalAllocatedEmailSpaceSizeType = "TB";
                         }
                         else if (total >= 1024)
                         {
-                            endFormattedSize = (total / 1024).ToString("#.##") + "GB";
+                            stats.TotalAllocatedEmailSpace = total / 1024;
+                            stats.TotalAllocatedEmailSpaceSizeType = "GB";
                         }
+
+                        // Convert the MB to KB for the progress bars
+                        stats.TotalAllocatedEmailSpaceInKB = total * 1024;
                     }
                 }
 
                 r.Close();
                 r.Dispose();
 
-                if (total > 0)
-                    return endFormattedSize;
-                else
-                    return "Unknown";
+                if (total < 0)
+                {
+                    stats.TotalAllocatedEmailSpaceInKB = 0;
+                    stats.TotalAllocatedEmailSpace = 0;
+                    stats.TotalAllocatedEmailSpaceSizeType = "?";
+                }
             }
             catch (Exception ex)
             {
-                logger.Error("Error getting Exchange database sizes", ex);
-                return null;
+                logger.Error("Error getting Exchange allocated mailbox sizes", ex);
+            }
+            finally
+            {
+                if (cmd != null)
+                    cmd.Dispose();
+
+                if (sql != null)
+                    sql.Dispose();
+            }
+        }
+
+        private void GetTotalUsedMailboxSize(string entityConnectionString, ref OverallStats stats)
+        {
+            SqlConnection sql = null;
+            SqlCommand cmd = null;
+
+            try
+            {
+                string providerConnectionString = new EntityConnectionStringBuilder(entityConnectionString).ProviderConnectionString;
+
+
+                sql = new SqlConnection(providerConnectionString);
+                cmd = new SqlCommand(@"SELECT UserPrincipalName, Retrieved, TotalItemSizeInKB FROM SvcMailboxSizes 
+                                        WHERE CONVERT(date, Retrieved) = (SELECT TOP 1 CONVERT(date, Retrieved) FROM SvcMailboxSizes ORDER BY Retrieved DESC)
+                                        ORDER BY Retrieved DESC", sql);
+
+                sql.Open();
+
+                // Keep track of total
+                decimal total = 0;
+
+                // Read data
+                SqlDataReader r = cmd.ExecuteReader();
+                if (r.HasRows)
+                {
+                    while (r.Read())
+                    {
+                        decimal parsed = 0;
+                        decimal.TryParse(r["TotalItemSizeInKB"].ToString(), NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out parsed);
+
+                        total = total + parsed;
+                    }
+
+                    // Convert to MB, GB, TB, etc
+                    if (total > 0)
+                    {
+                        if (total >= 1073741824)
+                        {
+                            stats.TotalUsedEmailSpace = ((total / 1024) / 1024) / 1024;
+                            stats.TotalUsedEmailSpaceSizeType = "TB";
+                        }
+                        else if (total >= 1048576)
+                        {
+                            stats.TotalUsedEmailSpace = (total / 1024) / 1024;
+                            stats.TotalUsedEmailSpaceSizeType = "GB";
+                        }
+                        else if (total >= 1024)
+                        {
+                            stats.TotalUsedEmailSpace = total / 1024;
+                            stats.TotalUsedEmailSpaceSizeType = "MB";
+                        }
+
+                        stats.TotalUsedEmailSpaceInKB = total;
+                    }
+                }
+
+                r.Close();
+                r.Dispose();
+
+                if (total < 0)
+                {
+                    stats.TotalUsedEmailSpaceInKB = 0;
+                    stats.TotalUsedEmailSpace = 0;
+                    stats.TotalUsedEmailSpaceSizeType = "?";
+                }
+            }
+            catch (Exception ex)
+            {
+                logger.Error("Error getting Exchange mailbox sizes", ex);
             }
             finally
             {

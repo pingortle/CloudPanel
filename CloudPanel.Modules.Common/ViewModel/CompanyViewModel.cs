@@ -98,28 +98,35 @@ namespace CloudPanel.Modules.Common.ViewModel
                 database = new CPDatabase();
 
                 var company = (from c in database.Companies
+                               from d in database.Domains.Where(a => a.CompanyCode == c.CompanyCode).DefaultIfEmpty()
                                 where !c.IsReseller
                                 where c.CompanyCode == companyCode
                                 orderby c.CompanyName
-                                select c).FirstOrDefault();
+                                select new CompanyObject()
+                                {
+                                    CompanyID = c.CompanyId,
+                                    CompanyName = c.CompanyName,
+                                    CompanyCode = c.CompanyCode,
+                                    Street = c.Street,
+                                    City = c.City,
+                                    State = c.State,
+                                    ZipCode = c.ZipCode,
+                                    Country = c.Country,
+                                    Telephone = c.PhoneNumber,
+                                    Description = c.Description,
+                                    AdminName = c.AdminName,
+                                    AdminEmail = c.AdminEmail,
+                                    DistinguishedName = c.DistinguishedName,
+                                    Created = c.Created
+                                }).FirstOrDefault();
 
-                CompanyObject tmp = new CompanyObject();
-                tmp.CompanyID = company.CompanyId;
-                tmp.CompanyName = company.CompanyName;
-                tmp.CompanyCode = company.CompanyCode;
-                tmp.Street = company.Street;
-                tmp.City = company.City;
-                tmp.State = company.State;
-                tmp.ZipCode = company.ZipCode;
-                tmp.Country = company.Country;
-                tmp.Telephone = company.PhoneNumber;
-                tmp.Description = company.Description;
-                tmp.AdminName = company.AdminName;
-                tmp.AdminEmail = company.AdminEmail;
-                tmp.DistinguishedName = company.DistinguishedName;
-                tmp.Created = company.Created;
+                var domains = from d in database.Domains
+                              where d.CompanyCode == company.CompanyCode
+                              select d;
 
-                return tmp;
+                company.Domains = (from d in domains select d.Domain1).ToArray();
+
+                return company;
             }
             catch (Exception ex)
             {

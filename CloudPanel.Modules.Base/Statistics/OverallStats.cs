@@ -9,13 +9,25 @@ namespace CloudPanel.Modules.Base.Statistics
     {
         public int TotalUsers { get; set; }
 
+        public int TodayUsers { get; set; }
+
         public int TotalResellers { get; set; }
 
         public int TotalCompanies { get; set; }
 
+        public int TodayCompanies { get; set; }
+
         public int TotalMailboxes { get; set; }
 
+        public int TotalDistributionGroups { get; set; }
+
+        public int TotalMailContacts { get; set; }
+
         public int TotalCitrixUsers { get; set; }
+
+        public int TotalCitrixApps { get; set; }
+
+        public int TotalCitrixServers { get; set; }
 
         public int TotalLyncUsers { get; set; }
 
@@ -23,6 +35,17 @@ namespace CloudPanel.Modules.Base.Statistics
 
         public int TotalAcceptedDomains { get; set; }
 
-        public string TotalAllocatedEmailSpace { get; set; }
+        public decimal TotalUsedEmailSpaceInKB { get; set; }
+
+        public decimal TotalUsedEmailSpace { get; set; }
+
+        public string TotalUsedEmailSpaceSizeType { get; set; }
+
+        public decimal TotalAllocatedEmailSpaceInKB { get; set; }
+
+        public decimal TotalAllocatedEmailSpace { get; set; }
+
+        public string TotalAllocatedEmailSpaceSizeType { get; set; }
+
     }
 }

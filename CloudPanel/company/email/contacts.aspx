@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/CloudPanel.Master" AutoEventWireup="true" CodeBehind="contacts.aspx.cs" Inherits="CloudPanel.company.email.contacts" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Default.Master" AutoEventWireup="true" CodeBehind="contacts.aspx.cs" Inherits="CloudPanel.company.email.contacts" %>
 <%@ Register Src="~/cpcontrols/alertmessage.ascx" TagPrefix="uc1" TagName="alertmessage" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
@@ -116,9 +116,32 @@
 </asp:Content>
 
 <asp:Content ID="Content3" ContentPlaceHolderID="cphJavascript" runat="server">
+    
+    <script src='<%= this.ResolveClientUrl("~/js/jquery.validate.min.js") %>'></script>
     <script type="text/javascript">
         function DeleteConfirm() {
-            return confirm('<%= Resources.LocalizedText.Global_ConfirmDeletePlan %>');
+            return confirm('<%= Resources.LocalizedText.Global_ConfirmDelete %>');
         }
+
+        jQuery(document).ready(function () {
+            $("#<%= btnSubmit.ClientID %>").click(function() {
+                $("#form1").validate({
+                    rules: {
+                        <%= txtDisplayName.UniqueID %>: { required: true },
+                        <%= txtEmail.UniqueID %>: { email: true, required: true }
+                    },
+                    errorPlacement: function() { return false; },
+                    highlight: function (element, errorClass, validClass) {
+                        $(element).parents('.form-group').removeClass('has-success');
+                        $(element).parents('.form-group').addClass('has-error');
+                    },
+                    unhighlight: function (element, errorClass, validClass) {
+                        $(element).parents('.form-group').removeClass('has-error');
+                        $(element).parents('.form-group').addClass('has-success');
+                    }
+                });
+            });
+        });
     </script>
+
 </asp:Content>
