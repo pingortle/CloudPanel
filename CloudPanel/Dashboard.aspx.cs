@@ -246,19 +246,23 @@ namespace CloudPanel
 
                 // Set mailbox space allocated
                 lbUsedVsAllocatedMailbox.Text = string.Format("{0}{1} / {2}{3}", overall.TotalUsedEmailSpace.ToString("#.##"), overall.TotalUsedEmailSpaceSizeType, overall.TotalAllocatedEmailSpace.ToString("#.##"), overall.TotalAllocatedEmailSpaceSizeType);
-                progBarMailboxesUsedVsAllocated.Attributes.Add("data-percentage", string.Format("{0}%", (int)Math.Round((decimal)(100 * overall.TotalUsedEmailSpaceInKB) / overall.TotalAllocatedEmailSpaceInKB)));
+                if (overall.TotalUsedEmailSpaceInKB > 0 && overall.TotalAllocatedEmailSpaceInKB > 0)
+                    progBarMailboxesUsedVsAllocated.Attributes.Add("data-percentage", string.Format("{0}%", (int)Math.Round((decimal)(100 * overall.TotalUsedEmailSpaceInKB) / overall.TotalAllocatedEmailSpaceInKB)));
 
                 // Set mailbox progress bar
                 lbTotalMailboxes.Text = overall.TotalMailboxes.ToString();
-                progBarMailboxes.Attributes.Add("data-percentage", string.Format("{0}%", (int)Math.Round((double)(100 * overall.TotalMailboxes) / overall.TotalUsers)));
+                if (overall.TotalMailboxes > 0 && overall.TotalUsers > 0)
+                    progBarMailboxes.Attributes.Add("data-percentage", string.Format("{0}%", (int)Math.Round((double)(100 * overall.TotalMailboxes) / overall.TotalUsers)));
 
                 // Set citrix progress bar
                 lbTotalCitrixUsers.Text = overall.TotalCitrixUsers.ToString();
-                progBarCitrix.Attributes.Add("data-percentage", string.Format("{0}%", (int)Math.Round((double)(100 * overall.TotalCitrixUsers) / overall.TotalUsers)));
+                if (overall.TotalCitrixUsers > 0 && overall.TotalUsers > 0)
+                    progBarCitrix.Attributes.Add("data-percentage", string.Format("{0}%", (int)Math.Round((double)(100 * overall.TotalCitrixUsers) / overall.TotalUsers)));
 
                 // Set lync progress bar
                 lbTotalLyncUsers.Text = overall.TotalLyncUsers.ToString();
-                progBarLync.Attributes.Add("data-percentage", string.Format("{0}%", (int)Math.Round((double)(100 * overall.TotalLyncUsers) / overall.TotalUsers)));
+                if (overall.TotalLyncUsers >0 && overall.TotalUsers > 0)
+                    progBarLync.Attributes.Add("data-percentage", string.Format("{0}%", (int)Math.Round((double)(100 * overall.TotalLyncUsers) / overall.TotalUsers)));
             }
         }
 

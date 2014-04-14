@@ -54,22 +54,19 @@ namespace CloudPanel
 
         private void ProcessPlaceHolders()
         {
-            if (!IsPostBack)
+            if (bodyClass == "horizontal-menu")
             {
-                if (bodyClass == "horizontal-menu")
-                {
-                    BodyTag.Attributes.Add("class", "horizontal-menu");
+                BodyTag.Attributes.Add("class", "horizontal-menu");
 
-                    Control loadControl = Page.LoadControl("~/cpcontrols/horizontal-menu.ascx");
-                    PlaceHolderHorizontalNav.Controls.Add(loadControl);
-                }
-                else
-                {
-                    BodyTag.Attributes.Remove("class");
+                Control loadControl = Page.LoadControl("~/cpcontrols/horizontal-menu.ascx");
+                PlaceHolderHorizontalNav.Controls.Add(loadControl);
+            }
+            else
+            {
+                BodyTag.Attributes.Remove("class");
 
-                    Control loadControl = Page.LoadControl("~/cpcontrols/vertical-menu.ascx");
-                    PlaceHolderVerticalMenu.Controls.Add(loadControl);
-                }
+                Control loadControl = Page.LoadControl("~/cpcontrols/vertical-menu.ascx");
+                PlaceHolderVerticalMenu.Controls.Add(loadControl);
             }
 
             bool isSuperAdmin = WebSessionHandler.IsSuperAdmin;

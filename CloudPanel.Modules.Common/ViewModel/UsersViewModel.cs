@@ -411,7 +411,6 @@ namespace CloudPanel.Modules.Common.ViewModel
 
         #endregion
 
-
         #region User Section
 
         public void CreateUser(UsersObject newUser)

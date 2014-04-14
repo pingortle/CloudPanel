@@ -549,7 +549,6 @@ namespace CloudPanel.company
                 alertmessage.SetMessage(AlertID.FAILED, Resources.LocalizedText.Users_ViewStateNull);
             else
             {
-
                 UsersObject original = userObject as UsersObject;
 
                 bool valuesHaveBeenUpdated = false;

@@ -54,11 +54,11 @@
     </Reference>
     <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.6.0.0\lib\net40\EntityFramework.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net40\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.6.0.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
     <Reference Include="HtmlAgilityPack">
       <HintPath>..\packages\HtmlAgilityPack.1.4.6\lib\Net40\HtmlAgilityPack.dll</HintPath>
@@ -720,6 +720,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Code\AuditGlobalization.cs" />
+    <Compile Include="App_GlobalResources\de-CH\LocalizedText.de-CH.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>LocalizedText.de-CH.resx</DependentUpon>
+    </Compile>
     <Compile Include="App_GlobalResources\en-US\Menu.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1138,8 +1143,8 @@
       <DependentUpon>CPDatabase.edmx</DependentUpon>
       <LastGenOutput>CPDatabase.cs</LastGenOutput>
     </Content>
-    <Content Include="packages.config" />
     <Content Include="js\codemirror\.DS_Store" />
+    <Content Include="packages.config" />
     <None Include="Properties\PublishProfiles\CloudPanel HOME.pubxml" />
     <None Include="Properties\PublishProfiles\CloudPanel LAB.pubxml" />
     <None Include="Properties\PublishProfiles\LAB DC.pubxml" />
@@ -1187,13 +1192,17 @@
       <LastGenOutput>SharedResources.Designer.cs</LastGenOutput>
     </Content>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="App_GlobalResources\de-CH\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="App_GlobalResources\en-US\Menu.resx">
       <Generator>GlobalResourceProxyGenerator</Generator>
       <LastGenOutput>Menu.Designer.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="App_GlobalResources\de-CH\LocalizedText.de-CH.resx">
+      <Generator>GlobalResourceProxyGenerator</Generator>
+      <LastGenOutput>LocalizedText.de-CH.designer.cs</LastGenOutput>
     </Content>
   </ItemGroup>
   <PropertyGroup>
