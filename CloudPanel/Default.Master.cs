@@ -41,7 +41,7 @@ namespace CloudPanel
         private void SetSessionTimeout()
         {
             expiredTimeoutInMilliseconds = HttpContext.Current.Session.Timeout * 60 * 1000;
-            warningTimeoutInMilliseconds = expiredTimeoutInMilliseconds - 2;
+            warningTimeoutInMilliseconds = (HttpContext.Current.Session.Timeout - 2) * 60 * 1000;
         }
 
         private void ProcessPlaceHolders()
