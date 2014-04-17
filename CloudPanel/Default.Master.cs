@@ -19,15 +19,10 @@ namespace CloudPanel
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Request.Url.AbsoluteUri.Contains("/settings.aspx") && Request.IsLocal)
-            {
-                // Do not redirect local requests access settings page
-            }
-            else
+            if (!Request.Url.AbsoluteUri.Contains("/settings.aspx") || !Request.IsLocal)
             {
                 // Check if user is authenticated
-#if DEBUG
-#else
+#if !DEBUG
                 if (!WebSessionHandler.IsLoggedIn)
                     Response.Redirect("~/login.aspx", true);
 
@@ -45,11 +40,8 @@ namespace CloudPanel
 
         private void SetSessionTimeout()
         {
-            int expiredDefault = HttpContext.Current.Session.Timeout * 60 * 1000;
-            int warningDefault = expiredDefault - 2;
-
-            expiredTimeoutInMilliseconds = int.Parse(expiredDefault.ToString(), CultureInfo.InvariantCulture);
-            warningTimeoutInMilliseconds = int.Parse(warningDefault.ToString(), CultureInfo.InvariantCulture);
+            expiredTimeoutInMilliseconds = HttpContext.Current.Session.Timeout * 60 * 1000;
+            warningTimeoutInMilliseconds = (HttpContext.Current.Session.Timeout - 2) * 60 * 1000;
         }
 
         private void ProcessPlaceHolders()
@@ -84,11 +76,6 @@ namespace CloudPanel
         {
             string redirectUrl = string.Format("~/security/locked.aspx?username={0}&displayname={1}", WebSessionHandler.Username, WebSessionHandler.DisplayName);
             Response.Redirect(redirectUrl);
-        }
-
-        void viewModel_ViewModelEvent(Modules.Base.Enumerations.AlertID errorID, string message)
-        {
-            throw new Exception(message);
         }
 
         #endregion 
