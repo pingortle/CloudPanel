@@ -669,6 +669,7 @@
     <Content Include="notfound.aspx" />
     <Content Include="plans\company.aspx" />
     <Content Include="plans\mailbox.aspx" />
+    <Content Include="plans\activesync.aspx" />
     <Content Include="resellers.aspx" />
     <Content Include="js\Highcharts-3.0.1\js\adapters\mootools-adapter.js" />
     <Content Include="js\Highcharts-3.0.1\js\adapters\mootools-adapter.src.js" />
@@ -990,6 +991,13 @@
     </Compile>
     <Compile Include="plans\mailbox.aspx.designer.cs">
       <DependentUpon>mailbox.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="plans\activesync.aspx.cs">
+      <DependentUpon>activesync.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="plans\activesync.aspx.designer.cs">
+      <DependentUpon>activesync.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Default.Master.cs">
