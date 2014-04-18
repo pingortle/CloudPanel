@@ -4,18 +4,18 @@
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMainPanel" runat="server">
 
     <div class="pageheader">
-        <h2><i class="fa fa-pencil-square"></i>ActiveSync Plans***</h2>
+        <h2><i class="fa fa-pencil-square"></i><%= Resources.SharedResources.MENU_ActivesyncPlans %></h2>
     </div>
 
     <div class="contentpanel">
         <div class="row">
             <div class="col-md-12">
                 <ul class="nav nav-tabs nav-justified">
-                    <li class="active"><a href="#General" data-toggle="tab"><strong>General***</strong></a></li>
-                    <li><a href="#Password" data-toggle="tab"><strong>Password***</strong></a></li>
-                    <li><a href="#SyncSettings" data-toggle="tab"><strong>Sync Settings***</strong></a></li>
-                    <li><a href="#Device" data-toggle="tab"><strong>Device***</strong></a></li>
-                    <li><a href="#DeviceApplications" data-toggle="tab"><strong>Device Applications***</strong></a></li>
+                    <li class="active"><a href="#General" data-toggle="tab"><strong><%= Resources.LocalizedText.Settings_General %></strong></a></li>
+                    <li><a href="#Password" data-toggle="tab"><strong><%= Resources.LocalizedText.Settings_Password %></strong></a></li>
+                    <li><a href="#SyncSettings" data-toggle="tab"><strong><%= Resources.LocalizedText.ActiveSync_SyncSettings %></strong></a></li>
+                    <li><a href="#Device" data-toggle="tab"><strong><%= Resources.LocalizedText.ActiveSync_Device %></strong></a></li>
+                    <li><a href="#DeviceApplications" data-toggle="tab"><strong><%= Resources.LocalizedText.ActiveSync_DeviceApplications %></strong></a></li>
                 </ul>
 
                 <div class="tab-content" id="validateForm">
@@ -25,17 +25,17 @@
                             <div class="panel panel-default">
                                 <div class="panel-body">
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label">Plan***</label>
+                                        <label class="col-sm-2 control-label"><%= Resources.LocalizedText.ActiveSync_Plan %></label>
                                         <div class="col-sm-4">
                                             <asp:DropDownList ID="ddlPlans" runat="server" CssClass="form-control chosen-select" DataTextField="DisplayName" DataValueField="ID" />
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label">Display Name***</label>
+                                        <label class="col-sm-2 control-label"><%= Resources.LocalizedText.ActiveSync_DisplayName %></label>
                                         <div class="col-sm-4"><asp:TextBox ID="txtDisplayName" runat="server" CssClass="form-control" /></div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label">Description***</label>
+                                        <label class="col-sm-2 control-label"><%= Resources.LocalizedText.ActiveSync_Description %></label>
                                         <div class="col-sm-4"><asp:TextBox ID="txtDescription" runat="server" CssClass="form-control" TextMode="MultiLine" /></div>
                                     </div>
                                     <div class="form-group">
@@ -43,12 +43,12 @@
                                         <div class="col-sm-4">
                                             <div class="ckbox ckbox-primary">
                                                 <asp:CheckBox ID="cbAllowNonProvisionableDevices" runat="server" />
-                                                <label for='<%= cbAllowNonProvisionableDevices.ClientID %>'>Allow non-provisionable devices***</label>
+                                                <label for='<%= cbAllowNonProvisionableDevices.ClientID %>'><%= Resources.LocalizedText.ActiveSync_AllowNonProvisionableDevices %></label>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label">Refresh Interval (Hours)***</label>
+                                        <label class="col-sm-2 control-label"><%= Resources.LocalizedText.ActiveSync_RefreshIntervalHours %></label>
                                         <div class="col-sm-4"><asp:TextBox ID="txtRefreshInterval" runat="server" CssClass="form-control" /></div>
                                     </div>
                                 </div>
@@ -66,7 +66,7 @@
                                         <div class="col-sm-4">
                                             <div class="ckbox ckbox-primary">
                                                 <asp:CheckBox ID="cbRequirePassword" runat="server" />
-                                                <label for='<%= cbRequirePassword.ClientID %>'>Require Password***</label>
+                                                <label for='<%= cbRequirePassword.ClientID %>'><%= Resources.LocalizedText.ActiveSync_RequirePassword %></label>
                                             </div>
                                         </div>
                                     </div>
@@ -80,32 +80,32 @@
                             <div class="panel panel-default">
                                 <div class="panel-body">
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label">Include past calendar items***</label>
+                                        <label class="col-sm-2 control-label"><%= Resources.LocalizedText.ActiveSync_IncludePastCalendar %></label>
                                         <div class="col-sm-4">
                                             <asp:DropDownList ID="ddlIncludePastCalendar" runat="server" CssClass="form-control chosen-select">
-                                                <asp:ListItem Text="All***" Value="All" />
-                                                <asp:ListItem Text="Two Weeks***" Value="TwoWeeks" />
-                                                <asp:ListItem Text="One Month***" Value="OneMonth" />
-                                                <asp:ListItem Text="Three Months***" Value="ThreeMonths" />
-                                                <asp:ListItem Text="Six Months***" Value="SixMonths" />
+                                                <asp:ListItem Text="<%$ Resources:LocalizedText, ActiveSync_PastQuantity_All %>" Value="All" />
+                                                <asp:ListItem Text="<%$ Resources:LocalizedText, ActiveSync_PastQuantity_TwoWeeks %>" Value="TwoWeeks" />
+                                                <asp:ListItem Text="<%$ Resources:LocalizedText, ActiveSync_PastQuantity_OneMonth %>" Value="OneMonth" />
+                                                <asp:ListItem Text="<%$ Resources:LocalizedText, ActiveSync_PastQuantity_ThreeMonths %>" Value="ThreeMonths" />
+                                                <asp:ListItem Text="<%$ Resources:LocalizedText, ActiveSync_PastQuantity_SixMonths %>" Value="SixMonths" />
                                             </asp:DropDownList>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label">Include past email items***</label>
+                                        <label class="col-sm-2 control-label"><%= Resources.LocalizedText.ActiveSync_IncludePastEmail %></label>
                                         <div class="col-sm-4">
                                             <asp:DropDownList ID="ddlIncludePastEmail" runat="server" CssClass="form-control chosen-select">
-                                                <asp:ListItem Text="All***" Value="All" />
-                                                <asp:ListItem Text="One Day***" Value="OneDay" />
-                                                <asp:ListItem Text="Three Days***" Value="ThreeDays" />
-                                                <asp:ListItem Text="One Week***" Value="OneWeek" />
-                                                <asp:ListItem Text="Two Weeks***" Value="TwoWeeks" />
-                                                <asp:ListItem Text="One Month***" Value="OneMonth" />
+                                                <asp:ListItem Text="<%$ Resources:LocalizedText, ActiveSync_PastQuantity_All %>" Value="All" />
+                                                <asp:ListItem Text="<%$ Resources:LocalizedText, ActiveSync_PastQuantity_OneDay %>" Value="OneDay" />
+                                                <asp:ListItem Text="<%$ Resources:LocalizedText, ActiveSync_PastQuantity_ThreeDays %>" Value="ThreeDays" />
+                                                <asp:ListItem Text="<%$ Resources:LocalizedText, ActiveSync_PastQuantity_OneWeek %>" Value="OneWeek" />
+                                                <asp:ListItem Text="<%$ Resources:LocalizedText, ActiveSync_PastQuantity_TwoWeeks %>" Value="TwoWeeks" />
+                                                <asp:ListItem Text="<%$ Resources:LocalizedText, ActiveSync_PastQuantity_OneMonth %>" Value="OneMonth" />
                                             </asp:DropDownList>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label">Limit email size (KB)***</label>
+                                        <label class="col-sm-2 control-label"><%= Resources.LocalizedText.ActiveSync_LimitEmailSizeKB %></label>
                                         <div class="col-sm-4"><asp:TextBox ID="txtEmailSizeLimit" runat="server" CssClass="form-control" /></div>
                                     </div>
                                     <div class="form-group">
@@ -113,7 +113,7 @@
                                         <div class="col-sm-4">
                                             <div class="ckbox ckbox-primary">
                                                 <asp:CheckBox ID="cbRoamingManualSync" runat="server" />
-                                                <label for='<%= cbRoamingManualSync.ClientID %>'>Require manual sync when roaming***</label>
+                                                <label for='<%= cbRoamingManualSync.ClientID %>'><%= Resources.LocalizedText.ActiveSync_RequireManualSync %></label>
                                             </div>
                                         </div>
                                     </div>
@@ -122,7 +122,7 @@
                                         <div class="col-sm-4">
                                             <div class="ckbox ckbox-primary">
                                                 <asp:CheckBox ID="cbAllowHTML" runat="server" />
-                                                <label for='<%= cbAllowHTML.ClientID %>'>Allow HTML formatted email***</label>
+                                                <label for='<%= cbAllowHTML.ClientID %>'><%= Resources.LocalizedText.ActiveSync_AllowHTML %></label>
                                             </div>
                                         </div>
                                     </div>
@@ -131,12 +131,12 @@
                                         <div class="col-sm-4">
                                             <div class="ckbox ckbox-primary">
                                                 <asp:CheckBox ID="cbAllowAttachmentDownloads" runat="server" />
-                                                <label for='<%= cbAllowAttachmentDownloads.ClientID %>'>Allow attachments to be downloaded to device***</label>
+                                                <label for='<%= cbAllowAttachmentDownloads.ClientID %>'><%= Resources.LocalizedText.ActiveSync_AllowDownloadedAttachments %></label>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label">Maximum attachment size (KB)***</label>
+                                        <label class="col-sm-2 control-label"><%= Resources.LocalizedText.ActiveSync_MaximumAttachmentSizeKB %></label>
                                         <div class="col-sm-4"><asp:TextBox ID="txtMaxAttachmentSize" runat="server" CssClass="form-control" /></div>
                                     </div>
                                 </div>
@@ -148,7 +148,7 @@
                         <div class="form-horizontal">
                             <div class="panel panel-default">
                                 <div class="panel-body">
-                                    <strong>The ability to modify policies on this tab is a premium Exchange ActiveSync feature that requires an Exchange Enterprise Client Access License for each mailbox policies are restricted on.***</strong>
+                                    <strong><%= Resources.LocalizedText.ActiveSync_PremiumExchangeMessage %></strong>
                                     <br />
                                     <br />
                                     <div class="form-group">
@@ -156,7 +156,7 @@
                                         <div class="col-sm-4">
                                             <div class="ckbox ckbox-primary">
                                                 <asp:CheckBox ID="cbAllowRemovableStorage" runat="server" />
-                                                <label for='<%= cbAllowRemovableStorage.ClientID %>'>Allow removable storage***</label>
+                                                <label for='<%= cbAllowRemovableStorage.ClientID %>'><%= Resources.LocalizedText.ActiveSync_AllowRemovableStorage %></label>
                                             </div>
                                         </div>
                                     </div>
@@ -165,7 +165,7 @@
                                         <div class="col-sm-4">
                                             <div class="ckbox ckbox-primary">
                                                 <asp:CheckBox ID="cbAllowCamera" runat="server" />
-                                                <label for='<%= cbAllowCamera.ClientID %>'>Allow camera***</label>
+                                                <label for='<%= cbAllowCamera.ClientID %>'><%= Resources.LocalizedText.ActiveSync_AllowCamera %></label>
                                             </div>
                                         </div>
                                     </div>
@@ -174,7 +174,7 @@
                                         <div class="col-sm-4">
                                             <div class="ckbox ckbox-primary">
                                                 <asp:CheckBox ID="cbAllowWifi" runat="server" />
-                                                <label for='<%= cbAllowWifi.ClientID %>'>Allow Wi-Fi***</label>
+                                                <label for='<%= cbAllowWifi.ClientID %>'><%= Resources.LocalizedText.ActiveSync_AllowWifi %></label>
                                             </div>
                                         </div>
                                     </div>
@@ -183,7 +183,7 @@
                                         <div class="col-sm-4">
                                             <div class="ckbox ckbox-primary">
                                                 <asp:CheckBox ID="cbAllowInfrared" runat="server" />
-                                                <label for='<%= cbAllowInfrared.ClientID %>'>Allow infrared***</label>
+                                                <label for='<%= cbAllowInfrared.ClientID %>'><%= Resources.LocalizedText.ActiveSync_AllowInfrared %></label>
                                             </div>
                                         </div>
                                     </div>
@@ -192,7 +192,7 @@
                                         <div class="col-sm-4">
                                             <div class="ckbox ckbox-primary">
                                                 <asp:CheckBox ID="cbAllowInternetSharing" runat="server" />
-                                                <label for='<%= cbAllowInternetSharing.ClientID %>'>Allow internet sharing from device***</label>
+                                                <label for='<%= cbAllowInternetSharing.ClientID %>'><%= Resources.LocalizedText.ActiveSync_AllowInternetSharing %></label>
                                             </div>
                                         </div>
                                     </div>
@@ -201,7 +201,7 @@
                                         <div class="col-sm-4">
                                             <div class="ckbox ckbox-primary">
                                                 <asp:CheckBox ID="cbAllowRemoteDesktop" runat="server" />
-                                                <label for='<%= cbAllowRemoteDesktop.ClientID %>'>Allow remote desktop from device***</label>
+                                                <label for='<%= cbAllowRemoteDesktop.ClientID %>'><%= Resources.LocalizedText.ActiveSync_AllowRemoteDesktop %></label>
                                             </div>
                                         </div>
                                     </div>
@@ -210,7 +210,7 @@
                                         <div class="col-sm-4">
                                             <div class="ckbox ckbox-primary">
                                                 <asp:CheckBox ID="cbAllowDesktopSync" runat="server" />
-                                                <label for='<%= cbAllowDesktopSync.ClientID %>'>Allow desktop synchronization***</label>
+                                                <label for='<%= cbAllowDesktopSync.ClientID %>'><%= Resources.LocalizedText.ActiveSync_AllowDesktopSync %></label>
                                             </div>
                                         </div>
                                     </div>
@@ -219,16 +219,16 @@
                                         <div class="col-sm-4">
                                             <div class="ckbox ckbox-primary">
                                                 <asp:CheckBox ID="cbAllowTextMessaging" runat="server" />
-                                                <label for='<%= cbAllowTextMessaging.ClientID %>'>Allow text messaging***</label>
+                                                <label for='<%= cbAllowTextMessaging.ClientID %>'><%= Resources.LocalizedText.ActiveSync_AllowTextMessaging %></label>
                                             </div>
                                         </div>
                                     </div>
-                                    <label class="col-sm-2 control-label">Allow Bluetooth***</label>
+                                    <label class="col-sm-2 control-label"><%= Resources.LocalizedText.ActiveSync_AllowBluetooth %></label>
                                     <div class="col-sm-4">
                                         <asp:DropDownList ID="ddlBluetooth" runat="server" CssClass="form-control chosen-select">
-                                            <asp:ListItem Text="Allow***" Value="Allow" />
-                                            <asp:ListItem Text="Handsfree Only***" Value="Handsfree" />
-                                            <asp:ListItem Text="Disable***" Value="Disable" />
+                                            <asp:ListItem Text="<%$ Resources:LocalizedText, ActiveSync_BluetoothOptions_Allow %>" Value="Allow" />
+                                            <asp:ListItem Text="<%$ Resources:LocalizedText, ActiveSync_BluetoothOptions_Handsfree %>" Value="Handsfree" />
+                                            <asp:ListItem Text="<%$ Resources:LocalizedText, ActiveSync_BluetoothOptions_Disable %>" Value="Disable" />
                                         </asp:DropDownList>
                                     </div>
                                 </div>
@@ -240,7 +240,7 @@
                         <div class="form-horizontal">
                             <div class="panel panel-default">
                                 <div class="panel-body">
-                                    <strong>The ability to modify policies on this tab is a premium Exchange ActiveSync feature that requires an Exchange Enterprise Client Access License for each mailbox policies are restricted on.***</strong>
+                                    <strong><%= Resources.LocalizedText.ActiveSync_PremiumExchangeMessage %></strong>
                                     <br />
                                     <br />
 
@@ -249,7 +249,7 @@
                                         <div class="col-sm-4">
                                             <div class="ckbox ckbox-primary">
                                                 <asp:CheckBox ID="cbAllowBrowser" runat="server" />
-                                                <label for='<%= cbAllowBrowser.ClientID %>'>Allow browser***</label>
+                                                <label for='<%= cbAllowBrowser.ClientID %>'><%= Resources.LocalizedText.ActiveSync_AllowBrowser %></label>
                                             </div>
                                         </div>
                                     </div>
@@ -258,7 +258,7 @@
                                         <div class="col-sm-4">
                                             <div class="ckbox ckbox-primary">
                                                 <asp:CheckBox ID="cbAllowConsumerEmail" runat="server" />
-                                                <label for='<%= cbAllowConsumerEmail.ClientID %>'>Allow consumer email***</label>
+                                                <label for='<%= cbAllowConsumerEmail.ClientID %>'><%= Resources.LocalizedText.ActiveSync_AllowConsumerEmail %></label>
                                             </div>
                                         </div>
                                     </div>
@@ -267,7 +267,7 @@
                                         <div class="col-sm-4">
                                             <div class="ckbox ckbox-primary">
                                                 <asp:CheckBox ID="cbAllowUnsignedApplications" runat="server" />
-                                                <label for='<%= cbAllowUnsignedApplications.ClientID %>'>Allow unsigned applications***</label>
+                                                <label for='<%= cbAllowUnsignedApplications.ClientID %>'><%= Resources.LocalizedText.ActiveSync_AllowUnsignedApps %></label>
                                             </div>
                                         </div>
                                     </div>
@@ -276,7 +276,7 @@
                                         <div class="col-sm-4">
                                             <div class="ckbox ckbox-primary">
                                                 <asp:CheckBox ID="cbAllowUnsignedPackages" runat="server" />
-                                                <label for='<%= cbAllowUnsignedPackages.ClientID %>'>Allow unsigned installation packages***</label>
+                                                <label for='<%= cbAllowUnsignedPackages.ClientID %>'><%= Resources.LocalizedText.ActiveSync_AllowUnsignedPackages %></label>
                                             </div>
                                         </div>
                                     </div>
@@ -291,7 +291,7 @@
 
         <div class="row" style="margin-top: 25px;">
             <div class="panel-footer" style="text-align: right">
-                <asp:Button ID="btnSubmit" runat="server" Text="Submit***" CssClass="btn btn-primary" OnClick="btnSubmit_Click" />
+                <asp:Button ID="btnSubmit" runat="server" Text="<%$ Resources:SharedResources, BUTTON_Submit %>" CssClass="btn btn-primary" OnClick="btnSubmit_Click" />
             </div>
         </div>
     </div>
