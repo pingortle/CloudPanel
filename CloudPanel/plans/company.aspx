@@ -6,7 +6,7 @@
 
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMainPanel" runat="server">
     <div class="pageheader">
-        <h2><i class="fa fa-pencil-square"></i><%= Resources.LocalizedText.PlanCompany_Title %></h2>
+        <h2><i class="fa fa-pencil-square"></i>Company Plans</h2>
     </div>
 
     <div class="contentpanel">
@@ -19,12 +19,12 @@
 
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h4 class="panel-title"><%= Resources.LocalizedText.PlanCompany_Details %></h4>
+                        <h4 class="panel-title">Details</h4>
                     </div>
 
                     <div class="panel-body">
                         <div class="form-group">
-                            <label class="col-sm-2 control-label"><%= Resources.LocalizedText.PlanCompany_Plan %></label>
+                            <label class="col-sm-2 control-label">Plan</label>
                             <div class="col-sm-4">
                                 <asp:DropDownList ID="ddlCompanyPlans" runat="server" CssClass="form-control chosen-select" 
                                     OnSelectedIndexChanged="ddlCompanyPlans_SelectedIndexChanged" AutoPostBack="true">
@@ -34,21 +34,21 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label"><%= Resources.LocalizedText.PlanCompany_DisplayName %><span class="asterisk">*</span></label>
+                            <label class="col-sm-2 control-label">Display Name <span class="asterisk">*</span></label>
                             <div class="col-sm-4">
                                 <asp:TextBox ID="txtDisplayName" runat="server" CssClass="form-control" required></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label"><%= Resources.LocalizedText.PlanCompany_MaxUsers %><span class="asterisk">*</span></label>
+                            <label class="col-sm-2 control-label">Max Users <span class="asterisk">*</span></label>
                             <div class="col-sm-4">
                                 <asp:TextBox ID="txtMaxUsers" runat="server" CssClass="form-control spinner-users" required></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label"><%= Resources.LocalizedText.PlanCompany_MaxDomains %><span class="asterisk">*</span></label>
+                            <label class="col-sm-2 control-label">MAx Domains <span class="asterisk">*</span></label>
                             <div class="col-sm-4">
                                 <asp:TextBox ID="txtMaxDomains" runat="server" CssClass="form-control spinner-greaterthanone" required></asp:TextBox>
                             </div>
@@ -62,40 +62,40 @@
 
                 <div class="panel panel-primary">
                     <div class="panel-heading">
-                        <h4 class="panel-title"><%= Resources.LocalizedText.PlanCompany_Exchange %></h4>
+                        <h4 class="panel-title">Exchange</h4>
                     </div>
 
                     <div class="panel-body">
                         <div class="form-group">
-                            <label class="col-sm-2 control-label"><%= Resources.LocalizedText.PlanCompany_MaxMailboxes %><span class="asterisk">*</span></label>
+                            <label class="col-sm-2 control-label">Max Mailboxes <span class="asterisk">*</span></label>
                             <div class="col-sm-4">
                                 <asp:TextBox ID="txtMaxMailboxes" runat="server" CssClass="form-control spinner-lessthanusers" required></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label"><%= Resources.LocalizedText.PlanCompany_MaxContacts %><span class="asterisk">*</span></label>
+                            <label class="col-sm-2 control-label">Max Contacts <span class="asterisk">*</span></label>
                             <div class="col-sm-4">
                                 <asp:TextBox ID="txtMaxContacts" runat="server" CssClass="form-control spinner" required></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label"><%= Resources.LocalizedText.PlanCompany_MaxGroups %><span class="asterisk">*</span></label>
+                            <label class="col-sm-2 control-label">Max Groups <span class="asterisk">*</span></label>
                             <div class="col-sm-4">
                                 <asp:TextBox ID="txtMaxGroups" runat="server" CssClass="form-control spinner" required></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label"><%= Resources.LocalizedText.PlanCompany_MaxResourceMailboxes %><span class="asterisk">*</span></label>
+                            <label class="col-sm-2 control-label">Max Resource Mailboxes <span class="asterisk">*</span></label>
                             <div class="col-sm-4">
                                 <asp:TextBox ID="txtMaxResourceMailboxes" runat="server" CssClass="form-control spinner" required></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label"><%= Resources.LocalizedText.PlanCompany_MaxMailPublicFolders %><span class="asterisk">*</span></label>
+                            <label class="col-sm-2 control-label">Max Mail-Enabled Public Folders <span class="asterisk">*</span></label>
                             <div class="col-sm-4">
                                 <asp:TextBox ID="txtMaxMailPublicFolders" runat="server" CssClass="form-control spinner" required></asp:TextBox>
                             </div>
@@ -110,8 +110,8 @@
             </div>
 
             <div class="panel-footer" style="text-align: right">
-                <asp:Button ID="btnDelete" runat="server" Text="<%$ Resources:LocalizedText, PlanCompany_Delete %>" CssClass="btn btn-danger" OnClick="btnDelete_Click" />
-                <asp:Button ID="btnSave" runat="server" Text="<%$ Resources:LocalizedText, PlanCompany_Save %>" CssClass="btn btn-primary" OnClick="btnSave_Click" />
+                <asp:Button ID="btnDelete" runat="server" Text="Delete" CssClass="btn btn-danger" OnClick="btnDelete_Click" />
+                <asp:Button ID="btnSave" runat="server" Text="Save" CssClass="btn btn-primary" OnClick="btnSave_Click" />
              </div>
                     <!-- panel-footer -->
 

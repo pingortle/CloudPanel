@@ -28,7 +28,7 @@ namespace CloudPanel.Modules.Common.ViewModel
                 // Check if IP address is blocked from brute force
                 if (IsBlockedFromBruteForce(ipAddress) && !isLocalRequest)
                 {
-                    ThrowEvent(AlertID.BRUTE_FORCE_BLOCKED, ipAddress);
+                    ThrowEvent(AlertID.FAILED, "Your IP has been blocked");
                     return null;
                 }
                 else
@@ -49,7 +49,7 @@ namespace CloudPanel.Modules.Common.ViewModel
                         // Audit the login
                         AuditLogin(username, ipAddress, false);
 
-                        ThrowEvent(AlertID.LOGIN_FAILED, username + " failed to login.");
+                        ThrowEvent(AlertID.FAILED, username + " failed to login.");
                         return null;
                     }
                     else
@@ -158,7 +158,7 @@ namespace CloudPanel.Modules.Common.ViewModel
 
                         if (isBlocked.Count() >= StaticSettings.IPBlockingFailedCount)
                         {
-                            ThrowEvent(AlertID.BRUTE_FORCE_BLOCKED, ipAddress + " is blocked due to too many failed login attempts");
+                            ThrowEvent(AlertID.FAILED, ipAddress + " is blocked due to too many failed login attempts");
                             return true;
                         }
                         else

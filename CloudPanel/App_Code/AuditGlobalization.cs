@@ -24,31 +24,31 @@ namespace CloudPanel
                     switch (a.Action)
                     {
                         case Modules.Base.Enumerations.ActionID.CreateUser:
-                            a.ActionIDGlobalization = Resources.LocalizedText.Audit_NewUser;
+                            a.ActionIDGlobalization = "Created new user";
                             break;
                         case Modules.Base.Enumerations.ActionID.DeleteUser:
-                            a.ActionIDGlobalization = Resources.LocalizedText.Audit_DeleteUser;
+                            a.ActionIDGlobalization = "Deleted user";
                             break;
                         case Modules.Base.Enumerations.ActionID.UpdateUser:
-                            a.ActionIDGlobalization = Resources.LocalizedText.Audit_UpdateUser;
+                            a.ActionIDGlobalization = "Updated user";
                             break;
                         case Modules.Base.Enumerations.ActionID.CreateCompany:
-                            a.ActionIDGlobalization = Resources.LocalizedText.Audit_NewCompany;
+                            a.ActionIDGlobalization = "Created new company";
                             break;
                         case Modules.Base.Enumerations.ActionID.CreateReseller:
-                            a.ActionIDGlobalization = Resources.LocalizedText.Audit_NewReseller;
+                            a.ActionIDGlobalization = "Created new reseller";
                             break;
                         case Modules.Base.Enumerations.ActionID.SaveSettings:
-                            a.ActionIDGlobalization = Resources.LocalizedText.Audit_SavedSettings;
+                            a.ActionIDGlobalization = "Saved settings";
                             break;
                         case Modules.Base.Enumerations.ActionID.UpdateCompany:
-                            a.ActionIDGlobalization = Resources.LocalizedText.Audit_UpdateCompany;
+                            a.ActionIDGlobalization = "Updated company";
                             break;
                         case Modules.Base.Enumerations.ActionID.UpdateReseller:
-                            a.ActionIDGlobalization = Resources.LocalizedText.Audit_UpdateReseller;
+                            a.ActionIDGlobalization = "Updated reseller";
                             break;
                         case Modules.Base.Enumerations.ActionID.ResetPassword:
-                            a.ActionIDGlobalization = Resources.LocalizedText.Audit_ResetPassword;
+                            a.ActionIDGlobalization = "Reset password";
                             break;
                         default:
                             break;

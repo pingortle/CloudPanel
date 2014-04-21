@@ -49,7 +49,7 @@ namespace CloudPanel.company.email
         {
             if (txtRandomCharacters.Text != lbRandomCharacters.Text)
             {
-                alertmessage.SetMessage(Modules.Base.Enumerations.AlertID.WARNING, Resources.LocalizedText.ExchangeDisable_IncorrectCode);
+                alertmessage.SetMessage(Modules.Base.Enumerations.AlertID.WARNING, "You did not supply the correct code. Please try again.");
                 lbRandomCharacters.Text = Randoms.LettersAndNumbers();
             }
             else

@@ -266,7 +266,7 @@ namespace CloudPanel.Modules.ActiveDirectory.Users
 
                 bool doesExist = DoesUserPrincipalNameExist(user.UserPrincipalName);
                 if (doesExist)
-                    throw new Exception(AlertID.USER_ALREADY_EXISTS.ToString());
+                    throw new Exception("User already exists");
                 else
                 {
                     // Find an available sAMAccountName
@@ -341,7 +341,7 @@ namespace CloudPanel.Modules.ActiveDirectory.Users
 
                 up = UserPrincipalExt.FindByIdentity(pc, IdentityType.UserPrincipalName, user.UserPrincipalName);
                 if (up == null)
-                    throw new Exception(AlertID.USER_UNKNOWN.ToString());
+                    throw new Exception("USER IS UNKNOWN");
                 else
                 {
                     up.GivenName = user.Firstname;

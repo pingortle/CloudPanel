@@ -15,7 +15,7 @@
 
         <asp:Panel ID="panelCompanyList" runat="server" CssClass="row">
             <div style="float: right; margin: 10px">
-                <asp:Button ID="btnAddCompany" runat="server" Text="<%$ Resources:LocalizedText, Companies_AddNewCompany %>" CssClass="btn btn-success" OnClick="btnAddCompany_Click" />
+                <asp:Button ID="btnAddCompany" runat="server" Text="Add New Company" CssClass="btn btn-success" OnClick="btnAddCompany_Click" />
             </div>
 
             <div class="col-md-12">
@@ -23,10 +23,10 @@
                     <table class="table table-striped mb30">
                         <thead>
                             <tr>
-                                <th><%= Resources.LocalizedText.Companies_CompanyName %></th>
-                                <th><%= Resources.LocalizedText.Companies_Address %></th>
-                                <th><%= Resources.LocalizedText.Companies_Domains %></th>
-                                <th><%= Resources.LocalizedText.Companies_Created %></th>
+                                <th>Company Name</th>
+                                <th>Address</th>
+                                <th>Domains</th>
+                                <th>Created</th>
                                 <th style="width: 10%"></th>
                             </tr>
                         </thead>
@@ -42,14 +42,14 @@
                                         <td><%# Eval("Created") %></td>
                                         <td>
                                             <div class="btn-group">
-                                                <asp:Button ID="btnModify" runat="server" CssClass="btn btn-xs btn-primary" CommandName="Edit" CommandArgument='<%# Eval("CompanyCode") %>' Text='<%$ Resources:LocalizedText, Companies_Modify %>' />
+                                                <asp:Button ID="btnModify" runat="server" CssClass="btn btn-xs btn-primary" CommandName="Edit" CommandArgument='<%# Eval("CompanyCode") %>' Text="Modify" />
                                                 <button type="button" class="btn btn-xs btn-primary dropdown-toggle" data-toggle="dropdown">
                                                     <span class="caret"></span>
                                                     <span class="sr-only">Toggle Dropdown</span>
                                                 </button>
                                                 <ul class="dropdown-menu" role="menu">
                                                     <li>
-                                                        <asp:LinkButton ID="lnkDelete" runat="server" CommandName="Delete" CommandArgument='<%# Eval("CompanyCode") %>'><%= Resources.LocalizedText.Companies_Delete %></asp:LinkButton>
+                                                        <asp:LinkButton ID="lnkDelete" runat="server" CommandName="Delete" CommandArgument='<%# Eval("CompanyCode") %>'>Delete</asp:LinkButton>
                                                     </li>
                                                 </ul>
                                             </div>
@@ -70,73 +70,73 @@
             <div class="form-horizontal">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <h4 class="panel-title"><%= Resources.LocalizedText.Companies_EditTitle %></h4>
+                        <h4 class="panel-title">Company</h4>
                     </div>
 
                     <div class="panel-body">
                         <div class="form-group">
-                            <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Companies_CompanyName %> <span class="asterisk">*</span></label>
+                            <label class="col-sm-2 control-label">Company Name <span class="asterisk">*</span></label>
                             <div class="col-sm-4">
                                 <asp:TextBox ID="txtName" runat="server" CssClass="form-control" required></asp:TextBox>
                                 <div class="ckbox ckbox-success">
                                     <asp:CheckBox ID="cbUseCompanyName" runat="server" />
-                                    <label for='<%= cbUseCompanyName.ClientID %>'> <%= Resources.LocalizedText.Companies_UseUniqueID %></label>
+                                    <label for='<%= cbUseCompanyName.ClientID %>'> Use company name for the unique ID</label>
                                 </div>
                                 <asp:HiddenField ID="hfCompanyCode" runat="server" />
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Companies_ContactsName %></label>
+                            <label class="col-sm-2 control-label">Contacts Name</label>
                             <div class="col-sm-4">
                                 <asp:TextBox ID="txtContactsName" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Companies_Email %></label>
+                            <label class="col-sm-2 control-label">Email</label>
                             <div class="col-sm-4">
                                 <asp:TextBox ID="txtEmail" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Companies_Telephone %></label>
+                            <label class="col-sm-2 control-label">Telephone</label>
                             <div class="col-sm-4">
                                 <asp:TextBox ID="txtTelephone" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Companies_StreetAddress %></label>
+                            <label class="col-sm-2 control-label">Street Address</label>
                             <div class="col-sm-4">
                                 <asp:TextBox ID="txtStreetAddress" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Companies_City %></label>
+                            <label class="col-sm-2 control-label">City</label>
                             <div class="col-sm-4">
                                 <asp:TextBox ID="txtCity" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Companies_State %></label>
+                            <label class="col-sm-2 control-label">State</label>
                             <div class="col-sm-4">
                                 <asp:TextBox ID="txtState" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Companies_ZipCode %></label>
+                            <label class="col-sm-2 control-label">Zip Code</label>
                             <div class="col-sm-4">
                                 <asp:TextBox ID="txtZipCode" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Companies_Country %> <span class="asterisk">*</span></label>
+                            <label class="col-sm-2 control-label">Country <span class="asterisk">*</span></label>
                             <div class="col-sm-4">
                                 <asp:DropDownList ID="ddlCountry" runat="server" CssClass="form-control chosen-select">
                                     <asp:ListItem Value=""></asp:ListItem>
@@ -396,7 +396,7 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Companies_DomainName %> <span class="asterisk">*</span></label>
+                            <label class="col-sm-2 control-label">Domain Name <span class="asterisk">*</span></label>
                             <div class="col-sm-4">
                                 <asp:TextBox ID="txtDomainName" runat="server" CssClass="form-control"></asp:TextBox>
                             </div>
@@ -406,8 +406,8 @@
                     <!-- panel-body -->
 
                     <div class="panel-footer" style="text-align: right">
-                        <asp:Button ID="btnCancel" runat="server" Text="<%$ Resources:LocalizedText, Resellers_Cancel %>" CssClass="btn btn-default" OnClick="btnCancel_Click" />
-                        <asp:Button ID="btnSubmit" runat="server" Text="<%$ Resources:LocalizedText, Resellers_Submit %>" CssClass="btn btn-primary" OnClick="btnSubmit_Click" />
+                        <asp:Button ID="btnCancel" runat="server" Text="Cancel" CssClass="btn btn-default" OnClick="btnCancel_Click" />
+                        <asp:Button ID="btnSubmit" runat="server" Text="Submit" CssClass="btn btn-primary" OnClick="btnSubmit_Click" />
                     </div>
                     <!-- panel-footer -->
 
@@ -531,7 +531,7 @@
                 return true;
 
 
-            }, '<%= Resources.LocalizedText.Global_InvalidDomain %>');
+            }, 'The domain you entered is not a valid domain.');
 
         });
 

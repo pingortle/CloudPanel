@@ -379,14 +379,7 @@ namespace CloudPanel.company
 
         void viewModel_ViewModelEvent(Modules.Base.Enumerations.AlertID errorID, string message)
         {
-            if (errorID == AlertID.USER_ALREADY_EXISTS)
-                alertmessage.SetMessage(AlertID.WARNING, string.Format("{0}: {1}", Resources.LocalizedText.Users_UserAlreadyExist, message));
-            else if (errorID == AlertID.USER_UNKNOWN)
-                alertmessage.SetMessage(AlertID.FAILED, string.Format("{0}: {1}", Resources.LocalizedText.Users_CouldNotFindUser, message));
-            else if (errorID == AlertID.PASSWORDS_DO_NOT_MATCH)
-                alertmessage.SetMessage(AlertID.WARNING, string.Format("{0}: {1}", Resources.LocalizedText.Users_PasswordsDoNotMatch, message));
-            else
-                alertmessage.SetMessage(errorID, message);
+            alertmessage.SetMessage(errorID, message);
         }
 
         #endregion
@@ -458,7 +451,7 @@ namespace CloudPanel.company
             if (!string.IsNullOrEmpty(txtResetPwd1.Text) && !string.IsNullOrEmpty(txtResetPwd2.Text))
             {
                 if (txtResetPwd1.Text != txtResetPwd2.Text)
-                    alertmessage.SetMessage(AlertID.WARNING, Resources.LocalizedText.Users_PasswordsDoNotMatch);
+                    alertmessage.SetMessage(AlertID.WARNING, "Passwords did not match");
                 else
                 {
                     UsersViewModel viewModel = new UsersViewModel();
@@ -546,7 +539,7 @@ namespace CloudPanel.company
         {
             object userObject = ViewState["CPCurrentEditUser"];
             if (userObject == null)
-                alertmessage.SetMessage(AlertID.FAILED, Resources.LocalizedText.Users_ViewStateNull);
+                alertmessage.SetMessage(AlertID.FAILED, "Viewstate was null. Please contact support");
             else
             {
                 UsersObject original = userObject as UsersObject;
@@ -649,7 +642,7 @@ namespace CloudPanel.company
             object userObject = ViewState["CPCurrentEditUser"];
             object mailboxObject = ViewState["CPCurrentEditMailbox"];
             if (userObject == null)
-                alertmessage.SetMessage(AlertID.FAILED, Resources.LocalizedText.Users_ViewStateNull);
+                alertmessage.SetMessage(AlertID.FAILED, "Viewstate was null. Please contact support");
             else
             {
                 UsersViewModel viewModel = new UsersViewModel();

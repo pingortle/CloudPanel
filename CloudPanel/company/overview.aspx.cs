@@ -82,7 +82,7 @@ namespace CloudPanel.company
                     ddlCurrentPlan.SelectedValue = item.Value;
                 else
                 {
-                    alertmessage.SetMessage(AlertID.WARNING, Resources.LocalizedText.Overview_PlanNotSetWarning);
+                    alertmessage.SetMessage(AlertID.WARNING, "Company plan is not set!");
                     ddlCurrentPlan.SelectedIndex = 0;
                 }
 

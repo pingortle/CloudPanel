@@ -125,17 +125,6 @@ namespace CloudPanel
                 #region Notifications
 
                 #endregion
-
-                #region Other
-
-                cbAdvOnlySuperAdmins.Checked = StaticSettings.LockdownEnabled;
-                cbAdvCustomNameAttrib.Checked = StaticSettings.AllowCustomNameAttribute;
-                cbAdvIPBlockingEnabled.Checked = StaticSettings.IPBlockingEnabled;
-
-                txtAdvIPFailedCount.Text = StaticSettings.IPBlockingFailedCount.ToString();
-                txtAdvIPBlockingLockout.Text = StaticSettings.IPBlockingLockedInMinutes.ToString();
-
-                #endregion
             }
             catch (Exception ex)
             {
@@ -195,22 +184,6 @@ namespace CloudPanel
 
                 StaticSettings.CitrixEnabled = cbEnableCitrix.Checked;
                 StaticSettings.LyncEnabled = cbEnableLync.Checked;
-
-                #endregion
-
-                #region Other
-
-                StaticSettings.LockdownEnabled = cbAdvOnlySuperAdmins.Checked;
-                StaticSettings.AllowCustomNameAttribute = cbAdvCustomNameAttrib.Checked;
-                StaticSettings.IPBlockingEnabled = cbAdvIPBlockingEnabled.Checked;
-
-                int ipBlockFailedCount = 0;
-                int.TryParse(txtAdvIPFailedCount.Text, out ipBlockFailedCount);
-                StaticSettings.IPBlockingFailedCount = ipBlockFailedCount;
-
-                int ipBlockLockout = 0;
-                int.TryParse(txtAdvIPBlockingLockout.Text, out ipBlockLockout);
-                StaticSettings.IPBlockingLockedInMinutes = ipBlockLockout;
 
                 #endregion
 

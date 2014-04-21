@@ -129,8 +129,6 @@
     <Content Include="company\overview.aspx" />
     <Content Include="company\users.aspx" />
     <Content Include="cpcontrols\alertmessage.ascx" />
-    <Content Include="cpcontrols\vertical-menu.ascx" />
-    <Content Include="cpcontrols\horizontal-menu.ascx" />
     <Content Include="css\animate.delay.css" />
     <Content Include="css\animate.min.css" />
     <Content Include="css\bootstrap-fileupload.min.css" />
@@ -712,7 +710,6 @@
     <Content Include="Scripts\Highcharts-3.0.1\js\themes\skies.js" />
     <Content Include="security\locked.aspx" />
     <Content Include="settings.aspx" />
-    <Content Include="validation\domains2.txt" />
     <Content Include="validation\domains.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -720,36 +717,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Code\AuditGlobalization.cs" />
-    <Compile Include="App_GlobalResources\de-CH\LocalizedText.de-CH.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LocalizedText.de-CH.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\en-US\Menu.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Menu.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\en-US\Pages.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Pages.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\en-US\HelpTooltips.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>HelpTooltips.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\en-US\SharedResources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SharedResources.resx</DependentUpon>
-    </Compile>
-    <Compile Include="App_GlobalResources\LocalizedText.designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LocalizedText.resx</DependentUpon>
-    </Compile>
     <Compile Include="companies.aspx.cs">
       <DependentUpon>companies.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -836,20 +803,6 @@
     </Compile>
     <Compile Include="cpcontrols\alertmessage.ascx.designer.cs">
       <DependentUpon>alertmessage.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="cpcontrols\vertical-menu.ascx.cs">
-      <DependentUpon>vertical-menu.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="cpcontrols\vertical-menu.ascx.designer.cs">
-      <DependentUpon>vertical-menu.ascx</DependentUpon>
-    </Compile>
-    <Compile Include="cpcontrols\horizontal-menu.ascx.cs">
-      <DependentUpon>horizontal-menu.ascx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="cpcontrols\horizontal-menu.ascx.designer.cs">
-      <DependentUpon>horizontal-menu.ascx</DependentUpon>
     </Compile>
     <Compile Include="Dashboard.aspx.cs">
       <DependentUpon>Dashboard.aspx</DependentUpon>
@@ -1159,12 +1112,6 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_GlobalResources\en-US\Pages.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Pages.designer.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\CloudPanel.Modules.Base\CloudPanel.Modules.Base.csproj">
       <Project>{8b47db51-6f8e-42a3-b7e1-6c92c0e3628b}</Project>
       <Name>CloudPanel.Modules.Base</Name>
@@ -1174,37 +1121,7 @@
       <Name>CloudPanel.Modules.Common</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_GlobalResources\LocalizedText.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>LocalizedText.designer.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_GlobalResources\en-US\HelpTooltips.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>HelpTooltips.Designer.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_GlobalResources\en-US\SharedResources.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>SharedResources.Designer.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
   <ItemGroup />
-  <ItemGroup>
-    <Content Include="App_GlobalResources\en-US\Menu.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>Menu.Designer.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="App_GlobalResources\de-CH\LocalizedText.de-CH.resx">
-      <Generator>GlobalResourceProxyGenerator</Generator>
-      <LastGenOutput>LocalizedText.de-CH.designer.cs</LastGenOutput>
-    </Content>
-  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

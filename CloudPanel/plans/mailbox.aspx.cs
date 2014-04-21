@@ -117,7 +117,7 @@ namespace CloudPanel.plans
                     txtPricePerGB.Text = obj.AdditionalGBPrice;
                 }
                 else
-                    alertmessage.SetMessage(Modules.Base.Enumerations.AlertID.FAILED, Resources.LocalizedText.PlanMailbox_UnableToFind);
+                    alertmessage.SetMessage(Modules.Base.Enumerations.AlertID.FAILED, "Unable to find plan");
             }
             else
             {
@@ -129,12 +129,7 @@ namespace CloudPanel.plans
 
         void viewModel_ViewModelEvent(Modules.Base.Enumerations.AlertID errorID, string message)
         {
-            if (errorID == Modules.Base.Enumerations.AlertID.PLAN_IN_USE)
-            {
-                alertmessage.SetMessage(Modules.Base.Enumerations.AlertID.WARNING, Resources.LocalizedText.Global_PlanInUse);
-            }
-            else
-                alertmessage.SetMessage(errorID, message);
+           alertmessage.SetMessage(errorID, message);
         }
 
         #endregion
@@ -180,7 +175,7 @@ namespace CloudPanel.plans
                 success = viewModel.CreatePlan(obj);
 
             if (success)
-                alertmessage.SetMessage(Modules.Base.Enumerations.AlertID.SUCCESS, Resources.LocalizedText.PlanMailbox_Success);
+                alertmessage.SetMessage(Modules.Base.Enumerations.AlertID.SUCCESS, "Successfully saved mailbox plan");
 
             RePopulate();
         }

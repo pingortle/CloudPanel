@@ -93,29 +93,12 @@ namespace CloudPanel.security
                 Response.Redirect("~/dashboard.aspx", false);
             }
             else
-                lbError.Text = Resources.LocalizedText.Login_LoginFailed;
+                lbError.Text = "Login failed";
         }
 
         void login_ViewModelEvent(Modules.Base.Enumerations.AlertID errorID, string message)
         {
-            switch (errorID)
-            {
-                case Modules.Base.Enumerations.AlertID.LOGIN_FAILED:
-                    lbError.Text = Resources.LocalizedText.Login_LoginFailed;
-                    break;
-                case Modules.Base.Enumerations.AlertID.USER_UNKNOWN:
-                    lbError.Text = Resources.LocalizedText.Login_LoginFailed;
-                    break;
-                case Modules.Base.Enumerations.AlertID.RETRIEVE_GROUPS_FAILED:
-                    lbError.Text = Resources.LocalizedText.Login_GroupsFailed;
-                    break;
-                case Modules.Base.Enumerations.AlertID.BRUTE_FORCE_BLOCKED:
-                    lbError.Text = Resources.LocalizedText.Login_BruteForceBlocked;
-                    break;
-                default:
-                    lbError.Text = message;
-                    break;
-            }
+            lbError.Text = message;
         }
     }
 }

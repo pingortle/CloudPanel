@@ -109,18 +109,7 @@ namespace CloudPanel.company
         #region Events
         void viewModel_ViewModelEvent(Modules.Base.Enumerations.AlertID errorID, string message)
         {
-            switch (errorID)
-            {
-                case Modules.Base.Enumerations.AlertID.DOMAIN_IN_USE:
-                    alertmessage.SetMessage(Modules.Base.Enumerations.AlertID.WARNING, Resources.LocalizedText.Domains_DomainInUse);
-                    break;
-                case Modules.Base.Enumerations.AlertID.DOMAIN_ALREADY_EXISTS:
-                    alertmessage.SetMessage(Modules.Base.Enumerations.AlertID.WARNING, Resources.LocalizedText.Domains_AlreadyExists);
-                    break;
-                default:
-                    alertmessage.SetMessage(errorID, message);
-                    break;
-            }
+            alertmessage.SetMessage(errorID, message);
         }
         #endregion
 

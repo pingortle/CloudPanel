@@ -174,7 +174,7 @@ namespace CloudPanel.Modules.Common.ViewModel
                 // Find out if it is in use
                 int? inUseNumber = NumberOfTimesPlanInUse(planID);
                 if (inUseNumber != null && inUseNumber > 0)
-                    ThrowEvent(Base.Enumerations.AlertID.PLAN_IN_USE, inUseNumber == null ? "-1" : inUseNumber.ToString());
+                    ThrowEvent(Base.Enumerations.AlertID.WARNING, inUseNumber == null ? "-1" : inUseNumber.ToString());
                 else
                 {
                     var deletePlan = (from p in database.Plans_Organization

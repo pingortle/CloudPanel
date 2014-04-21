@@ -115,7 +115,7 @@ namespace CloudPanel.Modules.Common.ViewModel
                 // Check if domain is already in database
                 bool alreadyExist = IsDomainInUse(domainName);
                 if (alreadyExist)
-                    ThrowEvent(Base.Enumerations.AlertID.DOMAIN_ALREADY_EXISTS, domainName);
+                    ThrowEvent(Base.Enumerations.AlertID.FAILED, "Domain already exists");
                 else
                 {
                     // Add domain to Active Directory
@@ -264,7 +264,7 @@ namespace CloudPanel.Modules.Common.ViewModel
                                   select u).Count();
 
                 if (usersUsing > 0)
-                    ThrowEvent(AlertID.DOMAIN_IN_USE, domainName);
+                    ThrowEvent(AlertID.FAILED, "The domain is in use " + domainName);
                 else
                 {
                     // Make sure no groups are using this domain
@@ -273,7 +273,7 @@ namespace CloudPanel.Modules.Common.ViewModel
                                        select g).Count();
 
                     if (groupsUsing > 0)
-                        ThrowEvent(AlertID.DOMAIN_IN_USE, domainName);
+                        ThrowEvent(AlertID.FAILED, "The domain is in use " + domainName);
                     else
                     {
                         // Since users & groups are not using this domain we can continue and remove it

@@ -15,8 +15,6 @@ namespace CloudPanel
         protected int warningTimeoutInMilliseconds = 600000000;
         protected int expiredTimeoutInMilliseconds = 1200000000;
 
-        protected string bodyClass = "horizontal-men";
-
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Request.Url.AbsoluteUri.Contains("/settings.aspx") || !Request.IsLocal)
@@ -46,23 +44,21 @@ namespace CloudPanel
 
         private void ProcessPlaceHolders()
         {
-            if (bodyClass == "horizontal-menu")
-            {
-                BodyTag.Attributes.Add("class", "horizontal-menu");
-
-                Control loadControl = Page.LoadControl("~/cpcontrols/horizontal-menu.ascx");
-                PlaceHolderHorizontalNav.Controls.Add(loadControl);
-            }
-            else
-            {
-                BodyTag.Attributes.Remove("class");
-
-                Control loadControl = Page.LoadControl("~/cpcontrols/vertical-menu.ascx");
-                PlaceHolderVerticalMenu.Controls.Add(loadControl);
-            }
-
             bool isSuperAdmin = WebSessionHandler.IsSuperAdmin;
-            PlaceHolderSettingsButton.Visible = isSuperAdmin;
+            bool isResellerAdmin = WebSessionHandler.IsResellerAdmin;
+            string selectedCompanyCode = WebSessionHandler.SelectedCompanyCode;
+
+            PlaceHolderResellersMenu.Visible = isSuperAdmin;
+            PlaceHolderSelectedCompanyMenu.Visible = !string.IsNullOrEmpty(selectedCompanyCode);
+            PlaceHolderCompaniesMenu.Visible = (isSuperAdmin || isResellerAdmin) && !string.IsNullOrEmpty(selectedCompanyCode);
+
+            if (!string.IsNullOrEmpty(selectedCompanyCode))
+            {
+                bool isExchangeEnabled = CloudPanel.Modules.Common.GlobalActions.CompanyChecks.IsExchangeEnabled(selectedCompanyCode);
+
+                PlaceHolderExchangeDisabled.Visible = !isExchangeEnabled;
+                PlaceHolderExchangeEnabled.Visible = isExchangeEnabled;
+            }
         }
 
         #region Button Click Events

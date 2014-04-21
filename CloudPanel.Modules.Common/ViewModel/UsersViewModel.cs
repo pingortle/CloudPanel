@@ -376,7 +376,7 @@ namespace CloudPanel.Modules.Common.ViewModel
                                  select u).FirstOrDefault();
 
                 if (foundUser == null)
-                    ThrowEvent(AlertID.USER_UNKNOWN, userPrincipalName);
+                    ThrowEvent(AlertID.FAILED, "Unable to find user " + userPrincipalName);
                 else
                 {
                     this.logger.Debug("Found user " + foundUser.UserPrincipalName + " in the database. Continuing...");
@@ -431,7 +431,7 @@ namespace CloudPanel.Modules.Common.ViewModel
                                  select u).FirstOrDefault();
 
                 if (foundUser != null)
-                    ThrowEvent(AlertID.USER_ALREADY_EXISTS, newUser.UserPrincipalName);
+                    ThrowEvent(AlertID.FAILED, "User already exists " + newUser.UserPrincipalName);
                 else
                 {
                     // Get the company's OU where we need to save the user
@@ -531,7 +531,7 @@ namespace CloudPanel.Modules.Common.ViewModel
                                  select u).FirstOrDefault();
 
                 if (foundUser == null)
-                    ThrowEvent(AlertID.USER_UNKNOWN, updateUser.UserPrincipalName);
+                    ThrowEvent(AlertID.FAILED, "Unknown user " + updateUser.UserPrincipalName);
                 else
                 {
                     this.logger.Debug("Found user " + foundUser.UserPrincipalName + " in the database. Continuing...");

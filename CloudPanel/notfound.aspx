@@ -25,8 +25,8 @@
         <div>
             <div class="notfoundpanel">
                 <h1>404!</h1>
-                <h3><%= Resources.Pages.NotFound_H3 %></h3>
-                <h4><%= Resources.Pages.NotFound_H4 %></h4>
+                <h3>The page you are looking for has not been found!</h3>
+                <h4>The page you are looking for might have been removed, had its name changed, or unavailable.</h4>
             </div>
             <!-- notfoundpanel -->
 

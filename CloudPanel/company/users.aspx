@@ -709,6 +709,10 @@
             return confirm('<%= Resources.LocalizedText.Global_ConfirmDelete %>');
         }
 
+        
+
+        <% if (!panelUserList.Visible) { %>
+
         jQuery(document).ready(function () {
 
             // Chosen Select
@@ -718,11 +722,11 @@
             jQuery('#<%= txtEditMailboxLitigationHoldDuration.ClientID %>').datepicker();
 
             // Toggles
-            jQuery('.enableMailbox').toggles({ 
-                checkbox: $('#<%= cbEditIsMailboxEnabled.ClientID %>'), 
+            jQuery('.enableMailbox').toggles({
+                width: 75,
+                checkbox: $('#<%= cbEditIsMailboxEnabled.ClientID %>'),
                 on: '<%= cbEditIsMailboxEnabled.Checked.ToString().ToLower() %>',
-                text: { on: 'Enabled', off: 'Disabled' },
-                width: 75
+                text: { on: 'Enabled', off: 'Disabled' }
             });
 
             $('.toggle').on('toggle', function (e, active) {
@@ -748,6 +752,8 @@
             $loadSelected = $("#<%= ddlEditMailboxPlan.ClientID %> option:selected");
             Calculate($loadSelected.attr("Description"), $loadSelected.attr("Price"), $loadSelected.attr("Extra"), $loadSelected.attr("Min"), $loadSelected.attr("Max"));
         });
+
+        <% } %>
 
         function CheckboxHideShow(checkboxId, divID)
         {

@@ -199,7 +199,7 @@ namespace CloudPanel.Modules.Common.ViewModel
                 database.SaveChanges();
 
                 // Notify success
-                ThrowEvent(AlertID.SUCCESS_NEW_RESELLER, reseller.CompanyName);
+                ThrowEvent(AlertID.SUCCESS, "Successfully created new reseller " + reseller.CompanyName);
             }
             catch (Exception ex)
             {

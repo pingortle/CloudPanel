@@ -117,103 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="BUTTON_Cancel" xml:space="preserve">
-    <value>Cancel</value>
+  <data name="asdf" xml:space="preserve">
+    <value>asdfasdf</value>
   </data>
-  <data name="BUTTON_Delete" xml:space="preserve">
-    <value>Delete</value>
+  <data name="Login_Login" xml:space="preserve">
+    <value>Anmelden</value>
   </data>
-  <data name="BUTTON_Save" xml:space="preserve">
-    <value>Save</value>
-  </data>
-  <data name="BUTTON_Submit" xml:space="preserve">
-    <value>Submit</value>
-  </data>
-  <data name="FORM_City" xml:space="preserve">
-    <value>City</value>
-  </data>
-  <data name="FORM_CompanyName" xml:space="preserve">
-    <value>Company Name</value>
-  </data>
-  <data name="FORM_Country" xml:space="preserve">
-    <value>Country</value>
-  </data>
-  <data name="FORM_Email" xml:space="preserve">
-    <value>E-mail</value>
-  </data>
-  <data name="FORM_State" xml:space="preserve">
-    <value>State</value>
-  </data>
-  <data name="FORM_StreetAddress" xml:space="preserve">
-    <value>Street Address</value>
-  </data>
-  <data name="FORM_Telephone" xml:space="preserve">
-    <value>Telephone</value>
-  </data>
-  <data name="FORM_ZipCode" xml:space="preserve">
-    <value>Zip Code</value>
-  </data>
-  <data name="MENU_ActivesyncPlans" xml:space="preserve">
-    <value>Activesync Plans</value>
-  </data>
-  <data name="MENU_Billing" xml:space="preserve">
-    <value>Billing</value>
-  </data>
-  <data name="MENU_Citrix" xml:space="preserve">
-    <value>Citrix</value>
-  </data>
-  <data name="MENU_CitrixPlans" xml:space="preserve">
-    <value>Citrix Plans</value>
-  </data>
-  <data name="MENU_Companies" xml:space="preserve">
-    <value>Companies</value>
-  </data>
-  <data name="MENU_CompanyPlans" xml:space="preserve">
-    <value>Company Plans</value>
-  </data>
-  <data name="MENU_Contacts" xml:space="preserve">
-    <value>Contacts</value>
-  </data>
-  <data name="MENU_Dashboard" xml:space="preserve">
-    <value>Dashboard</value>
-  </data>
-  <data name="MENU_DisableEmail" xml:space="preserve">
-    <value>Disable Email</value>
-  </data>
-  <data name="MENU_Domains" xml:space="preserve">
-    <value>Domains</value>
-  </data>
-  <data name="MENU_Email" xml:space="preserve">
-    <value>Email</value>
-  </data>
-  <data name="MENU_EnableEmail" xml:space="preserve">
-    <value>Enable Email</value>
-  </data>
-  <data name="MENU_Groups" xml:space="preserve">
-    <value>Distribution Groups</value>
-  </data>
-  <data name="MENU_MailboxPlans" xml:space="preserve">
-    <value>Mailbox Plans</value>
-  </data>
-  <data name="MENU_Overview" xml:space="preserve">
-    <value>Overview</value>
-  </data>
-  <data name="MENU_Plans" xml:space="preserve">
-    <value>Plans</value>
-  </data>
-  <data name="MENU_PublicFolders" xml:space="preserve">
-    <value>Public Folders</value>
-  </data>
-  <data name="MENU_Reports" xml:space="preserve">
-    <value>Reports</value>
-  </data>
-  <data name="MENU_Resellers" xml:space="preserve">
-    <value>Resellers</value>
-  </data>
-  <data name="MENU_ResourceMailboxes" xml:space="preserve">
-    <value>Resources Mailboxes</value>
-  </data>
-  <data name="MENU_Users" xml:space="preserve">
-    <value>Users</value>
+  <data name="dsafasdf" xml:space="preserve">
+    <value>asdfasdfds</value>
   </data>
 </root>

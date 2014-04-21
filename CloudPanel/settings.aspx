@@ -21,14 +21,14 @@
             <div class="col-md-12">
 
                 <ul class="nav nav-tabs nav-justified">
-                    <li class="active"><a href="#general" data-toggle="tab"><strong><%= Resources.LocalizedText.Settings_General %></strong></a></li>
-                    <li><a href="#ActiveDirectory" data-toggle="tab"><strong><%= Resources.LocalizedText.Settings_ActiveDirectory %></strong></a></li>
-                    <li><a href="#SecurityGroups" data-toggle="tab"><strong><%= Resources.LocalizedText.Settings_SecurityGroups %></strong></a></li>
-                    <li><a href="#Billing" data-toggle="tab"><strong><%= Resources.LocalizedText.Settings_Billing %></strong></a></li>
-                    <li><a href="#Exchange" data-toggle="tab"><strong><%= Resources.LocalizedText.Settings_Exchange %></strong></a></li>
-                    <li><a href="#Modules" data-toggle="tab"><strong><%= Resources.LocalizedText.Settings_Modules %></strong></a></li>
-                    <li><a href="#Notifications" data-toggle="tab"><strong><%= Resources.LocalizedText.Settings_Notifications %></strong></a></li>
-                    <li><a href="#Other" data-toggle="tab"><strong><%= Resources.LocalizedText.Settings_Other %></strong></a></li>
+                    <li class="active"><a href="#general" data-toggle="tab"><strong>General</strong></a></li>
+                    <li><a href="#ActiveDirectory" data-toggle="tab"><strong>Active Directory</strong></a></li>
+                    <li><a href="#SecurityGroups" data-toggle="tab"><strong>Security Groups</strong></a></li>
+                    <li><a href="#Billing" data-toggle="tab"><strong>Billing</strong></a></li>
+                    <li><a href="#Exchange" data-toggle="tab"><strong>Exchange</strong></a></li>
+                    <li><a href="#Modules" data-toggle="tab"><strong>Modules</strong></a></li>
+                    <li><a href="#Notifications" data-toggle="tab"><strong>Notifications</strong></a></li>
+                    <li><a href="#Other" data-toggle="tab"><strong>Other</strong></a></li>
                 </ul>
 
                 <div class="tab-content" id="validateForm">
@@ -40,21 +40,9 @@
 
                                 <div class="panel-body">
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Settings_CompanyName %> <span class="asterisk">*</span></label>
+                                        <label class="col-sm-2 control-label">Company Name <span class="asterisk">*</span></label>
                                         <div class="col-sm-4">
                                             <asp:TextBox ID="txtCompanyName" runat="server" CssClass="form-control"></asp:TextBox>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Settings_LoginLogo %> </label>
-                                        <div class="col-sm-4">
-                                            <asp:FileUpload ID="fileLoginLogo" runat="server" />
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Settings_CornerLogo %> </label>
-                                        <div class="col-sm-4">
-                                            <asp:FileUpload ID="fileCornerLogo" runat="server" />
                                         </div>
                                     </div>
                                     <div class="form-group">
@@ -62,7 +50,7 @@
                                         <div class="col-sm-4">
                                             <div class="ckbox ckbox-success">
                                                 <asp:CheckBox ID="cbEnableResellers" runat="server" />
-                                                <label for='<%= cbEnableResellers.ClientID %>'><%= Resources.LocalizedText.Settings_EnableResellerAccounts %></label>
+                                                <label for='<%= cbEnableResellers.ClientID %>'>Enable Reseller Accounts</label>
                                             </div>
                                         </div>
                                     </div>
@@ -79,31 +67,31 @@
 
                                 <div class="panel-body">
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Settings_HostingOU %> <span class="asterisk">*</span></label>
+                                        <label class="col-sm-2 control-label">Hosting OU <span class="asterisk">*</span></label>
                                         <div class="col-sm-4">
                                             <asp:TextBox ID="txtHostingOU" runat="server" CssClass="form-control" placeholder="Example: OU=Hosting,DC=domain,DC=local"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Settings_UsersOU %></label>
+                                        <label class="col-sm-2 control-label">Users OU</label>
                                         <div class="col-sm-4">
                                             <asp:TextBox ID="txtUsersOU" runat="server" CssClass="form-control" placeholder="Example: Users"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Settings_DomainController %> <span class="asterisk">*</span></label>
+                                        <label class="col-sm-2 control-label">Domain Controller <span class="asterisk">*</span></label>
                                         <div class="col-sm-4">
                                             <asp:TextBox ID="txtDomainController" runat="server" CssClass="form-control"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Settings_Username %> <span class="asterisk">*</span></label>
+                                        <label class="col-sm-2 control-label">Username <span class="asterisk">*</span></label>
                                         <div class="col-sm-4">
                                             <asp:TextBox ID="txtUsername" runat="server" CssClass="form-control" placeholder="Example: DOMAIN\Administrator"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Settings_Password %> <span class="asterisk">*</span></label>
+                                        <label class="col-sm-2 control-label">Password <span class="asterisk">*</span></label>
                                         <div class="col-sm-4">
                                             <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
                                         </div>
@@ -121,13 +109,13 @@
 
                                 <div class="panel-body">
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Settings_SuperAdmins %> <span class="asterisk">*</span></label>
+                                        <label class="col-sm-2 control-label">Super Admins <span class="asterisk">*</span></label>
                                         <div class="col-sm-4">
                                             <asp:TextBox ID="txtSuperAdmins" runat="server" CssClass="form-control" placeholder="Example: Domain Admins,Enterprise Admins"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Settings_BillingAdmins %></label>
+                                        <label class="col-sm-2 control-label">Billing Admins </label>
                                         <div class="col-sm-4">
                                             <asp:TextBox ID="txtBillingAdmins" runat="server" CssClass="form-control" placeholder="Example: Domain Admins,Enterprise Admins"></asp:TextBox>
                                         </div>
@@ -144,7 +132,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-body">
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Settings_DefaultCurrencySymbol %> <span class="asterisk">*</span></label>
+                                        <label class="col-sm-2 control-label">Default Currency <span class="asterisk">*</span></label>
                                         <div class="col-sm-4">
                                             <asp:DropDownList ID="ddlCurrencySymbol" runat="server" CssClass="form-control mb15" >
                                             </asp:DropDownList>
@@ -161,7 +149,7 @@
                             <div class="panel panel-default">
                                 <div class="panel-body">
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Settings_ExchConnectionType %> <span class="asterisk">*</span></label>
+                                        <label class="col-sm-2 control-label">Connection Type <span class="asterisk">*</span></label>
                                         <div class="col-sm-4">
                                             <asp:DropDownList ID="ddlExchConnectionType" runat="server" CssClass="form-control mb15">
                                                 <asp:ListItem Text="Basic Authentication" Value="Basic"></asp:ListItem>
@@ -170,7 +158,7 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Settings_ExchVersion %> <span class="asterisk">*</span></label>
+                                        <label class="col-sm-2 control-label">Version<span class="asterisk">*</span></label>
                                         <div class="col-sm-4">
                                             <asp:DropDownList ID="ddlExchVersion" runat="server" CssClass="form-control mb15">
                                                 <asp:ListItem Text="Exchange 2010 SP2 or Later" Value="2010"></asp:ListItem>
@@ -179,19 +167,19 @@
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Settings_ExchServer %> <span class="asterisk">*</span></label>
+                                        <label class="col-sm-2 control-label">Server FQDN <span class="asterisk">*</span></label>
                                         <div class="col-sm-4">
                                             <asp:TextBox ID="txtExchServer" runat="server" CssClass="form-control" placeholder="cas01.domain.local"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Settings_ExchPFServer %></label>
+                                        <label class="col-sm-2 control-label">Public Folder Server</label>
                                         <div class="col-sm-4">
                                             <asp:TextBox ID="txtExchPFServer" runat="server" CssClass="form-control" placeholder="mbx01.domain.local"></asp:TextBox>
                                         </div>
                                     </div>
                                     <div class="form-group">
-                                        <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Settings_ExchDatabases %></label>
+                                        <label class="col-sm-2 control-label">Databases</label>
                                         <div class="col-sm-4">
                                             <asp:TextBox ID="txtExchDatabases" runat="server" CssClass="form-control" placeholder="DB01,DB02,CustomerADB"></asp:TextBox>
                                         </div>
@@ -201,7 +189,7 @@
                                         <div class="col-sm-4">
                                             <div class="ckbox ckbox-success">
                                                 <asp:CheckBox ID="cbExchPFEnabled" runat="server" />
-                                                <label for='<%= cbExchPFEnabled.ClientID %>'><%= Resources.LocalizedText.Settings_ExchPFEnabled %></label>
+                                                <label for='<%= cbExchPFEnabled.ClientID %>'>Enable Public Folders?</label>
                                             </div>
                                         </div>
                                     </div>
@@ -210,7 +198,7 @@
                                         <div class="col-sm-4">
                                             <div class="ckbox ckbox-success">
                                                 <asp:CheckBox ID="cbExchSSLEnabled" runat="server" />
-                                                <label for='<%= cbExchSSLEnabled.ClientID %>'><%= Resources.LocalizedText.Settings_ExchSSLEnabled %></label>
+                                                <label for='<%= cbExchSSLEnabled.ClientID %>'>Exchange SSL Enabled?</label>
                                             </div>
                                         </div>
                                     </div>
@@ -229,7 +217,7 @@
                                         <div class="col-sm-4">
                                             <div class="ckbox ckbox-success">
                                                 <asp:CheckBox ID="cbEnableExchange" runat="server" />
-                                                <label for='<%= cbEnableExchange.ClientID %>'><%= Resources.LocalizedText.Settings_EnableExchangeHosting %></label>
+                                                <label for='<%= cbEnableExchange.ClientID %>'>Enable Exchange Hosting</label>
                                             </div>
                                         </div>
                                     </div>
@@ -238,7 +226,7 @@
                                         <div class="col-sm-4">
                                             <div class="ckbox ckbox-success">
                                                 <asp:CheckBox ID="cbEnableCitrix" runat="server" />
-                                                <label for='<%= cbEnableCitrix.ClientID %>'><%= Resources.LocalizedText.Settings_EnableCitrixHosting %></label>
+                                                <label for='<%= cbEnableCitrix.ClientID %>'>Enable Citrix Hosting</label>
                                             </div>
                                         </div>
                                     </div>
@@ -247,7 +235,7 @@
                                         <div class="col-sm-4">
                                             <div class="ckbox ckbox-success">
                                                 <asp:CheckBox ID="cbEnableLync" runat="server" Enabled="false" />
-                                                <label for='<%= cbEnableLync.ClientID %>'><%= Resources.LocalizedText.Settings_EnableLyncHosting %></label>
+                                                <label for='<%= cbEnableLync.ClientID %>'>Enable Lync Hosting</label>
                                             </div>
                                         </div>
                                     </div>
@@ -256,7 +244,7 @@
                                         <div class="col-sm-4">
                                             <div class="ckbox ckbox-success">
                                                 <asp:CheckBox ID="cbEnableWebsite" runat="server" />
-                                                <label for='<%= cbEnableWebsite.ClientID %>'><%= Resources.LocalizedText.Settings_EnableWebsiteHosting %></label>
+                                                <label for='<%= cbEnableWebsite.ClientID %>'>Enable Website Hosting</label>
                                             </div>
                                         </div>
                                     </div>
@@ -265,7 +253,7 @@
                                         <div class="col-sm-4">
                                             <div class="ckbox ckbox-success">
                                                 <asp:CheckBox ID="cbEnableSharepoint" runat="server" />
-                                                <label for='<%= cbEnableSharepoint.ClientID %>'><%= Resources.LocalizedText.Settings_EnableSharepointHosting %></label>
+                                                <label for='<%= cbEnableSharepoint.ClientID %>'>Enable Sharepoint Hosting</label>
                                             </div>
                                         </div>
                                     </div>
@@ -273,111 +261,6 @@
                             </div>
                         </div>
                     </div>
-
-                    <!-- Notifications -->
-                    <div class="tab-pane" id="Notifications">
-                        <div class="form-horizontal">
-                            <div class="panel panel-default">
-                                <div class="panel-body">
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">&nbsp;</label>
-                                        <div class="col-sm-4">
-                                            <div class="ckbox ckbox-success">
-                                                <asp:CheckBox ID="cbNotificationsEnabled" runat="server" />
-                                                <label for='<%= cbNotificationsEnabled.ClientID %>'><%= Resources.LocalizedText.Settings_NotificationsEnable %></label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Settings_NotificationsTo %></label>
-                                        <div class="col-sm-4">
-                                            <asp:TextBox ID="txtNotificationsTo" runat="server" CssClass="form-control"></asp:TextBox>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Settings_NotificationsFrom %></label>
-                                        <div class="col-sm-4">
-                                            <asp:TextBox ID="txtNotificationsFrom" runat="server" CssClass="form-control"></asp:TextBox>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Settings_NotificationsServer %></label>
-                                        <div class="col-sm-4">
-                                            <asp:TextBox ID="txtNotificationsServer" runat="server" CssClass="form-control"></asp:TextBox>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Settings_NotificationsPort %></label>
-                                        <div class="col-sm-4">
-                                            <asp:TextBox ID="txtNotificationsPort" runat="server" CssClass="form-control"></asp:TextBox>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Settings_NotificationsUsername %></label>
-                                        <div class="col-sm-4">
-                                            <asp:TextBox ID="txtNotificationsUsername" runat="server" CssClass="form-control"></asp:TextBox>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Settings_NotificationsPassword %></label>
-                                        <div class="col-sm-4">
-                                            <asp:TextBox ID="txtNotificationsPassword" runat="server" CssClass="form-control" TextMode="Password"></asp:TextBox>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Other -->
-                    <div class="tab-pane" id="Other">
-                        <div class="form-horizontal">
-                            <div class="panel panel-default">
-                                <div class="panel-body">
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">&nbsp;</label>
-                                        <div class="col-sm-4">
-                                            <div class="ckbox ckbox-success">
-                                                <asp:CheckBox ID="cbAdvOnlySuperAdmins" runat="server" />
-                                                <label for='<%= cbAdvOnlySuperAdmins.ClientID %>'><%= Resources.LocalizedText.Settings_AdvOnlySuperAdmins %></label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">&nbsp;</label>
-                                        <div class="col-sm-4">
-                                            <div class="ckbox ckbox-success">
-                                                <asp:CheckBox ID="cbAdvCustomNameAttrib" runat="server" />
-                                                <label for='<%= cbAdvCustomNameAttrib.ClientID %>'><%= Resources.LocalizedText.Settings_AdvCustomNameAttrib %></label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label">&nbsp;</label>
-                                        <div class="col-sm-4">
-                                            <div class="ckbox ckbox-success">
-                                                <asp:CheckBox ID="cbAdvIPBlockingEnabled" runat="server"/>
-                                                <label for='<%= cbAdvIPBlockingEnabled.ClientID %>'><%= Resources.LocalizedText.Settings_AdvIPBlockingEnabled %></label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Settings_AdvIPBlockingFailed %></label>
-                                        <div class="col-sm-4">
-                                            <asp:TextBox ID="txtAdvIPFailedCount" runat="server" CssClass="form-control"></asp:TextBox>
-                                        </div>
-                                    </div>
-                                    <div class="form-group">
-                                        <label class="col-sm-2 control-label"><%= Resources.LocalizedText.Settings_AdvIPBlockingLockout %></label>
-                                        <div class="col-sm-4">
-                                            <asp:TextBox ID="txtAdvIPBlockingLockout" runat="server" CssClass="form-control"></asp:TextBox>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>

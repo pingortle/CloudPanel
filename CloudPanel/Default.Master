@@ -1,9 +1,5 @@
 ﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Default.Master.cs" Inherits="CloudPanel.Default" %>
 
-<%@ Reference Control="~/cpcontrols/horizontal-menu.ascx" %>
-<%@ Reference Control="~/cpcontrols/vertical-menu.ascx" %>
-
-
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -18,6 +14,7 @@
 
     <link href="~/css/jquery.datatables.css" rel="stylesheet" runat="server" />
     <link href="~/css/jquery.gritter.css" rel="stylesheet" runat="server" />
+    <link href="~/css/cloudpanel.css" rel="stylesheet" runat="server" />
 
     <asp:PlaceHolder ID="PlaceHolderJavascript" runat="server">
     <script src='<%= this.ResolveClientUrl("~/js/jquery-1.10.2.min.js") %>'></script>
@@ -52,7 +49,74 @@
                         </div>
                     </div>
 
-                    <asp:PlaceHolder ID="PlaceHolderVerticalMenu" runat="server"></asp:PlaceHolder>
+                    <h5 class="sidebartitle">Navigation</h5>
+                    <ul class="nav nav-pills nav-stacked nav-bracket">
+                        <li>
+                            <asp:HyperLink ID="hlDashboard" runat="server" NavigateUrl="~/Dashboard.aspx"><i class="fa fa-home"></i><span>Dashboard</span></asp:HyperLink></li>
+
+                        <asp:PlaceHolder ID="PlaceHolderResellersMenu" runat="server" Visible="false">
+                            <li>
+                                <asp:HyperLink ID="hlResellers" runat="server" NavigateUrl="~/Resellers.aspx"><i class="fa fa-user"></i><span>Resellers</span></asp:HyperLink></li>
+                        </asp:PlaceHolder>
+
+                        <asp:PlaceHolder ID="PlaceHolderCompaniesMenu" runat="server" Visible="false">
+                            <li>
+                                <asp:HyperLink ID="hlCompanies" runat="server" NavigateUrl="~/Companies.aspx"><i class="fa fa-building-o"></i><span>Companies</span></asp:HyperLink></li>
+                        </asp:PlaceHolder>
+
+                        <li class="nav-parent"><a href="#"><i class="fa fa-edit"></i><span>Plans</span></a>
+                            <ul class="children">
+                                <li>
+                                    <asp:HyperLink ID="hlPlansCompany" runat="server" NavigateUrl="~/plans/company.aspx"><i class="fa fa-caret-right"></i>Company Plans</asp:HyperLink></li>
+                                <li>
+                                    <asp:HyperLink ID="hlPlanMailbox" runat="server" NavigateUrl="~/plans/mailbox.aspx"><i class="fa fa-caret-right"></i>Mailbox Plans</asp:HyperLink></li>
+                                <li>
+                                    <asp:HyperLink ID="hlPlanActiveSync" runat="server" NavigateUrl="~/plans/activesync.aspx"><i class="fa fa-caret-right"></i>Activesync Plans</asp:HyperLink></li>
+                                <li>
+                                    <asp:HyperLink ID="hlPlanCitrix" runat="server" NavigateUrl="~/plans/company.aspx"><i class="fa fa-caret-right"></i>Citrix Plans</asp:HyperLink></li>
+                            </ul>
+                        </li>
+                        <li>
+                            <asp:HyperLink ID="hlReports" runat="server" NavigateUrl="#"><i class="fa fa-file-o"></i><span>Reports</span></asp:HyperLink></li>
+                    </ul>
+
+                    <hr />
+
+                    <asp:PlaceHolder ID="PlaceHolderSelectedCompanyMenu" runat="server" Visible="false">
+                        <h5 class="sidebartitle"><%= CloudPanel.WebSessionHandler.SelectedCompanyName %></h5>
+                        <ul class="nav nav-pills nav-stacked nav-bracket">
+                            <li>
+                                <asp:HyperLink ID="hlOverview" runat="server" NavigateUrl="~/company/overview.aspx"><i class="fa fa-info"></i><span>Overview</span></asp:HyperLink></li>
+                            <li>
+                                <asp:HyperLink ID="hlDomains" runat="server" NavigateUrl="~/company/domains.aspx"><i class="fa fa-globe"></i><span>Domains</span></asp:HyperLink></li>
+                            <li>
+                                <asp:HyperLink ID="hlUsers" runat="server" NavigateUrl="~/company/users.aspx"><i class="fa fa-users"></i><span>Users</span></asp:HyperLink></li>
+                            <li class="nav-parent"><a href="#"><i class="fa fa-envelope-o"></i><span>Email</span></a>
+                                <ul class="children">
+                                    <asp:PlaceHolder ID="PlaceHolderExchangeDisabled" runat="server" Visible="false">
+                                        <li>
+                                            <asp:HyperLink ID="hlEnableEmail" runat="server" NavigateUrl="~/company/email/enable.aspx"><i class="fa fa-caret-right"></i>Enable Email</asp:HyperLink></li>
+                                    </asp:PlaceHolder>
+                                    <asp:PlaceHolder ID="PlaceHolderExchangeEnabled" runat="server" Visible="false">
+                                        <li>
+                                            <asp:HyperLink ID="hlDisableEmail" runat="server" NavigateUrl="~/company/email/disable.aspx"><i class="fa fa-caret-right"></i>Disable Email</asp:HyperLink></li>
+                                        <li>
+                                            <asp:HyperLink ID="hlContacts" runat="server" NavigateUrl="~/company/email/contacts.aspx"><i class="fa fa-caret-right"></i>Contacts</asp:HyperLink></li>
+                                        <li>
+                                            <asp:HyperLink ID="hlDistributionGroups" runat="server" NavigateUrl="~/company/email/groups.aspx"><i class="fa fa-caret-right"></i>Groups</asp:HyperLink></li>
+                                        <li>
+                                            <asp:HyperLink ID="hlResourceMailboxes" runat="server" NavigateUrl="~/company/email/resourcemailboxes.aspx"><i class="fa fa-caret-right"></i>Resource Mailboxes</asp:HyperLink></li>
+                                        <li>
+                                            <asp:HyperLink ID="hlPublicFolders" runat="server" NavigateUrl="~/company/email/publicfolders.aspx"><i class="fa fa-caret-right"></i>Public Folders</asp:HyperLink></li>
+                                    </asp:PlaceHolder>
+                                </ul>
+                            </li>
+                            <li>
+                                <asp:HyperLink ID="hlCitrix" runat="server" NavigateUrl="~/company/citrix/applications.aspx"><i class="fa fa-cloud"></i><span>Citrix</span></asp:HyperLink></li>
+                            <li>
+                                <asp:HyperLink ID="hlBilling" runat="server" NavigateUrl="~/company/billing/customprices.aspx"><i class="fa fa-money"></i><span>Billing</span></asp:HyperLink></li>
+                        </ul>
+                    </asp:PlaceHolder>
 
                 </div>
                 <!-- leftpanelinner -->
@@ -67,9 +131,6 @@
 
                         <div class="topnav">
                             <a class="menutoggle"><i class="fa fa-bars"></i></a>
-
-                            <asp:PlaceHolder ID="PlaceHolderHorizontalNav" runat="server"></asp:PlaceHolder>
-
                         </div>
                     </div>
 

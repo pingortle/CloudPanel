@@ -132,17 +132,8 @@ namespace CloudPanel
 
         void companyModel_ViewModelEvent(Modules.Base.Enumerations.AlertID errorID, string message)
         {
-            if (errorID == Modules.Base.Enumerations.AlertID.SUCCESS_NEW_COMPANY)
-            {
-                AuditGlobal.AddAudit(WebSessionHandler.SelectedCompanyCode, WebSessionHandler.Username, Modules.Base.Enumerations.ActionID.CreateCompany, message);
-
-                // Set the success message
-                alertmessage.SetMessage(AlertID.SUCCESS, Resources.LocalizedText.Success_NewCompany);
-            }
-            else
-                alertmessage.SetMessage(errorID, message);
-
-
+            alertmessage.SetMessage(errorID, message);
+            
             // Repopulate companies
             PopulateCompanies();
         }

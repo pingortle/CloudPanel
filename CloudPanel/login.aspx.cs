@@ -1,12 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
+﻿using CloudPanel.Modules.Base.Users;
 using CloudPanel.Modules.Common.ViewModel;
+using System;
+using System.Web;
 using System.Web.Security;
-using CloudPanel.Modules.Base.Users;
 
 namespace CloudPanel
 {
@@ -62,30 +58,13 @@ namespace CloudPanel
                     WebSessionHandler.DisplayName = txtUsername.Text;
 
                 // Redirect to dashbaord
-                Response.Redirect("~/dashboard.aspx", false);
+                Server.Transfer("~/dashboard.aspx");
             }
         }
 
         void login_ViewModelEvent(Modules.Base.Enumerations.AlertID errorID, string message)
         {
-            switch (errorID)
-            {
-                case Modules.Base.Enumerations.AlertID.LOGIN_FAILED:
-                    lbLoginMessage.Text = Resources.LocalizedText.Login_LoginFailed;
-                    break;
-                case Modules.Base.Enumerations.AlertID.USER_UNKNOWN:
-                    lbLoginMessage.Text = Resources.LocalizedText.Login_LoginFailed;
-                    break;
-                case Modules.Base.Enumerations.AlertID.RETRIEVE_GROUPS_FAILED:
-                    lbLoginMessage.Text = Resources.LocalizedText.Login_GroupsFailed;
-                    break;
-                case Modules.Base.Enumerations.AlertID.BRUTE_FORCE_BLOCKED:
-                    lbLoginMessage.Text = Resources.LocalizedText.Login_BruteForceBlocked;
-                    break;
-                default:
-                    lbLoginMessage.Text = message;
-                    break;
-            }
+            lbLoginMessage.Text = message;
         }
     }
 }

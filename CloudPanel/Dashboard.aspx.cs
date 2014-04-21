@@ -115,7 +115,7 @@ namespace CloudPanel
                 litAreaChart.Text = areaChart.ToHtmlString();
             }
             else
-                litAreaChart.Text = Resources.LocalizedText.Dashboard_ErrorPopulatingAreaChart;
+                litAreaChart.Text = "Error populating chart.";
         }
 
         private void GetBarChart()
@@ -132,7 +132,7 @@ namespace CloudPanel
 
                 List<object> arrayValues = databaseValues.ToList();
                 List<DotNet.Highcharts.Options.Point> points = new List<DotNet.Highcharts.Options.Point>();
-                for (int i = 0; i< arrayValues.Count; i++)
+                for (int i = 0; i < arrayValues.Count; i++)
                 {
                     double theValue = 0;
                     double.TryParse(arrayValues[i].ToString(), out theValue);
@@ -149,8 +149,8 @@ namespace CloudPanel
                          {
                              Lang = new DotNet.Highcharts.Helpers.Lang()
                              {
-                                 DecimalPoint = Resources.LocalizedText.Formats_DecimalSeperator,
-                                 ThousandsSep = Resources.LocalizedText.Formats_NumberGroupSeperator
+                                 DecimalPoint = ".",
+                                 ThousandsSep = ","
                              }
                          })
                          .InitChart(new Chart
@@ -218,7 +218,7 @@ namespace CloudPanel
                     divBarChart.Style.Value = "col-sm-6 col-md-6"; // Otherwise half length
             }
             else
-                litBarChart.Text = Resources.LocalizedText.Dashboard_ErrorPopulatingBarChart;
+                litBarChart.Text = "Error populating the bar chart";
         }
 
         private void GetOtherStatistics()

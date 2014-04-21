@@ -4,7 +4,6 @@
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <script src='<%= this.ResolveClientUrl("~/js/Highcharts-3.0.1/js/highcharts.js") %>'></script>
-    <link href="css/cloudpanel.css" rel="stylesheet" />
 </asp:Content>
 
 <asp:Content ID="Content2" ContentPlaceHolderID="cphMainPanel" runat="server">
@@ -24,19 +23,19 @@
                                 <div class="tiles-title text-black">OVERVIEW </div>
                                 <div class="widget-stats">
                                     <div class="wrapper transparent">
-                                        <span class="item-title"><%= Resources.LocalizedText.Dashboard_TotalResellers %></span>
+                                        <span class="item-title">Resellers</span>
                                         <span id="spanResellers" class="item-count animate-number semi-bold" data-value="0" data-animation-duration="1000" runat="server"></span>
                                     </div>
                                 </div>
                                 <div class="widget-stats">
                                     <div class="wrapper transparent">
-                                        <span class="item-title"><%= Resources.LocalizedText.Dashboard_TotalCompanies %></span>
+                                        <span class="item-title">Companies</span>
                                         <span id="spanCompanies" class="item-count animate-number semi-bold" data-value="0" data-animation-duration="1000" runat="server"></span>
                                     </div>
                                 </div>
                                 <div class="widget-stats">
                                     <div class="wrapper last">
-                                        <span class="item-title"><%= Resources.LocalizedText.Dashboard_TotalUsers %></span>
+                                        <span class="item-title">Users</span>
                                         <span id="spanUsers" class="item-count animate-number semi-bold" data-value="0" data-animation-duration="1000" runat="server"></span>
                                     </div>
                                 </div>
@@ -50,19 +49,19 @@
                                 <div class="tiles-title text-black">EXCHANGE </div>
                                 <div class="widget-stats">
                                     <div class="wrapper transparent">
-                                        <span class="item-title"><%= Resources.LocalizedText.Dashboard_Mailboxes %></span>
+                                        <span class="item-title">Mailboxes</span>
                                         <span id="spanMailboxes" class="item-count animate-number semi-bold" data-value="0" data-animation-duration="1000" runat="server"></span>
                                     </div>
                                 </div>
                                 <div class="widget-stats">
                                     <div class="wrapper transparent">
-                                        <span class="item-title"><%= Resources.LocalizedText.Dashboard_DistributionGroups %></span>
+                                        <span class="item-title">Groups</span>
                                         <span id="spanDistributionGroups" class="item-count animate-number semi-bold" data-value="0" data-animation-duration="1000" runat="server"></span>
                                     </div>
                                 </div>
                                 <div class="widget-stats">
                                     <div class="wrapper transparent">
-                                        <span class="item-title"><%= Resources.LocalizedText.Dashboard_Contacts %></span>
+                                        <span class="item-title">Contacts</span>
                                         <span id="spanContacts" class="item-count animate-number semi-bold" data-value="0" data-animation-duration="1000" runat="server"></span>
                                     </div>
                                 </div>
@@ -126,17 +125,17 @@
                         <div class="panel-body">
                             <div class="row">
                                 <div class="col-sm-8">
-                                    <h5 class="subtitle mb5"><%= Resources.LocalizedText.Dashboard_EnvironmentHistory %></h5>
-                                    <p class="mb15"><%= Resources.LocalizedText.Dashboard_EnvironmentHistoryInfo %></p>
+                                    <h5 class="subtitle mb5">Environment History</h5>
+                                    <p class="mb15">Statistics over the past 12 months</p>
                                     <div style="width: 100%; margin-bottom: 20px">
                                         <asp:Literal ID="litAreaChart" runat="server"></asp:Literal>
                                     </div>
                                 </div>
                                 <div class="col-sm-4">
-                                    <h5 class="subtitle mb5"><%= Resources.LocalizedText.Dashboard_EnvironmentOverview %></h5>
-                                    <p class="mb15"><%= Resources.LocalizedText.Dashboard_EnvironmentOverviewInfo %></p>
+                                    <h5 class="subtitle mb5">Environment Overview</h5>
+                                    <p class="mb15">Overview of your entire environment</p>
 
-                                    <span class="sublabel"><%= Resources.LocalizedText.Dashboard_Mailboxes %>
+                                    <span class="sublabel">Mailboxes 
                                         <asp:Label ID="lbTotalMailboxes" runat="server" Text="(0)"></asp:Label></span>
                                     <div class="progress progress-sm progress-striped active">
                                         <div class="progress-bar progress-bar-primary animate-progress-bar" data-percentage="0%" id="progBarMailboxes" runat="server"></div>
@@ -151,7 +150,7 @@
                                     <!-- progress -->
 
                                     <asp:PlaceHolder ID="PlaceHolderCitrixProgressBar" runat="server" Visible="false">
-                                        <span class="sublabel"><%= Resources.LocalizedText.Dashboard_CitrixUsers %>
+                                        <span class="sublabel">Citrix Users 
                                             <asp:Label ID="lbTotalCitrixUsers" runat="server" Text="(0)"></asp:Label></span>
                                         <div class="progress progress-sm progress-striped active">
                                             <div class="progress-bar progress-bar-danger animate-progress-bar" data-percentage="0%" runat="server" id="progBarCitrix"></div>
@@ -160,7 +159,7 @@
                                     <!-- progress -->
 
                                     <asp:PlaceHolder ID="PlaceHolderLyncProgressBar" runat="server" Visible="false">
-                                        <span class="sublabel"><%= Resources.LocalizedText.Dashboard_LyncUsers %>
+                                        <span class="sublabel">Lync Users 
                                             <asp:Label ID="lbTotalLyncUsers" runat="server" Text="(0)"></asp:Label></span>
                                         <div class="progress progress-sm progress-striped active">
                                             <div class="progress-bar progress-bar-warning animate-progress-bar" data-percentage="0%" runat="server" id="progBarLync"></div>
@@ -178,8 +177,8 @@
                 <div class="col-sm-6 col-md-6" runat="server" id="divBarChart">
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            <h5 class="subtitle mb5"><%= Resources.LocalizedText.Dashboard_MailboxDatabaseSizeTitle %></h5>
-                            <p class="mb15"><%= Resources.LocalizedText.Dashboard_MailboxDatabaseSizeSubTitle %></p>
+                            <h5 class="subtitle mb5">Mailbox Database Sizes</h5>
+                            <p class="mb15">Microsoft Exchange mailbox database sizes in gigabytes</p>
                             <div id="barchart" style="width: 100%; height: 300px">
                                 <asp:Literal ID="litBarChart" runat="server"></asp:Literal>
                             </div>
@@ -191,8 +190,8 @@
                 <div class="col-sm-6 col-md-6">
                     <div class="panel panel-default">
                         <div class="panel-body">
-                            <h5 class="subtitle mb5"><%= Resources.LocalizedText.Dashboard_MostRecentActionsTitle %></h5>
-                            <p class="mb15"><%= Resources.LocalizedText.Dashboard_MostRecentActionsSubTitle %></p>
+                            <h5 class="subtitle mb5">Most Recent Actions</h5>
+                            <p class="mb15">The top 10 most recent actions that were performed in the system</p>
                             <div class="panel-alt widget-messaging">
                                 <div style="overflow: auto; height: 300px">
                                     <ul>

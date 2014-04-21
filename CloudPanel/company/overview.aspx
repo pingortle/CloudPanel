@@ -22,46 +22,46 @@
                         <a href="#" class="minimize">&minus;</a>
                     </div>
                     <!-- panel-btns -->
-                    <h3 class="panel-title"><%= Resources.LocalizedText.Overview_CompanyDetails %></h3>
+                    <h3 class="panel-title">Company Details</h3>
                 </div>
                 <div class="panel-body">
                     <div class="form-group">
-                        <label class="col-sm-3 control-label"><%= Resources.LocalizedText.Overview_CompanyName %></label>
+                        <label class="col-sm-3 control-label">Company Name</label>
                         <div class="col-sm-4">
                             <asp:Label ID="lbCompanyName" runat="server" Text="Compsys"></asp:Label>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-3 control-label"><%= Resources.LocalizedText.Overview_CompanyCode %></label>
+                        <label class="col-sm-3 control-label">Company Code</label>
                         <div class="col-sm-4">
                             <asp:Label ID="lbCompanyCode" runat="server" Text="COM"></asp:Label>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-3 control-label"><%= Resources.LocalizedText.Overview_ContactsName %></label>
+                        <label class="col-sm-3 control-label">Contacts Name</label>
                         <div class="col-sm-4">
                             <asp:Label ID="lbContactsName" runat="server" Text=""></asp:Label>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-3 control-label"><%= Resources.LocalizedText.Overview_Telephone %></label>
+                        <label class="col-sm-3 control-label">Telephone</label>
                         <div class="col-sm-4">
                             <asp:Label ID="lbTelephone" runat="server" Text=""></asp:Label>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-3 control-label"><%= Resources.LocalizedText.Overview_Created %></label>
+                        <label class="col-sm-3 control-label">Created</label>
                         <div class="col-sm-4">
                             <asp:Label ID="lbWhenCreated" runat="server" Text=""></asp:Label>
                         </div>
                     </div>
 
                     <div class="form-group">
-                        <label class="col-sm-3 control-label"><%= Resources.LocalizedText.Overview_CurrentPlan %></label>
+                        <label class="col-sm-3 control-label">Current Plan</label>
                         <div class="col-sm-4">
                             <asp:DropDownList ID="ddlCurrentPlan" runat="server" CssClass="form-control chosen-select" AutoPostBack="true" OnSelectedIndexChanged="ddlCurrentPlan_SelectedIndexChanged">
 
@@ -82,25 +82,25 @@
                         <a href="#" class="minimize">&minus;</a>
                     </div>
                     <!-- panel-btns -->
-                    <h3 class="panel-title"><%= Resources.LocalizedText.Overview_ProductDetails %></h3>
+                    <h3 class="panel-title">Product Details</h3>
                 </div>
                 <div class="panel-body">
 
-                    <span class="sublabel"><%= Resources.LocalizedText.Overview_Users %>
+                    <span class="sublabel">Users 
                         <asp:Label ID="lbUsers" runat="server" Text="(0 / 1)"></asp:Label></span>
                     <div class="progress progress-sm progress-striped active">
                         <div class="progress-bar progress-bar-primary animate-progress-bar" data-percentage="0%" runat="server" id="progBarUsers"></div>
                     </div>
                     <!-- progress -->
 
-                    <span class="sublabel"><%= Resources.LocalizedText.Overview_Domains %>
+                    <span class="sublabel">Domains
                         <asp:Label ID="lbDomains" runat="server" Text="(0 / 1)"></asp:Label></span>
                     <div class="progress progress-sm progress-striped active">
                         <div class="progress-bar progress-bar-success animate-progress-bar" data-percentage="0%"  runat="server" id="progBarDomains"></div>
                     </div>
                     <!-- progress -->
 
-                    <span class="sublabel"><%= Resources.LocalizedText.Overview_Mailboxes %>
+                    <span class="sublabel">Mailboxes
                         <asp:Label ID="lbTotalMailboxes" runat="server" Text="(0 / 1)"></asp:Label></span>
                     <div class="progress progress-sm progress-striped active">
                         <div class="progress-bar progress-bar-danger animate-progress-bar"  data-percentage="0%" runat="server" id="progBarMailboxes"></div>
@@ -108,7 +108,7 @@
                     <!-- progress -->
 
                     <% if (CloudPanel.Modules.Common.Settings.StaticSettings.CitrixEnabled) { %>
-                    <span class="sublabel"><%= Resources.LocalizedText.Overview_Citrix %>
+                    <span class="sublabel">Citrix 
                         <asp:Label ID="lbTotalCitrixUsers" runat="server" Text="(0/ 1)"></asp:Label></span>
                     <div class="progress progress-sm progress-striped active">
                         <div class="progress-bar progress-bar-warning animate-progress-bar"  data-percentage="0%" runat="server" id="progBarCitrix"></div>
@@ -117,7 +117,7 @@
                     <% } %>
 
                     <% if (CloudPanel.Modules.Common.Settings.StaticSettings.LyncEnabled) { %>
-                    <span class="sublabel"><%= Resources.LocalizedText.Overview_Lync %>
+                    <span class="sublabel">Lync
                         <asp:Label ID="lbTotalLyncUsers" runat="server" Text="(0 / 1)"></asp:Label></span>
                     <div class="progress progress-sm progress-striped active">
                         <div class="progress-bar progress-bar-info animate-progress-bar" data-percentage="0%" runat="server" id="progBarLync"></div>
@@ -141,7 +141,7 @@
                             <a href="#" class="minimize">&minus;</a>
                         </div>
                         <!-- panel-btns -->
-                        <h3 class="panel-title"><%= Resources.LocalizedText.Overview_CompanyLocation %></h3>
+                        <h3 class="panel-title">Company Location</h3>
                     </div>
                     <div class="panel-body">
                         <div id="gmap-marker" style="height: 300px"></div>
@@ -154,7 +154,7 @@
             <div class="col-sm-6">
                 <div class="panel panel-default panel-alt widget-messaging">
                     <div class="panel-heading">
-                        <h3 class="panel-title"><%= Resources.LocalizedText.Overview_RecentActions %></h3>
+                        <h3 class="panel-title">Recent Actions</h3>
                     </div>
                     <div class="panel-body">
                         <ul>
@@ -192,6 +192,14 @@
             // Chosen Select
             jQuery(".chosen-select").chosen({ 'width': '100%', 'white-space': 'nowrap' });
 
+            $('.animate-progress-bar').each(function () {
+                $(this).css('width', $(this).attr("data-percentage"));
+            });
+
+            $('.animate-number').each(function () {
+                $(this).animateNumbers($(this).attr("data-value"), true, parseInt($(this).attr("data-animation-duration")));
+            });
+
             var geocoder = new google.maps.Geocoder();
             geocoder.geocode({ 'address': address }, function (results, status) {
 
@@ -213,14 +221,6 @@
                         }
                     });
                 }
-            });
-
-            $('.animate-progress-bar').each(function () {
-                $(this).css('width', $(this).attr("data-percentage"));
-            });
-
-            $('.animate-number').each(function () {
-                $(this).animateNumbers($(this).attr("data-value"), true, parseInt($(this).attr("data-animation-duration")));
             });
         });
 

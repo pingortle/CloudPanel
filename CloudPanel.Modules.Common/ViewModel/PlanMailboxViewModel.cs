@@ -220,7 +220,7 @@ namespace CloudPanel.Modules.Common.ViewModel
 
                 if (usingPlan > 0)
                 {
-                    ThrowEvent(AlertID.PLAN_IN_USE, planID.ToString());
+                    ThrowEvent(AlertID.FAILED, "The plan is in use " + planID.ToString());
                     return false;
                 }
                 else

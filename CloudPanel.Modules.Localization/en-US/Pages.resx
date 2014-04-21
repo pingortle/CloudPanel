@@ -117,10 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="NotFound_H3" xml:space="preserve">
-    <value>The page you are looking for has not been found!</value>
-  </data>
-  <data name="NotFound_H4" xml:space="preserve">
-    <value>The page you are looking for might have been removed, had its name changed, or unavailable.</value>
+  <data name="Login_Login" xml:space="preserve">
+    <value>Login</value>
   </data>
 </root>

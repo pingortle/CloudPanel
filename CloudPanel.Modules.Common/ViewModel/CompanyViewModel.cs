@@ -299,7 +299,7 @@ namespace CloudPanel.Modules.Common.ViewModel
                 database.SaveChanges();
 
                 // Notify success
-                ThrowEvent(AlertID.SUCCESS_NEW_COMPANY, newCompanyDb.CompanyName);
+                ThrowEvent(AlertID.SUCCESS, "Successfully created new company " + newCompanyDb.CompanyName);
             }
             catch (Exception ex)
             {

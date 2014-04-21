@@ -12,6 +12,8 @@
     <meta name="author" content="" />
     <link rel="shortcut icon" href="images/favicon.png" type="image/png" />
 
+    <link href="css/cloudpanel.css" rel="stylesheet" />
+
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="js/html5shiv.js"></script>
@@ -55,13 +57,13 @@
 
                     <div class="col-md-5">
                         <div class="cppanel">
-                            <h4 class="nomargin"><%= Resources.LocalizedText.Login_Signin %></h4>
-                            <p class="mt5 mb20"><%= Resources.LocalizedText.Login_LoginToAccess %></p>
+                            <h4 class="nomargin">Sign In</h4>
+                            <p class="mt5 mb20">Login to access your account</p>
 
-                            <asp:TextBox ID="txtUsername" runat="server" CssClass="form-control uname" placeholder='<%$ Resources:LocalizedText, Login_Username %>'></asp:TextBox>
-                            <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control pword" placeholder='<%$ Resources:LocalizedText, Login_Password %>' TextMode="Password"></asp:TextBox>
+                            <asp:TextBox ID="txtUsername" runat="server" CssClass="form-control uname" placeholder="Username"></asp:TextBox>
+                            <asp:TextBox ID="txtPassword" runat="server" CssClass="form-control pword" placeholder="Password" TextMode="Password"></asp:TextBox>
                             
-                            <asp:Button ID="btnLogin" runat="server" Text='<%$ Resources:LocalizedText, Login_Signin %>' CssClass="btn btn-success btn-block" OnClick="btnLogin_Click" />
+                            <asp:Button ID="btnLogin" runat="server" Text="Sign In" CssClass="btn btn-success btn-block" OnClick="btnLogin_Click" />
 
                             <br />
 
@@ -79,11 +81,12 @@
 
         </section>
 
-
         <script src="js/jquery-1.10.2.min.js"></script>
         <script src="js/jquery-migrate-1.2.1.min.js"></script>
+        <script src="js/jquery.cookies.js"></script>
         <script src="js/bootstrap.min.js"></script>
         <script src="js/modernizr.min.js"></script>
+        <script src="js/toggles.min.js"></script>
         <script src="js/retina.min.js"></script>
         <script src="js/custom.js"></script>
         <script type="text/javascript">

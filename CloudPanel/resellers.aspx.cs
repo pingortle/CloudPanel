@@ -161,17 +161,7 @@ namespace CloudPanel
 
         void resellerModel_ViewModelEvent(Modules.Base.Enumerations.AlertID errorID, string message)
         {
-            if (errorID == Modules.Base.Enumerations.AlertID.SUCCESS_NEW_RESELLER)
-            {
-                string successMessage = string.Format("{0} {1}", Resources.LocalizedText.Audit_NewReseller, message);
-                AuditGlobal.AddAudit(WebSessionHandler.SelectedCompanyCode, WebSessionHandler.Username, Modules.Base.Enumerations.ActionID.CreateReseller, message);
-
-                // Set the success message
-                alertmessage.SetMessage(AlertID.SUCCESS, successMessage);
-            }
-            else
-                alertmessage.SetMessage(errorID, message);
-
+            alertmessage.SetMessage(errorID, message);
 
             // Repopulate resellers
             PopulateResellers();

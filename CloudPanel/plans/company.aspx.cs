@@ -158,15 +158,7 @@ namespace CloudPanel.plans
 
         void viewModel_ViewModelEvent(Modules.Base.Enumerations.AlertID errorID, string message)
         {
-            switch (errorID)
-            {
-                case Modules.Base.Enumerations.AlertID.PLAN_IN_USE:
-                    alertmessage.SetMessage(AlertID.WARNING, Resources.LocalizedText.PlanCompany_PlanInUse);
-                    break;
-                default:
-                    alertmessage.SetMessage(errorID, message);
-                    break;
-            }
+            alertmessage.SetMessage(errorID, message);
         }
 
         #endregion
@@ -199,7 +191,7 @@ namespace CloudPanel.plans
                 if (planID > 0)
                     UpdatePlan(planID);
                 else
-                    alertmessage.SetMessage(Modules.Base.Enumerations.AlertID.FAILED, Resources.LocalizedText.PlanCompany_UpdatePlanNotFound);
+                    alertmessage.SetMessage(Modules.Base.Enumerations.AlertID.FAILED, "Plan was not found");
             }
         }
 
