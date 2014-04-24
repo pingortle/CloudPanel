@@ -179,7 +179,7 @@ namespace CloudPanel.Modules.Base.Companies
             {
                 string returnAddress = string.Empty;
 
-                return string.Format("{0}<br />{1}, {2}  {3}", Street, City, State, ZipCode);
+                return string.Format("{0}{1}{2}, {3}  {4}", Street, Environment.NewLine, City, State, ZipCode);
             }
         }
 

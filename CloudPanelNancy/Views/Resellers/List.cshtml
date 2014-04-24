@@ -1,0 +1,115 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
+
+@{
+    Layout = "Shared/_Layout.cshtml";
+}
+
+@section PAGEHEADER{
+    <div class="pageheader">
+        <h2><i class="fa fa-home"></i> Resellers <span>Subtitle goes here...</span></h2>
+        <div class="breadcrumb-wrapper">
+            <span class="label">You are here:</span>
+            <ol class="breadcrumb">
+                <li><a href="index.html">Bracket</a></li>
+                <li class="active">Dashboard</li>
+            </ol>
+        </div>
+    </div>
+}
+
+
+<div class="row">
+
+    <div style="float: right; margin: 10px">
+        <input id="Button1" type="button" value="button" class="btn btn-success" />
+    </div>
+
+    <div class="col-md-12">
+        <div class="table-responsive">
+            <table id="resellerDataTable" class="table">
+                <thead>
+                    <tr>
+                        <th>Reseller Name</th>
+                        <th>Address</th>
+                        <th>Created</th>
+                        <th>Total Companies</th>
+                        <th style="width: 10%"></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="3" class="dataTables_empty">Loading data from server</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- table-responsive -->
+
+    </div>
+    <!-- col-md-6 -->
+
+</div>
+
+@section CUSTOMJAVASCRIPT{
+<script type="text/javascript">
+
+    $(document).ready(function () {
+        $('#resellerDataTable').dataTable({
+            "bProcessing": true,
+            "bStateSave": true,
+            "bServerSide": true,
+            "bJQueryUI": false,
+            "bFilter": false,
+            "bLengthChange": false,
+            "sAjaxSource": "/api/Resellers/GetAll",
+            "aoColumns": [
+                { "mData": "companyName", "sTitle": "Company Name", "bSortable": true },
+                { "mData": "fullAddressFormatted", "sTitle": "Address", "bSortable": false },
+                { "mData": "created", "sTitle": "Created", "bSortable": false },
+                { "mData": null, "sTitle": "Total Companies",  "bSortable": false },
+                {
+                    "mData": "companyCode",
+                    "bSearchable": false,
+                    "bSortable": false,
+                    "mRender": function(data, type, full)
+                    {
+                        return "<div class='btn-group'>" +
+                                "<a href='/Resellers/" + data + "/Edit' class='btn btn-xs btn-primary'>Modify</a>" +
+                                "<button type='button' class='btn btn-xs btn-primary dropdown-toggle' data-toggle='dropdown'>" +
+                                    "<span class='caret'></span>" +
+                                    "<span class='sr-only'>Toggle Dropdown</span>" +
+                                "</button>" +
+                                "<ul class='dropdown-menu' role='menu'>" +
+                                "<li>" +
+                                    "<a href='/Resellers/" + data + "/Delete'>Delete</a>" +
+                                "</li>" +
+                                "</ul>" +
+                                "</div>";
+                    }
+                }
+            ],
+            "fnServerData": function (sSource, aoData, fnCallback) {
+                $.getJSON(sSource, aoData, function (jsondata) {
+                    fnCallback(jsondata);
+                });
+            }
+        });
+
+        // Chosen Select
+        jQuery("select").chosen({
+            'min-width': '100px',
+            'white-space': 'nowrap',
+            disable_search_threshold: 10
+        });
+
+        // Show aciton upon row hover
+        jQuery('.table-hidaction tbody tr').hover(function () {
+            jQuery(this).find('.table-action-hide a').animate({ opacity: 1 });
+        }, function () {
+            jQuery(this).find('.table-action-hide a').animate({ opacity: 0 });
+        });
+    });
+</script>
+}
+
+

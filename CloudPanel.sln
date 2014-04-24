@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
-VisualStudioVersion = 12.0.30110.0
+VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudPanel", "CloudPanel\CloudPanel.csproj", "{321880A5-348D-4360-A3DD-5329B3A49087}"
 EndProject
@@ -16,6 +16,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudPanel.Modules.ActiveDirectory", "CloudPanel.Modules.ActiveDirectory\CloudPanel.Modules.ActiveDirectory.csproj", "{B6359C5D-D73B-4057-98CC-0F1E4862B33C}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudPanel.Modules.Exchange", "CloudPanel.Modules.Exchange\CloudPanel.Modules.Exchange.csproj", "{28A5A759-EB06-4A47-B466-DD382B75E917}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CloudPanelNancy", "CloudPanelNancy\CloudPanelNancy.csproj", "{0EA43F89-0536-4691-B108-7392E49D2C48}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -43,12 +45,17 @@ Global
 		{28A5A759-EB06-4A47-B466-DD382B75E917}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{28A5A759-EB06-4A47-B466-DD382B75E917}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{28A5A759-EB06-4A47-B466-DD382B75E917}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0EA43F89-0536-4691-B108-7392E49D2C48}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0EA43F89-0536-4691-B108-7392E49D2C48}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0EA43F89-0536-4691-B108-7392E49D2C48}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0EA43F89-0536-4691-B108-7392E49D2C48}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{321880A5-348D-4360-A3DD-5329B3A49087} = {BCFD92C8-30DB-445E-AE2B-7BDA8E0E791F}
+		{0EA43F89-0536-4691-B108-7392E49D2C48} = {BCFD92C8-30DB-445E-AE2B-7BDA8E0E791F}
 		{118D670A-318A-4DD2-916B-51727E73928A} = {5F649A1E-1E59-4F0B-BFC8-FB2B124DEC98}
 		{8B47DB51-6F8E-42A3-B7E1-6C92C0E3628B} = {5F649A1E-1E59-4F0B-BFC8-FB2B124DEC98}
 		{B6359C5D-D73B-4057-98CC-0F1E4862B33C} = {5F649A1E-1E59-4F0B-BFC8-FB2B124DEC98}
