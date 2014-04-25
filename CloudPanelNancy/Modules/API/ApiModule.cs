@@ -1,6 +1,7 @@
 ﻿using CloudPanel.Modules.Base.Companies;
 using CloudPanel.Modules.Common.ViewModel;
 using Nancy;
+using Nancy.Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -12,6 +13,9 @@ namespace CloudPanelNancy.Modules.API
     {
         public ApiModule() : base("/api")
         {
+            this.RequiresAuthentication();
+            this.RequiresClaims(new[] { "Super" });
+
             Get["/Resellers/GetAll"] = parameters =>
                 {
                     ResellerViewModel viewModel = new ResellerViewModel();

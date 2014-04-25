@@ -42,7 +42,15 @@
                 <ul class="nav nav-pills nav-stacked nav-bracket">
                     <li><a href="~/Dashboard"><i class="fa fa-home"></i><span>Dashboard</span></a></li>
                     <li><a href="~/Resellers"><i class="fa fa-user"></i><span>Resellers</span></a></li>
-                    <li><a href="#"><i class="fa fa-building-o"></i><span>Companies</span></a></li>
+                    @if (Html.RenderContext.Context.CurrentUser != null)
+                    {
+                        string resellerCode = ((AuthenticatedUser)Html.RenderContext.Context.CurrentUser).SelectedResellerCode;
+                                
+                        @if (!string.IsNullOrEmpty(((AuthenticatedUser)Html.RenderContext.Context.CurrentUser).SelectedResellerCode))
+                        {
+                            <li><a href="#"><i class="fa fa-building-o"></i><span>Companies</span></a></li>
+                        }                        
+                    }
                     <li class="nav-parent">
                         <a href="#"><i class="fa fa-edit"></i><span>Plans</span></a>
                         <ul class="children">
@@ -97,7 +105,7 @@
                             <div class="btn-group">
                                 <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
                                     <img src="~/Content/images/photos/loggeduser.png" alt="" />
-                                    John Doe
+                                    @if (Html.RenderContext.Context.CurrentUser != null) { @(((AuthenticatedUser)Html.RenderContext.Context.CurrentUser).UserName) }
                                     <span class="caret"></span>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-usermenu pull-right">

@@ -621,7 +621,6 @@
     <Compile Include="Modules\ResellerModule.cs" />
     <Compile Include="RazorConfig.cs" />
     <Compile Include="UserMapper.cs" />
-    <Compile Include="Modules\LoginModule.cs" />
     <Compile Include="Modules\RootModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AuthenticatedUser.cs" />
@@ -746,6 +745,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Authentication\" />
+    <Folder Include="Modules\Security\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CloudPanel.Modules.Base\CloudPanel.Modules.Base.csproj">

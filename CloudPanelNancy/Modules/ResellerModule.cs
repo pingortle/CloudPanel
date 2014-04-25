@@ -1,6 +1,7 @@
 ﻿using CloudPanel.Modules.Base.Companies;
 using CloudPanel.Modules.Common.ViewModel;
 using Nancy;
+using Nancy.Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,9 @@ namespace CloudPanelNancy.Modules
 
         public ResellerModule() : base("Resellers")
         {
+            this.RequiresAuthentication();
+            this.RequiresClaims( new[] { "Super" } );
+            
             Get["/"] = _ =>
                 {
                     List<ResellerObject> resellers = viewModel.GetResellers();
@@ -30,6 +34,11 @@ namespace CloudPanelNancy.Modules
 
             Get["/{CompanyCode}/Companies"] = parameters =>
             {
+                if (Context.CurrentUser != null)
+                {
+                    ((AuthenticatedUser)Context.CurrentUser).SelectedResellerCode = parameters.CompanyCode;
+                }
+
                 return View["/Companies/List", parameters.CompanyCode];
             };
 
