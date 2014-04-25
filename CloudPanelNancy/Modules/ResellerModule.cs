@@ -25,15 +25,20 @@ namespace CloudPanelNancy.Modules
                 {
                     ResellerObject reseller = viewModel.GetReseller(parameters.CompanyCode);
 
-                    return View["/Edit", reseller];
+                    return View["/Resellers/Edit", reseller];
                 };
+
+            Get["/{CompanyCode}/Companies"] = parameters =>
+            {
+                return View["/Companies/List", parameters.CompanyCode];
+            };
 
             Post["/{CompanyCode}/Edit"] = parameters =>
                 {
                     var companyName = this.Request.Form.txtCompanyName;
 
                     ViewBag.EditCompanyName = companyName;
-                    return View["Edit"];
+                    return View["Resellers/Edit"];
                 };
         }
 

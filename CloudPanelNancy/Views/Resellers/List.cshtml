@@ -17,37 +17,35 @@
     </div>
 }
 
+<div class="row">
+    <a href="Add" class="btn btn-success pull-right">Add New Reseller</a>
+</div>
+
+<div class="mb30"></div>
 
 <div class="row">
-
-    <div style="float: right; margin: 10px">
-        <input id="Button1" type="button" value="button" class="btn btn-success" />
-    </div>
-
-    <div class="col-md-12">
-        <div class="table-responsive">
-            <table id="resellerDataTable" class="table">
-                <thead>
-                    <tr>
-                        <th>Reseller Name</th>
-                        <th>Address</th>
-                        <th>Created</th>
-                        <th>Total Companies</th>
-                        <th style="width: 10%"></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td colspan="3" class="dataTables_empty">Loading data from server</td>
-                    </tr>
-                </tbody>
-            </table>
+    <div class="panel panel-default">
+        <div class="panel-body">
+            <div class="table-responsive">
+                <table id="resellerDataTable" class="table table-hover mb30">
+                    <thead>
+                        <tr>
+                            <th>Reseller Name</th>
+                            <th>Address</th>
+                            <th>Created</th>
+                            <th>Total Companies</th>
+                            <th style="width: 10%"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="3" class="dataTables_empty">Loading data from server</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <!-- table-responsive -->
-
     </div>
-    <!-- col-md-6 -->
-
 </div>
 
 @section CUSTOMJAVASCRIPT{
@@ -63,7 +61,15 @@
             "bLengthChange": false,
             "sAjaxSource": "/api/Resellers/GetAll",
             "aoColumns": [
-                { "mData": "companyName", "sTitle": "Company Name", "bSortable": true },
+                {
+                    "mData": "companyName",
+                    "sTitle": "Company Name",
+                    "bSortable": true,
+                    "mRender": function(data, type, full)
+                    {
+                        return "<a href='Resellers/" + full["companyCode"] + "/Companies'>" + data + "</a>"
+                    }
+                },
                 { "mData": "fullAddressFormatted", "sTitle": "Address", "bSortable": false },
                 { "mData": "created", "sTitle": "Created", "bSortable": false },
                 { "mData": null, "sTitle": "Total Companies",  "bSortable": false },

@@ -1,6 +1,7 @@
 ﻿using Nancy;
 using Nancy.Authentication.Forms;
 using Nancy.Bootstrapper;
+using Nancy.Session;
 using Nancy.TinyIoc;
 using System;
 using System.Collections.Generic;
@@ -13,6 +14,8 @@ namespace CloudPanelNancy
     {
         protected override void ApplicationStartup(Nancy.TinyIoc.TinyIoCContainer container, Nancy.Bootstrapper.IPipelines pipelines)
         {
+            CookieBasedSessions.Enable(pipelines);
+
             base.ApplicationStartup(container, pipelines);
 
             var authenticationConfiguration =

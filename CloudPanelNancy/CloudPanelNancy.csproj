@@ -736,6 +736,7 @@
     <Content Include="Views\Dashboard.cshtml" />
     <Content Include="Views\Resellers\List.cshtml" />
     <Content Include="Views\Resellers\Edit.cshtml" />
+    <Content Include="Views\Companies\List.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -745,9 +746,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Authentication\" />
-    <Folder Include="Modules\Company\" />
-    <Folder Include="Modules\Shared\" />
-    <Folder Include="Views\Company\" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CloudPanel.Modules.Base\CloudPanel.Modules.Base.csproj">
