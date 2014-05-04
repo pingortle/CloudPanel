@@ -12,7 +12,8 @@ namespace CloudPanelNancy.Modules
     {
         public RootModule()
         {
-            Get["/login"] = _ => View["Login.cshtml"];
+            Get["/", ctx => ctx.CurrentUser == null] = _ => Response.AsRedirect("Login");
+            Get["/login"] = _ => View["Login"];
 
             Post["/login"] = parameters =>
             {
@@ -23,15 +24,18 @@ namespace CloudPanelNancy.Modules
                 if (userGuid == null)
                 {
                     ViewBag.LoginError = "Invalid username and/or password";
-                    return View["Login.cshtml"];
+                    return View["Login"];
                 }
                 else
                 {
-                    return this.LoginAndRedirect(userGuid.Value, null, "/Dashboard");
+                    return this.LoginAndRedirect(userGuid.Value, null, "Dashboard");
                 }
             };
 
-            Get["/", ctx => ctx.CurrentUser == null] = _ => Response.AsRedirect("~/Login");
+            Get["/Company/{CompanyCode}"] = parameters =>
+                {
+                    return View["Company/Overview"];
+                };
         }
     }
 }

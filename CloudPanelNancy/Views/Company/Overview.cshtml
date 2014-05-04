@@ -1,0 +1,142 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
+
+@{
+    Layout = "Views/Shared/_Layout.cshtml";
+}
+
+@section PAGEHEADER{
+    <div class="pageheader">
+        <h2><i class="fa fa-building-o"></i> Company <span>Subtitle goes here...</span></h2>
+        <div class="breadcrumb-wrapper">
+            <span class="label">You are here:</span>
+            <ol class="breadcrumb">
+                <li><a href="index.html">Bracket</a></li>
+                <li class="active">Dashboard</li>
+            </ol>
+        </div>
+    </div>
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="panel-btns">
+                    <a href="#" class="minimize">&minus;</a>
+                </div>
+                <!-- panel-btns -->
+                <h3 class="panel-title">Company Details</h3>
+            </div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-horizontal">
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Company Name</label>
+                                <div class="col-sm-4">
+                                    <div></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Contact</label>
+                                <div class="col-sm-4">
+                                    <div></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Telephone</label>
+                                <div class="col-sm-4">
+                                    <div></div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-3 control-label">Plan</label>
+                                <div class="col-sm-4">
+                                    <select id="CompanyPlan" class="form-control">
+                                        <option>Small Business</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <div id="columnchart"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section CUSTOMJAVASCRIPT{
+    <script src="~/Content/js/highcharts/highcharts.js"></script>
+    <script src="~/Content/js/highcharts/highcharts-3d.js"></script>
+    <script src="~/Content/js/highcharts/modules/exporting.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var options = {
+                chart: {
+                    renderTo: 'columnchart',
+                    type: 'column',
+                    margin: 75,
+                    options3d: {
+                        enabled: true,
+                        alpha: 10,
+                        beta: 25,
+                        depth: 70
+                    },
+                    backgroundColor: 'transparent'
+                },
+                title: {
+                    text: ''
+                },
+                credits: {
+                    enabled: false
+                },
+                xAxis: {
+                    categories: []
+                },
+                legend: {
+                    enabled: false
+                },
+                yAxis: {
+                    min: 0,
+                    title: { text: 'Users' },
+                    opposite: false
+                },
+                tooltip: {
+                    pointFormat: 'Total: <b>{point.y}</b>'
+                },
+                plotOptions: {
+                    column: {
+                        depth: 25
+                    }
+                },
+                series: [{
+                    name: '',
+                    data: []
+                }]
+            };
+
+            $.ajax({
+                type: "get",
+                url: "../AJAX/Company/Charting/Pie/BLA",
+                dataType: "json",
+                success: function (data) {
+
+                    options.yAxis.max = data.users;
+
+                    $.each(data, function (key, value) {
+                        var newKey = key.toUpperCase();
+                        if (newKey != "USERS") {
+                            options.xAxis.categories.push(newKey);
+                            options.series[0].data.push(value);
+                        }
+                    });
+
+                    var chart = new Highcharts.Chart(options);
+                }
+            });
+        });
+    </script>
+}

@@ -4,15 +4,35 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Bracket Responsive Bootstrap3 Admin</title>
+    <title>@RenderContext.Context.Culture.ToString()</title>
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
+
     <link rel="shortcut icon" href="~/Content/images/favicon.png" type="image/png">
+
+    <!-- Styles -->
     <link href="~/Content/css/style.default.css" rel="stylesheet">
     <link href="~/Content/css/jquery.datatables.css" rel="stylesheet">
+
+    <style type="text/css">
+        #loading {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            width: 300px;
+            padding: 14px 0 2px 0;
+            border: 1px solid #808080;
+            text-align: center;
+            color: #000;
+            font-size: 18px;
+            background-color: #ffffff;
+        }
+    </style>
+
+    @RenderSection("HEAD", required: false)
 
     <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -24,9 +44,9 @@
     <section>
         <div class="leftpanel">
 
-            <div class="logopanel">
-                <h1><span>[</span> bracket <span>]</span></h1>
-            </div><!-- logopanel -->
+            <div class="logopanel" style="text-align: center">
+                <h1>CloudPanel</h1>
+            </div>
 
             <div class="leftpanelinner">
 
@@ -40,57 +60,47 @@
 
                 <h5 class="sidebartitle">Navigation</h5>
                 <ul class="nav nav-pills nav-stacked nav-bracket">
-                    <li><a href="~/Dashboard"><i class="fa fa-home"></i><span>Dashboard</span></a></li>
-                    <li><a href="~/Resellers"><i class="fa fa-user"></i><span>Resellers</span></a></li>
-                    @if (Html.RenderContext.Context.CurrentUser != null)
-                    {
-                        string resellerCode = ((AuthenticatedUser)Html.RenderContext.Context.CurrentUser).SelectedResellerCode;
-                                
-                        @if (!string.IsNullOrEmpty(((AuthenticatedUser)Html.RenderContext.Context.CurrentUser).SelectedResellerCode))
-                        {
-                            <li><a href="#"><i class="fa fa-building-o"></i><span>Companies</span></a></li>
-                        }                        
-                    }
+                    <li><a href="~/Dashboard"><i class="fa fa-home"></i><span>@Text.Menu.Dashboard</span></a></li>
+                    <li><a href="~/Resellers"><i class="fa fa-user"></i><span>@Text.Menu.Resellers</span></a></li>
+                    <li><a href="~/Resellers/@Html.RenderContext.Context.Request.Session["SelectedReseller"]/Companies"><i class="fa fa-building-o"></i><span>@Text.Menu.Companies</span></a></li>
                     <li class="nav-parent">
-                        <a href="#"><i class="fa fa-edit"></i><span>Plans</span></a>
+                        <a href="#"><i class="fa fa-edit"></i><span>@Text.Menu.Plans</span></a>
                         <ul class="children">
-                            <li><a href="#"><i class="fa fa-caret-right"></i>Company Plans</a></li>
-                            <li><a href="#"><i class="fa fa-caret-right"></i>Mailbox Plans</a></li>
-                            <li><a href="#"><i class="fa fa-caret-right"></i>Activesync Plans</a></li>
-                            <li><a href="#"><i class="fa fa-caret-right"></i>Citrix Plans</a></li>
+                            <li><a href="~/Plans/Company"><i class="fa fa-caret-right"></i>@Text.Menu.CompanyPlans</a></li>
+                            <li><a href="~/Plans/Mailbox"><i class="fa fa-caret-right"></i>@Text.Menu.MailboxPlans</a></li>
+                            <li><a href="#"><i class="fa fa-caret-right"></i>@Text.Menu.ActivesyncPlans</a></li>
+                            <li><a href="#"><i class="fa fa-caret-right"></i>@Text.Menu.CitrixPlans</a></li>
                         </ul>
                     </li>
-                    <li><a href="#"><i class="fa fa-file-o"></i><span>Reports</span></a></li>
+                    <li><a href="#"><i class="fa fa-file-o"></i><span>@Text.Menu.Reports</span></a></li>
                 </ul>
 
                 <hr />
 
                 <h5 class="sidebartitle">COMPANY NAME</h5>
                 <ul class="nav nav-pills nav-stacked nav-bracket">
-                    <li><a href="#"><i class="fa fa-info"></i><span>Overview</span></a></li>
-                    <li><a href="#"><i class="fa fa-globe"></i><span>Domains</span></a></li>
-                    <li><a href="#"><i class="fa fa-users"></i><span>Users</span></a></li>
+                    <li><a href="#"><i class="fa fa-info"></i><span>@Text.Menu.Overview</span></a></li>
+                    <li><a href="#"><i class="fa fa-globe"></i><span>@Text.Menu.Domains</span></a></li>
+                    <li><a href="#"><i class="fa fa-users"></i><span>@Text.Menu.Users</span></a></li>
                     <li class="nav-parent">
-                        <a href="#"><i class="fa fa-envelope-o"></i><span>Email</span></a>
+                        <a href="#"><i class="fa fa-envelope-o"></i><span>@Text.Menu.Email</span></a>
                         <ul class="children">
-                            <li><a href="#"><i class="fa fa-caret-right"></i>Enable Email</a></li>
-                            <li><a href="#"><i class="fa fa-caret-right"></i>Disable Email</a></li>
-                            <li><a href="#"><i class="fa fa-caret-right"></i>Contacts</a></li>
-                            <li><a href="#"><i class="fa fa-caret-right"></i>Groups</a></li>
-                            <li><a href="#"><i class="fa fa-caret-right"></i>Resource Mailboxes</a></li>
-                            <li><a href="#"><i class="fa fa-caret-right"></i>Public Folders</a></li>
+                            <li><a href="#"><i class="fa fa-caret-right"></i>@Text.Menu.EnableEmail</a></li>
+                            <li><a href="#"><i class="fa fa-caret-right"></i>@Text.Menu.DisableEmail</a></li>
+                            <li><a href="#"><i class="fa fa-caret-right"></i>@Text.Menu.Contacts</a></li>
+                            <li><a href="#"><i class="fa fa-caret-right"></i>@Text.Menu.Groups</a></li>
+                            <li><a href="#"><i class="fa fa-caret-right"></i>@Text.Menu.ResourceMailboxes</a></li>
+                            <li><a href="#"><i class="fa fa-caret-right"></i>@Text.Menu.PublicFolders</a></li>
                         </ul>
                     </li>
-                    <li><a href="#"><i class="fa fa-cloud"></i><span>Citrix</span></a></li>
-                    <li><a href="#"><i class="fa fa-money"></i><span>Billing</span></a></li>
+                    <li><a href="#"><i class="fa fa-cloud"></i><span>@Text.Menu.Citrix</span></a></li>
+                    <li><a href="#"><i class="fa fa-money"></i><span>@Text.Menu.Billing</span></a></li>
                 </ul>
             </div>
-            <!-- leftpanelinner -->
 
-        </div><!-- leftpanel -->
+        </div>
 
         <div class="mainpanel">
-
             <div class="headerbar">
 
                 <a class="menutoggle"><i class="fa fa-bars"></i></a>
@@ -116,23 +126,17 @@
                                 </ul>
                             </div>
                         </li>
-                        <li>
-                            <button id="chatview" class="btn btn-default tp-icon chat-icon">
-                                <i class="glyphicon glyphicon-comment"></i>
-                            </button>
-                        </li>
                     </ul>
                 </div><!-- header-right -->
 
-            </div><!-- headerbar -->
+            </div>
 
             @RenderSection("PAGEHEADER", required: false)
 
             <div class="contentpanel">
                 @RenderBody()
-            </div><!-- contentpanel -->
-
-        </div><!-- mainpanel -->
+            </div>
+        </div>
     </section>
 
     <script src="~/Content/js/jquery-1.10.2.min.js"></script>
@@ -143,8 +147,9 @@
     <script src="~/Content/js/retina.min.js"></script>
     <script src="~/Content/js/jquery.datatables.min.js"></script>
     <script src="~/Content/js/chosen.jquery.min.js"></script>
-    <script src="~/Content/js/custom.js"></script>
 
     @RenderSection("CUSTOMJAVASCRIPT", required: false)
+
+    <script src="~/Content/js/custom.js"></script>
 </body>
 </html>

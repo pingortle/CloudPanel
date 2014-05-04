@@ -18,7 +18,7 @@
 }
 
 <div class="row">
-    <a href="Add" class="btn btn-success pull-right">Add New Reseller</a>
+    <a href="Resellers/Add" class="btn btn-success pull-right">Add New Reseller</a>
 </div>
 
 <div class="mb30"></div>
@@ -59,7 +59,7 @@
             "bJQueryUI": false,
             "bFilter": false,
             "bLengthChange": false,
-            "sAjaxSource": "/api/Resellers/GetAll",
+            "sAjaxSource": "AJAX/Resellers/GetAll",
             "aoColumns": [
                 {
                     "mData": "companyName",
@@ -71,7 +71,11 @@
                     }
                 },
                 { "mData": "fullAddressFormatted", "sTitle": "Address", "bSortable": false },
-                { "mData": "created", "sTitle": "Created", "bSortable": false },
+                {
+                    "mData": "created",
+                    "sTitle": "Created",
+                    "bSortable": false
+                },
                 { "mData": null, "sTitle": "Total Companies",  "bSortable": false },
                 {
                     "mData": "companyCode",
@@ -80,14 +84,14 @@
                     "mRender": function(data, type, full)
                     {
                         return "<div class='btn-group'>" +
-                                "<a href='/Resellers/" + data + "/Edit' class='btn btn-xs btn-primary'>Modify</a>" +
+                                "<a href='Resellers/" + data + "/Edit' class='btn btn-xs btn-primary'>Modify</a>" +
                                 "<button type='button' class='btn btn-xs btn-primary dropdown-toggle' data-toggle='dropdown'>" +
                                     "<span class='caret'></span>" +
                                     "<span class='sr-only'>Toggle Dropdown</span>" +
                                 "</button>" +
                                 "<ul class='dropdown-menu' role='menu'>" +
                                 "<li>" +
-                                    "<a href='/Resellers/" + data + "/Delete'>Delete</a>" +
+                                    "<a href='Resellers/" + data + "/Delete'>Delete</a>" +
                                 "</li>" +
                                 "</ul>" +
                                 "</div>";

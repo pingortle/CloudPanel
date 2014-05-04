@@ -1,7 +1,7 @@
 ﻿using CloudPanel.Modules.Base.Companies;
-using CloudPanel.Modules.Common.ViewModel;
 using Nancy;
 using Nancy.Security;
+using Nancy.ModelBinding;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,46 +11,66 @@ namespace CloudPanelNancy.Modules
 {
     public class ResellerModule : NancyModule
     {
-        ResellerViewModel viewModel = new ResellerViewModel();
-
-        public ResellerModule() : base("Resellers")
+        public ResellerModule()
         {
-            this.RequiresAuthentication();
-            this.RequiresClaims( new[] { "Super" } );
-            
-            Get["/"] = _ =>
+            Get["/Resellers"] = _ =>
                 {
-                    List<ResellerObject> resellers = viewModel.GetResellers();
+                    List<ResellerObject> resellers = null; // Get all resellers
 
-                    return View["/Resellers/List", resellers];
+                    return View["Admin/ResellerList.cshtml", resellers];
                 };
 
-            Get["/{CompanyCode}/Edit"] = parameters =>
-                {
-                    ResellerObject reseller = viewModel.GetReseller(parameters.CompanyCode);
-
-                    return View["/Resellers/Edit", reseller];
-                };
-
-            Get["/{CompanyCode}/Companies"] = parameters =>
+            Get["/Resellers/Add"] = parameters =>
             {
-                if (Context.CurrentUser != null)
-                {
-                    ((AuthenticatedUser)Context.CurrentUser).SelectedResellerCode = parameters.CompanyCode;
-                }
+                ResellerObject newReseller = new ResellerObject();
 
-                return View["/Companies/List", parameters.CompanyCode];
+                return View["Admin/ResellerEdit.cshtml", newReseller];
             };
 
-            Post["/{CompanyCode}/Edit"] = parameters =>
+            Get["/Resellers/{ResellerCode}/Edit"] = parameters =>
                 {
-                    var companyName = this.Request.Form.txtCompanyName;
+                    ResellerObject reseller = new ResellerObject();
+                    reseller.CompanyID = 0;
+                    reseller.CompanyCode = parameters.ResellerCode;
+                    reseller.CompanyName = "Reseller";
+                    reseller.Street = "300 Simpson Rd";
+                    reseller.City = "Vilonia";
+                    reseller.State = "AR";
+                    reseller.ZipCode = "72173";
+                    reseller.Created = DateTime.Now;
+                    reseller.AdminName = "";
+                    reseller.AdminEmail = "";
+                    reseller.Telephone = "";
 
-                    ViewBag.EditCompanyName = companyName;
-                    return View["Resellers/Edit"];
+                    return View["Admin/ResellerEdit.cshtml", reseller];
+                };
+
+            Get["/Resellers/{CompanyCode}/Companies"] = parameters =>
+            {
+                Context.Request.Session["SelectedReseller"] = parameters.CompanyCode;
+
+                return View["Admin/CompanyList", parameters.CompanyCode];
+            };
+
+            Post["/Resellers/Edit"] = parameters =>
+            {
+                ViewBag.Testing = "NEW RESELLER";
+
+                var test = this.Bind<ResellerObject>(); // Gather data from form
+
+                                
+
+                return View["Admin/ResellerEdit", test];
+            };
+
+            Post["/Resellers/Edit/{ResellerCode}"] = parameters =>
+                {
+                    ViewBag.Testing = "EDIT RESELLER";
+
+                    var test = this.Bind<ResellerObject>();  // Gather data from form
+
+                    return View["Admin/ResellerEdit", test];
                 };
         }
-
-
     }
 }

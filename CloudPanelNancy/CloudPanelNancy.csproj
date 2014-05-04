@@ -38,6 +38,18 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net40\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\EntityFramework.6.1.0\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
+    <Reference Include="log4net, Version=1.2.13.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\log4net.2.0.3\lib\net40-full\log4net.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="Nancy, Version=0.22.2.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -55,8 +67,11 @@
       <HintPath>..\packages\Nancy.Viewengines.Razor.0.22.2\lib\net40\Nancy.ViewEngines.Razor.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Razor.Unofficial">
       <HintPath>..\packages\System.Web.Razor.Unofficial.2.0.2\lib\net40\System.Web.Razor.Unofficial.dll</HintPath>
@@ -100,6 +115,7 @@
     <Content Include="Content\css\lato.css" />
     <Content Include="Content\css\morris.css" />
     <Content Include="Content\css\prettyPhoto.css" />
+    <Content Include="Content\css\processing.css" />
     <Content Include="Content\css\roboto.css" />
     <Content Include="Content\css\style.default.css" />
     <Content Include="Content\css\style.inverse.css" />
@@ -204,6 +220,7 @@
     <Content Include="Content\images\loaders\loader29.gif" />
     <Content Include="Content\images\loaders\loader3.gif" />
     <Content Include="Content\images\loaders\loader30.gif" />
+    <Content Include="Content\images\loaders\loader31.gif" />
     <Content Include="Content\images\loaders\loader4.gif" />
     <Content Include="Content\images\loaders\loader5.gif" />
     <Content Include="Content\images\loaders\loader6.gif" />
@@ -218,6 +235,7 @@
     <Content Include="Content\images\photos\blog3.jpg" />
     <Content Include="Content\images\photos\blog4.jpg" />
     <Content Include="Content\images\photos\index.html" />
+    <Content Include="Content\images\photos\loggeduser%402x.png" />
     <Content Include="Content\images\photos\loggeduser.png" />
     <Content Include="Content\images\photos\media-audio.png" />
     <Content Include="Content\images\photos\media-doc.png" />
@@ -577,6 +595,39 @@
     <Content Include="Content\js\flot\index.html" />
     <Content Include="Content\js\fullcalendar.min.js" />
     <Content Include="Content\js\gmaps.js" />
+    <Content Include="Content\js\highcharts\adapters\standalone-framework.js" />
+    <Content Include="Content\js\highcharts\adapters\standalone-framework.src.js" />
+    <Content Include="Content\js\highcharts\highcharts-3d.js" />
+    <Content Include="Content\js\highcharts\highcharts-3d.src.js" />
+    <Content Include="Content\js\highcharts\highcharts-all.js" />
+    <Content Include="Content\js\highcharts\highcharts-more.js" />
+    <Content Include="Content\js\highcharts\highcharts-more.src.js" />
+    <Content Include="Content\js\highcharts\highcharts.js" />
+    <Content Include="Content\js\highcharts\highcharts.src.js" />
+    <Content Include="Content\js\highcharts\modules\canvas-tools.js" />
+    <Content Include="Content\js\highcharts\modules\canvas-tools.src.js" />
+    <Content Include="Content\js\highcharts\modules\data.js" />
+    <Content Include="Content\js\highcharts\modules\data.src.js" />
+    <Content Include="Content\js\highcharts\modules\drilldown.js" />
+    <Content Include="Content\js\highcharts\modules\drilldown.src.js" />
+    <Content Include="Content\js\highcharts\modules\exporting.js" />
+    <Content Include="Content\js\highcharts\modules\exporting.src.js" />
+    <Content Include="Content\js\highcharts\modules\funnel.js" />
+    <Content Include="Content\js\highcharts\modules\funnel.src.js" />
+    <Content Include="Content\js\highcharts\modules\heatmap.js" />
+    <Content Include="Content\js\highcharts\modules\heatmap.src.js" />
+    <Content Include="Content\js\highcharts\modules\no-data-to-display.js" />
+    <Content Include="Content\js\highcharts\modules\no-data-to-display.src.js" />
+    <Content Include="Content\js\highcharts\modules\solid-gauge.js" />
+    <Content Include="Content\js\highcharts\modules\solid-gauge.src.js" />
+    <Content Include="Content\js\highcharts\themes\dark-blue.js" />
+    <Content Include="Content\js\highcharts\themes\dark-green.js" />
+    <Content Include="Content\js\highcharts\themes\dark-unica.js" />
+    <Content Include="Content\js\highcharts\themes\gray.js" />
+    <Content Include="Content\js\highcharts\themes\grid-light.js" />
+    <Content Include="Content\js\highcharts\themes\grid.js" />
+    <Content Include="Content\js\highcharts\themes\sand-signika.js" />
+    <Content Include="Content\js\highcharts\themes\skies.js" />
     <Content Include="Content\js\holder.js" />
     <Content Include="Content\js\html5shiv.js" />
     <Content Include="Content\js\index.html" />
@@ -586,11 +637,13 @@
     <Content Include="Content\js\jquery-jvectormap-world-mill-en.js" />
     <Content Include="Content\js\jquery-migrate-1.2.1.min.js" />
     <Content Include="Content\js\jquery-ui-1.10.3.min.js" />
+    <Content Include="Content\js\jquery.animateNumbers.js" />
     <Content Include="Content\js\jquery.autogrow-textarea.js" />
     <Content Include="Content\js\jquery.cookies.js" />
     <Content Include="Content\js\jquery.datatables.min.js" />
     <Content Include="Content\js\jquery.gritter.min.js" />
     <Content Include="Content\js\jquery.maskedinput.min.js" />
+    <Content Include="Content\js\jquery.maskMoney.js" />
     <Content Include="Content\js\jquery.mousewheel.js" />
     <Content Include="Content\js\jquery.prettyPhoto.js" />
     <Content Include="Content\js\jquery.sparkline.min.js" />
@@ -606,6 +659,7 @@
     <Content Include="Content\js\toggles.min.js" />
     <Content Include="Content\js\wysihtml5-0.3.0.min.js" />
     <Content Include="Global.asax" />
+    <Content Include="Log\Log.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -616,10 +670,19 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\DataTablesParam.cs" />
-    <Compile Include="Modules\API\ApiModule.cs" />
+    <Compile Include="Modules\AJAX\ajaxAll.cs" />
+    <Compile Include="Modules\AJAX\ajaxReseller.cs" />
+    <Compile Include="Modules\AJAX\ajaxSuper.cs" />
     <Compile Include="Modules\DashboardModule.cs" />
+    <Compile Include="Modules\PlansModule.cs" />
     <Compile Include="Modules\ResellerModule.cs" />
     <Compile Include="RazorConfig.cs" />
+    <Compile Include="Resources\en-US\Menu.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Menu.resx</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Compile>
     <Compile Include="UserMapper.cs" />
     <Compile Include="Modules\RootModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -733,9 +796,14 @@
     <Content Include="Views\Login.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Views\Dashboard.cshtml" />
-    <Content Include="Views\Resellers\List.cshtml" />
-    <Content Include="Views\Resellers\Edit.cshtml" />
-    <Content Include="Views\Companies\List.cshtml" />
+    <Content Include="Views\Admin\ResellerList.cshtml" />
+    <Content Include="Views\Admin\ResellerEdit.cshtml" />
+    <Content Include="Views\Admin\CompanyList.cshtml" />
+    <Content Include="Views\Company\Overview.cshtml" />
+    <Content Include="Content\js\jquery-1.10.2.min.map" />
+    <None Include="Properties\PublishProfiles\Home LAB.pubxml" />
+    <Content Include="Views\Plans\MailboxPlans.cshtml" />
+    <Content Include="Views\Plans\CompanyPlans.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -745,6 +813,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Authentication\" />
+    <Folder Include="Database\" />
     <Folder Include="Modules\Security\" />
   </ItemGroup>
   <ItemGroup>
@@ -756,6 +825,18 @@
       <Project>{118d670a-318a-4dd2-916b-51727e73928a}</Project>
       <Name>CloudPanel.Modules.Common</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Resources\de-CH\Menu.de-CH.resx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\en-US\Menu.resx">
+      <Generator>PublicResXFileCodeGenerator</Generator>
+      <LastGenOutput>Menu.Designer.cs</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CustomToolNamespace>Resources</CustomToolNamespace>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

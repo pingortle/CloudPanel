@@ -1,0 +1,298 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
+
+@{
+    Layout = "Views/Shared/_Layout.cshtml";
+}
+
+@section HEAD{
+    <link href="~/Content/css/toggles.css" rel="stylesheet">
+    <style type="text/css">
+        .popovers {
+            cursor: pointer;
+        }
+
+        .control-label {
+            text-align: right;
+        }
+    </style>
+}
+
+@section PAGEHEADER{
+    <div class="pageheader">
+        <h2><i class="fa fa-home"></i> Mailbox Plans <span>Subtitle goes here...</span></h2>
+        <div class="breadcrumb-wrapper">
+            <span class="label">You are here:</span>
+            <ol class="breadcrumb">
+                <li><a href="index.html">Bracket</a></li>
+                <li class="active">Dashboard</li>
+            </ol>
+        </div>
+    </div>
+}
+
+<form method="post" action="Save">
+    <div class="form-horizontal">
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-btns">
+                        <a href="" class="minimize">&minus;</a>
+                    </div>
+                    <h4 class="panel-title">General</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Plan</label>
+                        <div class="col-sm-4">
+                            <select id="PlanList" name="PlanList" class="form-control mb15">
+                                <option value="0">--- Create New ---</option>
+                                @if (ViewBag.Plans != null)
+                                {
+                                    foreach (var item in ViewBag.Plans)
+                                    {
+                                        <option value="@item.MailboxPlanID">@item.MailboxPlanName</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Display Name</label>
+                        <div class="col-sm-4">
+                            <input type="text" id="DisplayName" name="DisplayName" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Description</label>
+                        <div class="col-sm-4">
+                            <textarea class="form-control" rows="3" id="Description" name="Description"></textarea>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Max Recipients</label>
+                        <div class="col-sm-4">
+                            <input type="text" id="MaxRecipients" name="MaxRecipients" class="form-control" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Keep Deleted Items</label>
+                        <div class="col-sm-4">
+                            <input type="text" id="KeepDeletedItems" name="KeepDeletedItems" class="form-control" />
+                        </div>
+                    </div>
+
+                    <hr />
+
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Mailbox Size (MB)</label>
+                        <div class="col-sm-4">
+                            <input type="text" id="MailboxSize" name="MailboxSize" class="form-control spinner256" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Max Mailbox Size (MB)</label>
+                        <div class="col-sm-4">
+                            <input type="text" id="MaxMailboxSize" name="MaxMailboxSize" class="form-control spinner256" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Max Send Size (KB)</label>
+                        <div class="col-sm-4">
+                            <input type="text" id="SendSize" name="SendSize" class="form-control spinner256" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Receive Size (KB)</label>
+                        <div class="col-sm-4">
+                            <input type="text" id="ReceiveSize" name="ReceiveSize" class="form-control spinner256" />
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-btns">
+                        <a href="" class="minimize">&minus;</a>
+                    </div>
+                    <h4 class="panel-title">Features</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">POP3</label>
+                        <div class="col-sm-4">
+                            <div class="toggle toggle-success pop3"></div>
+                            <input type="checkbox" disabled="disabled" id="pop3checked" name="pop3checked" hidden="hidden">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">IMAP</label>
+                        <div class="col-sm-4">
+                            <div class="toggle toggle-success imap"></div>
+                            <input type="checkbox" disabled="disabled" id="imapchecked" name="imapchecked" hidden="hidden">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">OWA</label>
+                        <div class="col-sm-4">
+                            <div class="toggle toggle-success owa"></div>
+                            <input type="checkbox" disabled="disabled" id="owachecked" name="owachecked" hidden="hidden">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">MAPI</label>
+                        <div class="col-sm-4">
+                            <div class="toggle toggle-success mapi"></div>
+                            <input type="checkbox" disabled="disabled" id="mapichecked" name="mapichecked" hidden="hidden">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">ActiveSync</label>
+                        <div class="col-sm-4">
+                            <div class="toggle toggle-success as"></div>
+                            <input type="checkbox" disabled="disabled" id="aschecked" name="aschecked" hidden="hidden">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">ECP</label>
+                        <div class="col-sm-4">
+                            <div class="toggle toggle-success ecp"></div>
+                            <input type="checkbox" disabled="disabled" id="ecpchecked" name="ecpchecked" hidden="hidden">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="panel panel-default">
+                <div class="panel-heading">
+                    <div class="panel-btns">
+                        <a href="" class="minimize">&minus;</a>
+                    </div>
+                    <h4 class="panel-title">Pricing</h4>
+                </div>
+                <div class="panel-body">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Cost</label>
+                        <div class="col-sm-4">
+                            <input type="text" id="Cost" name="Cost" class="form-control maskMoney" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Price</label>
+                        <div class="col-sm-4">
+                            <input type="text" id="Price" name="Price" class="form-control maskMoney" />
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Per Additional GB</label>
+                        <div class="col-sm-4">
+                            <input type="text" id="PerGB" name="PerGB" class="form-control maskMoney" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="panel-footer right">
+                <button class="btn btn-primary" type="submit" id="Submit" name="Submit">Submit</button>
+            </div>
+        </div>
+    </div>
+</form>
+
+<div id="loading" hidden="hidden">
+    <p>Processing</p>
+    <img src="~/Content/images/loaders/loader25.gif" />
+</div>
+
+@section CUSTOMJAVASCRIPT{
+    <script src="~/Content/js/jquery.maskMoney.js"></script>
+    <script src="~/Content/js/toggles.min.js"></script>
+    <script type="text/javascript">
+
+        function LoadToggleButtons() {
+            $(".toggle").each(function () {
+                $(this).toggles({ checkbox: $(this).parent().find("input[type=checkbox]"), on: $(this).parent().find("input[type=checkbox]").is(":checked") });
+            });
+        }
+
+        jQuery(document).ready(function () {
+
+            LoadToggleButtons();
+
+            jQuery('.maskMoney').maskMoney({ allowZero: true, defaultZero: true });
+
+            $(".spinner256").spinner({
+                min: 256,
+                step: 256
+            });
+
+            $("#loading").ajaxStart(function () {
+                $(this).show();
+            });
+
+            $("#loading").ajaxStop(function () {
+                $(this).hide();
+            });
+
+            $("#PlanList").change(function () {
+                var selectedValue = $(this).val();
+                if (selectedValue == 0) {
+
+                    $(".form-horizontal").find("input").val("");
+                    $("input[type=checkbox]").each(function () {
+                        $(this).prop("checked", false);
+                    });
+
+                    LoadToggleButtons();
+
+                    $("#Submit").removeAttr("disabled");
+                }
+                else {
+                    $.ajax({
+                        url: "../AJAX/Plans/Mailbox/Get/" + selectedValue,
+                        dataType: "json",
+                        type: "GET",
+                        cache: false,
+                        success: function (data) {
+                            $("#DisplayName").val(data.mailboxPlanName);
+                            $("#Description").val(data.mailboxPlanDescription);
+                            $("#MaxRecipients").val(data.maxRecipients);
+                            $("#KeepDeletedItems").val(data.maxKeepDeletedItemsInDays);
+                            $("#MailboxSize").val(data.mailboxSizeInMB);
+                            $("#MaxMailboxSize").val(data.maxMailboxSizeInMB);
+                            $("#SendSize").val(data.maxSendInKB);
+                            $("#ReceiveSize").val(data.maxReceiveInKB);
+
+                            $("#pop3checked").prop("checked", data.enablePOP3);
+                            $("#imapchecked").prop("checked", data.enableIMAP);
+                            $("#owachecked").prop("checked", data.enableOWA);
+                            $("#mapichecked").prop("checked", data.enableMAPI);
+                            $("#aschecked").prop("checked", data.enableAS);
+                            $("#ecpchecked").prop("checked", data.enableECP);
+
+                            $("#Cost").val(data.cost);
+                            $("#Price").val(data.price);
+                            $("#PerGB").val(data.additionalGBPrice);
+
+                            LoadToggleButtons();
+
+                            $("#Submit").removeAttr("disabled");
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            alert(thrownError);
+                            $("#Submit").attr("disabled", "disabled");
+                        }
+                    });
+                }
+            });
+
+        });
+    </script>
+}

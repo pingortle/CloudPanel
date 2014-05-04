@@ -44,6 +44,7 @@
     <Compile Include="Companies\CompanyObject.cs" />
     <Compile Include="Companies\ResellerObject.cs" />
     <Compile Include="Dashboard\OverviewStats.cs" />
+    <Compile Include="Dashboard\Top5CustomersStats.cs" />
     <Compile Include="Enumerations\ActionID.cs" />
     <Compile Include="Enumerations\AlertID.cs" />
     <Compile Include="Enumerations\DomainType.cs" />

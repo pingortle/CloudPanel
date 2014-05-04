@@ -1,0 +1,179 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
+
+@{
+    Layout = "Views/Shared/_Layout.cshtml";
+}
+
+@section PAGEHEADER{
+    <div class="pageheader">
+        <h2><i class="fa fa-pencil-square"></i> Company Plans <span>Subtitle goes here...</span></h2>
+        <div class="breadcrumb-wrapper">
+            <span class="label">You are here:</span>
+            <ol class="breadcrumb">
+                <li><a href="index.html">Bracket</a></li>
+                <li class="active">Dashboard</li>
+            </ol>
+        </div>
+    </div>
+}
+<form method="post" action="Login">
+    <div class="form-horizontal">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">Details</h4>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Plan</label>
+                    <div class="col-sm-4">
+                        <select id="PlanList" name="PlanList" class="form-control mb15">
+                            <option value="0">--- Create New ---</option>
+                            @if (ViewBag.Plans != null)
+                            {
+                                @foreach (var item in ViewBag.Plans)
+                                {
+                                    <option value="@item.CompanyPlanID">@item.CompanyPlanName</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Display Name <span class="asterisk">*</span></label>
+                    <div class="col-sm-4">
+                        <input name="CompanyPlanName" id="CompanyPlanName" type="text" class="form-control" required />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Max Users <span class="asterisk">*</span></label>
+                    <div class="col-sm-4">
+                        <input name="MaxUser" id="MaxUser" type="text" class="form-control" required />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Max Domains <span class="asterisk">*</span></label>
+                    <div class="col-sm-4">
+                        <input name="MaxDomains" id="MaxDomains" type="text" class="form-control" required />
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">Exchange</h4>
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Max Mailboxes <span class="asterisk">*</span></label>
+                    <div class="col-sm-4">
+                        <input name="MaxExchangeMailboxes" id="MaxExchangeMailboxes" type="text" class="form-control" required />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Max Contacts <span class="asterisk">*</span></label>
+                    <div class="col-sm-4">
+                        <input name="MaxExchangeContacts" id="MaxExchangeContacts" type="text" class="form-control spinner" required />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Max Groups <span class="asterisk">*</span></label>
+                    <div class="col-sm-4">
+                        <input name="MaxExchangeDistributionGroups" id="MaxExchangeDistributionGroups" type="text" class="form-control spinner" required />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Max Resource Mailboxes <span class="asterisk">*</span></label>
+                    <div class="col-sm-4">
+                        <input name="MaxExchangeResourceMailboxes" id="MaxExchangeResourceMailboxes" type="text" class="form-control spinner" required />
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 control-label">Max Mail-Enabled Public Folders <span class="asterisk">*</span></label>
+                    <div class="col-sm-4">
+                        <input name="MaxExchangeMailPublicFolders" id="MaxExchangeMailPublicFolders" type="text" class="form-control spinner" required />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="panel-footer">
+            <button class="btn btn-primary pull-right" id="Submit" name="Submit" type="submit">Submit</button>
+        </div>
+    </div>
+</form>
+
+<div id="loading" hidden="hidden">
+    <p>Processing</p>
+    <img src="~/Content/images/loaders/loader25.gif" />
+</div>
+
+@section CUSTOMJAVASCRIPT{
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+
+            $("#loading").ajaxStart(function () {
+                $(this).show();
+            });
+
+            $("#loading").ajaxStop(function () {
+                $(this).hide();
+            });
+
+            $("#PlanList").change(function () {
+                var selectedValue = $(this).val();
+                if (selectedValue == 0) {
+                    $(".form-horizontal").find("input").val("");
+                    $("#Submit").removeAttr("disabled");
+                }
+                else {
+                    $.ajax({
+                        url: "../AJAX/Plans/Company/Get/" + selectedValue,
+                        dataType: "json",
+                        type: "GET",
+                        cache: false,
+                        success: function (data) {
+                            $("#CompanyPlanName").val(data.companyPlanName);
+                            $("#MaxUser").val(data.maxUser);
+                            $("#MaxDomains").val(data.maxDomains);
+                            $("#MaxExchangeMailboxes").val(data.maxExchangeMailboxes);
+                            $("#MaxExchangeContacts").val(data.maxExchangeContacts);
+                            $("#MaxExchangeDistributionGroups").val(data.maxExchangeDistributionGroups);
+                            $("#MaxExchangeResourceMailboxes").val(data.maxExchangeResourceMailboxes);
+                            $("#MaxExchangeMailPublicFolders").val(data.maxExchangeMailPublicFolders);
+                            $("#Submit").removeAttr("disabled");
+                        },
+                        error: function (xhr, ajaxOptions, thrownError) {
+                            alert(thrownError);
+                            $("#Submit").attr("disabled", "disabled");
+                        }
+                    });
+                }
+            });
+
+            var usersSpinner = $("#MaxUser").spinner({ min: 1 });
+
+            $("#MaxDomains").spinner({ min: 1 });
+            $("#MaxExchangeMailboxes").spinner({
+                min: 0,
+                change: function (event, ui) {
+
+                    var currentMaxUsers = usersSpinner.spinner('value');
+
+                    if (!$.isNumeric(currentMaxUsers))
+                        $(this).spinner('value', 0);
+                    else {
+                        if ($(this).spinner('value') > currentMaxUsers) {
+                            alert('You cannot put in a value that is greater than the max users.');
+                            $(this).spinner('value', currentMaxUsers);
+                        }
+                    }
+                }
+            });
+            $(".spinner").spinner({ min: 0 });
+
+        });
+    </script>
+}
