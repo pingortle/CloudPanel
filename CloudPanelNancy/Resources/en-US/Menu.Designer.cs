@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace Resources {
+namespace CloudPanelNancy.Resources.en_US {
     using System;
     
     
@@ -216,9 +216,9 @@ namespace Resources {
         /// <summary>
         ///   Looks up a localized string similar to Reports.
         /// </summary>
-        public static string Reprots {
+        public static string Reports {
             get {
-                return ResourceManager.GetString("Reprots", resourceCulture);
+                return ResourceManager.GetString("Reports", resourceCulture);
             }
         }
         

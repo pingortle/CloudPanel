@@ -118,66 +118,66 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ActivesyncPlans" xml:space="preserve">
-    <value>Activesync Plans</value>
+    <value>Program ActiveSync pl&amp;#225;ny</value>
   </data>
   <data name="Billing" xml:space="preserve">
-    <value>Billing</value>
+    <value>Vy&amp;#250;&amp;#269;tov&amp;#225;n&amp;#237;</value>
   </data>
   <data name="Citrix" xml:space="preserve">
     <value>Citrix</value>
   </data>
   <data name="CitrixPlans" xml:space="preserve">
-    <value>Citrix Plans</value>
+    <value>Citrix pl&amp;#225;ny</value>
   </data>
   <data name="Companies" xml:space="preserve">
-    <value>Companies</value>
+    <value>Firmy</value>
   </data>
   <data name="CompanyPlans" xml:space="preserve">
-    <value>Company Plans</value>
+    <value>Pl&amp;#225;ny firmy</value>
   </data>
   <data name="Contacts" xml:space="preserve">
-    <value>Contacts</value>
+    <value>Kontakty</value>
   </data>
   <data name="Dashboard" xml:space="preserve">
-    <value>Dashboard</value>
+    <value>P&amp;#345;&amp;#237;strojov&amp;#225; deska</value>
   </data>
   <data name="DisableEmail" xml:space="preserve">
-    <value>Disable Email</value>
+    <value>Zak&amp;#225;zat e-mail</value>
   </data>
   <data name="Domains" xml:space="preserve">
-    <value>Domains</value>
+    <value>Dom&amp;#233;ny</value>
   </data>
   <data name="Email" xml:space="preserve">
-    <value>Email</value>
+    <value>E-mail</value>
   </data>
   <data name="EnableEmail" xml:space="preserve">
-    <value>Enable Email</value>
+    <value>Povolit e-mail</value>
   </data>
   <data name="Groups" xml:space="preserve">
-    <value>Groups</value>
+    <value>Skupiny</value>
   </data>
   <data name="MailboxPlans" xml:space="preserve">
-    <value>Mailbox Plans</value>
+    <value>Pl&amp;#225;ny schr&amp;#225;nky</value>
   </data>
   <data name="Overview" xml:space="preserve">
-    <value>Overview</value>
+    <value>P&amp;#345;ehled</value>
   </data>
   <data name="Plans" xml:space="preserve">
-    <value>Plans</value>
+    <value>Pl&amp;#225;ny</value>
   </data>
   <data name="PublicFolders" xml:space="preserve">
-    <value>Public Folders</value>
+    <value>Ve&amp;#345;ejn&amp;#233; slo&amp;#382;ky</value>
   </data>
   <data name="Reports" xml:space="preserve">
-    <value>Reports</value>
+    <value>Zpr&amp;#225;vy</value>
   </data>
   <data name="Resellers" xml:space="preserve">
-    <value>Resellers</value>
+    <value>Prodejci</value>
   </data>
   <data name="ResourceMailboxes" xml:space="preserve">
-    <value>Resource Mailboxes</value>
+    <value>Schr&amp;#225;nky zdroj&amp;#367;</value>
   </data>
   <data name="Users" xml:space="preserve">
-    <value>Users</value>
+    <value>U&amp;#382;ivatel&amp;#233;</value>
   </data>
 </root>

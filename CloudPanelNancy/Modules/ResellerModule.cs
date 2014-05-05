@@ -13,6 +13,8 @@ namespace CloudPanelNancy.Modules
     {
         public ResellerModule()
         {
+            this.RequiresAuthentication();
+
             Get["/Resellers"] = _ =>
                 {
                     List<ResellerObject> resellers = null; // Get all resellers
@@ -47,7 +49,11 @@ namespace CloudPanelNancy.Modules
 
             Get["/Resellers/{CompanyCode}/Companies"] = parameters =>
             {
-                Context.Request.Session["SelectedReseller"] = parameters.CompanyCode;
+                if (this.Context.CurrentUser != null)
+                {
+                    var user = this.Context.CurrentUser as AuthenticatedUser;
+                    user.SelectedResellerCode = parameters.CompanyCode;
+                }
 
                 return View["Admin/CompanyList", parameters.CompanyCode];
             };

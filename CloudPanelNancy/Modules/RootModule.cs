@@ -31,11 +31,6 @@ namespace CloudPanelNancy.Modules
                     return this.LoginAndRedirect(userGuid.Value, null, "Dashboard");
                 }
             };
-
-            Get["/Company/{CompanyCode}"] = parameters =>
-                {
-                    return View["Company/Overview"];
-                };
         }
     }
 }

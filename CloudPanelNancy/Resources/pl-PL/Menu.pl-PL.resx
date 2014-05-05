@@ -118,66 +118,66 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ActivesyncPlans" xml:space="preserve">
-    <value>Activesync Plans</value>
+    <value>Plany ActiveSync</value>
   </data>
   <data name="Billing" xml:space="preserve">
-    <value>Billing</value>
+    <value>Fakturowanie</value>
   </data>
   <data name="Citrix" xml:space="preserve">
     <value>Citrix</value>
   </data>
   <data name="CitrixPlans" xml:space="preserve">
-    <value>Citrix Plans</value>
+    <value>Citrix Plany</value>
   </data>
   <data name="Companies" xml:space="preserve">
-    <value>Companies</value>
+    <value>Firmy</value>
   </data>
   <data name="CompanyPlans" xml:space="preserve">
-    <value>Company Plans</value>
+    <value>Plany spółek</value>
   </data>
   <data name="Contacts" xml:space="preserve">
-    <value>Contacts</value>
+    <value>Kontakt</value>
   </data>
   <data name="Dashboard" xml:space="preserve">
-    <value>Dashboard</value>
+    <value>Tablica rozdzielcza</value>
   </data>
   <data name="DisableEmail" xml:space="preserve">
-    <value>Disable Email</value>
+    <value>Wyłącz Email</value>
   </data>
   <data name="Domains" xml:space="preserve">
-    <value>Domains</value>
+    <value>Domeny</value>
   </data>
   <data name="Email" xml:space="preserve">
-    <value>Email</value>
+    <value>E-mail</value>
   </data>
   <data name="EnableEmail" xml:space="preserve">
-    <value>Enable Email</value>
+    <value>Włącz Email</value>
   </data>
   <data name="Groups" xml:space="preserve">
-    <value>Groups</value>
+    <value>Grupy</value>
   </data>
   <data name="MailboxPlans" xml:space="preserve">
-    <value>Mailbox Plans</value>
+    <value>Plany skrzynek pocztowych</value>
   </data>
   <data name="Overview" xml:space="preserve">
-    <value>Overview</value>
+    <value>Przegląd</value>
   </data>
   <data name="Plans" xml:space="preserve">
-    <value>Plans</value>
+    <value>Plany</value>
   </data>
   <data name="PublicFolders" xml:space="preserve">
-    <value>Public Folders</value>
+    <value>Foldery publiczne</value>
   </data>
   <data name="Reports" xml:space="preserve">
-    <value>Reports</value>
+    <value>Sprawozdania</value>
   </data>
   <data name="Resellers" xml:space="preserve">
-    <value>Resellers</value>
+    <value>Sprzedawcy</value>
   </data>
   <data name="ResourceMailboxes" xml:space="preserve">
-    <value>Resource Mailboxes</value>
+    <value>Skrzynki pocztowe zasobów</value>
   </data>
   <data name="Users" xml:space="preserve">
-    <value>Users</value>
+    <value>Użytkownicy</value>
   </data>
 </root>

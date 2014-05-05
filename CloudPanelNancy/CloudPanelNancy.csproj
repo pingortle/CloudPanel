@@ -673,7 +673,9 @@
     <Compile Include="Modules\AJAX\ajaxAll.cs" />
     <Compile Include="Modules\AJAX\ajaxReseller.cs" />
     <Compile Include="Modules\AJAX\ajaxSuper.cs" />
+    <Compile Include="Modules\CompanyModule.cs" />
     <Compile Include="Modules\DashboardModule.cs" />
+    <Compile Include="Modules\GlobalModule.cs" />
     <Compile Include="Modules\PlansModule.cs" />
     <Compile Include="Modules\ResellerModule.cs" />
     <Compile Include="RazorConfig.cs" />
@@ -827,16 +829,25 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Resources\de-CH\Menu.de-CH.resx">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <CustomToolNamespace>Resources</CustomToolNamespace>
-    </EmbeddedResource>
+    <EmbeddedResource Include="Resources\ar-SA\Menu.ar-SA.resx" />
+    <EmbeddedResource Include="Resources\cs-CZ\Menu.cs-CZ.resx" />
+    <EmbeddedResource Include="Resources\da-DK\Menu.da-DK.resx" />
+    <EmbeddedResource Include="Resources\de-DE\Menu.de-CH.resx" />
+    <EmbeddedResource Include="Resources\de-DE\Menu.de-DE.resx" />
     <EmbeddedResource Include="Resources\en-US\Menu.resx">
       <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>Menu.Designer.cs</LastGenOutput>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      <CustomToolNamespace>Resources</CustomToolNamespace>
     </EmbeddedResource>
+    <EmbeddedResource Include="Resources\es-ES\Menu.es-ES.resx" />
+    <EmbeddedResource Include="Resources\fr-FR\Menu.fr.resx" />
+    <EmbeddedResource Include="Resources\fr-FR\Menu.fr-FR.resx" />
+    <EmbeddedResource Include="Resources\he-IL\Menu.he-IL.resx" />
+    <EmbeddedResource Include="Resources\hi-IN\Menu.hi-IN.resx" />
+    <EmbeddedResource Include="Resources\it-IT\Menu.it-IT.resx" />
+    <EmbeddedResource Include="Resources\nb-NO\Menu.nb-NO.resx" />
+    <EmbeddedResource Include="Resources\nl-NL\Menu.nl-NL.resx" />
+    <EmbeddedResource Include="Resources\pl-PL\Menu.pl-PL.resx" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

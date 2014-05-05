@@ -130,54 +130,54 @@
     <value>Citrix Plans</value>
   </data>
   <data name="Companies" xml:space="preserve">
-    <value>Companies</value>
+    <value>Bedrijven</value>
   </data>
   <data name="CompanyPlans" xml:space="preserve">
-    <value>Company Plans</value>
+    <value>Bedrijf Plannen</value>
   </data>
   <data name="Contacts" xml:space="preserve">
-    <value>Contacts</value>
+    <value>Contacten</value>
   </data>
   <data name="Dashboard" xml:space="preserve">
     <value>Dashboard</value>
   </data>
   <data name="DisableEmail" xml:space="preserve">
-    <value>Disable Email</value>
+    <value>Uitschakelen E-mail</value>
   </data>
   <data name="Domains" xml:space="preserve">
-    <value>Domains</value>
+    <value>Domeinen</value>
   </data>
   <data name="Email" xml:space="preserve">
-    <value>Email</value>
+    <value>E-mail</value>
   </data>
   <data name="EnableEmail" xml:space="preserve">
-    <value>Enable Email</value>
+    <value>Schakel e-mail</value>
   </data>
   <data name="Groups" xml:space="preserve">
-    <value>Groups</value>
+    <value>Groepen</value>
   </data>
   <data name="MailboxPlans" xml:space="preserve">
-    <value>Mailbox Plans</value>
+    <value>Postvakplannen</value>
   </data>
   <data name="Overview" xml:space="preserve">
-    <value>Overview</value>
+    <value>Overzicht</value>
   </data>
   <data name="Plans" xml:space="preserve">
-    <value>Plans</value>
+    <value>Plannen</value>
   </data>
   <data name="PublicFolders" xml:space="preserve">
-    <value>Public Folders</value>
+    <value>Openbare mappen</value>
   </data>
   <data name="Reports" xml:space="preserve">
-    <value>Reports</value>
+    <value>Rapporten</value>
   </data>
   <data name="Resellers" xml:space="preserve">
     <value>Resellers</value>
   </data>
   <data name="ResourceMailboxes" xml:space="preserve">
-    <value>Resource Mailboxes</value>
+    <value>Resourcepostbussen</value>
   </data>
   <data name="Users" xml:space="preserve">
-    <value>Users</value>
+    <value>Gebruikers</value>
   </data>
 </root>

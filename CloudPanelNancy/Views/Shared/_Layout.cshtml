@@ -62,7 +62,13 @@
                 <ul class="nav nav-pills nav-stacked nav-bracket">
                     <li><a href="~/Dashboard"><i class="fa fa-home"></i><span>@Text.Menu.Dashboard</span></a></li>
                     <li><a href="~/Resellers"><i class="fa fa-user"></i><span>@Text.Menu.Resellers</span></a></li>
-                    <li><a href="~/Resellers/@Html.RenderContext.Context.Request.Session["SelectedReseller"]/Companies"><i class="fa fa-building-o"></i><span>@Text.Menu.Companies</span></a></li>
+                    @if (RenderContext.Context.CurrentUser != null)
+                    {
+                        var user = this.RenderContext.Context.CurrentUser as AuthenticatedUser;
+                        if (!string.IsNullOrEmpty(user.SelectedResellerCode)) { 
+                            <li><a href="~/Resellers/@user.SelectedResellerCode/Companies"><i class="fa fa-building-o"></i><span>@Text.Menu.Companies</span></a></li>
+                        }
+                    }
                     <li class="nav-parent">
                         <a href="#"><i class="fa fa-edit"></i><span>@Text.Menu.Plans</span></a>
                         <ul class="children">
@@ -77,25 +83,32 @@
 
                 <hr />
 
-                <h5 class="sidebartitle">COMPANY NAME</h5>
-                <ul class="nav nav-pills nav-stacked nav-bracket">
-                    <li><a href="#"><i class="fa fa-info"></i><span>@Text.Menu.Overview</span></a></li>
-                    <li><a href="#"><i class="fa fa-globe"></i><span>@Text.Menu.Domains</span></a></li>
-                    <li><a href="#"><i class="fa fa-users"></i><span>@Text.Menu.Users</span></a></li>
-                    <li class="nav-parent">
-                        <a href="#"><i class="fa fa-envelope-o"></i><span>@Text.Menu.Email</span></a>
-                        <ul class="children">
-                            <li><a href="#"><i class="fa fa-caret-right"></i>@Text.Menu.EnableEmail</a></li>
-                            <li><a href="#"><i class="fa fa-caret-right"></i>@Text.Menu.DisableEmail</a></li>
-                            <li><a href="#"><i class="fa fa-caret-right"></i>@Text.Menu.Contacts</a></li>
-                            <li><a href="#"><i class="fa fa-caret-right"></i>@Text.Menu.Groups</a></li>
-                            <li><a href="#"><i class="fa fa-caret-right"></i>@Text.Menu.ResourceMailboxes</a></li>
-                            <li><a href="#"><i class="fa fa-caret-right"></i>@Text.Menu.PublicFolders</a></li>
+                @if (RenderContext.Context.CurrentUser != null)
+                {
+                    var user = this.RenderContext.Context.CurrentUser as AuthenticatedUser;
+                    if (!string.IsNullOrEmpty(user.SelectedCompanyCode))
+                    { 
+                        <h5 class="sidebartitle">COMPANY NAME</h5>
+                        <ul class="nav nav-pills nav-stacked nav-bracket">
+                            <li><a href="~/Company/@user.SelectedCompanyCode"><i class="fa fa-info"></i><span>@Text.Menu.Overview</span></a></li>
+                            <li><a href="~/Company/@user.SelectedCompanyCode/Domains"><i class="fa fa-globe"></i><span>@Text.Menu.Domains</span></a></li>
+                            <li><a href="~/Company/@user.SelectedCompanyCode/Users"><i class="fa fa-users"></i><span>@Text.Menu.Users</span></a></li>
+                            <li class="nav-parent">
+                                <a href="#"><i class="fa fa-envelope-o"></i><span>@Text.Menu.Email</span></a>
+                                <ul class="children">
+                                    <li><a href="#"><i class="fa fa-caret-right"></i>@Text.Menu.EnableEmail</a></li>
+                                    <li><a href="#"><i class="fa fa-caret-right"></i>@Text.Menu.DisableEmail</a></li>
+                                    <li><a href="#"><i class="fa fa-caret-right"></i>@Text.Menu.Contacts</a></li>
+                                    <li><a href="#"><i class="fa fa-caret-right"></i>@Text.Menu.Groups</a></li>
+                                    <li><a href="#"><i class="fa fa-caret-right"></i>@Text.Menu.ResourceMailboxes</a></li>
+                                    <li><a href="#"><i class="fa fa-caret-right"></i>@Text.Menu.PublicFolders</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="~/Company/@user.SelectedCompanyCode/Citrix"><i class="fa fa-cloud"></i><span>@Text.Menu.Citrix</span></a></li>
+                            <li><a href="~/Company/@user.SelectedCompanyCode/Billing"><i class="fa fa-money"></i><span>@Text.Menu.Billing</span></a></li>
                         </ul>
-                    </li>
-                    <li><a href="#"><i class="fa fa-cloud"></i><span>@Text.Menu.Citrix</span></a></li>
-                    <li><a href="#"><i class="fa fa-money"></i><span>@Text.Menu.Billing</span></a></li>
-                </ul>
+                    }
+                }
             </div>
 
         </div>

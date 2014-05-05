@@ -1,5 +1,6 @@
 ﻿using CloudPanel.Modules.Base.Plans;
 using Nancy;
+using Nancy.Security;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,8 @@ namespace CloudPanelNancy.Modules
     {
         public PlansModule()  : base("Plans")
         {
+            this.RequiresAuthentication();
+
             Get["/Mailbox"] = parameters =>
             {
                 List<MailboxPlanObject> plans = new List<MailboxPlanObject>();

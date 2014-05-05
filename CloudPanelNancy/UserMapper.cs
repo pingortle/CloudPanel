@@ -39,7 +39,7 @@ namespace CloudPanelNancy
                 AuthenticatedUser newUser = new AuthenticatedUser();
                 newUser.UserGuid = Guid.NewGuid();
                 newUser.UserName = username;
-                newUser.Claims = new[] { "Super" };
+                newUser.Claims = new[] { "SuperAdmin" };
                 loggedInUsers.Add(newUser);
 
                 userRecord = newUser;

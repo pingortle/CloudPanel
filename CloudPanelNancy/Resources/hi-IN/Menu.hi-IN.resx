@@ -118,66 +118,66 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ActivesyncPlans" xml:space="preserve">
-    <value>Activesync Plans</value>
+    <value>ActiveSync &amp;#2351;&amp;#2379;&amp;#2332;&amp;#2344;&amp;#2366;&amp;#2319;&amp;#2306;</value>
   </data>
   <data name="Billing" xml:space="preserve">
-    <value>Billing</value>
+    <value>&amp;#2348;&amp;#2367;&amp;#2354;&amp;#2367;&amp;#2306;&amp;#2327;</value>
   </data>
   <data name="Citrix" xml:space="preserve">
     <value>Citrix</value>
   </data>
   <data name="CitrixPlans" xml:space="preserve">
-    <value>Citrix Plans</value>
+    <value>Citrix &amp;#2351;&amp;#2379;&amp;#2332;&amp;#2344;&amp;#2366;&amp;#2319;&amp;#2306;</value>
   </data>
   <data name="Companies" xml:space="preserve">
-    <value>Companies</value>
+    <value>&amp;#2325;&amp;#2306;&amp;#2346;&amp;#2344;&amp;#2367;&amp;#2351;&amp;#2379;&amp;#2306;</value>
   </data>
   <data name="CompanyPlans" xml:space="preserve">
-    <value>Company Plans</value>
+    <value>&amp;#2325;&amp;#2306;&amp;#2346;&amp;#2344;&amp;#2368; &amp;#2351;&amp;#2379;&amp;#2332;&amp;#2344;&amp;#2366;&amp;#2319;&amp;#2306;</value>
   </data>
   <data name="Contacts" xml:space="preserve">
-    <value>Contacts</value>
+    <value>&amp;#2360;&amp;#2306;&amp;#2346;&amp;#2352;&amp;#2381;&amp;#2325;</value>
   </data>
   <data name="Dashboard" xml:space="preserve">
-    <value>Dashboard</value>
+    <value>&amp;#2337;&amp;#2376;&amp;#2358;&amp;#2348;&amp;#2379;&amp;#2352;&amp;#2381;&amp;#2337;</value>
   </data>
   <data name="DisableEmail" xml:space="preserve">
-    <value>Disable Email</value>
+    <value>&amp;#2312;&amp;#2350;&amp;#2375;&amp;#2354; &amp;#2309;&amp;#2325;&amp;#2381;&amp;#2359;&amp;#2350;</value>
   </data>
   <data name="Domains" xml:space="preserve">
-    <value>Domains</value>
+    <value>&amp;#2337;&amp;#2379;&amp;#2350;&amp;#2375;&amp;#2344;</value>
   </data>
   <data name="Email" xml:space="preserve">
-    <value>Email</value>
+    <value>&amp;#2312;&amp;#2350;&amp;#2375;&amp;#2354;</value>
   </data>
   <data name="EnableEmail" xml:space="preserve">
-    <value>Enable Email</value>
+    <value>&amp;#2312;&amp;#2350;&amp;#2375;&amp;#2354; &amp;#2325;&amp;#2379; &amp;#2360;&amp;#2325;&amp;#2381;&amp;#2352;&amp;#2367;&amp;#2351; &amp;#2325;&amp;#2352;&amp;#2375;&amp;#2306;</value>
   </data>
   <data name="Groups" xml:space="preserve">
-    <value>Groups</value>
+    <value>&amp;#2360;&amp;#2350;&amp;#2370;&amp;#2361;</value>
   </data>
   <data name="MailboxPlans" xml:space="preserve">
-    <value>Mailbox Plans</value>
+    <value>&amp;#2350;&amp;#2375;&amp;#2354;&amp;#2348;&amp;#2377;&amp;#2325;&amp;#2381;&amp;#2360; &amp;#2351;&amp;#2379;&amp;#2332;&amp;#2344;&amp;#2366;&amp;#2319;&amp;#2305;</value>
   </data>
   <data name="Overview" xml:space="preserve">
-    <value>Overview</value>
+    <value>&amp;#2309;&amp;#2357;&amp;#2354;&amp;#2379;&amp;#2325;&amp;#2344;</value>
   </data>
   <data name="Plans" xml:space="preserve">
-    <value>Plans</value>
+    <value>&amp;#2351;&amp;#2379;&amp;#2332;&amp;#2344;&amp;#2366;&amp;#2319;&amp;#2306;</value>
   </data>
   <data name="PublicFolders" xml:space="preserve">
-    <value>Public Folders</value>
+    <value>&amp;#2360;&amp;#2366;&amp;#2352;&amp;#2381;&amp;#2357;&amp;#2332;&amp;#2344;&amp;#2367;&amp;#2325; &amp;#2347;&amp;#2364;&amp;#2379;&amp;#2354;&amp;#2381;&amp;#2337;&amp;#2352;</value>
   </data>
   <data name="Reports" xml:space="preserve">
-    <value>Reports</value>
+    <value>&amp;#2352;&amp;#2367;&amp;#2346;&amp;#2379;&amp;#2352;&amp;#2381;&amp;#2335;&amp;#2375;&amp;#2306;</value>
   </data>
   <data name="Resellers" xml:space="preserve">
-    <value>Resellers</value>
+    <value>&amp;#2346;&amp;#2369;&amp;#2344;&amp;#2352;&amp;#2381;&amp;#2357;&amp;#2367;&amp;#2325;&amp;#2381;&amp;#2352;&amp;#2375;&amp;#2340;&amp;#2366;&amp;#2323;&amp;#2306;</value>
   </data>
   <data name="ResourceMailboxes" xml:space="preserve">
-    <value>Resource Mailboxes</value>
+    <value>&amp;#2360;&amp;#2306;&amp;#2360;&amp;#2366;&amp;#2343;&amp;#2344; &amp;#2350;&amp;#2375;&amp;#2354;&amp;#2348;&amp;#2377;&amp;#2325;&amp;#2381;&amp;#2360;</value>
   </data>
   <data name="Users" xml:space="preserve">
-    <value>Users</value>
+    <value>&amp;#2313;&amp;#2346;&amp;#2351;&amp;#2379;&amp;#2327;&amp;#2325;&amp;#2352;&amp;#2381;&amp;#2340;&amp;#2366;</value>
   </data>
 </root>

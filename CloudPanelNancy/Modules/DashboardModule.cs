@@ -11,13 +11,11 @@ namespace CloudPanelNancy.Modules
     {
         public DashboardModule() : base("/Dashboard")
         {
-            //this.RequiresAuthentication();
+            this.RequiresAuthentication();
             //this.RequiresAnyClaim(new[] { "SuperAdmin", "ResellerAdmin", "CompanyAdmin" })
 
             Get["/"] = _ =>
             {
-
-                this.Context.Culture = new System.Globalization.CultureInfo("de-CH");
                 return View["Dashboard"];
             };
         }
