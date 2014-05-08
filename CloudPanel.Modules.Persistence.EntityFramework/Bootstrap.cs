@@ -17,7 +17,6 @@ namespace CloudPanel.Modules.Persistence.EntityFramework
     {
     }
 
-    // Need to support schema migrations here.
     internal sealed class CloudPanelContextInitializer : IDatabaseInitializer<CloudPanelContext>
     {
         #region IDatabaseInitializer<CloudPanelContext> Members
