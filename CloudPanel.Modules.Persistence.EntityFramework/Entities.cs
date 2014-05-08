@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CloudPanel.Modules.Persistence.Domain
+namespace CloudPanel.Modules.Persistence.Entities
 {
     public class ApiAccess
     {

@@ -50,7 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrap.cs" />
-    <Compile Include="Domain.cs" />
+    <Compile Include="Entities.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

@@ -7,7 +7,7 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CloudPanel.Modules.Persistence.Domain;
+using CloudPanel.Modules.Persistence.Entities;
 using CloudPanel.Modules.Persistence.EntityFramework.Migrations;
 
 // NB: http://stackoverflow.com/questions/16210771/entity-framework-code-first-without-app-config
