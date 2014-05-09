@@ -50,6 +50,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Bootstrap.cs" />
+    <Compile Include="Migrations\201405092029381_Original.cs" />
+    <Compile Include="Migrations\201405092029381_Original.Designer.cs">
+      <DependentUpon>201405092029381_Original.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ApiAccess.cs" />
     <Compile Include="Models\Audit.cs" />
@@ -110,6 +114,11 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201405092029381_Original.resx">
+      <DependentUpon>201405092029381_Original.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
