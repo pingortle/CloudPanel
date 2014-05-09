@@ -7,8 +7,9 @@ using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using CloudPanel.Modules.Persistence.Entities;
+using CloudPanel.Modules.Persistence.EntityFramework.Models;
 using CloudPanel.Modules.Persistence.EntityFramework.Migrations;
+using CloudPanel.Modules.Persistence.EntityFramework.Models.Mapping;
 
 // NB: http://stackoverflow.com/questions/16210771/entity-framework-code-first-without-app-config
 namespace CloudPanel.Modules.Persistence.EntityFramework
@@ -50,6 +51,34 @@ namespace CloudPanel.Modules.Persistence.EntityFramework
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+
+            modelBuilder.Configurations.Add(new ApiAccessMap());
+            modelBuilder.Configurations.Add(new AuditMap());
+            modelBuilder.Configurations.Add(new AuditLoginMap());
+            modelBuilder.Configurations.Add(new CompanyMap());
+            modelBuilder.Configurations.Add(new CompanyStatMap());
+            modelBuilder.Configurations.Add(new ContactMap());
+            modelBuilder.Configurations.Add(new DistributionGroupMap());
+            modelBuilder.Configurations.Add(new DomainMap());
+            modelBuilder.Configurations.Add(new LogTableMap());
+            modelBuilder.Configurations.Add(new Plans_CitrixMap());
+            modelBuilder.Configurations.Add(new Plans_ExchangeActiveSyncMap());
+            modelBuilder.Configurations.Add(new Plans_ExchangeMailboxMap());
+            modelBuilder.Configurations.Add(new Plans_OrganizationMap());
+            modelBuilder.Configurations.Add(new PriceOverrideMap());
+            modelBuilder.Configurations.Add(new PriceMap());
+            modelBuilder.Configurations.Add(new ResourceMailboxMap());
+            modelBuilder.Configurations.Add(new SettingMap());
+            modelBuilder.Configurations.Add(new Stats_CitrixCountMap());
+            modelBuilder.Configurations.Add(new Stats_ExchCountMap());
+            modelBuilder.Configurations.Add(new Stats_UserCountMap());
+            modelBuilder.Configurations.Add(new SvcMailboxDatabaseSizeMap());
+            modelBuilder.Configurations.Add(new SvcMailboxSizeMap());
+            modelBuilder.Configurations.Add(new SvcQueueMap());
+            modelBuilder.Configurations.Add(new SvcTaskMap());
+            modelBuilder.Configurations.Add(new UserPermissionMap());
+            modelBuilder.Configurations.Add(new UserPlansCitrixMap());
+            modelBuilder.Configurations.Add(new UserMap());
         }
 
         public DbSet<ApiAccess> ApiAccesses { get; set; }
@@ -65,7 +94,6 @@ namespace CloudPanel.Modules.Persistence.EntityFramework
         public DbSet<Plans_ExchangeActiveSync> Plans_ExchangeActiveSync { get; set; }
         public DbSet<Plans_ExchangeMailbox> Plans_ExchangeMailbox { get; set; }
         public DbSet<Plans_Organization> Plans_Organization { get; set; }
-        public DbSet<Plans_TerminalServices> Plans_TerminalServices { get; set; }
         public DbSet<PriceOverride> PriceOverrides { get; set; }
         public DbSet<Price> Prices { get; set; }
         public DbSet<ResourceMailbox> ResourceMailboxes { get; set; }
@@ -78,7 +106,6 @@ namespace CloudPanel.Modules.Persistence.EntityFramework
         public DbSet<SvcQueue> SvcQueues { get; set; }
         public DbSet<SvcTask> SvcTasks { get; set; }
         public DbSet<UserPermission> UserPermissions { get; set; }
-        public DbSet<UserPlan> UserPlans { get; set; }
         public DbSet<UserPlansCitrix> UserPlansCitrices { get; set; }
         public DbSet<User> Users { get; set; }
     }
