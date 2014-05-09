@@ -106,7 +106,7 @@ namespace CloudPanel.Modules.Persistence.EntityFramework
         public DbSet<SvcQueue> SvcQueues { get; set; }
         public DbSet<SvcTask> SvcTasks { get; set; }
         public DbSet<UserPermission> UserPermissions { get; set; }
-        public DbSet<UserPlansCitrix> UserPlansCitrices { get; set; }
+        public DbSet<UserPlansCitrix> UserPlansCitrix { get; set; }
         public DbSet<User> Users { get; set; }
     }
 }
