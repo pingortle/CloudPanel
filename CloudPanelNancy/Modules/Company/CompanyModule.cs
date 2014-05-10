@@ -10,8 +10,7 @@ namespace CloudPanelNancy.Modules
 {
     public class CompanyModule : NancyModule
     {
-        public CompanyModule()
-            : base("Company")
+        public CompanyModule() : base("Company")
         {
             this.RequiresAuthentication();
             this.RequiresAnyClaim(new[] { "SuperAdmin", "ResellerAdmin", "CompanyAdmin" });
