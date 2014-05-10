@@ -109,7 +109,8 @@
     <Content Include="Content\css\isotope.css" />
     <Content Include="Content\css\jquery-jvectormap-1.2.2.css" />
     <Content Include="Content\css\jquery-ui-1.10.3.css" />
-    <Content Include="Content\css\jquery.datatables.css" />
+    <Content Include="Content\css\jquery.datatables.1.9.4.css" />
+    <Content Include="Content\css\jquery.dataTables.1.10.0.css" />
     <Content Include="Content\css\jquery.gritter.css" />
     <Content Include="Content\css\jquery.tagsinput.css" />
     <Content Include="Content\css\lato.css" />
@@ -155,6 +156,9 @@
     <Content Include="Content\fonts\roboto\Roboto-Thin-webfont.svg" />
     <Content Include="Content\fonts\roboto\Roboto-ThinItalic-webfont.svg" />
     <Content Include="Content\fonts\roboto\roboto.css" />
+    <Content Include="Content\images\back_disabled.png" />
+    <Content Include="Content\images\back_enabled.png" />
+    <Content Include="Content\images\back_enabled_hover.png" />
     <Content Include="Content\images\calendar-arrow.png" />
     <Content Include="Content\images\chosen-sprite%402x.png" />
     <Content Include="Content\images\chosen-sprite.png" />
@@ -187,7 +191,11 @@
     <Content Include="Content\images\colorpicker\select2.png" />
     <Content Include="Content\images\colorpicker\slider.png" />
     <Content Include="Content\images\dropdown-arrow.png" />
+    <Content Include="Content\images\favicon.ico" />
     <Content Include="Content\images\favicon.png" />
+    <Content Include="Content\images\forward_disabled.png" />
+    <Content Include="Content\images\forward_enabled.png" />
+    <Content Include="Content\images\forward_enabled_hover.png" />
     <Content Include="Content\images\hormenu.jpg" />
     <Content Include="Content\images\icon-search%402x.png" />
     <Content Include="Content\images\icon-search.png" />
@@ -640,7 +648,8 @@
     <Content Include="Content\js\jquery.animateNumbers.js" />
     <Content Include="Content\js\jquery.autogrow-textarea.js" />
     <Content Include="Content\js\jquery.cookies.js" />
-    <Content Include="Content\js\jquery.datatables.min.js" />
+    <Content Include="Content\js\jquery.datatables.min.1.9.4.js" />
+    <Content Include="Content\js\jquery.dataTables.min.js" />
     <Content Include="Content\js\jquery.gritter.min.js" />
     <Content Include="Content\js\jquery.maskedinput.min.js" />
     <Content Include="Content\js\jquery.maskMoney.js" />
@@ -673,7 +682,9 @@
     <Compile Include="Modules\AJAX\ajaxAll.cs" />
     <Compile Include="Modules\AJAX\ajaxReseller.cs" />
     <Compile Include="Modules\AJAX\ajaxSuper.cs" />
-    <Compile Include="Modules\CompanyModule.cs" />
+    <Compile Include="Modules\Company\CompanyModule.cs" />
+    <Compile Include="Modules\Company\DomainsModule.cs" />
+    <Compile Include="Modules\Company\UsersModule.cs" />
     <Compile Include="Modules\DashboardModule.cs" />
     <Compile Include="Modules\GlobalModule.cs" />
     <Compile Include="Modules\PlansModule.cs" />
@@ -803,9 +814,13 @@
     <Content Include="Views\Admin\CompanyList.cshtml" />
     <Content Include="Views\Company\Overview.cshtml" />
     <Content Include="Content\js\jquery-1.10.2.min.map" />
+    <Content Include="Content\images\Sorting icons.psd" />
+    <Content Include="CloudPanelNancy.licenseheader" />
     <None Include="Properties\PublishProfiles\Home LAB.pubxml" />
     <Content Include="Views\Plans\MailboxPlans.cshtml" />
     <Content Include="Views\Plans\CompanyPlans.cshtml" />
+    <Content Include="Views\Company\Domains\DomainList.cshtml" />
+    <Content Include="Views\Company\Users\UsersList.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -826,6 +841,10 @@
     <ProjectReference Include="..\CloudPanel.Modules.Common\CloudPanel.Modules.Common.csproj">
       <Project>{118d670a-318a-4dd2-916b-51727e73928a}</Project>
       <Name>CloudPanel.Modules.Common</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\CloudPanel.Modules.Persistence.EntityFramework\CloudPanel.Modules.Persistence.EntityFramework.csproj">
+      <Project>{6144303a-7153-4938-8ab5-02bb0cf8f2a4}</Project>
+      <Name>CloudPanel.Modules.Persistence.EntityFramework</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

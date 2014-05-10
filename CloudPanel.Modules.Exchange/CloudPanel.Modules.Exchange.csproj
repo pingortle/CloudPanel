@@ -51,6 +51,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="CloudPanel.Modules.Exchange.licenseheader" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

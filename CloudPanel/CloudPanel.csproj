@@ -644,7 +644,8 @@
     <Content Include="js\jquery.animateNumbers.js" />
     <Content Include="js\jquery.autogrow-textarea.js" />
     <Content Include="js\jquery.cookies.js" />
-    <Content Include="js\jquery.datatables.min.js" />
+    <Content Include="js\jquery.datatables.min.1.9.4.js" />
+    <Content Include="js\jquery.dataTables.min1.10.0.js" />
     <Content Include="js\jquery.gritter.min.js" />
     <Content Include="js\jquery.maskedinput.min.js" />
     <Content Include="js\jquery.maskMoney.js" />
