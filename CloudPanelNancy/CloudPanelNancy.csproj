@@ -701,6 +701,7 @@
       <DependentUpon>Menu.resx</DependentUpon>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Compile>
+    <Compile Include="Settings.cs" />
     <Compile Include="UserMapper.cs" />
     <Compile Include="Modules\RootModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -830,6 +831,7 @@
     <Content Include="Views\Company\Email\Disable.cshtml" />
     <Content Include="Views\Company\Citrix\List.cshtml" />
     <Content Include="Views\Company\Users\Edit.cshtml" />
+    <Content Include="Views\connection.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

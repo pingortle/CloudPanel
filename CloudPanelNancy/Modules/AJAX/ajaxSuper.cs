@@ -36,37 +36,35 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using CloudPanel.Modules.Persistence.EntityFramework;
 
 namespace CloudPanelNancy.Modules.AJAX
 {
     public class ajaxSuper : NancyModule
     {
-        public ajaxSuper() : base("/AJAX")
+        public ajaxSuper(CloudPanelContext db) : base("/AJAX")
         {
             //this.RequiresAuthentication();
             //this.RequiresAnyClaim(new[] { "SuperAdmin" });
 
-            Get["/Resellers/GetAll"] = parameters => GetResellers();
+            Get["/Resellers/GetAll"] = parameters => GetResellers(db);
             Get["/Dashboard/Charting/Column"] = parameters => GetTop5Customers();
         }
 
-        public Response GetResellers()
+        public Response GetResellers(CloudPanelContext db)
         {
-            List<ResellerObject> resellers = new List<ResellerObject>();
-            for (int i = 0; i < 100000; i++)
+            List<ResellerObject> resellers = db.Companies.Select(x => new ResellerObject
             {
-                resellers.Add(new ResellerObject()
-                {
-                    CompanyID = i,
-                    CompanyCode = "Reseller" + i.ToString(),
-                    CompanyName = "Reseller" + i.ToString(),
-                    Street = "300 Simpson Rd",
-                    City = "Vilonia",
-                    State = "AR",
-                    ZipCode = "72173",
-                    Created = DateTime.Now
-                });
-            }
+                CompanyID = x.CompanyId,
+                CompanyCode = x.CompanyCode,
+                CompanyName = x.CompanyName,
+                Street = x.Street,
+                City = x.City,
+                State = x.State,
+                ZipCode = x.ZipCode,
+                Created = x.Created,
+            })
+            .ToList();
 
             int start = Convert.ToInt32(Request.Query.iDisplayStart.ToString());
             int length = Convert.ToInt32(Request.Query.iDisplayLength.ToString());

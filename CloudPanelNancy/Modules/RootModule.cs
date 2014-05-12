@@ -61,6 +61,16 @@ namespace CloudPanelNancy.Modules
                     return this.LoginAndRedirect(userGuid.Value, null, "Dashboard");
                 }
             };
+
+            Get["/connection"] = _ => View["connection"];
+            Post["/connection"] = prams =>
+                {
+                    if (!this.Request.Form.connection.HasValue)
+                        return Response.AsJson(new { success = false, message = "Must pass \"connection\" string.", }, HttpStatusCode.BadRequest);
+
+                    Settings.ConnectionString = prams.connection;
+                    return Response.AsJson(new { success = true, message = "Success!" }, HttpStatusCode.OK);
+                };
         }
     }
 }

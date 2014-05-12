@@ -37,6 +37,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using CloudPanel.Modules.Persistence.EntityFramework;
 
 namespace CloudPanelNancy
 {
@@ -66,6 +67,7 @@ namespace CloudPanelNancy
             // As this is now per-request we could inject a request scoped
             // database "context" or other request scoped services.
             container.Register<IUserMapper, UserMapper>();
+            container.Register<CloudPanelContext>((x, y) => new CloudPanelContext(Settings.ConnectionString));
         }
 
         protected override void RequestStartup(TinyIoCContainer requestContainer, IPipelines pipelines, NancyContext context)
