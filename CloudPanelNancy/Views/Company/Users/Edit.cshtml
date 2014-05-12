@@ -1,0 +1,370 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
+
+@{
+    Layout = "Views/Shared/_Layout.cshtml";
+}
+
+@section PAGEHEADER{
+    <div class="pageheader">
+        <h2><i class="fa fa-building-o"></i> Users <span>Edit user...</span></h2>
+        <div class="breadcrumb-wrapper">
+            <span class="label">You are here:</span>
+            <ol class="breadcrumb">
+                <li><a href="index.html">Bracket</a></li>
+                <li class="active">Dashboard</li>
+            </ol>
+        </div>
+    </div>
+}
+
+<div class="row">
+    <div class="col-sm-10">
+        <div class="profile-header">
+            <h2 class="profile-name">Jacob Dixon</h2>
+            <div class="profile-position"><i class="fa fa-lock"></i>testuser@test.com</div>
+            <div class="profile-position"><i class="fa fa-lock"></i>test1</div>
+            <div class="mb20"></div>
+        </div>
+        <!-- profile-header -->
+    </div>
+    <div class="col-sm-2">
+        <img src="~/Content/images/photos/unknown-user.png" alt="" class="thumbnail img-responsive pull-right" />
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-12">
+        <ul class="nav nav-tabs">
+            <li class="active"><a href="#User" data-toggle="tab"><strong>User</strong></a></li>
+            
+            <!-- Only show if company is enabled for Exchange -->
+            <li class="dropdown">
+                <a href="#" data-toggle="dropdown" class="dropdown-toggle">Mailbox Settings<span class="caret"></span></a>
+                <ul role="menu" class="dropdown-menu pull-left">
+                    <li><a href="#Mailbox" data-toggle="tab">General</a></li>
+                    <li><a href="#Archiving" data-toggle="tab">Archiving</a></li>
+                    <li><a href="#LitigationHold" data-toggle="tab">Litigation Hold</a></li>
+                </ul>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="validateForm">
+
+            <!-- User -->
+            <div class="tab-pane active" id="User">
+                <div class="form-horizontal">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+
+                            <p class="lead">General</p>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">First Name <span class="asterisk">*</span></label>
+                                <div class="col-sm-4">
+                                    <input id="Firstname" type="text" class="form-control" required />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Middle Name</label>
+                                <div class="col-sm-4">
+                                    <input id="Middlename" type="text" class="form-control"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Last Name</label>
+                                <div class="col-sm-4">
+                                    <input id="Lastname" type="text" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Display Name <span class="asterisk">*</span></label>
+                                <div class="col-sm-4">
+                                    <input id="DisplayName" type="text" class="form-control" required />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Department</label>
+                                <div class="col-sm-4">
+                                    <input id="Department" type="text" class="form-control" />
+                                </div>
+                            </div>
+
+                            <hr />
+                            <p class="lead">User Status</p>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">&nbsp;</label>
+                                <div class="col-sm-4">
+                                    <div class="ckbox ckbox-primary">
+                                        <input id="cbEnableUser" type="checkbox" />
+                                        <label for='cbEnableUser'>Enable User</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr />
+                            <p class="lead">Permissions</p>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">&nbsp;</label>
+                                <div class="col-sm-4">
+                                    <div class="ckbox ckbox-primary">
+                                        <input id="IsResellerAdmin" type="checkbox" />
+                                        <label for='IsResellerAdmin'>Is Reseller Admin</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">&nbsp;</label>
+                                <div class="col-sm-2">
+                                    <div class="ckbox ckbox-primary">
+                                        <input id="IsCompanyAdmin" type="checkbox" />
+                                        <label for='IsCompanyAdmin'>Is Company Admin</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane" id="Mailbox">
+                <div class="form-group">
+                    <label class="col-sm-11 control-label" style="text-align: right">Enable Mailbox</label>
+                    <div class="col-sm-1">
+                        <div class="toggle toggle-success enableMailbox"></div>
+                        <input id="IsEmailEnabled" type="checkbox" hidden="hidden" />
+                    </div>
+                </div>
+
+                <div class="form-horizontal">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+
+                            <div id="divMailboxSettings" class="hidden">
+                                <p class="lead">General</p>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Email</label>
+                                    <div class="col-sm-4">
+                                        <input id="PrimaryEmail" type="text" class="form-control" />
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <select id="PrimaryDomain" class="form-control chosen-select">
+                                            <option value="testdomain.com">testdomain.com</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Activesync Plan</label>
+                                    <div class="col-sm-4">
+                                        <select id="ActivesyncPlan" class="form-control chosen-select">
+                                            <option value="1">Default</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Mailbox Plan</label>
+                                    <div class="col-sm-4">
+                                        <select id="MailboxPlan" class="form-control chosen-select">
+                                            <option value="1">Bronze</option>
+                                            <option value="2">Silver</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Mailbox Size </label>
+                                    <div class="col-sm-4">
+                                        <div id="size-slider"></div>
+                                    </div>
+                                    <div id="size-slider-sizeinmb" class="col-sm-2 control-label" style="text-align: left">
+                                    </div>
+                                </div>
+
+                                <hr />
+                                <p class="lead">Email Aliases</p>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">&nbsp;</label>
+                                    <div class="col-sm-8">
+                                        <!-- REPEATER OF EMAIL ALIASES HERE -->
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">&nbsp;</label>
+                                    <div class="col-sm-2">
+                                        <input id="txtAddEmailAlias" type="text" class="form-control" />
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <select id="AliasDomain" class="form-control chosen-select">
+                                            <option value="testdomain.com">testdomain.com</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-sm-2">
+                                        <input id="btnAddAlias" type="button" value="Add Alias" class="btn btn-info" />
+                                    </div>
+                                </div>
+
+                                <hr />
+                                <p class="lead">Forwarding</p>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Forward To</label>
+                                    <div class="col-sm-4">
+                                        <select id="ForwardTo" class="form-control chosen-select">
+                                            <option value="jdixon@compsysar.com">Jacob Dixon</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">&nbsp;</label>
+                                    <div class="col-sm-4">
+                                        <div class="ckbox ckbox-primary">
+                                            <input id="DeliverToMailboxAndForward" type="checkbox" />
+                                            <label for="DeliverToMailboxAndForward">Deliver to mailbox and foward</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <hr />
+                                <p class="lead">Mailbox Permissions</p>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Fulll Access</label>
+                                    <div class="col-sm-10">
+                                        <select id="FullAccess" class="form-control chosen-select" multiple>
+                                            <option value="jdixon@compsysar.com">Jacob Dixon</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Send As</label>
+                                    <div class="col-sm-10">
+                                        <select id="SendAs" class="form-control chosen-select" multiple>
+                                            <option value="jdixon@compsysar.com">Jacob Dixon</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Send on Behalf</label>
+                                    <div class="col-sm-10">
+                                        <select id="SendOnBehalf" class="form-control chosen-select" multiple>
+                                            <option value="jdixon@compsysar.com">Jacob Dixon</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane" id="Archiving">
+                <div class="form-horizontal">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label"></label>
+                                <div class="col-sm-4">
+                                    <div class="ckbox ckbox-primary">
+                                        <input id="cbEnableArchiving" type="checkbox" />
+                                        <label for='cbEnableArchiving'>Enable Archiving</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Archive Name</label>
+                                <div class="col-sm-4">
+                                    <input id="ArchiveName" type="text" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Archive Plan</label>
+                                <div class="col-sm-4">
+                                    <select id="ArchivePlan" class="form-control chosen-select">
+                                        <option value="1">Bronze</option>
+                                        <option value="2">Silver</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane" id="LitigationHold">
+                <div class="form-horizontal">
+                    <div class="panel panel-default">
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label"></label>
+                                <div class="col-sm-4">
+                                    <div class="ckbox ckbox-primary">
+                                        <input id="cbEnableLitigationHold" type="checkbox" />
+                                        <label for='cbEnableLitigationHold'>Enable Litigation Hold</label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Duration</label>
+                                <div class="col-sm-4">
+                                    <div class="input-group">
+                                        <input id="LitigationHoldDuration" type="text" class="form-control" placeholder="mm/dd/yyyy" />
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-calendar"></i></span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Description Url</label>
+                                <div class="col-sm-4">
+                                    <input id="LitigationHoldUrl" type="text" class="form-control" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Comments</label>
+                                <div class="col-sm-4">
+                                    <textarea id="LitigationHoldComments" rows="3" cols="20" class="form-control"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+<br />
+<br />
+
+<div class="panel-footer" style="text-align: right">
+    <input id="Cancel" type="button" value="Cancel" class="btn btn-default" />
+    <input id="Cancel" type="submit" value="Save" class="btn btn-primary" />
+</div>
+
+@section CUSTOMJAVASCRIPT{
+    <script src="~/Content/js/toggles.min.js"></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+
+            // Chosen Select
+            jQuery(".chosen-select").chosen({ 'width': '100%', 'white-space': 'nowrap' });
+
+            // Date Picker
+            jQuery('#LitigationHoldDuration').datepicker();
+
+            // Toggles
+            jQuery('.enableMailbox').toggles({
+                width: 75,
+                on: $("#IsEmailEnabled").is(":checked"),
+                checkbox: $('#IsEmailEnabled'),
+                text: { on: 'Enabled', off: 'Disabled' }
+            });
+
+            $('.toggle').on('toggle', function (e, active) {
+                if (active) {
+                    $("#divMailboxSettings").toggleClass("hidden", false);
+                } else {
+                    $("#divMailboxSettings").toggleClass("hidden", true);
+                }
+            });
+
+        });
+    </script>
+}
