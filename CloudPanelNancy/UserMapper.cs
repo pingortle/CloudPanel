@@ -44,12 +44,7 @@ namespace CloudPanelNancy
 
         public IUserIdentity GetUserFromIdentifier(Guid identifier, NancyContext context)
         {
-            var userRecord = loggedInUsers.Where(u => u.UserGuid == identifier).FirstOrDefault();
-
-            if (userRecord == null)
-                return null;
-            else
-                return userRecord;
+            return loggedInUsers.Where(u => u.UserGuid == identifier).FirstOrDefault();
         }
 
         public static Guid? ValidateUser(string username, string password)
