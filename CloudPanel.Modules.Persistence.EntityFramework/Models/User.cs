@@ -32,7 +32,7 @@ namespace CloudPanel.Modules.Persistence.EntityFramework.Models
         public bool IsDisabled { get; set; }
 
         public bool IsLyncEnabled {
-            get { return (LyncPlan != null && LyncPlan > 0) ? true : false; } 
+            get { return (LyncPlan != null && LyncPlan > 0) ? true : false; }
         }
 
         public bool IsEmailEnabled {
