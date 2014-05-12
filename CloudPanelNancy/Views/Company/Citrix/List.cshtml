@@ -1,0 +1,81 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
+
+@{
+    Layout = "Views/Shared/_Layout.cshtml";
+}
+
+@section HEAD{
+    <style type="text/css">
+        .dropZone {
+            width: 70%;
+            float: right;
+            overflow: scroll;
+        }
+
+        .dropZone ul {
+            -moz-column-count: 4;
+            -moz-column-gap: 5px;
+            -webkit-column-count: 4;
+            -webkit-column-gap: 5px;
+            column-count: 4;
+            column-gap: 5px;
+            height: 150px;
+            list-style: none;
+        }
+    </style>
+}
+
+@section PAGEHEADER{
+    <div class="pageheader">
+        <h2>
+            <i class="fa fa-globe"></i> Citrix
+            <span>Subtitle goes here...</span>
+        </h2>
+        <div class="breadcrumb-wrapper">
+            <span class="label">You are here:</span>
+            <ol class="breadcrumb">
+                <li><a href="index.html">Bracket</a></li>
+                <li class="active">Dashboard</li>
+            </ol>
+        </div>
+    </div>
+}
+
+<div class="people-list">
+    <div class="row">
+
+        <h2>Servers</h2>
+        <div class="col-md-6">
+            <div class="people-item">
+                <div class="media">
+                    <a href="#" class="pull-left">
+                        <img src="~/Content/images/citrix/citrix_server.png" alt="" class="thumbnail media-object" />
+                    </a>
+                    <div class="media-body">
+                        <div class="pull-right">
+                            <input id="Button1" type="button" value="Modify Members" class="btn btn-primary btn-xs" />
+                        </div>
+
+                        <h4 class="person-name">
+                            Display Name
+                        </h4>
+                        <div class="text-muted">
+                            <i class="fa fa-money"></i>
+                            $75.00 per user
+                        </div>
+                        <div class="text-muted">
+                            <i class="fa fa-info"></i>
+                            Description here
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section CUSTOMJAVASCRIPT{
+    <script type="text/javascript">
+
+    </script>
+}

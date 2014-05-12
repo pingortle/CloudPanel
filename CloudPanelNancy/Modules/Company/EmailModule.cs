@@ -27,28 +27,52 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
-
-using Nancy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Nancy;
+using Nancy.Security;
 
-namespace CloudPanelNancy.Modules
+namespace CloudPanelNancy.Modules.Company
 {
-    public class UsersModule : NancyModule
+    public class EmailModule : NancyModule
     {
-        public UsersModule() : base("Company")
+        public EmailModule() : base("Company")
         {
-            Get["{CompanyCode}/Users"] = parameters =>
-            {
-                return View["Company/Users/UsersList.cshtml"];
-            };
+            //this.RequiresAuthentication();
+            //this.RequiresAnyClaim(new[] { "SuperAdmin", "ResellerAdmin", "CompanyAdmin" });
 
-            Get["{CompanyCode}/Users/{UserGuid}/Edit"] = parameters =>
-            {
-                return View["Company/Users/Edit.cshtml"];
-            };
+            Get["{CompanyCode}/Email/Enable"] = parameters =>
+                {
+                    return View["Company/Email/Enable.cshtml"];
+                };
+
+            Post["{CompanyCode}/Email/Enable"] = parameters =>
+                {
+                    // If successful take them to the disable Exchange page
+                    // If they are NOT successful take them back to the enable Exchange page and display an error message why it wasn't successful
+                    return View["Company/Email/Disable.cshtml"];
+                };
+
+            Get["{CompanyCode}/Email/Disable"] = parameters =>
+                {
+                    var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+                    var random = new Random();
+                    var result = new string(
+                        Enumerable.Repeat(chars, 8)
+                                  .Select(s => s[random.Next(s.Length)])
+                                  .ToArray());
+
+                    return View["Company/Email/Disable.cshtml", result];
+                };
+
+            Post["{CompanyCode}/Email/Disable"] = parameters =>
+                {
+                    // If we successfully disable email then redirect to enable page
+                    // Otherwise redirect to same page displaying the error message
+                    return View["Company/Email/Enable.cshtml"];
+                };
         }
     }
 }

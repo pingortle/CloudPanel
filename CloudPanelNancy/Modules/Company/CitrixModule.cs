@@ -27,28 +27,26 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
-
-using Nancy;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Nancy;
+using Nancy.Security;
 
-namespace CloudPanelNancy.Modules
+namespace CloudPanelNancy.Modules.Company
 {
-    public class UsersModule : NancyModule
+    public class CitrixModule : NancyModule
     {
-        public UsersModule() : base("Company")
+        public CitrixModule() : base("Company")
         {
-            Get["{CompanyCode}/Users"] = parameters =>
-            {
-                return View["Company/Users/UsersList.cshtml"];
-            };
+            //this.RequiresAuthentication();
+            //this.RequiresAnyClaim(new[] { "SuperAdmin", "ResellerAdmin", "CompanyAdmin" });
 
-            Get["{CompanyCode}/Users/{UserGuid}/Edit"] = parameters =>
-            {
-                return View["Company/Users/Edit.cshtml"];
-            };
+            Get["{CompanyCode}/Citrix"] = parameters =>
+                {
+                    return View["Company/Citrix/List.cshtml"];
+                };
         }
     }
 }

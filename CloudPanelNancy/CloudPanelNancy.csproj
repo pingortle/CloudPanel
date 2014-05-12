@@ -162,6 +162,8 @@
     <Content Include="Content\images\calendar-arrow.png" />
     <Content Include="Content\images\chosen-sprite%402x.png" />
     <Content Include="Content\images\chosen-sprite.png" />
+    <Content Include="Content\images\citrix\citrix_application.png" />
+    <Content Include="Content\images\citrix\citrix_server.png" />
     <Content Include="Content\images\close-white.png" />
     <Content Include="Content\images\colorpicker\blank.gif" />
     <Content Include="Content\images\colorpicker\colorpicker_background.png" />
@@ -263,6 +265,7 @@
     <Content Include="Content\images\photos\profile-1.png" />
     <Content Include="Content\images\photos\profilepic1%402x.png" />
     <Content Include="Content\images\photos\profilepic1.png" />
+    <Content Include="Content\images\photos\unknown-user.png" />
     <Content Include="Content\images\photos\user1.png" />
     <Content Include="Content\images\photos\user2.png" />
     <Content Include="Content\images\photos\user3.png" />
@@ -682,8 +685,10 @@
     <Compile Include="Modules\AJAX\ajaxAll.cs" />
     <Compile Include="Modules\AJAX\ajaxReseller.cs" />
     <Compile Include="Modules\AJAX\ajaxSuper.cs" />
+    <Compile Include="Modules\Company\CitrixModule.cs" />
     <Compile Include="Modules\Company\CompanyModule.cs" />
     <Compile Include="Modules\Company\DomainsModule.cs" />
+    <Compile Include="Modules\Company\EmailModule.cs" />
     <Compile Include="Modules\Company\UsersModule.cs" />
     <Compile Include="Modules\DashboardModule.cs" />
     <Compile Include="Modules\GlobalModule.cs" />
@@ -821,6 +826,10 @@
     <Content Include="Views\Plans\CompanyPlans.cshtml" />
     <Content Include="Views\Company\Domains\DomainList.cshtml" />
     <Content Include="Views\Company\Users\UsersList.cshtml" />
+    <Content Include="Views\Company\Email\Enable.cshtml" />
+    <Content Include="Views\Company\Email\Disable.cshtml" />
+    <Content Include="Views\Company\Citrix\List.cshtml" />
+    <Content Include="Views\Company\Users\Edit.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
