@@ -70,6 +70,7 @@ namespace CloudPanel.Modules.Persistence.EntityFramework.Models.Mapping
             this.Property(t => t.AdditionalMB).HasColumnName("AdditionalMB");
             this.Property(t => t.ActiveSyncPlan).HasColumnName("ActiveSyncPlan");
             this.Property(t => t.ExchArchivePlan).HasColumnName("ExchArchivePlan");
+            this.Property(t => t.IsDisabled).HasColumnName("IsDisabled");
         }
     }
 }
