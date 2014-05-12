@@ -1,0 +1,43 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
+
+@{
+    Layout = "Views/Shared/_Layout.cshtml";
+}
+
+@section PAGEHEADER{
+    <div class="pageheader">
+        <h2><i class="glyphicon glyphicon-envelope"></i> Email <span>Enable your company for email...</span></h2>
+        <div class="breadcrumb-wrapper">
+            <span class="label">You are here:</span>
+            <ol class="breadcrumb">
+                <li><a href="index.html">Bracket</a></li>
+                <li class="active">Dashboard</li>
+            </ol>
+        </div>
+    </div>
+}
+
+<form action="Enable" method="post" name="enableExchangeForm">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-primary">
+                <div class="panel-body">
+                    <br />
+                    <p style="text-align: center">
+                        This company has not been enabled for Exchange server yet. Before this company can create mailboxes, distribution groups, contacts, and other Exchange objects, it must first be enabled.
+                    </p>
+
+                    <br />
+
+                    <div style="text-align: center">
+                        <input id="btnEnable" type="button" value="Enable" class="btn btn-primary" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section CUSTOMJAVASCRIPT{
+
+}

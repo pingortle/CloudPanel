@@ -1,0 +1,81 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
+
+@{
+    Layout = "Views/Shared/_Layout.cshtml";
+}
+
+@section PAGEHEADER{
+    <div class="pageheader">
+        <h2><i class="glyphicon glyphicon-envelope"></i> Email <span>Disable your company's email...</span></h2>
+        <div class="breadcrumb-wrapper">
+            <span class="label">You are here:</span>
+            <ol class="breadcrumb">
+                <li><a href="index.html">Bracket</a></li>
+                <li class="active">Dashboard</li>
+            </ol>
+        </div>
+    </div>
+}
+
+<form action="Disable" method="post" name="disableExchangeForm" id="disableExchangeForm" class="form-horizontal">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="panel panel-primary">
+                <div class="panel-body">
+
+                    <div class="row" style="text-align: center">
+                        Disabling email will delete all mailboxes, distribution groups, contacts, address lists, and everything else that relates to your company. This action is not reversable. Please be sure this is what you want to do before continuing.
+                        <br /><br />
+                        To disable email please type the following characters in the textbox below:&nbsp;&nbsp;<input id="txtValidationCode" name="txtValidationCode" type="text" disabled="disabled" value="@Model" style="text-align: center" />
+                    </div>
+
+                    <br />
+
+                    <div class="row" style="text-align: center">
+                        <input id="txtFormValidation" name="txtFormValidation" type="text" style="width: 200px" required /><br />
+                        <div id="errorDiv">
+
+                        </div>
+                    </div>
+
+                    <br />
+
+                    <div class="row" style="text-align: center">
+                        <input id="btnDisable" type="submit" value="Disable" class="btn btn-danger" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section CUSTOMJAVASCRIPT{
+    <script src="~/Content/js/jquery.validate.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $("#disableExchangeForm").validate({
+                rules: {
+                    txtFormValidation: {
+                        required: true,
+                        equalTo: "#txtValidationCode"
+                    }
+                },
+                messages: {
+                    txtFormValidation: {
+                        equalTo: "Please enter the code from above exactly as you see it"
+                    }
+                },
+                errorLabelContainer: jQuery("#errorDiv")
+            });
+
+            $('#txtFormValidation').bind("cut copy paste", function (e) {
+                e.preventDefault();
+            });
+
+            $('#txtValidationCode').bind("cut copy paste", function (e) {
+                e.preventDefault();
+            });
+
+        });
+    </script>
+}
