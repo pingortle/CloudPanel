@@ -38,6 +38,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using CloudPanel.Modules.Persistence.EntityFramework;
+using System.IO;
+using System.Xml.Serialization;
 
 namespace CloudPanelNancy
 {
@@ -45,6 +47,20 @@ namespace CloudPanelNancy
     {
         protected override void ApplicationStartup(Nancy.TinyIoc.TinyIoCContainer container, Nancy.Bootstrapper.IPipelines pipelines)
         {
+            try
+            {
+                using (var stream = new FileStream("./cloudpanel-config.xml", FileMode.OpenOrCreate))
+                using (var reader = new StreamReader(stream))
+                {
+                    var config = reader.Deserialize<string, string>();
+                    string connection;
+                    if (config.TryGetValue("connection", out connection))
+                        Settings.ConnectionString = connection;
+                }
+            }
+            catch (UnauthorizedAccessException)
+            { }
+
             CookieBasedSessions.Enable(pipelines);
 
             base.ApplicationStartup(container, pipelines);
@@ -67,7 +83,7 @@ namespace CloudPanelNancy
             // As this is now per-request we could inject a request scoped
             // database "context" or other request scoped services.
             container.Register<IUserMapper, UserMapper>();
-            container.Register<CloudPanelContext>((x, y) => new CloudPanelContext(Settings.ConnectionString));
+            container.Register<CloudPanelContext>((x, y) => string.IsNullOrEmpty(Settings.ConnectionString) ? null : new CloudPanelContext(Settings.ConnectionString));
         }
 
         protected override void RequestStartup(TinyIoCContainer requestContainer, IPipelines pipelines, NancyContext context)
@@ -86,6 +102,45 @@ namespace CloudPanelNancy
                 };
 
             FormsAuthentication.Enable(pipelines, formsAuthConfiguration);
+        }
+    }
+
+    public static class SerializationMixins
+    {
+        public static void Serialize<TK, TV>(this IDictionary<TK, TV> This, TextWriter writer)
+        {
+            new XmlSerializer(typeof(List<Entry>)).Serialize(
+                writer,
+                This.Select(x => new Entry(x.Key, x.Value)).ToList());
+        }
+
+        public static IDictionary<TK, TV> Deserialize<TK, TV>(this TextReader This)
+        {
+            List<Entry> list = new List<Entry>();
+            try
+            {
+                list = new XmlSerializer(typeof(List<Entry>)).Deserialize(This) as List<Entry>;
+            }
+            catch (InvalidOperationException)
+            { }
+
+            return list.ToDictionary(x => (TK)x.Key, x => (TV)x.Value);
+        }
+    }
+
+    public class Entry
+    {
+        public object Key { get; set; }
+        public object Value { get; set; }
+
+        public Entry()
+        {
+        }
+
+        public Entry(object key, object value)
+        {
+            Key = key;
+            Value = value;
         }
     }
 }
