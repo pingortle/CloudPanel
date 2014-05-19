@@ -42,7 +42,7 @@ namespace CloudPanelNancy.Modules.AJAX
 {
     public class ajaxSuper : NancyModule
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(ajaxSuper));
 
         public ajaxSuper(CloudPanelContext db) : base("/AJAX")
         {

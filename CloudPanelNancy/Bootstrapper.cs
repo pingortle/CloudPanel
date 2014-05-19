@@ -41,12 +41,13 @@ using System.Linq;
 using System.Web;
 using System.Xml.Linq;
 using System.Xml.Serialization;
+using log4net;
 
 namespace CloudPanelNancy
 {
     public class Bootstrapper : DefaultNancyBootstrapper
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly ILog log = LogManager.GetLogger(typeof(Bootstrapper));
 
         protected override void ApplicationStartup(Nancy.TinyIoc.TinyIoCContainer container, Nancy.Bootstrapper.IPipelines pipelines)
         {

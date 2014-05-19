@@ -40,7 +40,7 @@ namespace CloudPanelNancy.Modules
 {
     public class DomainsModule : NancyModule
     {
-        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(DomainsModule));
 
         public DomainsModule() : base("Company")
         {
