@@ -33,45 +33,71 @@ using System.Linq;
 using System.Web;
 using Nancy;
 using Nancy.Security;
+using CloudPanel.Modules.Persistence.EntityFramework;
 
 namespace CloudPanelNancy.Modules.Company
 {
     public class EmailModule : NancyModule
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public EmailModule() : base("Company")
         {
             //this.RequiresAuthentication();
             //this.RequiresAnyClaim(new[] { "SuperAdmin", "ResellerAdmin", "CompanyAdmin" });
 
-            Get["{CompanyCode}/Email/Enable"] = parameters =>
+            Get["{CompanyCode}/Email/Status"] = parameters =>
                 {
-                    return View["Company/Email/Enable.cshtml"];
+                    CloudPanelContext ctx = null;
+                    try
+                    {
+                        ctx = new CloudPanelContext(Settings.ConnectionString);
+
+                        string companyCode = parameters.CompanyCode;
+                        var company = (from c in ctx.Companies
+                                       where !c.IsReseller
+                                       where c.CompanyCode == companyCode
+                                       select c).FirstOrDefault();
+
+                        if (company.ExchEnabled)
+                        {
+                            var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+                            var random = new Random();
+                            var result = new string(
+                                Enumerable.Repeat(chars, 8)
+                                          .Select(s => s[random.Next(s.Length)])
+                                          .ToArray());
+
+                            return View["Company/Email/Disable.cshtml", result];
+                        }
+                        else
+                        {
+                            return View["Company/Email/Enable.cshtml"];
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        log.Error("Error checking Exchange status for " + parameters.CompanyCode, ex);
+                        return View["Company/Overview.cshtml"];
+                    }
+                    finally
+                    {
+                        ctx.Dispose();
+                    }
                 };
 
             Post["{CompanyCode}/Email/Enable"] = parameters =>
                 {
                     // If successful take them to the disable Exchange page
                     // If they are NOT successful take them back to the enable Exchange page and display an error message why it wasn't successful
-                    return View["Company/Email/Disable.cshtml"];
-                };
-
-            Get["{CompanyCode}/Email/Disable"] = parameters =>
-                {
-                    var chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-                    var random = new Random();
-                    var result = new string(
-                        Enumerable.Repeat(chars, 8)
-                                  .Select(s => s[random.Next(s.Length)])
-                                  .ToArray());
-
-                    return View["Company/Email/Disable.cshtml", result];
+                    return Response.AsRedirect("Status");
                 };
 
             Post["{CompanyCode}/Email/Disable"] = parameters =>
                 {
                     // If we successfully disable email then redirect to enable page
                     // Otherwise redirect to same page displaying the error message
-                    return View["Company/Email/Enable.cshtml"];
+                    return Response.AsRedirect("Status");
                 };
         }
     }

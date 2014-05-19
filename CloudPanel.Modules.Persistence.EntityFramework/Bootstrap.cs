@@ -1,15 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using CloudPanel.Modules.Persistence.EntityFramework.Migrations;
+using CloudPanel.Modules.Persistence.EntityFramework.Models;
+using CloudPanel.Modules.Persistence.EntityFramework.Models.Mapping;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Data.Entity.Migrations;
 using System.Data.Entity.ModelConfiguration.Conventions;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using CloudPanel.Modules.Persistence.EntityFramework.Models;
-using CloudPanel.Modules.Persistence.EntityFramework.Migrations;
-using CloudPanel.Modules.Persistence.EntityFramework.Models.Mapping;
 
 // NB: http://stackoverflow.com/questions/16210771/entity-framework-code-first-without-app-config
 namespace CloudPanel.Modules.Persistence.EntityFramework
@@ -24,13 +19,16 @@ namespace CloudPanel.Modules.Persistence.EntityFramework
 
         public void InitializeDatabase(CloudPanelContext context)
         {
-            var configuration = new Configuration
+            if (!context.Database.Exists())
             {
-                TargetDatabase = new DbConnectionInfo(context.Database.Connection.ConnectionString, @"System.Data.SqlClient"),
-            };
+                var configuration = new Configuration
+                {
+                    TargetDatabase = new DbConnectionInfo(context.Database.Connection.ConnectionString, @"System.Data.SqlClient"),
+                };
 
-            var migrator = new DbMigrator(configuration);
-            migrator.Update();
+                var migrator = new DbMigrator(configuration);
+                migrator.Update();
+            }
         }
 
         #endregion

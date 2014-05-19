@@ -28,6 +28,7 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
+using CloudPanel.Modules.Persistence.EntityFramework;
 using Nancy;
 using Nancy.Authentication.Forms;
 using Nancy.Bootstrapper;
@@ -35,31 +36,63 @@ using Nancy.Session;
 using Nancy.TinyIoc;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Web;
-using CloudPanel.Modules.Persistence.EntityFramework;
-using System.IO;
+using System.Xml.Linq;
 using System.Xml.Serialization;
 
 namespace CloudPanelNancy
 {
     public class Bootstrapper : DefaultNancyBootstrapper
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         protected override void ApplicationStartup(Nancy.TinyIoc.TinyIoCContainer container, Nancy.Bootstrapper.IPipelines pipelines)
         {
             try
             {
-                using (var stream = new FileStream("./cloudpanel-config.xml", FileMode.OpenOrCreate))
-                using (var reader = new StreamReader(stream))
+                XDocument xDoc = XDocument.Load(HttpContext.Current.Server.MapPath("~/Config/settings.xml"));
+
+                /* Load CloudPanel Settings */
+                var settings = from s in xDoc.Elements("Settings")
+                               select s;
+
+                foreach (var s in settings)
                 {
-                    var config = reader.Deserialize<string, string>();
-                    string connection;
-                    if (config.TryGetValue("connection", out connection))
-                        Settings.ConnectionString = connection;
+                    Settings.HostingOU = s.Element("HostingOU").Value;
+                    Settings.PrimaryDC = s.Element("DomainController").Value;
+                    Settings.Username = s.Element("Username").Value;
+                    Settings.Password = s.Element("Password").Value;
+                    Settings.SuperAdmins = s.Element("SuperAdmins").Value;
+                    Settings.BillingAdmins = s.Element("BillingAdmins").Value;
+                }
+
+                /* Load Exchange Settings */
+                var exchange = from s in xDoc.Elements("Exchange")
+                               select s;
+
+                foreach (var s in exchange)
+                {
+                    Settings.ExchangeServer = s.Element("Server").Value;
+                    Settings.ExchangePFServer = s.Element("PFServer").Value;
+
+                    int defaultVersion = 2013;
+                    int.TryParse(s.Element("Version").Value, out defaultVersion);
+                    Settings.Version = defaultVersion;
+
+                    bool defaultBool = true;
+                    bool.TryParse(s.Element("SSL").Value, out defaultBool);
+                    Settings.ExchangeSSL = defaultBool;
+
+                    Settings.ExchangeConnection = s.Element("Connection").Value;
                 }
             }
-            catch (UnauthorizedAccessException)
-            { }
+            catch (Exception ex)
+            {
+                log.Error(ex.ToString());
+            }
+
 
             CookieBasedSessions.Enable(pipelines);
 

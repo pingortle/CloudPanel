@@ -29,6 +29,7 @@
 //
 
 using CloudPanel.Modules.Base.Companies;
+using CloudPanel.Modules.Persistence.EntityFramework;
 using Nancy;
 using Nancy.Security;
 using System;
@@ -40,6 +41,8 @@ namespace CloudPanelNancy.Modules.AJAX
 {
     public class ajaxReseller : NancyModule
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public ajaxReseller() : base("/AJAX")
         {
             //this.RequiresAuthentication();
@@ -50,43 +53,54 @@ namespace CloudPanelNancy.Modules.AJAX
 
         public Response GetCompanies(string resellerCode)
         {
-            //CompanyViewModel viewModel = new CompanyViewModel();
-                   // List<CompanyObject> companies = viewModel.GetCompanies(parameters.ResellerCode);
-            List<CompanyObject> companies = new List<CompanyObject>();
-            for (int i = 0; i < 1000; i++)
+            CloudPanelContext ctx = null;
+
+            try
             {
-                companies.Add(new CompanyObject()
+                ctx = new CloudPanelContext(Settings.ConnectionString);
+
+                var companies = (from c in ctx.Companies
+                                 where !c.IsReseller
+                                 where c.ResellerCode == resellerCode
+                                 select new CompanyObject()
+                                 {
+                                      CompanyID = c.CompanyId,
+                                      CompanyCode = c.CompanyCode,
+                                      CompanyName = c.CompanyName,
+                                      Street = c.Street,
+                                      City = c.City,
+                                      State = c.State,
+                                      ZipCode = c.ZipCode,
+                                      Created = c.Created.ToString(),
+                                      IsExchangeEnabled = c.ExchEnabled,
+                                      IsLyncEnabled = c.LyncEnabled == null ? false : (bool)c.LyncEnabled,
+                                      IsCitrixEnabled = c.CitrixEnabled == null ? false : (bool)c.CitrixEnabled
+                                 }).ToList();
+
+                int start = Convert.ToInt32(Request.Query.iDisplayStart.ToString());
+                int length = Convert.ToInt32(Request.Query.iDisplayLength.ToString());
+                var totalRecords = companies.Count();
+                var secho = Request.Query.sEcho;
+                var sorting = Request.Query.sSortDir_0;
+
+                if (sorting == "asc")
                 {
-                    CompanyID = i,
-                    CompanyCode = "Company" + i.ToString(),
-                    CompanyName = "Company" + i.ToString(),
-                    Street = "300 Simpson Rd",
-                    City = "Vilonia",
-                    State = "AR",
-                    ZipCode = "72173",
-                    Created = DateTime.Now
-                });
+                    return Response.AsJson(new { aaData = companies.OrderBy(x => x.CompanyName).Skip(start).Take(length), sEcho = secho, iTotalRecords = totalRecords, iTotalDisplayRecords = totalRecords });
+                }
+                else
+                {
+                    return Response.AsJson(new { aaData = companies.OrderByDescending(x => x.CompanyName).Skip(start).Take(length), sEcho = secho.ToString(), iTotalRecords = totalRecords, iTotalDisplayRecords = totalRecords });
+                }
             }
-
-            if (companies != null)
+            catch (Exception ex)
             {
-                        int start = Convert.ToInt32(Request.Query.iDisplayStart.ToString());
-                        int length = Convert.ToInt32(Request.Query.iDisplayLength.ToString());
-                        var totalRecords = companies.Count();
-                        var secho = Request.Query.sEcho;
-                        var sorting = Request.Query.sSortDir_0;
-
-                        if (sorting == "asc")
-                        {
-                            return Response.AsJson(new { aaData = companies.OrderBy(x => x.CompanyName).Skip(start).Take(length), sEcho = secho, iTotalRecords = totalRecords, iTotalDisplayRecords = totalRecords });
-                        }
-                        else
-                        {
-                            return Response.AsJson(new { aaData = companies.OrderByDescending(x => x.CompanyName).Skip(start).Take(length), sEcho = secho.ToString(), iTotalRecords = totalRecords, iTotalDisplayRecords = totalRecords });
-                        }
-              }
-              else
-                return Response.AsJson(new { aaData = new List<CompanyObject>(), iTotalRecords = 0, iTotalDisplayRecords = 0 }, HttpStatusCode.NoContent);
+                log.Error("Error retrieving list of companies for reseller code " + resellerCode, ex);
+                return Response.AsJson(new { aaData = new List<CompanyObject>(), sEcho = "0", iTotalRecords = 0, iTotalDisplayRecords = 0 });
+            }
+            finally
+            {
+                ctx.Dispose();
+            }
         }
     }
 }

@@ -35,6 +35,8 @@ using System.Linq;
 using System.Web;
 using Nancy.Security;
 using Nancy.Authentication.Forms;
+using CloudPanel.Modules.Base.Companies;
+using CloudPanel.Modules.Persistence.EntityFramework;
 
 namespace CloudPanelNancy.Modules
 {
@@ -47,10 +49,31 @@ namespace CloudPanelNancy.Modules
 
             Get["{CompanyCode}"] = parameters =>
                 {
-                    var user = this.Context.CurrentUser as AuthenticatedUser;
-                    user.SelectedCompanyCode = parameters.CompanyCode;
+                    string companyCode = parameters.CompanyCode;
 
-                    return View["Company/Overview"];
+                    var user = this.Context.CurrentUser as AuthenticatedUser;
+                    user.SelectedCompanyCode = companyCode;
+
+                    // Get company information
+                    var companyData = new CompanyObject();
+                    using (var ctx = new CloudPanelContext(Settings.ConnectionString))
+                    {
+                        companyData = (from c in ctx.Companies
+                                       where !c.IsReseller
+                                       where c.CompanyCode == companyCode
+                                       select new CompanyObject()
+                                       {
+                                           CompanyCode = companyCode,
+                                           CompanyName = c.CompanyName,
+                                           AdminName = c.AdminName,
+                                           Telephone = c.PhoneNumber,
+                                           CompanyPlanID = c.OrgPlanID == null ? 0 : (int)c.OrgPlanID
+                                       }).FirstOrDefault();
+
+                        user.SelectedCompanyName = companyData.CompanyName;
+                    }
+
+                    return View["Company/Overview", companyData];
                 };
         }
     }

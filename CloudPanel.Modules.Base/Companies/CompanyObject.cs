@@ -12,6 +12,7 @@ namespace CloudPanel.Modules.Base.Companies
 
         private int _companyid;
         private int _orgplanid;
+        private int _totalusers;
 
         private bool _isexchangeenabled;
         private bool _islyncenabled;
@@ -33,10 +34,9 @@ namespace CloudPanel.Modules.Base.Companies
         private string _adminname;
         private string _adminemail;
         private string _distinguishedname;
+        private string _created;
 
         private string[] _domains;
-
-        private DateTime _created;
 
         private CompanyPlanObject _companyplanobject;
 
@@ -245,7 +245,7 @@ namespace CloudPanel.Modules.Base.Companies
         /// <summary>
         /// When the company was created in CloudPanel
         /// </summary>
-        public DateTime Created
+        public string Created
         {
             get { return _created; }
             set { _created = value; }

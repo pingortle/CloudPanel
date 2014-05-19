@@ -29,20 +29,26 @@
 //
 
 using CloudPanel.Modules.Base.Plans;
+using CloudPanel.Modules.Persistence.EntityFramework;
 using Nancy;
 using Nancy.Security;
+using Nancy.ModelBinding;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using CloudPanel.Modules.Persistence.EntityFramework.Models;
 
 namespace CloudPanelNancy.Modules
 {
     public class PlansModule : NancyModule
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public PlansModule()  : base("Plans")
         {
-            this.RequiresAuthentication();
+            //this.RequiresAuthentication();
+            //this.RequiresAnyClaim(new[] { "SuperAdmin" });
 
             Get["/Mailbox"] = parameters =>
             {
@@ -59,16 +65,69 @@ namespace CloudPanelNancy.Modules
             
             Get["/Company"] = parameters =>
             {
-                List<CompanyPlanObject> plans = new List<CompanyPlanObject>();
-                plans.Add(new CompanyPlanObject()
+                CloudPanelContext ctx = null;
+                try
+                {
+                    ctx = new CloudPanelContext(Settings.ConnectionString);
+
+                    var plans = (from p in ctx.Plans_Organization
+                                 select p).ToList();
+
+                    return View["Plans/CompanyPlans.cshtml", plans];
+                }
+                catch (Exception ex)
+                {
+                    log.Error("Error retrieving company plans", ex);
+                    return View["Plans/CompanyPlans.cshtml", null];
+                }
+                finally
+                {
+                    ctx.Dispose();
+                }
+            };
+
+            Post["/Company/Update"] = parameters =>
+            {
+                var formModel = this.Bind<Plans_Organization>();
+
+                CloudPanelContext ctx = null;
+                try
+                {
+                    ctx = new CloudPanelContext(Settings.ConnectionString);
+
+                    if (formModel.OrgPlanID <= 0)
                     {
-                        CompanyPlanID = 5,
-                        CompanyPlanName = "Test 1"
-                    });
+                        ctx.Plans_Organization.Add(formModel);
+                        ctx.SaveChanges();
+                    }
+                    else
+                    {
+                        var plan = (from p in ctx.Plans_Organization
+                                    where p.OrgPlanID == formModel.OrgPlanID
+                                    select p).FirstOrDefault();
 
-                ViewBag.Plans = plans;
+                        plan.OrgPlanName = formModel.OrgPlanName;
+                        plan.MaxUsers = formModel.MaxUsers;
+                        plan.MaxDomains = formModel.MaxDomains;
+                        plan.MaxExchangeMailboxes = formModel.MaxExchangeMailboxes;
+                        plan.MaxExchangeContacts = formModel.MaxExchangeContacts;
+                        plan.MaxExchangeDistLists = formModel.MaxExchangeDistLists;
+                        plan.MaxExchangeResourceMailboxes = formModel.MaxExchangeResourceMailboxes;
+                        plan.MaxExchangeMailPublicFolders = formModel.MaxExchangeMailPublicFolders;
 
-                return View["Plans/CompanyPlans.cshtml"];
+                        ctx.SaveChanges();
+                    }
+                }
+                catch (Exception ex)
+                {
+                    log.Error("Error retrieving company plans", ex);
+                }
+                finally
+                {
+                    ctx.Dispose();
+                }
+
+                return Response.AsRedirect("~/Plans/Company");
             };
         }
     }

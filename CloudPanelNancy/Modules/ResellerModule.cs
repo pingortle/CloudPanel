@@ -69,7 +69,7 @@ namespace CloudPanelNancy.Modules
                     reseller.City = "Vilonia";
                     reseller.State = "AR";
                     reseller.ZipCode = "72173";
-                    reseller.Created = DateTime.Now;
+                    reseller.Created = DateTime.Now.ToString();
                     reseller.AdminName = "";
                     reseller.AdminEmail = "";
                     reseller.Telephone = "";

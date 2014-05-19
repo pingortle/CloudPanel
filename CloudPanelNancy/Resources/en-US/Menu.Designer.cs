@@ -160,11 +160,11 @@ namespace CloudPanelNancy.Resources.en_US {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Enable Email.
+        ///   Looks up a localized string similar to Enable/Disable.
         /// </summary>
-        public static string EnableEmail {
+        public static string EnableDisable {
             get {
-                return ResourceManager.GetString("EnableEmail", resourceCulture);
+                return ResourceManager.GetString("EnableDisable", resourceCulture);
             }
         }
         

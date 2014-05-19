@@ -28,6 +28,8 @@
 // SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 
+using CloudPanel.Modules.Persistence.EntityFramework;
+using CloudPanel.Modules.Persistence.EntityFramework.Models;
 using Nancy;
 using System;
 using System.Collections.Generic;
@@ -38,13 +40,32 @@ namespace CloudPanelNancy.Modules
 {
     public class DomainsModule : NancyModule
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public DomainsModule() : base("Company")
         {
             Get["{CompanyCode}/Domains"] = parameters =>
                 {
-                    List<DomainTest> domains = new List<DomainTest>();
-                    domains.Add(new DomainTest() { ID = 1, DomainName = "compsysar.com" });
-                    domains.Add(new DomainTest() { ID = 2, DomainName = "compsyscloud.com" });
+                    var domains = new List<Domain>();
+
+                    CloudPanelContext ctx = null;
+                    try
+                    {
+                        ctx = new CloudPanelContext(Settings.ConnectionString);
+
+                        string companyCode = parameters.CompanyCode;
+                        domains = (from d in ctx.Domains
+                                   where d.CompanyCode == companyCode
+                                   select d).ToList();
+                    }
+                    catch (Exception ex)
+                    {
+                        log.Error("Error getting domains for " + parameters.CompanyCode, ex);
+                    }
+                    finally
+                    {
+                        ctx.Dispose();
+                    }
 
                     return View["Company/Domains/DomainList.cshtml", domains];
                 };

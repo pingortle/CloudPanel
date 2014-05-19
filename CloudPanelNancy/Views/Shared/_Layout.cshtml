@@ -88,7 +88,7 @@
                     var user = this.RenderContext.Context.CurrentUser as AuthenticatedUser;
                     if (!string.IsNullOrEmpty(user.SelectedCompanyCode))
                     { 
-                        <h5 class="sidebartitle">COMPANY NAME</h5>
+                        <h5 class="sidebartitle">@user.SelectedCompanyName</h5>
                         <ul class="nav nav-pills nav-stacked nav-bracket">
                             <li><a href="~/Company/@user.SelectedCompanyCode"><i class="fa fa-info"></i><span>@Text.Menu.Overview</span></a></li>
                             <li><a href="~/Company/@user.SelectedCompanyCode/Domains"><i class="fa fa-globe"></i><span>@Text.Menu.Domains</span></a></li>
@@ -96,8 +96,7 @@
                             <li class="nav-parent">
                                 <a href="#"><i class="fa fa-envelope-o"></i><span>@Text.Menu.Email</span></a>
                                 <ul class="children">
-                                    <li><a href="~/Company/@user.SelectedCompanyCode/Email/Enable"><i class="fa fa-caret-right"></i>@Text.Menu.EnableEmail</a></li>
-                                    <li><a href="~/Company/@user.SelectedCompanyCode/Email/Disable"><i class="fa fa-caret-right"></i>@Text.Menu.DisableEmail</a></li>
+                                    <li><a href="~/Company/@user.SelectedCompanyCode/Email/Status"><i class="fa fa-caret-right"></i>@Text.Menu.EnableDisable</a></li>
                                     <li><a href="~/Company/@user.SelectedCompanyCode/Email/Contacts"><i class="fa fa-caret-right"></i>@Text.Menu.Contacts</a></li>
                                     <li><a href="~/Company/@user.SelectedCompanyCode/Email/Groups"><i class="fa fa-caret-right"></i>@Text.Menu.Groups</a></li>
                                     <li><a href="~/Company/@user.SelectedCompanyCode/Email/ResourceMailboxes"><i class="fa fa-caret-right"></i>@Text.Menu.ResourceMailboxes</a></li>

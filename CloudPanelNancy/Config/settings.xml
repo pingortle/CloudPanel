@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+
+<cloudpanel>
+
+  <Settings>
+    
+    <!-- The DISTINGUISHEDNAME from Active Directory of the OU you will be placing all the reseller and company objects in -->
+    <HostingOU>OU=Hosting,DC=lab,DC=local</HostingOU>
+
+    <!-- The primary domain controller that CloudPanel should communicate with -->
+    <DomainController>DC.lab.local</DomainController>
+
+    <!-- A domain user that has rights to Create/Update/Delete from Active Directory, Exchange and other services -->
+    <Username></Username>
+
+    <!-- The password for the domain user listed above -->
+    <Password></Password>
+
+    <!-- A comma seperated list of all security groups that the members will have full access to CloudPanel -->
+    <SuperAdmins>Domain Admins</SuperAdmins>
+
+    <!-- A commas seperated list of all security groups that the members will have billing access to CloudPanel -->
+    <BillingAdmins>Domain Admins</BillingAdmins>
+    
+  </Settings>
+  
+  <!-- Microsoft Exchange -->
+  <Exchange>
+
+    <!-- The server or network load balancer for Microsoft Exchange CAS -->
+    <Server>exch2013.lab.local</Server>
+
+    <!-- The server for public folder access (normally the mailbox server) -->
+    <PFServer>exch2013.lab.local</PFServer>
+
+    <!-- The version of Exchange -->
+    <Version>2013</Version>
+
+    <!-- If using SSL to connect to Exchange. Not using SSL required additional configuration on Exchange -->
+    <SSL>True</SSL>
+
+    <!-- Type of connection to Exchange. Either Basic or Kerberos -->
+    <Connection>Basic</Connection>
+    
+    
+    
+  </Exchange>
+  
+</cloudpanel>

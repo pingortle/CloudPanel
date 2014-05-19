@@ -40,7 +40,6 @@ namespace CloudPanelNancy
     {
         public IEnumerable<string> GetAssemblyNames()
         {
-            yield return "CloudPanel.Modules.Common";
             yield return "CloudPanel.Modules.Base";
         }
 
@@ -51,7 +50,6 @@ namespace CloudPanelNancy
             yield return "System.Collections.Generic";
             yield return "System.Linq";
             yield return "CloudPanel.Modules.Base.Companies";
-            yield return "CloudPanel.Modules.Common.ViewModel";
         }
 
         public bool AutoIncludeModelNamespace

@@ -24,8 +24,7 @@ namespace CloudPanel.Modules.Base.Companies
         private string _adminname;
         private string _adminemail;
         private string _distinguishedname;
-
-        private DateTime _created;
+        private string _created;
 
         #endregion
 
@@ -160,7 +159,7 @@ namespace CloudPanel.Modules.Base.Companies
         /// <summary>
         /// When the company was created in CloudPanel
         /// </summary>
-        public DateTime Created
+        public string Created
         {
             get { return _created; }
             set { _created = value; }

@@ -4,6 +4,24 @@
     Layout = "Views/Shared/_Layout.cshtml";
 }
 
+@section HEAD{
+    <style type="text/css">
+        ul.userFeatures {
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+            float: left;
+            display: inline;
+        }
+        ul.userFeatures li {
+            float: left;
+            display: inline;
+            min-width: 20px;
+            overflow: hidden;
+        }
+    </style>
+}
+
 @section PAGEHEADER{
     <div class="pageheader">
         <h2><i class="fa fa-building-o"></i> Users <span>Subtitle goes here...</span></h2>
@@ -136,7 +154,7 @@
                     "bFilter": true,
                     "bLengthChange": true,
                     "sPaginationType": "full_numbers",
-                    "sAjaxSource": "../../AJAX/Company/KNO/Users/GetAll",
+                    "sAjaxSource": "../../AJAX/Company/@Model/Users/GetAll",
                     "aoColumns": [
                         { "mData": "displayName", "sTitle": "Display Name", "bSortable": true },
                         { "mData": "userPrincipalName", "sTitle": "Login Name", "bSortable": false },
@@ -149,35 +167,40 @@
                             "sWidth": "100px",
                             "mRender": function (data, type, full) {
 
-                                var isEnabled = full["isEnabled"] == false ?
-                                                "<td style='visibility: hidden'><span class='fa fa-warning tooltips' data-placement='top' data-toggle='tooltip' title='User is Disabled'></span></td>" :
-                                                "<td><span class='fa fa-warning tooltips' data-placement='top' data-toggle='tooltip' title='User is Disabled' ></span></td>";
+                                var htmlUserDisabled = "<li><span class='fa fa-warning tooltips' data-placement='top' data-toggle='tooltip' title='User Disabled' hidden=''></span></li>";
+                                var htmlLyncEnabled = "<li><span class='fa fa-comment-o tooltips' data-placement='top' data-toggle='tooltip' title='Lync Enabled' hidden=''></span></li>";
+                                var htmlEmailEnabled = "<li><span class='fa fa-envelope-o tooltips' data-placement='top' data-toggle='tooltip' title='Email Enabled' hidden=''></span></li>";
+                                var htmlResellerAdmin = "<li><span class='fa fa-suitcase tooltips' data-placement='top' data-toggle='tooltip' title='Reseller Admin' hidden=''></span></li>";
+                                var htmlCompanyAdmin = "<li><span class='fa fa-wrench tooltips' data-placement='top' data-toggle='tooltip' title='Company Admin' hidden=''></span></li>";
 
-                                var isLyncEnabled = full["isLyncEnabled"] == false ?
-                                                "<td style='visibility: hidden'><span class='fa fa-comment-o tooltips' data-placement='top' data-toggle='tooltip' title='Lync Enabled' hidden=''></span></td>" :
-                                                "<td><span class='fa fa-comment-o tooltips' data-placement='top' data-toggle='tooltip' title='Lync Enabled' hidden=''></span></td>";
+                                var row = "<ul class='userFeatures'>";
 
-                                var isEmailEnabled = full["mailboxPlan"] > 0 ?
-                                                "<td style='visibility: hidden'><span class='fa fa-envelope-o tooltips' data-placement='top' data-toggle='tooltip' title='Email Enabled' hidden=''></span></td>" :
-                                                "<td><span class='fa fa-envelope-o tooltips' data-placement='top' data-toggle='tooltip' title='Email Enabled' hidden=''></span></td>";
+                                if (full["isEnabled"] == false)
+                                    row = row + htmlUserDisabled;
+                                else
+                                    row = row + "<li>&nbsp;</li>";
 
-                                var isResellerAdmin = full["isResellerAdmin"] == false ?
-                                                "<td style='visibility: hidden'><span class='fa fa-suitcase tooltips' data-placement='top' data-toggle='tooltip' title='Reseller Admin' hidden=''></span></td>" :
-                                                "<td><span class='fa fa-suitcase tooltips' data-placement='top' data-toggle='tooltip' title='Reseller Admin' hidden=''></span></td>";
+                                if (full["isLyncEnabled"] == true)
+                                    row = row + htmlLyncEnabled;
+                                else
+                                    row = row + "<li>&nbsp;</li>";
 
-                                var isCompanyAdmin = full["isCompanyAdmin"] == false ?
-                                                "<td style='visibility: hidden'><span class='fa fa-wrench tooltips' data-placement='top' data-toggle='tooltip' title='Company Admin' hidden=''></span></td>" :
-                                                "<td><span class='fa fa-wrench tooltips' data-placement='top' data-toggle='tooltip' title='Company Admin' hidden=''></span></td>";
+                                if (full["mailboxPlan"] > 0)
+                                    row = row + htmlEmailEnabled;
+                                else
+                                    row = row + "<li>&nbsp;</li>";
 
-                                var table = "<table><tbody><tr class='featuresRows'>" +
-                                            isEnabled +
-                                            isLyncEnabled +
-                                            isEmailEnabled +
-                                            isResellerAdmin +
-                                            isCompanyAdmin
-                                            "</tr></tbody></table>"                            
+                                if (full["isResellerAdmin"] == true)
+                                    row = row + htmlResellerAdmin;
+                                else
+                                    row = row + "<li>&nbsp;</li>";
 
-                                return table;
+                                if (full["isCompanyAdmin"] == true)
+                                    row = row + htmlCompanyAdmin;
+                                else
+                                    row = row + "<li>&nbsp;</li>";
+                                                             
+                                return row + "</ul>";
                             },
                             "fnCreatedCell": function (nTd, sData, oData, iRow, iCol) {
                                 $(".tooltips", nTd).tooltip();

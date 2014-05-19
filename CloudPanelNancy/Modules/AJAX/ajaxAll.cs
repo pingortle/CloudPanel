@@ -29,6 +29,7 @@
 //
 
 using CloudPanel.Modules.Base.Plans;
+using CloudPanel.Modules.Persistence.EntityFramework;
 using CloudPanel.Modules.Persistence.EntityFramework.Models;
 using Nancy;
 using Nancy.Json;
@@ -41,7 +42,7 @@ namespace CloudPanelNancy.Modules.AJAX
 {
     public class ajaxAll : NancyModule
     {
-        private static List<User> staticUsers;
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
 
         public ajaxAll() : base("/AJAX")
         {
@@ -49,23 +50,33 @@ namespace CloudPanelNancy.Modules.AJAX
 
             Get["/Plans/Company/Get/{ID}"] = parameters => GetCompanyPlan(parameters.ID);
             Get["/Plans/Mailbox/Get/{ID}"] = parameters => GetMailboxPlan(parameters.ID);
-            Get["/Company/Charting/Pie/{CompanyCode}"] = parameters => GetCompanyPieChart(parameters.CompanyCode);
+            Get["/Company/Charting/Column/{CompanyCode}"] = parameters => GetCompanyColumnChart(parameters.CompanyCode);
             Get["/Company/{CompanyCode}/Users/GetAll"] = parameters => GetUsers(parameters.CompanyCode);
         }
 
         public Response GetCompanyPlan(string id)
         {
-            CompanyPlanObject test = new CompanyPlanObject();
-            test.CompanyPlanName = "BLAH";
-            test.MaxUser = 30;
-            test.MaxDomains = 5;
-            test.MaxExchangeMailboxes = 30;
-            test.MaxExchangeContacts = 5;
-            test.MaxExchangeDistributionGroups = 5;
-            test.MaxExchangeResourceMailboxes = 5;
-            test.MaxExchangeMailPublicFolders = 5;
+            CloudPanelContext ctx = null;
+            try
+            {
+                ctx = new CloudPanelContext(Settings.ConnectionString);
 
-            return Response.AsJson(test, HttpStatusCode.OK);
+                int intId = int.Parse(id);
+                var plans = (from p in ctx.Plans_Organization
+                             where p.OrgPlanID == intId
+                             select p).FirstOrDefault();
+
+                return Response.AsJson(plans, HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error retrieving company plans", ex);
+                return Response.AsJson(ex.Message, HttpStatusCode.InternalServerError);
+            }
+            finally
+            {
+                ctx.Dispose();
+            }
         }
 
         public Response GetMailboxPlan(string id)
@@ -92,83 +103,95 @@ namespace CloudPanelNancy.Modules.AJAX
             return Response.AsJson(test, HttpStatusCode.OK);
         }
 
-        public Response GetCompanyPieChart(string companyCode)
+        public Response GetCompanyColumnChart(string companyCode)
         {
+            // Set default values
             Dictionary<string, int> data = new Dictionary<string, int>();
-            data.Add("Users", 1000);
-            data.Add("Mailboxes", 500);
-            data.Add("Citrix Users", 100);
-            data.Add("Lync Users", 300);
-            data.Add("Distribution Groups", 25);
-            data.Add("Contacts", 10);
+            data.Add("Users", 0);
+            data.Add("Mailboxes", 0);
+            data.Add("Citrix Users", 0);
+            data.Add("Lync Users", 0);
+            data.Add("Distribution Groups", 0);
+            data.Add("Contacts", 0);
+
+            // Query database for actual values
+            CloudPanelContext ctx = null;
+            try
+            {
+                ctx = new CloudPanelContext(Settings.ConnectionString);
+
+                var companyUsers = from u in ctx.Users where u.CompanyCode == companyCode select u;
+                var userIds = from u in companyUsers select u.ID;
+
+                data["Users"] = companyUsers.Count();
+                data["Mailboxes"] = (from u in companyUsers where u.MailboxPlan > 0 select u).Count();
+                data["Citrix Users"] = (from u in ctx.UserPlansCitrix where userIds.Contains(u.UserID) select u.UserID).Distinct().Count();
+                data["Lync Users"] = 0;
+                data["Distribution Groups"] = (from d in ctx.DistributionGroups where d.CompanyCode == companyCode select d).Count();
+                data["Contacts"] = (from c in ctx.Contacts where c.CompanyCode == companyCode select c).Count();
+            }
+            catch (Exception ex)
+            {
+                log.Error("Error retrieving company column chart for " + companyCode, ex);
+            }
+            finally
+            {
+                ctx.Dispose();
+            }
 
             return Response.AsJson(data, HttpStatusCode.OK);
         }
 
         public Response GetUsers(string companyCode)
         {
-            string[] randomFirstNames = new string[] { "Jacob", "Kaleb", "Robert", "Jerod", "Eric", "Scott", "James", "Charles", "Chris", "Ethen", "Addison", "Tristen", "Leah", "Leonna", "John", "Jane", "Teresa", "Daniel", "Cheryl" };
-            string[] randomLastNames = new string[] { "Dixon", "Lape", "Williams", "Dickinson", "Roscoe", "Green", "Hedrick", "Bailey", "Bradford", "Greene", "Mittermeier", "Johnson", "Kilpatrick", "Whitney", "Doe", "Dawn", "Blah", "Tefsgdf", "sdfsd" };
-            string[] randomDepartments = new string[] { "Accounting", "", "Information Technology", "Sales", "Help Desk", "Field Techs" };
-
-            if (staticUsers == null)
+            // Query database for actual values
+            CloudPanelContext ctx = null;
+            try
             {
-                Random rand = new Random();
+                ctx = new CloudPanelContext(Settings.ConnectionString);
 
-                staticUsers = new List<User>();
-                for (int i = 0; i < 10000; i++)
+                var users = from u in ctx.Users
+                            where u.CompanyCode == companyCode
+                            select u;
+
+                var search = Request.Query.sSearch.HasValue ? ((string)Request.Query.sSearch).ToLower() : "";
+
+                var filteredUsers = new List<User>();
+                filteredUsers = users.ToList();
+
+                // This is if we are searching..
+                if (!string.IsNullOrEmpty(search))
+                    filteredUsers = filteredUsers.Where(c => (
+                                        c.DisplayName.ToLower().Contains(search) ||
+                                        c.UserPrincipalName.ToLower().Contains(search) ||
+                                        c.sAMAccountName.ToLower().Contains(search) ||
+                                        c.Department.ToLower().Contains(search)
+                                    )).ToList();
+
+                int start = Convert.ToInt32(Request.Query.iDisplayStart.ToString());
+                int length = Convert.ToInt32(Request.Query.iDisplayLength.ToString());
+                var totalRecords = filteredUsers.Count();
+                var secho = Request.Query.sEcho;
+                var sorting = Request.Query.sSortDir_0;
+
+                if (sorting == "asc")
                 {
-                    string randFirst = randomFirstNames[rand.Next(0, randomFirstNames.Length - 1)];
-                    string randLast = randomLastNames[rand.Next(0, randomLastNames.Length - 1)];
-
-                    string newName = randFirst + " " + randLast; // randFirst;// string.Format("{0} {1}", randFirst, randLast);
-                    string newUPN = randFirst[0] + randLast + "@compsysar.com"; // string.Format("{0){1}@compsysar.com", randFirst[0], randLast);
-
-                    var total = (from s in staticUsers where s.DisplayName == newName select s).Count();
-                    if (total == 0)
-                    {
-                        User tmp = new User();
-                        tmp.UserPrincipalName = newUPN;
-                        tmp.Firstname = randFirst;
-                        tmp.Lastname = randLast;
-                        tmp.DisplayName = newName;
-                        tmp.IsEnabled = rand.Next(0, 2) > 0 ? true : false;
-                        tmp.IsResellerAdmin = rand.Next(0, 2) > 0 ? true : false;
-                        tmp.IsCompanyAdmin = rand.Next(0, 2) > 0 ? true : false;
-                        tmp.sAMAccountName = "asdfasdf";
-                        tmp.Department = randomDepartments[rand.Next(0, randomDepartments.Length - 1)];
-
-                        staticUsers.Add(tmp);
-                    }
+                    return Response.AsJson(new { aaData = filteredUsers.OrderBy(x => x.DisplayName).Skip(start).Take(length), sEcho = secho, iTotalRecords = totalRecords, iTotalDisplayRecords = totalRecords });
+                }
+                else
+                {
+                    return Response.AsJson(new { aaData = filteredUsers.OrderByDescending(x => x.DisplayName).Skip(start).Take(length), sEcho = secho.ToString(), iTotalRecords = totalRecords, iTotalDisplayRecords = totalRecords });
                 }
             }
-
-            var search = Request.Query.sSearch.HasValue ? ((string)Request.Query.sSearch).ToLower() : "";
-
-            var newUsers = staticUsers;
-
-            // This is if we are searching..
-            if (!string.IsNullOrEmpty(search))
-                newUsers = newUsers.Where(c => (
-                                c.DisplayName.ToLower().Contains(search) ||
-                                c.UserPrincipalName.ToLower().Contains(search) ||
-                                c.sAMAccountName.ToLower().Contains(search) ||
-                                c.Department.ToLower().Contains(search)
-                               )).ToList();
-
-            int start = Convert.ToInt32(Request.Query.iDisplayStart.ToString());
-            int length = Convert.ToInt32(Request.Query.iDisplayLength.ToString());
-            var totalRecords = newUsers.Count;
-            var secho = Request.Query.sEcho;
-            var sorting = Request.Query.sSortDir_0;
-
-            if (sorting == "asc")
+            catch (Exception ex)
             {
-                return Response.AsJson(new { aaData = newUsers.OrderBy(x => x.DisplayName).Skip(start).Take(length), sEcho = secho, iTotalRecords = totalRecords, iTotalDisplayRecords = totalRecords });
+                log.Error("Error retrieving users for " + companyCode, ex);
+                return Nancy.Response.NoBody;
             }
-            else
+            finally
             {
-                return Response.AsJson(new { aaData = newUsers.OrderByDescending(x => x.DisplayName).Skip(start).Take(length), sEcho = secho.ToString(), iTotalRecords = totalRecords, iTotalDisplayRecords = totalRecords });
+                if (ctx != null)
+                    ctx.Dispose();
             }
         }
     }

@@ -32,7 +32,7 @@
                         <tr>
                             <th>Domain Name</th>
                             <th>Is Default</th>
-                            <th>Type</th>
+                            <th>Is Accepted Domain</th>
                             <th style="width: 10%"></th>
                         </tr>
                     </thead>
@@ -42,19 +42,19 @@
                             foreach (var domain in Model)
                                 {
                             <tr>
-                                <td>@domain.DomainName</td>
-                                <td>Model.IsDefault</td>
-                                <td>Model.TypeOfDomain</td>
+                                <td>@domain.Domain1</td>
+                                <td>@domain.IsDefault</td>
+                                <td>@domain.IsAcceptedDomain</td>
                                 <td>
                                     <div class='btn-group pull-right'>
-                                        <a href='Domains/@domain.ID/Edit' class='btn btn-xs btn-primary'>Modify</a>
+                                        <a href='Domains/@domain.DomainID/Edit' class='btn btn-xs btn-primary'>Modify</a>
                                         <button type='button' class='btn btn-xs btn-primary dropdown-toggle' data-toggle='dropdown'>
                                             <span class='caret'></span>
                                             <span class='sr-only'>Toggle Dropdown</span>
                                         </button>
                                         <ul class='dropdown-menu' role='menu'>
                                             <li>
-                                                <a href="#" onclick="javascript: ShowDeleteModal('@domain.DomainName');">Delete</a>
+                                                <a href="#" onclick="javascript: ShowDeleteModal('@domain.Domain1');">Delete</a>
                                             </li>
                                         </ul>
                                     </div>

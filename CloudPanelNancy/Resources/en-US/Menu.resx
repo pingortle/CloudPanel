@@ -150,8 +150,8 @@
   <data name="Email" xml:space="preserve">
     <value>Email</value>
   </data>
-  <data name="EnableEmail" xml:space="preserve">
-    <value>Enable Email</value>
+  <data name="EnableDisable" xml:space="preserve">
+    <value>Enable/Disable</value>
   </data>
   <data name="Groups" xml:space="preserve">
     <value>Groups</value>

@@ -46,6 +46,8 @@ namespace CloudPanelNancy
 
         public string SelectedCompanyCode { get; set; }
 
+        public string SelectedCompanyName { get; set; }
+
         public string CompanyCode { get; set; }
 
         public IEnumerable<string> Claims { get; set; }

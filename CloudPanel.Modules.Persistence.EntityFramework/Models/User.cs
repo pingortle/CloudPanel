@@ -28,9 +28,6 @@ namespace CloudPanel.Modules.Persistence.EntityFramework.Models
         public Nullable<int> ActiveSyncPlan { get; set; }
         public Nullable<int> ExchArchivePlan { get; set; }
 
-        // Used for the users table
-        public bool IsDisabled { get; set; }
-
         public bool IsLyncEnabled {
             get { return (LyncPlan != null && LyncPlan > 0) ? true : false; }
         }

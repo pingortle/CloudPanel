@@ -42,6 +42,8 @@ namespace CloudPanelNancy.Modules.AJAX
 {
     public class ajaxSuper : NancyModule
     {
+        private static readonly log4net.ILog log = log4net.LogManager.GetLogger(System.Reflection.MethodBase.GetCurrentMethod().DeclaringType);
+
         public ajaxSuper(CloudPanelContext db) : base("/AJAX")
         {
             //this.RequiresAuthentication();
@@ -53,32 +55,50 @@ namespace CloudPanelNancy.Modules.AJAX
 
         public Response GetResellers(CloudPanelContext db)
         {
-            List<ResellerObject> resellers = db.Companies.Select(x => new ResellerObject
-            {
-                CompanyID = x.CompanyId,
-                CompanyCode = x.CompanyCode,
-                CompanyName = x.CompanyName,
-                Street = x.Street,
-                City = x.City,
-                State = x.State,
-                ZipCode = x.ZipCode,
-                Created = x.Created,
-            })
-            .ToList();
+            CloudPanelContext ctx = null;
 
-            int start = Convert.ToInt32(Request.Query.iDisplayStart.ToString());
-            int length = Convert.ToInt32(Request.Query.iDisplayLength.ToString());
-            var totalRecords = resellers.Count();
-            var secho = Request.Query.sEcho;
-            var sorting = Request.Query.sSortDir_0;
-
-            if (sorting == "asc")
+            try
             {
-                return Response.AsJson(new { aaData = resellers.OrderBy(x => x.CompanyName).Skip(start).Take(length), sEcho = secho, iTotalRecords = totalRecords, iTotalDisplayRecords = totalRecords });
+                ctx = new CloudPanelContext(Settings.ConnectionString);
+
+                var resellers = (from c in ctx.Companies
+                                 where c.IsReseller
+                                 orderby c.CompanyName
+                                 select new ResellerObject()
+                                 {
+                                     CompanyID = c.CompanyId,
+                                     CompanyCode = c.CompanyCode,
+                                     CompanyName = c.CompanyName,
+                                     Street = c.Street,
+                                     City = c.City,
+                                     State = c.State,
+                                     ZipCode = c.ZipCode,
+                                     Created = c.Created.ToString()
+                                 }).ToList();
+
+                int start = Convert.ToInt32(Request.Query.iDisplayStart.ToString());
+                int length = Convert.ToInt32(Request.Query.iDisplayLength.ToString());
+                var totalRecords = resellers.Count();
+                var secho = Request.Query.sEcho;
+                var sorting = Request.Query.sSortDir_0;
+
+                if (sorting == "asc")
+                {
+                    return Response.AsJson(new { aaData = resellers.OrderBy(x => x.CompanyName).Skip(start).Take(length), sEcho = secho, iTotalRecords = totalRecords, iTotalDisplayRecords = totalRecords });
+                }
+                else
+                {
+                    return Response.AsJson(new { aaData = resellers.OrderByDescending(x => x.CompanyName).Skip(start).Take(length), sEcho = secho.ToString(), iTotalRecords = totalRecords, iTotalDisplayRecords = totalRecords });
+                }
             }
-            else
+            catch (Exception ex)
             {
-                return Response.AsJson(new { aaData = resellers.OrderByDescending(x => x.CompanyName).Skip(start).Take(length), sEcho = secho.ToString(), iTotalRecords = totalRecords, iTotalDisplayRecords = totalRecords });
+                log.Error("Error retrieving list of resellers.", ex);
+                return Response.AsJson(new { aaData = new List<ResellerObject>(), sEcho = "0", iTotalRecords = 0, iTotalDisplayRecords = 0 });
+            }
+            finally
+            {
+                ctx.Dispose();
             }
         }
 

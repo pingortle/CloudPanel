@@ -33,14 +33,17 @@
                             <th>Company Name</th>
                             <th>Address</th>
                             <th>Created</th>
-                            <th>Domains</th>
-                            <th>Total Users</th>
+                            <th>Features</th>
                             <th style="width: 10%"></th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
                             <td colspan="3" class="dataTables_empty">Loading data from server</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
                         </tr>
                     </tbody>
                 </table>
@@ -73,8 +76,32 @@
                     },
                     { "mData": "fullAddressFormatted", "sTitle": "Address", "bSortable": false },
                     { "mData": "created", "sTitle": "Created", "bSortable": false },
-                    { "mData": null, "sTitle": "Domains", "bSortable": false },
-                    { "mData": null, "sTitle": "Total Users", "bSortable": false },
+                    {
+                        "mData": null,
+                        "sTitle": "",
+                        "bSortable": false,
+                        "mRender": function (data, type, full) {
+                            var isExchEnabled = full["isExchangeEnabled"] == false ?
+                                                "<td></td>" :
+                                                "<td><span class='fa fa-envelope' data-placement='top' data-toggle='tooltip'></span></td>";
+
+                            var isLyncEnabled = full["isLyncEnabled"] == false ?
+                                            "<td></td>" :
+                                            "<td><span class='fa fa-comment' data-placement='top' data-toggle='tooltip'></span></td>";
+
+                            var isCitrixEnabled = full["isCitrixEnabled"] == false ?
+                                            "<td></td>" :
+                                            "<td><span class='fa fa-desktop' data-placement='top' data-toggle='tooltip'></span></td>";
+
+                            var table = "<table><tbody><tr class='featuresRows'>" +
+                                        isExchEnabled +
+                                        isLyncEnabled +
+                                        isCitrixEnabled +
+                                        "</tr></tbody></table>";
+
+                            return table;
+                        }
+                    },
                     {
                         "mData": "companyCode",
                         "bSearchable": false,

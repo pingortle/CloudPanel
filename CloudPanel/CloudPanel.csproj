@@ -1117,10 +1117,6 @@
       <Project>{8b47db51-6f8e-42a3-b7e1-6c92c0e3628b}</Project>
       <Name>CloudPanel.Modules.Base</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CloudPanel.Modules.Common\CloudPanel.Modules.Common.csproj">
-      <Project>{118d670a-318a-4dd2-916b-51727e73928a}</Project>
-      <Name>CloudPanel.Modules.Common</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup />
   <PropertyGroup>

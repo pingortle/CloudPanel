@@ -30,6 +30,7 @@
 
 using System;
 
+[assembly: log4net.Config.XmlConfigurator(Watch = true)]
 namespace CloudPanelNancy
 {
     public class Global : System.Web.HttpApplication

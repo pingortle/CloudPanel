@@ -42,12 +42,12 @@ namespace CloudPanelNancy.Modules
         {
             Get["{CompanyCode}/Users"] = parameters =>
             {
-                return View["Company/Users/UsersList.cshtml"];
+                return View["Company/Users/UsersList.cshtml", parameters.CompanyCode];
             };
 
             Get["{CompanyCode}/Users/{UserGuid}/Edit"] = parameters =>
             {
-                return View["Company/Users/Edit.cshtml"];
+                return View["Company/Users/Edit.cshtml", parameters.UserGuid];
             };
         }
     }

@@ -34,7 +34,7 @@ namespace CloudPanel.Modules.Common.ViewModel
                                          CompanyCode = companyCode,
                                          AdminName = c.AdminName,
                                          Telephone = c.PhoneNumber,
-                                         Created = c.Created,
+                                         Created = c.Created.ToString(),
                                          Street = c.Street,
                                          City = c.City,
                                          State = c.State,
