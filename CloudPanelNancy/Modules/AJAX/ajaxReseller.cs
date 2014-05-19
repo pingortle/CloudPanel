@@ -43,8 +43,12 @@ namespace CloudPanelNancy.Modules.AJAX
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(ajaxReseller));
 
-        public ajaxReseller() : base("/AJAX")
+        private readonly CloudPanelContext db;
+
+        public ajaxReseller(CloudPanelContext db) : base("/AJAX")
         {
+            this.db = db;
+
             //this.RequiresAuthentication();
             //this.RequiresAnyClaim(new[] { "SuperAdmin", "ResellerAdmin" });
 
@@ -53,13 +57,9 @@ namespace CloudPanelNancy.Modules.AJAX
 
         public Response GetCompanies(string resellerCode)
         {
-            CloudPanelContext ctx = null;
-
             try
             {
-                ctx = new CloudPanelContext(Settings.ConnectionString);
-
-                var companies = (from c in ctx.Companies
+                var companies = (from c in db.Companies
                                  where !c.IsReseller
                                  where c.ResellerCode == resellerCode
                                  select new CompanyObject()
@@ -96,10 +96,6 @@ namespace CloudPanelNancy.Modules.AJAX
             {
                 log.Error("Error retrieving list of companies for reseller code " + resellerCode, ex);
                 return Response.AsJson(new { aaData = new List<CompanyObject>(), sEcho = "0", iTotalRecords = 0, iTotalDisplayRecords = 0 });
-            }
-            finally
-            {
-                ctx.Dispose();
             }
         }
     }

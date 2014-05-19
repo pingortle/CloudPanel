@@ -44,24 +44,22 @@ namespace CloudPanelNancy.Modules.AJAX
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(ajaxSuper));
 
+        private readonly CloudPanelContext db;
+
         public ajaxSuper(CloudPanelContext db) : base("/AJAX")
         {
             //this.RequiresAuthentication();
             //this.RequiresAnyClaim(new[] { "SuperAdmin" });
 
-            Get["/Resellers/GetAll"] = parameters => GetResellers(db);
+            Get["/Resellers/GetAll"] = parameters => GetResellers();
             Get["/Dashboard/Charting/Column"] = parameters => GetTop5Customers();
         }
 
-        public Response GetResellers(CloudPanelContext db)
+        public Response GetResellers()
         {
-            CloudPanelContext ctx = null;
-
             try
             {
-                ctx = new CloudPanelContext(Settings.ConnectionString);
-
-                var resellers = (from c in ctx.Companies
+                var resellers = (from c in db.Companies
                                  where c.IsReseller
                                  orderby c.CompanyName
                                  select new ResellerObject()
@@ -95,10 +93,6 @@ namespace CloudPanelNancy.Modules.AJAX
             {
                 log.Error("Error retrieving list of resellers.", ex);
                 return Response.AsJson(new { aaData = new List<ResellerObject>(), sEcho = "0", iTotalRecords = 0, iTotalDisplayRecords = 0 });
-            }
-            finally
-            {
-                ctx.Dispose();
             }
         }
 

@@ -42,29 +42,23 @@ namespace CloudPanelNancy.Modules
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(DomainsModule));
 
-        public DomainsModule() : base("Company")
+        public DomainsModule(CloudPanelContext db) : base("Company")
         {
             Get["{CompanyCode}/Domains"] = parameters =>
                 {
                     var domains = new List<Domain>();
 
-                    CloudPanelContext ctx = null;
                     try
                     {
-                        ctx = new CloudPanelContext(Settings.ConnectionString);
 
                         string companyCode = parameters.CompanyCode;
-                        domains = (from d in ctx.Domains
+                        domains = (from d in db.Domains
                                    where d.CompanyCode == companyCode
                                    select d).ToList();
                     }
                     catch (Exception ex)
                     {
                         log.Error("Error getting domains for " + parameters.CompanyCode, ex);
-                    }
-                    finally
-                    {
-                        ctx.Dispose();
                     }
 
                     return View["Company/Domains/DomainList.cshtml", domains];

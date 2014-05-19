@@ -45,7 +45,7 @@ namespace CloudPanelNancy.Modules
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(PlansModule));
 
-        public PlansModule()  : base("Plans")
+        public PlansModule(CloudPanelContext db)  : base("Plans")
         {
             //this.RequiresAuthentication();
             //this.RequiresAnyClaim(new[] { "SuperAdmin" });
@@ -65,12 +65,9 @@ namespace CloudPanelNancy.Modules
             
             Get["/Company"] = parameters =>
             {
-                CloudPanelContext ctx = null;
                 try
                 {
-                    ctx = new CloudPanelContext(Settings.ConnectionString);
-
-                    var plans = (from p in ctx.Plans_Organization
+                    var plans = (from p in db.Plans_Organization
                                  select p).ToList();
 
                     return View["Plans/CompanyPlans.cshtml", plans];
@@ -80,29 +77,21 @@ namespace CloudPanelNancy.Modules
                     log.Error("Error retrieving company plans", ex);
                     return View["Plans/CompanyPlans.cshtml", null];
                 }
-                finally
-                {
-                    ctx.Dispose();
-                }
             };
 
             Post["/Company/Update"] = parameters =>
             {
                 var formModel = this.Bind<Plans_Organization>();
-
-                CloudPanelContext ctx = null;
                 try
                 {
-                    ctx = new CloudPanelContext(Settings.ConnectionString);
-
                     if (formModel.OrgPlanID <= 0)
                     {
-                        ctx.Plans_Organization.Add(formModel);
-                        ctx.SaveChanges();
+                        db.Plans_Organization.Add(formModel);
+                        db.SaveChanges();
                     }
                     else
                     {
-                        var plan = (from p in ctx.Plans_Organization
+                        var plan = (from p in db.Plans_Organization
                                     where p.OrgPlanID == formModel.OrgPlanID
                                     select p).FirstOrDefault();
 
@@ -115,16 +104,12 @@ namespace CloudPanelNancy.Modules
                         plan.MaxExchangeResourceMailboxes = formModel.MaxExchangeResourceMailboxes;
                         plan.MaxExchangeMailPublicFolders = formModel.MaxExchangeMailPublicFolders;
 
-                        ctx.SaveChanges();
+                        db.SaveChanges();
                     }
                 }
                 catch (Exception ex)
                 {
                     log.Error("Error retrieving company plans", ex);
-                }
-                finally
-                {
-                    ctx.Dispose();
                 }
 
                 return Response.AsRedirect("~/Plans/Company");

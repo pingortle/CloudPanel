@@ -42,10 +42,14 @@ namespace CloudPanelNancy.Modules.AJAX
 {
     public class ajaxAll : NancyModule
     {
+        // TODO: Remove this.
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(ajaxAll));
 
-        public ajaxAll() : base("/AJAX")
+        private readonly CloudPanelContext db;
+
+        public ajaxAll(CloudPanelContext db) : base("/AJAX")
         {
+            this.db = db;
             //this.RequiresAuthentication();
 
             Get["/Plans/Company/Get/{ID}"] = parameters => GetCompanyPlan(parameters.ID);
@@ -56,13 +60,10 @@ namespace CloudPanelNancy.Modules.AJAX
 
         public Response GetCompanyPlan(string id)
         {
-            CloudPanelContext ctx = null;
             try
             {
-                ctx = new CloudPanelContext(Settings.ConnectionString);
-
                 int intId = int.Parse(id);
-                var plans = (from p in ctx.Plans_Organization
+                var plans = (from p in db.Plans_Organization
                              where p.OrgPlanID == intId
                              select p).FirstOrDefault();
 
@@ -72,10 +73,6 @@ namespace CloudPanelNancy.Modules.AJAX
             {
                 log.Error("Error retrieving company plans", ex);
                 return Response.AsJson(ex.Message, HttpStatusCode.InternalServerError);
-            }
-            finally
-            {
-                ctx.Dispose();
             }
         }
 
@@ -115,28 +112,21 @@ namespace CloudPanelNancy.Modules.AJAX
             data.Add("Contacts", 0);
 
             // Query database for actual values
-            CloudPanelContext ctx = null;
             try
             {
-                ctx = new CloudPanelContext(Settings.ConnectionString);
-
-                var companyUsers = from u in ctx.Users where u.CompanyCode == companyCode select u;
+                var companyUsers = from u in db.Users where u.CompanyCode == companyCode select u;
                 var userIds = from u in companyUsers select u.ID;
 
                 data["Users"] = companyUsers.Count();
                 data["Mailboxes"] = (from u in companyUsers where u.MailboxPlan > 0 select u).Count();
-                data["Citrix Users"] = (from u in ctx.UserPlansCitrix where userIds.Contains(u.UserID) select u.UserID).Distinct().Count();
+                data["Citrix Users"] = (from u in db.UserPlansCitrix where userIds.Contains(u.UserID) select u.UserID).Distinct().Count();
                 data["Lync Users"] = 0;
-                data["Distribution Groups"] = (from d in ctx.DistributionGroups where d.CompanyCode == companyCode select d).Count();
-                data["Contacts"] = (from c in ctx.Contacts where c.CompanyCode == companyCode select c).Count();
+                data["Distribution Groups"] = (from d in db.DistributionGroups where d.CompanyCode == companyCode select d).Count();
+                data["Contacts"] = (from c in db.Contacts where c.CompanyCode == companyCode select c).Count();
             }
             catch (Exception ex)
             {
                 log.Error("Error retrieving company column chart for " + companyCode, ex);
-            }
-            finally
-            {
-                ctx.Dispose();
             }
 
             return Response.AsJson(data, HttpStatusCode.OK);
@@ -145,12 +135,9 @@ namespace CloudPanelNancy.Modules.AJAX
         public Response GetUsers(string companyCode)
         {
             // Query database for actual values
-            CloudPanelContext ctx = null;
             try
             {
-                ctx = new CloudPanelContext(Settings.ConnectionString);
-
-                var users = from u in ctx.Users
+                var users = from u in db.Users
                             where u.CompanyCode == companyCode
                             select u;
 
@@ -187,11 +174,6 @@ namespace CloudPanelNancy.Modules.AJAX
             {
                 log.Error("Error retrieving users for " + companyCode, ex);
                 return Nancy.Response.NoBody;
-            }
-            finally
-            {
-                if (ctx != null)
-                    ctx.Dispose();
             }
         }
     }

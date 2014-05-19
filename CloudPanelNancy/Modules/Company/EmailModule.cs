@@ -41,20 +41,17 @@ namespace CloudPanelNancy.Modules.Company
     {
         private static readonly log4net.ILog log = log4net.LogManager.GetLogger(typeof(EmailModule));
 
-        public EmailModule() : base("Company")
+        public EmailModule(CloudPanelContext db) : base("Company")
         {
             //this.RequiresAuthentication();
             //this.RequiresAnyClaim(new[] { "SuperAdmin", "ResellerAdmin", "CompanyAdmin" });
 
             Get["{CompanyCode}/Email/Status"] = parameters =>
                 {
-                    CloudPanelContext ctx = null;
                     try
                     {
-                        ctx = new CloudPanelContext(Settings.ConnectionString);
-
                         string companyCode = parameters.CompanyCode;
-                        var company = (from c in ctx.Companies
+                        var company = (from c in db.Companies
                                        where !c.IsReseller
                                        where c.CompanyCode == companyCode
                                        select c).FirstOrDefault();
@@ -79,10 +76,6 @@ namespace CloudPanelNancy.Modules.Company
                     {
                         log.Error("Error checking Exchange status for " + parameters.CompanyCode, ex);
                         return View["Company/Overview.cshtml"];
-                    }
-                    finally
-                    {
-                        ctx.Dispose();
                     }
                 };
 

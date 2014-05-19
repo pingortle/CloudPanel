@@ -42,7 +42,7 @@ namespace CloudPanelNancy.Modules
 {
     public class CompanyModule : NancyModule
     {
-        public CompanyModule() : base("Company")
+        public CompanyModule(CloudPanelContext db) : base("Company")
         {
             this.RequiresAuthentication();
             this.RequiresAnyClaim(new[] { "SuperAdmin", "ResellerAdmin", "CompanyAdmin" });
@@ -55,23 +55,19 @@ namespace CloudPanelNancy.Modules
                     user.SelectedCompanyCode = companyCode;
 
                     // Get company information
-                    var companyData = new CompanyObject();
-                    using (var ctx = new CloudPanelContext(Settings.ConnectionString))
-                    {
-                        companyData = (from c in ctx.Companies
-                                       where !c.IsReseller
-                                       where c.CompanyCode == companyCode
-                                       select new CompanyObject()
-                                       {
-                                           CompanyCode = companyCode,
-                                           CompanyName = c.CompanyName,
-                                           AdminName = c.AdminName,
-                                           Telephone = c.PhoneNumber,
-                                           CompanyPlanID = c.OrgPlanID == null ? 0 : (int)c.OrgPlanID
-                                       }).FirstOrDefault();
+                    var companyData = (from c in db.Companies
+                                    where !c.IsReseller
+                                    where c.CompanyCode == companyCode
+                                    select new CompanyObject()
+                                    {
+                                        CompanyCode = companyCode,
+                                        CompanyName = c.CompanyName,
+                                        AdminName = c.AdminName,
+                                        Telephone = c.PhoneNumber,
+                                        CompanyPlanID = c.OrgPlanID == null ? 0 : (int)c.OrgPlanID
+                                    }).FirstOrDefault();
 
                         user.SelectedCompanyName = companyData.CompanyName;
-                    }
 
                     return View["Company/Overview", companyData];
                 };
