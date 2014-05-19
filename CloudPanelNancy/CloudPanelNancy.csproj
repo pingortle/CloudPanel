@@ -674,7 +674,6 @@
     <Content Include="Content\js\toggles.min.js" />
     <Content Include="Content\js\wysihtml5-0.3.0.min.js" />
     <Content Include="Global.asax" />
-    <Content Include="Log\Log.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -844,6 +843,7 @@
   <ItemGroup>
     <Folder Include="Authentication\" />
     <Folder Include="Database\" />
+    <Folder Include="Log\" />
     <Folder Include="Modules\Security\" />
   </ItemGroup>
   <ItemGroup>
