@@ -1,0 +1,80 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
+
+@{
+    Layout = "Views/Shared/_Layout.cshtml";
+}
+
+@section PAGEHEADER{
+    <div class="pageheader">
+        <h2><i class="glyphicon glyphicon-envelope"></i> Email <span>Contacts...</span></h2>
+        <div class="breadcrumb-wrapper">
+            <span class="label">You are here:</span>
+            <ol class="breadcrumb">
+                <li><a href="~/">Bracket</a></li>
+                <li><a href="~/">Dashboard</a></li>
+                <li><a href="~/Mailbox">Email</a></li>
+                <li class="active">Contacts</li>
+            </ol>
+        </div>
+    </div>
+}
+
+<div style="float: right; margin: 10px">
+    <button class="btn btn-success" OnClick="btnAddContact_Click">Add New...</button>
+</div>
+
+<div class="col-md-12">
+    <div class="table-responsive">
+        <table class="table table-striped mb30">
+            <thead>
+                <tr>
+                    <th>Display Name</th>
+                    <th>Email</th>
+                    <th>Hidden?</th>
+                    <th style="width: 10%"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @if (Model != null)
+                {
+                    foreach (var contact in Model)
+                    {
+                        <tr>
+                            <td></td>
+                            <td>@contact.Email</td>
+                            <td>@contact.IsHidden.ToString()</td>
+                            <td>
+                                <div class="btn-group">
+                                    <button class="btn btn-xs btn-primary">Modify</button>
+                                    <button type="button" class="btn btn-xs btn-primary dropdown-toggle" data-toggle="dropdown">
+                                        <span class="caret"></span>
+                                        <span class="sr-only">Toggle Dropdown</span>
+                                    </button>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li>
+                                            <form method="delete" action="~/Contacts/@contact.Id">
+                                                <input type="submit" class="btn btn-xs btn-default" onClick="return DeleteConfirm();" value="Delete" />
+                                            </form>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <!-- btn-group -->
+                            </td>
+                        </tr>
+                    }
+                }
+            </tbody>
+        </table>
+    </div>
+    <!-- table-responsive -->
+</div>
+<!-- col-md-6 -->
+
+@section CUSTOMJAVASCRIPT{
+    <script src="~/js/jquery.validate.min.js"></script>
+    <script type="text/javascript">
+        function DeleteConfirm() {
+            return confirm('Are you sure you want to delete this?');
+        }
+    </script>
+}
