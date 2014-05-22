@@ -835,6 +835,8 @@
     <Content Include="Views\Company\Users\Edit.cshtml" />
     <Content Include="Views\Company\Email\Contacts.cshtml" />
     <Content Include="Views\Company\Email\EditContact.cshtml" />
+    <Content Include="Views\Company\Email\Mailboxes.cshtml" />
+    <Content Include="Views\Company\Email\EnableMailboxes.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

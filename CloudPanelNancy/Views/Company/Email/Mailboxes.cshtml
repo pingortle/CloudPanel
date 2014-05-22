@@ -1,0 +1,68 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
+
+@{
+    Layout = "Views/Shared/_Layout.cshtml";
+}
+
+@section PAGEHEADER{
+    <h2><i class="fa fa-envelope-o"></i>Mailboxes</h2>
+}
+
+<div class="contentpanel">
+    <div style="float: right; margin: 10px">
+        <a href="~/Company/@Model.CompanyCode/Mailboxes/New" class="btn btn-success">Enable New Mailbox</a>
+    </div>
+
+    <div class="col-md-12">
+        <div class="table-responsive">
+            <table class="table table-striped mb30">
+                <thead>
+                    <tr>
+                        <th>Display Name</th>
+                        <th>Email</th>
+                        <th>Department</th>
+                        <th>Current Size</th>
+                        <th>Maximum Size</th>
+                        <th style="width: 10%"></th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(dynamic mailbox in Model)
+                    {
+                    <tr>
+                        <td>@mailbox.DisplayName</td>
+                        <td>@mailbox.Email</td>
+                        <td>@mailbox.Department</td>
+                        <td>@mailbox.CurrentSize</td>
+                        <td>@mailbox.MaxSize</td>
+                        <td>
+                            <div class="btn-group">
+                                <span class="btn btn-xs btn-primary">Modify</span>
+                                <button type="button" class="btn btn-xs btn-primary dropdown-toggle" data-toggle="dropdown">
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="~/Company/@Model.CompanyCode/Mailboxes/@mailbox.Id/Edit">Edit</a>
+                                    </li>
+                                    <li class="divider"></li>
+                                    <li>
+                                        <a href="~/Company/@Model.CompanyCode/Mailboxes/@mailbox.Id/Disable">Disable</a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+@section CUSTOMJAVASCRIPT{
+    <script type="text/javascript">
+    </script>
+}
