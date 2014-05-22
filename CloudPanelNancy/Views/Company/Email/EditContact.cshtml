@@ -31,7 +31,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Display Name <span class="asterisk">*</span></label>
                             <div class="col-sm-4">
-                                <input type="text" id="displayName" class="form-control" />
+                                <input type="text" id="displayName" class="form-control" value="@Model.DisplayName" />
                                 <input type="hidden" id="contactDistinguishedName" />
                             </div>
                         </div>
@@ -39,7 +39,7 @@
                         <div class="form-group">
                             <label class="col-sm-2 control-label">Email<span class="asterisk">*</span></label>
                             <div class="col-sm-4">
-                                <input type="email" id="email" class="form-control" />
+                                <input type="email" id="email" class="form-control" value ="@Model.Email" />
                             </div>
                         </div>
 
@@ -47,7 +47,7 @@
                             <label class="col-sm-2 control-label">&nbsp;</label>
                             <div class="col-sm-4">
                                 <div class="ckbox ckbox-success">
-                                    <input type="checkbox" id="isHidden" />
+                                    <input type="checkbox" id="isHidden" value="Hidden" @(Model.IsHidden ? "checked" : "") />
                                     <label for='isHidden'>Hide Contact?</label>
                                 </div>
                             </div>
