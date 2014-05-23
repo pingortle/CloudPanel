@@ -5,6 +5,7 @@ namespace CloudPanel.Modules.Persistence.EntityFramework.Models
 {
     public partial class Contact
     {
+        public int Id { get; set; }
         public string DistinguishedName { get; set; }
         public string CompanyCode { get; set; }
         public string DisplayName { get; set; }
