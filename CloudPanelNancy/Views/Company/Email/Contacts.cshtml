@@ -39,28 +39,28 @@
                 {
                     foreach (dynamic contact in Model)
                     {
-                        <tr>
-                            <td>@contact.DisplayName</td>
-                            <td>@contact.Email</td>
-                            <td>@contact.IsHidden.ToString()</td>
-                            <td>
-                                <div class="btn-group">
-                                    <a href="~/Company/@Model.CompanyCode/Contacts/@contact.Id/Edit" class="btn btn-xs btn-primary">Modify</a>
-                                    <button type="button" class="btn btn-xs btn-primary dropdown-toggle" data-toggle="dropdown">
-                                        <span class="caret"></span>
-                                        <span class="sr-only">Toggle Dropdown</span>
-                                    </button>
-                                    <ul class="dropdown-menu" role="menu">
-                                        <li>
-                                            <form method="delete" action="~/Company/@Model.CompanyCode/Contacts/@contact.Id">
-                                                <input type="submit" class="btn btn-xs btn-default" onClick="return DeleteConfirm();" value="Delete" />
-                                            </form>
-                                        </li>
-                                    </ul>
-                                </div>
-                                <!-- btn-group -->
-                            </td>
-                        </tr>
+                    <tr>
+                        <td>@contact.DisplayName</td>
+                        <td>@contact.Email</td>
+                        <td>@contact.IsHidden.ToString()</td>
+                        <td>
+                            <div class="btn-group">
+                                <a href="~/Company/@Model.CompanyCode/Contacts/@contact.Id/Edit" class="btn btn-xs btn-primary">Modify</a>
+                                <button type="button" class="btn btn-xs btn-primary dropdown-toggle" data-toggle="dropdown">
+                                    <span class="caret"></span>
+                                    <span class="sr-only">Toggle Dropdown</span>
+                                </button>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <form method="delete" action="~/Company/@Model.CompanyCode/Contacts/@contact.Id">
+                                            <input type="submit" class="btn btn-xs btn-default" onclick="return DeleteConfirm();" value="Delete" />
+                                        </form>
+                                    </li>
+                                </ul>
+                            </div>
+                            <!-- btn-group -->
+                        </td>
+                    </tr>
                     }
                 }
             </tbody>
