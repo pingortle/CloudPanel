@@ -8,59 +8,67 @@
     <h2><i class="fa fa-envelope-o"></i>Enable Mailboxes</h2>
 }
 
-<div class="panel panel-default">
-    <div class="panel-heading">
-        <h3 class="panel-title">Choose Users to Enable</h3>
-    </div>
-
-    <div class="panel-body">
-        <div class="table-responsive">
-            <table class="table table-striped mb30" id="nonMailboxUsers">
-                <thead>
-                    <tr>
-                        <th><input type="checkbox" id="title-checkbox" /></th>
-                        <th>Display Name</th>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Login Name</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach (var user in Model)
-                    {
-                        <tr>
-                            <td><input type="checkbox" class="tableRowCheckbox" id="hasMailbox@(user.Id)" /></td>
-                            <td>@user.DisplayName</td>
-                            <td>@user.FirstName</td>
-                            <td>@user.LastName</td>
-                            <td>@user.UserPrincipleName</td>
-                        </tr>
-                    }
-                </tbody>
-            </table>
-        </div>
-    </div>
-</div>
-
-<div class="panel panel-default">
-    <div class="form-horizontal">
+<form action="~/Company/@Model.CompanyCode/BulkEnableMailboxes" method="post">
+    <div class="panel panel-default">
         <div class="panel-heading">
-            <h3 class="panel-title">Settings</h3>
+            <h3 class="panel-title">Choose Users to Enable</h3>
         </div>
 
         <div class="panel-body">
-            <div class="col-md-12">
-                <div class="form-group">
-                    <label class="col-sm-2 control-label">Domain Name <span class="asterisk">*</span></label>
-                    <div class="col-sm-4">
-                        <input type="text" id="domainName" name="domainName" class="form-control" />
-                        <input type="hidden" id="domainId" name="domainId" />
+            <div class="table-responsive">
+                <table class="table table-striped mb30" id="nonMailboxUsers">
+                    <thead>
+                        <tr>
+                            <th>
+                                <input type="checkbox" id="title-checkbox" /></th>
+                            <th>Display Name</th>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Login Name</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var user in Model)
+                        {
+                            <tr>
+                                <td>
+                                    <input type="checkbox" class="tableRowCheckbox" name="hasMailbox@(user.Id)" /></td>
+                                <td>@user.DisplayName</td>
+                                <td>@user.FirstName</td>
+                                <td>@user.LastName</td>
+                                <td>@user.UserPrincipleName</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="form-horizontal">
+            <div class="panel-heading">
+                <h3 class="panel-title">Settings</h3>
+            </div>
+
+            <div class="panel-body">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label">Domain Name <span class="asterisk">*</span></label>
+                        <div class="col-sm-4">
+                            <input type="text" id="domainName" name="domainName" class="form-control" />
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
+
+    <div class="panel-footer" style="text-align: right">
+        <a href="~/Company/@Model.CompanyCode" class="btn btn-default">Cancel</a>
+        <button type="submit" id="save" class="btn btn-primary active">Save</button>
+    </div>
+</form>
 
 @section CUSTOMJAVASCRIPT{
     <script src='<%= this.ResolveClientUrl("~/js/chosen.jquery.min.js") %>'></script>
