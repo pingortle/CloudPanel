@@ -37,9 +37,21 @@ using Nancy.Security;
 using Nancy.Authentication.Forms;
 using CloudPanel.Modules.Base.Companies;
 using CloudPanel.Modules.Persistence.EntityFramework;
+using CloudPanel.Modules.Persistence.EntityFramework.Models;
 
 namespace CloudPanelNancy.Modules
 {
+    public class ContactsList : List<Contact>
+    {
+        public ContactsList(string companyCode, IEnumerable<Contact> source = null)
+        {
+            CompanyCode = companyCode;
+            this.AddRange(source ?? new List<Contact>());
+        }
+
+        public string CompanyCode { get; private set; }
+    }
+    
     public class CompanyModule : NancyModule
     {
         public CompanyModule(CloudPanelContext db) : base("Company")
@@ -70,6 +82,81 @@ namespace CloudPanelNancy.Modules
                         user.SelectedCompanyName = companyData.CompanyName;
 
                     return View["Company/Overview", companyData];
+                };
+
+            Get["{CompanyCode}/Contacts"] = parameters =>
+                {
+                    string cc = parameters.CompanyCode;
+                    var contacts = db.Contacts.Where(x => x.CompanyCode == cc);
+                    var model = new ContactsList(cc, contacts);
+
+                    return View["Company/Email/Contacts", model];
+                };
+
+            Get["{CompanyCode}/Contacts/{ContactId:int}"] = parameters =>
+                {
+                    string cc = parameters.CompanyCode;
+                    int id = parameters.ContactId;
+
+                    var contact = db.Contacts.FirstOrDefault(x => x.CompanyCode == cc && x.Id == id);
+                    if (contact == null)
+                        return Context.Response.WithStatusCode(HttpStatusCode.NotFound);
+
+                    return View["Company/Email/EditContact", contact];
+                };
+
+            Put["{CompanyCode}/Contacts/{ContactId:int}"] = parameters =>
+                {
+                    string cc = parameters.CompanyCode;
+                    int id = parameters.ContactId;
+
+                    var contact = db.Contacts.FirstOrDefault(x => x.CompanyCode == cc && x.Id == id);
+                    if (contact == null)
+                        return Context.Response.WithStatusCode(HttpStatusCode.NotFound);
+
+                    // This is somewhat simplistic.  Needs more thought.
+                    contact.DisplayName = Request.Form.displayName;
+                    contact.DistinguishedName = Request.Form.distinguishedName;
+                    contact.Email = Request.Form.email;
+                    contact.Hidden = Request.Form.hidden;
+
+                    db.SaveChanges();
+
+                    return Response.AsRedirect(string.Format("Company/{0}/Contacts", cc));
+                };
+
+            Post["{CompanyCode}/Contacts"] = parameters =>
+                {
+                    string cc = parameters.CompanyCode;
+
+                    db.Contacts.Add(new Contact
+                    {
+                        CompanyCode = cc,
+                        DisplayName = Request.Form.displayName,
+                        DistinguishedName = Request.Form.distinguishedName,
+                        Email = Request.Form.email,
+                        Hidden = Request.Form.hidden,
+                    });
+
+                    db.SaveChanges();
+
+                    return Response.AsRedirect(string.Format("Company/{0}/Contacts", cc));
+                };
+
+            Delete["{CompanyCode}/Contacts/{ContactId:int}"] = parameters =>
+                {
+                    string cc = parameters.CompanyCode;
+                    int id = parameters.ContactId;
+
+                    var contact = db.Contacts.FirstOrDefault(x => x.CompanyCode == cc && x.Id == id);
+                    if (contact == null)
+                        return Context.Response.WithStatusCode(HttpStatusCode.NotFound);
+
+                    db.Contacts.Remove(contact);
+
+                    db.SaveChanges();
+
+                    return Response.AsRedirect(string.Format("Company/{0}/Contacts", cc));
                 };
         }
     }
