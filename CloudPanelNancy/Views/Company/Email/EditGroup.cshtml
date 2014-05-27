@@ -1,0 +1,346 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
+
+@{
+    Layout = "Views/Shared/_Layout.cshtml";
+}
+
+@section PAGEHEADER{
+    <h2><i class="fa fa-users"></i>Distribution Groups</h2>
+}
+
+<div class="contentpanel">
+    <section class="row">
+        <form action="~/Company/@Model.CompanyCode/DistributionGroups" method="post">
+            <div class="form-horizontal">
+                <div class="col-sm-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            <h4 class="panel-title">Add/Edit Distribution Group</h4>
+                        </div>
+
+                        <div class="panel-body">
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">Display Name <span class="asterisk">*</span></label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" />
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">E-mail <span class="asterisk">*</span></label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" />
+                                </div>
+                                <div class="col-sm-4">
+                                    <select class="form-control mb15">
+                                        <option>...</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="col-sm-2 control-label">&nbsp;</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" />
+                                </div>
+                                <div class="col-sm-4">
+                                    <div class="ckbox ckbox-success">
+                                        <input type="checkbox" id="isHidden" />
+                                        <label for='isHidden'>Is group hidden from global address list?</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-sm-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">Group Owners</h4>
+                            </div>
+
+                            <div class="panel-body">
+                                <div class="table-responsive" style="height: 300px; overflow-y: auto;">
+                                    <table id="tableOwners" class="table mb30">
+                                        <thead>
+                                            <tr>
+                                                <th>&nbsp;</th>
+                                                <th>Display Name</th>
+                                                <th>E-mail Address</th>
+                                                <th>&nbsp;</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @if (Model != null)
+                                            {
+                                                foreach (dynamic owner in Model.Owners)
+                                                {
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>@owner.DisplayName</td>
+                                                        <td>@owner.Email</td>
+                                                        <td class="table-action">
+                                                            <a class="delete-row" onclick="javascript: RemoveRow(this, 'Owners');" style="cursor: pointer"><i class="fa fa-trash-o"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- table-responsive -->
+                            </div>
+                            <!-- panel-body -->
+
+                        </div>
+                    </div>
+
+                    <!-- Members -->
+                    <div class="col-sm-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">Group Members</h4>
+                            </div>
+
+                            <div class="panel-body">
+                                <div class="table-responsive" style="height: 300px; overflow-y: auto;">
+                                    <table id="tableMembers" class="table mb30">
+                                        <thead>
+                                            <tr>
+                                                <th>&nbsp;</th>
+                                                <th>Display Name</th>
+                                                <th>E-mail Address</th>
+                                                <th>&nbsp;</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @if (Model != null)
+                                            {
+                                                foreach (dynamic member in Model.Members)
+                                                {
+                                                    <tr>
+                                                        <td></td>
+                                                        <td>@member.DisplayName</td>
+                                                        <td>@member.Email</td>
+                                                        <td class="table-action">
+                                                            <a class="delete-row" onclick="javascript: RemoveRow(this, 'Members');" style="cursor: pointer"><i class="fa fa-trash-o"></i></a>
+                                                        </td>
+                                                    </tr>
+                                                }
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- table-responsive -->
+                            </div>
+                            <!-- panel-body -->
+
+                        </div>
+                    </div>
+
+                    <!-- Membership Approval -->
+                    <div class="col-sm-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">Membership Approval</h4>
+                            </div>
+
+                            <div class="panel-body">
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Owner Approval Required to Join?</label>
+                                    <div class="col-sm-8">
+                                        <div class="rdio rdio-success">
+                                            <input type="radio" id="ownerApprovalOpen" name="ownerApproval" value="open" checked />
+                                            <label for="ownerApprovalOpen">OPEN: Anyone can join this group without being approved by the group owners</label>
+                                        </div>
+
+                                        <div class="rdio rdio-success">
+                                            <input type="radio" id="ownerApprovalClosed" name="ownerApproval" value="closed" />
+                                            <label for="ownerApprovalClosed">CLOSED: Members can be added only by the group owners. All requests to join will be rejected automatically</label>
+                                        </div>
+
+                                        <div class="rdio rdio-success">
+                                            <input type="radio" id="ownerApprovalOwner" name="ownerApproval" value="owner" />
+                                            <label for="ownerApprovalOwner">OWNER APPROVAL: All requests are approved or rejected by the group owners</label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Can Users Leave?</label>
+                                    <div class="col-sm-8">
+                                        <div class="rdio rdio-success">
+                                            <input type="radio" name="membershipApproval" value="open" checked />
+                                            <label>OPEN: Anyone can leave this group without being approved by the group owners
+                                                <input type="radio" name="membershipApproval" value="open" checked />
+                                            </label>
+                                        </div>
+
+                                        <div class="rdio rdio-success">
+                                            <label>CLOSED: Members can be removed only by the group owners. All requests to leave will be rejected automatically
+                                                <input type="radio" name="membershipApproval" value="closed" />
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- panel-body -->
+
+                        </div>
+                    </div>
+
+                    <!-- Delivery Management -->
+                    <div class="col-sm-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">Delivery Management</h4>
+                            </div>
+
+                            <div class="panel-body">
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label"></label>
+                                    <div class="col-sm-8">
+                                        By default, only senders inside your organization can send messages to this group. You can also allow people outside the organization to send to this group. Choose one of the options below:<br />
+
+                                        <div class="rdio rdio-success">
+                                            <label>Only senders inside my organization can send to this group
+                                                <input type="radio" name="deliveryManagement" value="insideOnly" checked />
+                                            </label>
+                                        </div>
+
+                                        <div class="rdio rdio-success">
+                                            <label>Senders inside and outside of my organization can send to this group
+                                                <input type="radio" name="deliveryManagement" value="outsideInside" />
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label"></label>
+                                    <div class="col-sm-8">
+                                        If you want to restrict who can send messages to the group, add users or groups to the list below. Only the specified senders will be able to send to the group and mail sent by anyone else will be rejected.<br />
+                                        <select class="chosen-select" data-placeholder="Choose multiple users..." multiple>
+                                            <option>...</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- panel-body -->
+
+                        </div>
+                    </div>
+
+                    <!-- Message Approval -->
+                    <div class="col-sm-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">
+                                <h4 class="panel-title">Message Approval</h4>
+                            </div>
+
+                            <div class="panel-body">
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">&nbsp;</label>
+                                    <div class="col-sm-4">
+                                        <div class="ckbox ckbox-success">
+                                            <label>Messages sent to this group have to be approved by a moderator
+                                                <input type="checkbox" name="approvedByModerator" />
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Group Moderators</label>
+                                    <div class="col-sm-8">
+                                        <select class="chosen-select" data-placeholder="Choose multiple users..." multiple>
+                                            <option>...</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label">Senders that don't require approval</label>
+                                    <div class="col-sm-8">
+                                        <select class="chosen-select" data-placeholder="Choose multiple users..." multiple>
+                                            <option>...</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <div class="form-group">
+                                    <label class="col-sm-2 control-label"></label>
+                                    <div class="col-sm-8">
+                                        <div class="rdio rdio-success">
+                                            <label>Notify all senders when their messages aren't approved
+                                                <input type="radio" name="messageApproval" value="notifyAll" />
+                                            </label>
+                                        </div>
+
+                                        <div class="rdio rdio-success">
+                                            <label>Notify senders in your organization when their messages aren't approved
+                                                <input type="radio" name="messageApproval" value="notifyInterval" />
+                                            </label>
+                                        </div>
+
+                                        <div class="rdio rdio-success">
+                                            <label>Don't notify anyone when a message isn't approved
+                                                <input type="radio" name="messageApproval" value="notifyNone" />
+                                            </label>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <!-- panel-body -->
+
+                        </div>
+
+                        <div class="panel-footer" style="text-align: right">
+                            <a href="~/Company/@Model.CompanyCode/DistributionGroups" class="btn btn-default">Cancel</a>
+                            <button type="submit" class="btn btn-primary">Save</button>
+                        </div>
+                        <!-- panel-footer -->
+                    </div>
+                </div>
+            </form>
+    </section>
+</div>
+
+@section CUSTOMJAVASCRIPT{
+    <script src='<%= this.ResolveClientUrl("~/js/chosen.jquery.min.js") %>'></script>
+    <script type="text/javascript">
+        jQuery(document).ready(function () {
+
+            // Chosen Select
+            jQuery(".chosen-select").chosen({ 'width': '100%', 'white-space': 'nowrap' });
+
+        });
+
+        function RemoveRow(row, section) {
+            var table = $(row).closest('table');
+            var tableRow = $(row).closest('tr');
+
+            var objectValue = $(tableRow).find('td').eq(2).text();
+
+            var theHiddenField = null;
+            if (section == "Owners") {
+                hiddenField = document.getElementById("<%= hfGroupOwners.ClientID %>");
+
+                $(tableRow).remove();
+            } else if (section == "Members") {
+                hiddenField = document.getElementById("<%= hfGroupMembers.ClientID %>");
+
+                $(tableRow).remove();
+            }
+
+            hiddenField.value = hiddenField.value.replace(objectValue + "||", "");
+        }
+    </script>
+}

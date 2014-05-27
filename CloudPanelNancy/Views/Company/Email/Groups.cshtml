@@ -1,0 +1,98 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
+
+@{
+    Layout = "Views/Shared/_Layout.cshtml";
+}
+
+@section PAGEHEADER{
+    <h2><i class="fa fa-users"></i>Distribution Groups</h2>
+}
+
+<div class="contentpanel">
+    <section class="row">
+        <div style="float: right; margin: 10px">
+            <a href="~/Company/@Model.CompanyCode/DistributionGroups/Add" class="btn btn-success">Add New Group</a>
+        </div>
+
+        <div class="col-md-12">
+            <div class="table-responsive">
+                <table class="table table-striped mb30">
+                    <thead>
+                        <tr>
+                            <th>Display Name</th>
+                            <th>Email</th>
+                            <th>Hidden</th>
+                            <th style="width: 10%"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null)
+                        {
+                            foreach (dynamic dg in Model)
+                            {
+                                <tr>
+                                    <td>@dg.DisplayName</td>
+                                    <td>@dg.Email</td>
+                                    <td>@(dg.IsHidden ? "Yes" : "No")</td>
+                                    <td>
+                                        <div class="btn-group">
+                                            <span class="btn btn-xs btn-primary">Modify</span>
+                                            <button type="button" class="btn btn-xs btn-primary dropdown-toggle" data-toggle="dropdown">
+                                                <span class="caret"></span>
+                                                <span class="sr-only">Toggle Dropdown</span>
+                                            </button>
+                                            <ul class="dropdown-menu" role="menu">
+                                                <li><a href="~/Company/@Model.CompanyCode/DistributionGroups/@dg.Id/Edit" class="btn btn-xs btn-default">Edit</a></li>
+                                                <li>
+                                                    <form method="delete" action="~/Company/@Model.CompanyCode/DistributionGroups/@dg.Id">
+                                                        <input type="submit" class="btn btn-xs btn-default" onclick="return DeleteConfirm();" value="Delete" />
+                                                    </form>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+</div>
+
+@section CUSTOMJAVASCRIPT{
+    <script src='<%= this.ResolveClientUrl("~/js/chosen.jquery.min.js") %>'></script>
+    <script type="text/javascript">
+        function DeleteConfirm() {
+            return confirm('Are you sure you want to delete this?');
+        }
+
+        jQuery(document).ready(function () {
+
+            // Chosen Select
+            jQuery(".chosen-select").chosen({ 'width': '100%', 'white-space': 'nowrap' });
+
+        });
+
+        function RemoveRow(row, section) {
+            var table = $(row).closest('table');
+            var tableRow = $(row).closest('tr');
+
+            var objectValue = $(tableRow).find('td').eq(2).text();
+
+            var theHiddenField = null;
+            if (section == "Owners") {
+                hiddenField = document.getElementById("<%= hfGroupOwners.ClientID %>");
+
+                $(tableRow).remove();
+            } else if (section == "Members") {
+                hiddenField = document.getElementById("<%= hfGroupMembers.ClientID %>");
+
+                $(tableRow).remove();
+            }
+
+            hiddenField.value = hiddenField.value.replace(objectValue + "||", "");
+        }
+    </script>
+}
